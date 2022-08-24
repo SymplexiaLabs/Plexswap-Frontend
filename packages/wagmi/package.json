@@ -1,0 +1,9 @@
+{
+  "name": "@plexswap/wagmi",
+  "version": "1.0.1",
+  "description": "wagmi adaptor for PlexSwap",
+  "main": "src/index.ts",
+  "devDependencies": {
+    "tsconfig": "*"
+  }
+}
