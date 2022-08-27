@@ -1,6 +1,6 @@
 import { useMemo } from 'react'
 import styled from 'styled-components'
-import { Text, Flex, Box, CloseIcon, IconButton, useMatchBreakpointsContext } from '@plexswap/ui-plex'
+import { Text, Flex, Box, CloseIcon, IconButton, useMatchBreakpoints } from '@plexswap/ui-plex'
 import { useTranslation } from '@plexswap/localization'
 import { usePhishingBannerManager } from 'state/user/hooks'
 
@@ -43,7 +43,7 @@ const SpeechBubble = styled.div`
 const PhishingWarningBanner: React.FC<React.PropsWithChildren> = () => {
   const { t } = useTranslation()
   const [, hideBanner] = usePhishingBannerManager()
-  const { isMobile, isMd } = useMatchBreakpointsContext()
+  const { isMobile, isMd } = useMatchBreakpoints()
   const warningTextAsParts = useMemo(() => {
     const warningText = t("please make sure you're visiting https://swap.plexfinance.us - check the URL carefully.")
     return warningText.split(/(https:\/\/swap.plexfinance.us)/g)

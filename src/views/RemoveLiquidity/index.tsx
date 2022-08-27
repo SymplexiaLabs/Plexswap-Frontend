@@ -22,6 +22,7 @@ import {
 import { useWeb3LibraryContext } from '@plexswap/wagmi'
 import { BigNumber } from '@ethersproject/bignumber'
 import useNativeCurrency from 'hooks/useNativeCurrency'
+import { CommitButton } from 'components/CommitButton'
 import { useTranslation } from '@plexswap/localization'
 import { useLPApr } from 'state/swap/hooks'
 import { ROUTER_ADDRESS } from 'config/constants/exchange'
@@ -33,13 +34,11 @@ import { AppHeader, AppBody } from '../../components/App'
 import { RowBetween } from '../../components/Layout/Row'
 import ConnectWalletButton from '../../components/ConnectWalletButton'
 import { LightGreyCard } from '../../components/Card'
-
 import { CurrencyLogo } from '../../components/Logo'
 import useActiveWeb3React from '../../hooks/useActiveWeb3React'
 import { useCurrency } from '../../hooks/Tokens'
 import { usePairContract } from '../../hooks/useContract'
 import useTransactionDeadline from '../../hooks/useTransactionDeadline'
-
 import { useTransactionAdder } from '../../state/transactions/hooks'
 import StyledInternalLink from '../../components/Links'
 import { calculateGasMargin } from '../../utils'
@@ -63,12 +62,16 @@ const BorderCard = styled.div`
   border-radius: 16px;
   padding: 16px;
 `
+
+
+
 export default function RemoveLiquidity() {
   const router = useRouter()
   const native = useNativeCurrency()
+
   const [currencyIdA, currencyIdB] = router.query.currency || []
   const [currencyA, currencyB] = [useCurrency(currencyIdA) ?? undefined, useCurrency(currencyIdB) ?? undefined]
-  const { account, chainId } = useActiveWeb3React()
+  const { account, chainId, isWrongNetwork } = useActiveWeb3React()
   const library = useWeb3LibraryContext()
   const { toastError } = useToast()
   const [tokenA, tokenB] = useMemo(() => [currencyA?.wrapped, currencyB?.wrapped], [currencyA, currencyB])
@@ -76,17 +79,21 @@ export default function RemoveLiquidity() {
   const { t } = useTranslation()
   const gasPrice = useGasPrice()
 
-   // burn state
+
+
+  // burn state
   const { independentField, typedValue } = useBurnState()
   const [removalCheckedA] = useState(true)
   const [removalCheckedB] = useState(true)
-  const { pair, parsedAmounts, error } = useDerivedBurnInfo(
+  const { pair, parsedAmounts, error} = useDerivedBurnInfo(
     currencyA ?? undefined,
     currencyB ?? undefined,
     removalCheckedA,
     removalCheckedB,
+
   )
- 
+
+
   const poolData = useLPApr(pair)
   const { targetRef, tooltip, tooltipVisible } = useTooltip(
     t(`Based on last 7 days' performance. Does not account for impermanent loss`),
@@ -218,10 +225,14 @@ export default function RemoveLiquidity() {
   const onCurrencyAInput = useCallback((value: string): void => onUserInput(Field.CURRENCY_A, value), [onUserInput])
   const onCurrencyBInput = useCallback((value: string): void => onUserInput(Field.CURRENCY_B, value), [onUserInput])
 
+
+
   // tx sending
   const addTransaction = useTransactionAdder()
 
   const routerContract = useRouterContract()
+
+
 
   async function onRemove() {
     if (!chainId || !account || !deadline || !routerContract) throw new Error('missing dependencies')
@@ -324,27 +335,27 @@ export default function RemoveLiquidity() {
       throw new Error('Attempting to confirm without approval or a signature')
     }
 
-    const safeGasEstimates: (BigNumber | undefined)[] = await Promise.all(
-      methodNames.map((methodName) =>
-        routerContract.estimateGas[methodName](...args)
-          .then(calculateGasMargin)
-          .catch((err) => {
-            console.error(`estimateGas failed`, methodName, args, err)
-            return undefined
-          }),
-      ),
-    )
+    let methodSafeGasEstimate: { methodName: string; safeGasEstimate: BigNumber }
+    for (let i = 0; i < methodNames.length; i++) {
+      let safeGasEstimate
+      try {
+        // eslint-disable-next-line no-await-in-loop
+        safeGasEstimate = calculateGasMargin(await routerContract.estimateGas[methodNames[i]](...args))
+      } catch (e) {
+        console.error(`estimateGas failed`, methodNames[i], args, e)
+      }
 
-    const indexOfSuccessfulEstimation = safeGasEstimates.findIndex((safeGasEstimate) =>
-      BigNumber.isBigNumber(safeGasEstimate),
-    )
+      if (BigNumber.isBigNumber(safeGasEstimate)) {
+        methodSafeGasEstimate = { methodName: methodNames[i], safeGasEstimate }
+        break
+      }
+    }
 
     // all estimations failed...
-    if (indexOfSuccessfulEstimation === -1) {
+    if (!methodSafeGasEstimate) {
       toastError(t('Error'), t('This transaction would fail'))
     } else {
-      const methodName = methodNames[indexOfSuccessfulEstimation]
-      const safeGasEstimate = safeGasEstimates[indexOfSuccessfulEstimation]
+      const { methodName, safeGasEstimate } = methodSafeGasEstimate
 
       setLiquidityState({ attemptingTxn: true, liquidityErrorMessage: undefined, txHash: undefined })
       await routerContract[methodName](...args, {
@@ -457,11 +468,14 @@ export default function RemoveLiquidity() {
       parsedAmounts={parsedAmounts}
       currencyA={currencyA}
       currencyB={currencyB}
+
     />,
     true,
     true,
     'removeLiquidityModal',
   )
+
+
 
   return (
     <Page>
@@ -608,6 +622,7 @@ export default function RemoveLiquidity() {
                 <ArrowDownIcon width="24px" my="16px" />
               </ColumnCenter>
               <CurrencyInputPanel
+
                 hideBalance
                 disabled={!removalCheckedA}
                 value={formattedAmounts[Field.CURRENCY_A]}
@@ -625,6 +640,7 @@ export default function RemoveLiquidity() {
                 <AddIcon width="24px" my="16px" />
               </ColumnCenter>
               <CurrencyInputPanel
+
 
                 hideBalance
                 disabled={!removalCheckedB}
@@ -688,6 +704,8 @@ export default function RemoveLiquidity() {
           <Box position="relative" mt="16px">
             {!account ? (
               <ConnectWalletButton width="100%" />
+            ) : isWrongNetwork ? (
+              <CommitButton width="100%" />
             ) : (
               <RowBetween>
                 <Button

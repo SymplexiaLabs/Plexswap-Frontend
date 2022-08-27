@@ -31,7 +31,7 @@ export const wayaSectionData = (t: TranslateFunction): SalesSectionProps => ({
   bodyText: t(
     'WAYA token is at the heart of the PlexSwap ecosystem. Buy it, win it, farm it, spend it, stake it... heck, you can even vote with it!',
   ),
-  reverse: true,
+  reverse: false,
   primaryButton: {
     to: '/swap?outputCurrency=0x0581c0dae41F19Fb4602E7ba0A803B7AE50f02E8',
     text: t('Buy WAYA'),

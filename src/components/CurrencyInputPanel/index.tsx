@@ -3,7 +3,7 @@ import { Button, ChevronDownIcon, Text, useModal, Flex, Box } from '@plexswap/ui
 import styled from 'styled-components'
 import { isAddress } from 'utils'
 import { useTranslation } from '@plexswap/localization'
-import { WrappedTokenInfo } from 'state/types'
+import { WrappedTokenInfo } from '@plexswap/tokens'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useBUSDCurrencyAmount } from 'hooks/useBUSDPrice'
 import { formatNumber } from 'utils/formatBalance'
@@ -24,8 +24,8 @@ const InputRow = styled.div<{ selected: boolean }>`
 `
 const CurrencySelectButton = styled(Button).attrs({ variant: 'text', scale: 'sm' })`
   padding: 0 0.5rem;
-`
 
+`
 const LabelRow = styled.div`
   display: flex;
   flex-flow: row nowrap;
@@ -42,10 +42,11 @@ const InputPanel = styled.div`
   background-color: ${({ theme }) => theme.colors.backgroundAlt};
   z-index: 1;
 `
-const Container = styled.div`
+const Container = styled.div<{ error?: boolean }>`
   border-radius: 16px;
   background-color: ${({ theme }) => theme.colors.input};
-  box-shadow: ${({ theme }) => theme.shadows.inset};
+  box-shadow: ${({ theme, error }) => theme.shadows[error ? 'warning' : 'inset']};
+
 `
 
 const Overlay = styled.div`

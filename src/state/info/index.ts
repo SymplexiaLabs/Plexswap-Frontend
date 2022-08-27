@@ -35,7 +35,7 @@ export default createReducer(initialState, (builder) =>
     .addCase(updateProtocolTransactions, (state, { payload: { transactions } }) => {
       state.protocol.transactions = transactions
     })
-    // pools actions
+    // Pools actions
     .addCase(updatePoolData, (state, { payload: { pools } }) => {
       pools.forEach((poolData) => {
         state.pools.byAddress[poolData.address] = {

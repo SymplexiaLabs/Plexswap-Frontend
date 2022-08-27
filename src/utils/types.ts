@@ -1,6 +1,8 @@
-import { Contract } from '@ethersproject/contracts'
+import { Contract, ContractFunction } from '@ethersproject/contracts'
 
 export type MultiCallResponse<T> = T | null
+
+
 
 // generic contract types
 

@@ -4,9 +4,9 @@ import { useFarmBoosterContract } from 'hooks/useContract'
 import { FetchStatus } from 'config/constants/types'
 
 export const useBWayaProxyContractAddress = (account?: string) => {
-  const FarmBoosterContract = useFarmBoosterContract()
+  const farmBoosterContract = useFarmBoosterContract()
   const { data, status, mutate } = useSWR(account && ['proxyAddress', account], async () =>
-    FarmBoosterContract.proxyContract(account),
+    farmBoosterContract.proxyContract(account),
   )
 
   return {

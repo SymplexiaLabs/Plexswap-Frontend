@@ -1,5 +1,5 @@
 // import { renderHook } from '@testing-library/react-hooks'
-// import { bscTokens } from 'config/constants/tokens'
+// import { bscTokens } from '@plexswap/tokens'
 // import { createReduxWrapper } from 'testUtils'
 // import { Pair, TokenAmount, CurrencyAmount, Trade } from '@plexswap/sdk'
 // import * as UsePairs from './usePairs'

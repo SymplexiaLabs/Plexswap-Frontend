@@ -1,6 +1,6 @@
 import { formatUnits } from '@ethersproject/units'
 import pools from 'config/constants/pools'
-import { getTaskassistantContract, getTaskassistantV2Contract } from 'utils/contractHelpers'
+import { getTaskAssistantContract, getTaskAssistantV2Contract } from 'utils/contractHelpers'
 
 // Pool 0 is special (waya pool)
 // Pool 78 is a broken pool, not used, and break the tests
@@ -23,7 +23,7 @@ describe('Config pools', () => {
   it.each(poolsToTest.filter((pool) => pool.earningToken.symbol !== 'BNB'))(
     'Pool %p has the correct earning token',
     async (pool) => {
-      const contract = getTaskassistantContract(pool.poolId)
+      const contract = getTaskAssistantContract(pool.poolId)
       const rewardTokenAddress = await contract.rewardToken()
       expect(rewardTokenAddress.toLowerCase()).toBe(pool.earningToken.address.toLowerCase())
     },
@@ -33,10 +33,10 @@ describe('Config pools', () => {
     async (pool) => {
       let stakingTokenAddress = null
       try {
-        const contract = getTaskassistantV2Contract(pool.poolId)
+        const contract = getTaskAssistantV2Contract(pool.poolId)
         stakingTokenAddress = await contract.stakedToken()
       } catch (error) {
-        const contract = getTaskassistantContract(pool.poolId)
+        const contract = getTaskAssistantContract(pool.poolId)
         stakingTokenAddress = await contract.gaya()
       }
 
@@ -47,7 +47,7 @@ describe('Config pools', () => {
   it.each(poolsToTest.filter((pool) => pool.stakingToken.symbol !== 'BNB'))(
     'Pool %p has the correct tokenPerBlock',
     async (pool) => {
-      const contract = getTaskassistantContract(pool.poolId)
+      const contract = getTaskAssistantContract(pool.poolId)
       const rewardPerBlock = await contract.rewardPerBlock()
 
       expect(String(parseFloat(formatUnits(rewardPerBlock, pool.earningToken.decimals)))).toBe(pool.tokenPerBlock)

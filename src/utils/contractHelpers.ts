@@ -1,37 +1,38 @@
 import type { Signer } from '@ethersproject/abstract-signer'
 import type { Provider } from '@ethersproject/providers'
+import { provider } from 'utils/wagmi'
 import { Contract } from '@ethersproject/contracts'
-import { bscRpcProvider } from 'utils/providers'
 import poolsConfig from 'config/constants/pools'
 import { PoolCategory } from 'config/constants/types'
-import { WAYA } from 'config/constants/tokens'
+import { WAYA } from '@plexswap/tokens'
 
 // Addresses
 import {
   getAddress,
   getChiefFarmerAddress,
   getWayaVaultAddress,
-  getWayaFlexibleVaultAddress,
   getMulticallAddress,
+  getWayaFlexibleVaultAddress,
   getFarmBoosterAddress,
   getFarmBoosterProxyFactoryAddress,
-  } from 'utils/addressHelpers'
+} from 'utils/addressHelpers'
 
 // ABI
+
 import bep20Abi from 'config/abi/erc20.json'
 import erc721Abi from 'config/abi/erc721.json'
 import lpTokenAbi from 'config/abi/lpToken.json'
 import wayaAbi from 'config/abi/Waya.json'
-import chiefFarmer from 'config/abi/ChiefFarmer.json'
+import chiefFarmerAbi from 'config/abi/ChiefFarmer.json'
 import taskAssistant from 'config/abi/TaskAssistant.json'
-import taskAssistantBnb from 'config/abi/TaskAssistantBnb.json'
+import taskAssistantV2Abi from 'config/abi/TaskAssistantV2.json'
+import taskAssistantBnb from 'config/abi/taskAssistantBnb.json'
 import wayaVaultAbi from 'config/abi/WayaVault.json'
-import wayaFlexibleVaultAbi from 'config/abi/WayaFlexibleVault.json'
+import wayaFlexibleVaultAbi from 'config/abi/wayaFlexibleVault.json'
 import MultiCallAbi from 'config/abi/Multicall.json'
 import erc721CollectionAbi from 'config/abi/erc721collection.json'
-
-import FarmBoosterAbi from 'config/abi/FarmBooster.json'
-import FarmBoosterProxyFactoryAbi from 'config/abi/FarmBoosterProxyFactory.json'
+import farmBoosterAbi from 'config/abi/FarmBooster.json'
+import farmBoosterProxyFactoryAbi from 'config/abi/farmBoosterProxyFactory.json'
 import bWayaProxyAbi from 'config/abi/bWayaProxy.json'
 
 // Types
@@ -41,63 +42,97 @@ import type {
   Waya,
   ChiefFarmer,
   TaskAssistant,
+  TaskAssistantV2,
   LpToken,
+  Multicall,
   Erc721collection,
   WayaVault,
   WayaFlexibleVault,
-  Multicall,
   FarmBooster,
   FarmBoosterProxyFactory,
   BWayaProxy,
 } from 'config/abi/types'
 import { ChainId } from '@plexswap/sdk'
 
-export const getContract = (abi: any, address: string, signer?: Signer | Provider) => {
-  const signerOrProvider = signer ?? bscRpcProvider
+export const getContract = ({
+  abi,
+  address,
+  chainId = ChainId.BSC,
+  signer,
+}: {
+  abi: any
+  address: string
+  chainId?: ChainId
+  signer?: Signer | Provider
+}) => {
+  const signerOrProvider = signer ?? provider({ chainId })
   return new Contract(address, abi, signerOrProvider)
 }
+
 export const getBep20Contract = (address: string, signer?: Signer | Provider) => {
-  return getContract(bep20Abi, address, signer) as Erc20
+  return getContract({ abi: bep20Abi, address, signer }) as Erc20
 }
 export const getErc721Contract = (address: string, signer?: Signer | Provider) => {
-  return getContract(erc721Abi, address, signer) as Erc721
+  return getContract({ abi: erc721Abi, address, signer }) as Erc721
 }
 export const getLpContract = (address: string, signer?: Signer | Provider) => {
-  return getContract(lpTokenAbi, address, signer) as LpToken
+  return getContract({ abi: lpTokenAbi, address, signer }) as LpToken
 }
 export const getTaskAssistantContract = (id: number, signer?: Signer | Provider) => {
   const config = poolsConfig.find((pool) => pool.poolId === id)
   const abi = config.poolCategory === PoolCategory.BINANCE ? taskAssistantBnb : taskAssistant
-  return getContract(abi, getAddress(config.contractAddress), signer) as TaskAssistant
+  return getContract({ abi, address: getAddress(config.contractAddress), signer }) as TaskAssistant
 }
+export const getTaskAssistantV2Contract = (id: number, signer?: Signer | Provider) => {
+  const config = poolsConfig.find((pool) => pool.poolId === id)
+  return getContract({ abi: taskAssistantV2Abi, address: getAddress(config.contractAddress), signer }) as TaskAssistantV2
+}
+
+
 export const getWayaContract = (signer?: Signer | Provider, chainId?: number) => {
-  return getContract(wayaAbi, chainId ? WAYA[chainId].address : WAYA[ChainId.BSC].address, signer) as Waya
-}
-export const getChieffarmerContract = (signer?: Signer | Provider) => {
-  return getContract(chiefFarmer, getChiefFarmerAddress(), signer) as ChiefFarmer
-}
-export const getWayaVaultContract = (signer?: Signer | Provider) => {
-  return getContract(wayaVaultAbi, getWayaVaultAddress(), signer) as WayaVault
-}
-export const getWayaFlexibleVaultContract = (signer?: Signer | Provider) => {
-  return getContract(wayaFlexibleVaultAbi, getWayaFlexibleVaultAddress(), signer) as WayaFlexibleVault
-}
-export const getErc721CollectionContract = (signer?: Signer | Provider, address?: string) => {
-  return getContract(erc721CollectionAbi, address, signer) as Erc721collection
-}
-export const getMulticallContract = () => {
-  return getContract(MultiCallAbi, getMulticallAddress(), bscRpcProvider) as Multicall
-}
-export const getFarmBoosterContract = (signer?: Signer | Provider) => {
-  return getContract(FarmBoosterAbi, getFarmBoosterAddress(), signer) as FarmBooster
-}
-export const getFarmBoosterProxyFactoryContract = (signer?: Signer | Provider) => {
-  return getContract(
-    FarmBoosterProxyFactoryAbi,
-    getFarmBoosterProxyFactoryAddress(),
+  return getContract({
+    abi: wayaAbi,
+    address: chainId ? WAYA[chainId].address : WAYA[ChainId.BSC].address,
     signer,
-  ) as FarmBoosterProxyFactory
+  }) as Waya
 }
+
+export const getChieffarmerContract = (signer?: Signer | Provider, chainId?: number) => {
+  return getContract({ abi: chiefFarmerAbi, address: getChiefFarmerAddress(chainId), signer }) as ChiefFarmer
+}
+
+export const getWayaVaultContract = (signer?: Signer | Provider) => {
+  return getContract({ abi: wayaVaultAbi, address: getWayaVaultAddress(), signer }) as WayaVault
+}
+
+export const getWayaFlexibleVaultContract = (signer?: Signer | Provider) => {
+  return getContract({
+    abi: wayaFlexibleVaultAbi,
+    address: getWayaFlexibleVaultAddress(),
+    signer,
+  }) as WayaFlexibleVault
+}
+
+export const getMulticallContract = (chainId: ChainId) => {
+  return getContract({ abi: MultiCallAbi, address: getMulticallAddress(chainId), chainId }) as Multicall
+}
+
+export const getErc721CollectionContract = (signer?: Signer | Provider, address?: string) => {
+  return getContract({ abi: erc721CollectionAbi, address, signer }) as Erc721collection
+}
+
+export const getFarmBoosterContract = (signer?: Signer | Provider) => {
+  return getContract({ abi: farmBoosterAbi, address: getFarmBoosterAddress(), signer }) as FarmBooster
+}
+
+export const getFarmBoosterProxyFactoryContract = (signer?: Signer | Provider) => {
+  return getContract({
+    abi: farmBoosterProxyFactoryAbi,
+    address: getFarmBoosterProxyFactoryAddress(),
+    signer,
+  }) as FarmBoosterProxyFactory
+}
+
 export const getBWayaProxyContract = (proxyContractAddress: string, signer?: Signer | Provider) => {
-  return getContract(bWayaProxyAbi, proxyContractAddress, signer) as BWayaProxy
+  return getContract({ abi: bWayaProxyAbi, address: proxyContractAddress, signer }) as BWayaProxy
 }

@@ -1,4 +1,5 @@
 import { Token, ChainId } from '@plexswap/sdk'
+import { SerializedToken } from '@plexswap/tokens'
 
 // a list of tokens by chain
 export type ChainMap<T> = {
@@ -21,15 +22,7 @@ export interface Address {
   [chainId: number]: string
 }
 
-export interface SerializedToken {
-  chainId: number
-  address: string
-  decimals: number
-  symbol?: string
-  name?: string
-  projectLink?: string
-  logoURI?: string
-}
+
 
 export enum PoolIds {
   poolBasic = 'poolBasic',
@@ -46,10 +39,12 @@ export enum PoolCategory {
 }
 
 interface FarmConfigBaseProps {
+  isStable?: boolean
   pid: number
 
+  bscPid?: number
   lpSymbol: string
-  lpAddresses: Address
+  lpAddress: string
   multiplier?: string
   isCommunity?: boolean
   auctionHostingStartSeconds?: number

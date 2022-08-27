@@ -86,7 +86,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const usersQuery = gql`
     query userCount($since: ISO8601DateTime, $till: ISO8601DateTime) {
       ethereum(network: bsc) {
-        dexTrades(exchangeName: { in: ["Plewswap"] }, date: { since: $since, till: $till }) {
+        dexTrades(exchangeName: { in: ["Plexswap", "PlexSwap"] }, date: { since: $since, till: $till }) {
           count(uniq: senders)
         }
       }
@@ -136,5 +136,7 @@ export const getStaticProps: GetStaticProps = async () => {
     revalidate: 60 * 60 * 24 * 30, // 30 days
   }
 }
+
+IndexPage.chains = []
 
 export default IndexPage

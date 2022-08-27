@@ -7,13 +7,14 @@ export const getAddress = (address: Address, chainId?: number): string => {
   return address[chainId] ? address[chainId] : address[ChainId.BSC]
 }
 
-export const getChiefFarmerAddress = () => {
-  return getAddress(addresses.chiefFarmer)
+export const getChiefFarmerAddress = (chainId?: number) => {
+  return getAddress(addresses.chiefFarmer, chainId)
 }
 
 export const getMulticallAddress = (chainId?: number) => {
   return getAddress(addresses.multiCall, chainId)
 }
+
 
 export const getVaultPoolAddress = (vaultKey: VaultKey) => {
   if (!vaultKey) {
@@ -29,6 +30,7 @@ export const getWayaVaultAddress = () => {
 export const getWayaFlexibleVaultAddress = () => {
   return getAddress(addresses.wayaFlexibleVault)
 }
+
 export const getIWayaAddress = () => {
   return getAddress(addresses.iWaya)
 }

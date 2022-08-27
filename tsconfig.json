@@ -9,6 +9,9 @@
     "target": "es5",
     "paths": {
       "@plexswap/sdk": ["../packages/swap-sdk/src/index.ts"],
+      "@plexswap/wagmi/connectors/binanceWallet": ["../packages/wagmi/connectors/binanceWallet/index.ts"],
+      "@plexswap/wagmi/connectors/miniProgram": ["../packages/wagmi/connectors/miniProgram/index.ts"],
+      "@plexswap/wagmi/chains": ["../packages/wagmi/chains/index.ts"],
       "@plexswap/wagmi": ["../packages/wagmi/src/index.ts"],
       "@plexswap/hooks": ["../packages/hooks/src/index.ts"]
     }

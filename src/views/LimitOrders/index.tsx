@@ -1,8 +1,7 @@
 import { useCallback, useEffect, useState, useMemo } from 'react'
 import { useRouter } from 'next/router'
 import { CurrencyAmount, Token, Trade, TradeType, Currency } from '@plexswap/sdk'
-import { Button, Box, Flex, useModal, Link, useMatchBreakpointsContext } from '@plexswap/ui-plex'
-
+import { Button, Box, Flex, useModal, Link, useMatchBreakpoints } from '@plexswap/ui-plex'
 import { useTranslation } from '@plexswap/localization'
 import { AutoColumn } from 'components/Layout/Column'
 import CurrencyInputPanel from 'components/CurrencyInputPanel'
@@ -17,7 +16,6 @@ import { useDefaultsFromURLSearch } from 'state/limitOrders/hooks'
 import { maxAmountSpend } from 'utils/maxAmountSpend'
 import { GELATO_NATIVE } from 'config/constants'
 import { LIMIT_ORDERS_DOCS_URL } from 'config/constants/exchange'
-
 import { useWeb3React } from '@plexswap/wagmi'
 import ClaimWarning from './components/ClaimWarning'
 
@@ -38,7 +36,7 @@ const LimitOrders = () => {
   const { account, chainId } = useWeb3React()
   const { t } = useTranslation()
   const router = useRouter()
-  const { isMobile } = useMatchBreakpointsContext()
+  const { isMobile } = useMatchBreakpoints()
   const { theme } = useTheme()
 
 

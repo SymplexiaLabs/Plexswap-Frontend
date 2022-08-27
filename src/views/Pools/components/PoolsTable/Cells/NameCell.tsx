@@ -1,4 +1,4 @@
-import { Text, TokenPairImage as UITokenPairImage, useMatchBreakpointsContext } from '@plexswap/ui-plex'
+import { Text, TokenPairImage as UITokenPairImage, useMatchBreakpoints } from '@plexswap/ui-plex'
 import BigNumber from 'bignumber.js'
 import { TokenPairImage } from 'components/TokenImage'
 import { vaultPoolConfig } from 'config/constants/pools'
@@ -27,7 +27,7 @@ const StyledCell = styled(BaseCell)`
 
 const NameCell: React.FC<React.PropsWithChildren<NameCellProps>> = ({ pool }) => {
   const { t } = useTranslation()
-  const { isMobile } = useMatchBreakpointsContext()
+  const { isMobile } = useMatchBreakpoints()
   const { poolId, stakingToken, earningToken, userData, isFinished, vaultKey } = pool
   const vaultData = useVaultPoolByKey(pool.vaultKey)
   const {

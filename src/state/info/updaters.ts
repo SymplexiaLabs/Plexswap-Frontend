@@ -44,7 +44,7 @@ export const ProtocolUpdater: React.FC<React.PropsWithChildren> = () => {
   return null
 }
 
-export const PoolUpdater: React.FC = () => {
+export const PoolUpdater: React.FC<React.PropsWithChildren> = () => {
   const updatePoolData = useUpdatePoolData()
   const addPoolKeys = useAddPoolKeys()
 

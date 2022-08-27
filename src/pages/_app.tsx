@@ -3,7 +3,7 @@ import Script from 'next/script'
 import BigNumber from 'bignumber.js'
 import { ToastListener } from 'contexts/ToastsContext'
 import useEagerConnect from 'hooks/useEagerConnect'
-
+import useEagerConnectMP from 'hooks/useEagerConnect.bmp'
 import { useAccountEventListener } from 'hooks/useAccountEventListener'
 import useSentryUser from 'hooks/useSentryUser'
 import useUserAgent from 'hooks/useUserAgent'
@@ -13,11 +13,12 @@ import Head from 'next/head'
 import { Fragment } from 'react'
 import { PersistGate } from 'redux-persist/integration/react'
 import { useStore, persistor } from 'state'
+import { NetworkModal } from 'components/NetworkModal'
 import { usePollBlockNumber } from 'state/block/hooks'
 import { usePollCoreFarmData } from 'state/farms/hooks'
 import { NextPage } from 'next'
 import { Blocklist, Updaters } from '..'
-import ErrorBoundary from '../components/ErrorBoundary'
+import { SentryErrorBoundary } from '../components/ErrorBoundary'
 import Menu from '../components/Menu'
 import Providers from '../Providers'
 import GlobalStyle from '../style/Global'
@@ -43,7 +44,7 @@ function GlobalHooks() {
 
 function MPGlobalHooks() {
   usePollBlockNumber()
-
+  useEagerConnectMP()
   usePollCoreFarmData()
   useUserAgent()
   useAccountEventListener()
@@ -88,7 +89,7 @@ function MyApp(props: AppProps) {
           {(Component as NextPageWithLayout).mp ? <MPGlobalHooks /> : <GlobalHooks />}
           <ResetCSS />
           <GlobalStyle />
-          <PersistGate loading={null} persistor={persistor}>
+                    <PersistGate loading={null} persistor={persistor}>
             <Updaters />
             <App {...props} />
           </PersistGate>
@@ -113,19 +114,25 @@ function MyApp(props: AppProps) {
 
 type NextPageWithLayout = NextPage & {
   Layout?: React.FC<React.PropsWithChildren<unknown>>
+  /** render component without all layouts */
+  pure?: true
+  /** is mini program */
   mp?: boolean
+  /**
+   * allow chain per page, empty array bypass chain block modal
+   * @default [ChainId.BSC]
+   * */
+  chains?: number[]
 }
 
 type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout
 }
 
-const ProductionErrorBoundary = process.env.NODE_ENV === 'production' ? ErrorBoundary : Fragment
+const ProductionErrorBoundary = process.env.NODE_ENV === 'production' ? SentryErrorBoundary : Fragment
 
-const App = ({ Component, pageProps, ...appProps }: AppPropsWithLayout) => {
-  const noNeedLayout = [`/451`].includes(appProps.router.pathname)
-
-  if (noNeedLayout) {
+const App = ({ Component, pageProps }: AppPropsWithLayout) => {
+  if (Component.pure) {
     return <Component {...pageProps} />
   }
 
@@ -143,6 +150,7 @@ const App = ({ Component, pageProps, ...appProps }: AppPropsWithLayout) => {
 
       <ToastListener />
 
+      <NetworkModal pageSupportedChains={Component.chains} />
     </ProductionErrorBoundary>
   )
 }

@@ -30,7 +30,7 @@ export const poolsWithVaultSelector = createSelector(
     makeVaultPoolByKey(VaultKey.WayaVault),
     makeVaultPoolByKey(VaultKey.WayaFlexibleVault),
   ],
-  (poolsWithUserDataLoading, deserializedLockedWayaVault, deserializedFlexibleVaultWayaVault) => {
+  (poolsWithUserDataLoading, deserializedLockedWayaVault, deserializedFlexibleWayaVault) => {
     const { pools, userDataLoaded } = poolsWithUserDataLoading
     const wayaPool = pools.find((pool) => !pool.isFinished && pool.poolId === 0)
     const withoutWayaPool = pools.filter((pool) => pool.poolId !== 0)
@@ -43,16 +43,16 @@ export const poolsWithVaultSelector = createSelector(
     }
 
     const lockedVaultPosition = getVaultPosition(deserializedLockedWayaVault.userData)
-    const hasFlexibleVaultSharesStaked = deserializedFlexibleVaultWayaVault.userData.userShares.gt(0)
+    const hasFlexibleSharesStaked = deserializedFlexibleWayaVault.userData.userShares.gt(0)
 
     const wayaAutoFlexibleVault =
-      lockedVaultPosition > VaultPosition.Flexible || hasFlexibleVaultSharesStaked
+      lockedVaultPosition > VaultPosition.Flexible || hasFlexibleSharesStaked
         ? [
             {
               ...wayaPool,
-              ...deserializedFlexibleVaultWayaVault,
+              ...deserializedFlexibleWayaVault,
               vaultKey: VaultKey.WayaFlexibleVault,
-              userData: { ...wayaPool.userData, ...deserializedFlexibleVaultWayaVault.userData },
+              userData: { ...wayaPool.userData, ...deserializedFlexibleWayaVault.userData },
             },
           ]
         : []
@@ -63,4 +63,5 @@ export const poolsWithVaultSelector = createSelector(
 
 export const makeVaultPoolWithKeySelector = (vaultKey) =>
   createSelector(poolsWithVaultSelector, ({ pools }) => pools.find((p) => p.vaultKey === vaultKey))
+
 

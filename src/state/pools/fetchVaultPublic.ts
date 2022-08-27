@@ -16,8 +16,12 @@ export const fetchPublicVaultData = async (wayaVaultAddress = wayaVault) => {
     }))
 
     const [[[sharePrice], [shares], totalLockedAmount], totalWayaInVault] = await Promise.all([
-      multicallv2(wayaVaultAbi, calls, {
-        requireSuccess: false,
+      multicallv2({
+        abi: wayaVaultAbi,
+        calls,
+        options: {
+          requireSuccess: false,
+        },
       }),
       wayaContract.balanceOf(wayaVault),
     ])
@@ -49,8 +53,10 @@ export const fetchPublicFlexibleVaultData = async (wayaVaultAddress = wayaFlexib
     }))
 
     const [[[sharePrice], [shares]], totalWayaInVault] = await Promise.all([
-      multicallv2(wayaVaultAbi, calls, {
-        requireSuccess: false,
+      multicallv2({
+        abi: wayaVaultAbi,
+        calls,
+        options: { requireSuccess: false },
       }),
       wayaContract.balanceOf(wayaVaultAddress),
     ])
@@ -78,7 +84,7 @@ export const fetchVaultFees = async (wayaVaultAddress = wayaVault) => {
       name: method,
     }))
 
-    const [[performanceFee], [withdrawalFee], [withdrawalFeePeriod]] = await multicallv2(wayaVaultAbi, calls)
+    const [[performanceFee], [withdrawalFee], [withdrawalFeePeriod]] = await multicallv2({ abi: wayaVaultAbi, calls })
 
     return {
       performanceFee: performanceFee.toNumber(),

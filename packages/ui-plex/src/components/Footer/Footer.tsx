@@ -13,7 +13,7 @@ import { FooterProps } from "./types";
 import { ThemeSwitcher } from "../ThemeSwitcher";
 import { LogoWithTextIcon } from "../Svg";
 
-const MenuItem: React.FC<FooterProps> = ({
+const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
   items,
   isDark,
   toggleTheme,

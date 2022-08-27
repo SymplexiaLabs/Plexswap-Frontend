@@ -1,6 +1,5 @@
 import { Token } from '@plexswap/sdk'
-import { SerializedToken } from 'config/constants/types'
-import { WrappedTokenInfo } from 'state/types'
+import { SerializedToken, WrappedTokenInfo } from '@plexswap/tokens'
 
 export function serializeToken(token: Token): SerializedToken {
   return {

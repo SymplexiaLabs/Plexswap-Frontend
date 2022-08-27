@@ -16,7 +16,10 @@ export const fetchVaultUser = async (account: string): Promise<SerializedLockedV
       params: [account],
     }))
 
-    const [userContractResponse, [currentPerformanceFee], [currentOverdueFee]] = await multicallv2(wayaVaultAbi, calls)
+    const [userContractResponse, [currentPerformanceFee], [currentOverdueFee]] = await multicallv2({
+      abi: wayaVaultAbi,
+      calls,
+    })
     return {
       isLoading: false,
       userShares: new BigNumber(userContractResponse.shares.toString()).toJSON(),

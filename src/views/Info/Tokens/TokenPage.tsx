@@ -13,7 +13,7 @@ import {
   LinkExternal,
   Spinner,
   Image,
-  useMatchBreakpointsContext,
+  useMatchBreakpoints,
 } from '@plexswap/ui-plex'
 import Page from 'components/Layout/Page'
 import { getBlockExploreLink } from 'utils'
@@ -54,9 +54,8 @@ const StyledCMCLink = styled(UIKitLink)`
     opacity: 0.8;
   }
 `
-
 const TokenPage: React.FC<React.PropsWithChildren<{ routeAddress: string }>> = ({ routeAddress }) => {
-  const { isXs, isSm } = useMatchBreakpointsContext()
+  const { isXs, isSm } = useMatchBreakpoints()
   const { t } = useTranslation()
 
   // In case somebody pastes checksummed address into url (since GraphQL expects lowercase address)
@@ -70,6 +69,7 @@ const TokenPage: React.FC<React.PropsWithChildren<{ routeAddress: string }>> = (
   const transactions = useTokenTransactions(address)
 
   // pricing data
+ 
   const [watchlistTokens, addWatchlistToken] = useWatchlistTokens()
 
   return (

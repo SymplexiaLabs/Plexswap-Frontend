@@ -11,7 +11,7 @@ import {
   useTooltip,
   Box,
   SkeletonV2,
-  useMatchBreakpointsContext,
+  useMatchBreakpoints,
 } from '@plexswap/ui-plex'
 import { useWeb3React } from '@plexswap/wagmi'
 import BigNumber from 'bignumber.js'
@@ -68,7 +68,7 @@ const Staked: React.FunctionComponent<React.PropsWithChildren<StackedActionProps
   } = pool
   const { t } = useTranslation()
   const { account } = useWeb3React()
-  const { isMobile } = useMatchBreakpointsContext()
+  const { isMobile } = useMatchBreakpoints()
 
   const stakingTokenContract = useERC20(stakingToken.address || '')
   const { handleApprove: handlePoolApprove, pendingTx: pendingPoolTx } = useApprovePool(

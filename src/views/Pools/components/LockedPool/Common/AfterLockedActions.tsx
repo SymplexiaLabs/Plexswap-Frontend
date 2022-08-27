@@ -1,5 +1,5 @@
 import { memo, ReactNode } from 'react'
-import { Message, MessageText, Box, Flex, useMatchBreakpointsContext } from '@plexswap/ui-plex'
+import { Message, MessageText, Box, Flex, useMatchBreakpoints } from '@plexswap/ui-plex'
 import { useTranslation } from '@plexswap/localization'
 import Trans from 'components/Trans'
 import { VaultPosition } from 'utils/wayaPool'
@@ -32,7 +32,7 @@ const AfterLockedActions: React.FC<React.PropsWithChildren<AfterLockedActionsPro
   isInline,
 }) => {
   const { t } = useTranslation()
-  const { isDesktop } = useMatchBreakpointsContext()
+  const { isDesktop } = useMatchBreakpoints()
   const isDesktopView = isInline && isDesktop
   const Container = isDesktopView ? Flex : Box
 

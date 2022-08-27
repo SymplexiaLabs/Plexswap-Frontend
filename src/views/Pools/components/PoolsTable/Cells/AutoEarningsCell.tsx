@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Skeleton, Text, useTooltip, HelpIcon, Flex, Box, useMatchBreakpointsContext } from '@plexswap/ui-plex'
+import { Skeleton, Text, useTooltip, HelpIcon, Flex, Box, useMatchBreakpoints } from '@plexswap/ui-plex'
 import { DeserializedPool, VaultKey, DeserializedPoolLockedVault } from 'state/types'
 import Balance from 'components/Balance'
 import { useVaultPoolByKey } from 'state/pools/hooks'
@@ -26,7 +26,7 @@ const HelpIconWrapper = styled.div`
 
 const AutoEarningsCell: React.FC<React.PropsWithChildren<AutoEarningsCellProps>> = ({ pool, account }) => {
   const { t } = useTranslation()
-  const { isMobile } = useMatchBreakpointsContext()
+  const { isMobile } = useMatchBreakpoints()
   const { earningTokenPrice, vaultKey } = pool
 
   const vaultData = useVaultPoolByKey(vaultKey)

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Skeleton, Text, Flex, Box, useModal, useMatchBreakpointsContext } from '@plexswap/ui-plex'
+import { Skeleton, Text, Flex, Box, useModal, useMatchBreakpoints } from '@plexswap/ui-plex'
 import { DeserializedPool } from 'state/types'
 import BigNumber from 'bignumber.js'
 import { PoolCategory } from 'config/constants/types'
@@ -24,7 +24,7 @@ const StyledCell = styled(BaseCell)`
 
 const EarningsCell: React.FC<React.PropsWithChildren<EarningsCellProps>> = ({ pool, account }) => {
   const { t } = useTranslation()
-  const { isMobile } = useMatchBreakpointsContext()
+  const { isMobile } = useMatchBreakpoints()
   const { poolId, earningToken, poolCategory, userData, earningTokenPrice } = pool
   const isManualWayaPool = poolId === 0
 

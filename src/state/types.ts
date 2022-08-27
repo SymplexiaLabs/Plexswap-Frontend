@@ -1,55 +1,13 @@
+import { parseUnits } from '@ethersproject/units'
 import BigNumber from 'bignumber.js'
 import {
-  SerializedFarmConfig,
-  DeserializedPoolConfig,
-  SerializedPoolConfig,
+
   DeserializedFarmConfig,
+  DeserializedPoolConfig,
+  SerializedFarmConfig,
+  SerializedPoolConfig,
 } from 'config/constants/types'
-import { Token, ChainId } from '@plexswap/sdk'
-import { TokenInfo, TokenList, Tags } from '@uniswap/token-lists'
-import { parseUnits } from '@ethersproject/units'
 
-
-/**
- * Token instances created from token info.
- */
-export class WrappedTokenInfo extends Token {
-  public readonly tokenInfo: TokenInfo
-
-  public readonly tags: TagInfo[]
-
-  constructor(tokenInfo: TokenInfo, tags: TagInfo[]) {
-    super(tokenInfo.chainId, tokenInfo.address, tokenInfo.decimals, tokenInfo.symbol, tokenInfo.name)
-    this.tokenInfo = tokenInfo
-    this.tags = tags
-  }
-
-  public get logoURI(): string | undefined {
-    return this.tokenInfo.logoURI
-  }
-}
-
-export type TokenAddressMap = Readonly<
-  {
-    [chainId in ChainId]: Readonly<{ [tokenAddress: string]: { token: WrappedTokenInfo; list: TokenList } }>
-  }
->
-
-type TagDetails = Tags[keyof Tags]
-export interface TagInfo extends TagDetails {
-  id: string
-}
-
-/**
- * An empty result, useful as a default.
- */
-export const EMPTY_LIST: TokenAddressMap = {
-  [ChainId.ETHEREUM]: {},
-  [ChainId.RINKEBY]: {},
-  [ChainId.GOERLI]: {},
-  [ChainId.BSC]: {},
-  [ChainId.BSC_TESTNET]: {},
-}
 
 export enum GAS_PRICE {
   default = '5',

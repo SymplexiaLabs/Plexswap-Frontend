@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
-import { useWeb3React } from '@plexswap/wagmi'
+import { useTranslation } from '@plexswap/localization'
 import {
+  Box,
   Flex,
   LogoutIcon,
   RefreshIcon,
@@ -9,29 +9,32 @@ import {
   UserMenuDivider,
   UserMenuItem,
   UserMenuVariant,
-  Box,
 } from '@plexswap/ui-plex'
-import Trans from 'components/Trans'
-import useAuth from 'hooks/useAuth'
-import NextLink from 'next/link'
-import { ChainId } from '@plexswap/sdk'
-import { usePendingTransactions } from 'state/transactions/hooks'
 import ConnectWalletButton from 'components/ConnectWalletButton'
-import { useTranslation } from '@plexswap/localization'
+import Trans from 'components/Trans'
+import { useActiveChainId } from 'hooks/useActiveChainId'
+import useAuth from 'hooks/useAuth'
+import { useEffect, useState } from 'react'
+
+import { usePendingTransactions } from 'state/transactions/hooks'
+import { useAccount } from 'wagmi'
+
 import WalletModal, { WalletView } from './WalletModal'
 import WalletUserMenuItem from './WalletUserMenuItem'
 
 const UserMenu = () => {
   const { t } = useTranslation()
-  const { account, chain, chainId } = useWeb3React()
+  const { address: account } = useAccount()
+  const { isWrongNetwork } = useActiveChainId()
   const { logout } = useAuth()
   const { hasPendingTransactions, pendingNumber } = usePendingTransactions()
+
   const [onPresentWalletModal] = useModal(<WalletModal initialView={WalletView.WALLET_INFO} />)
   const [onPresentTransactionModal] = useModal(<WalletModal initialView={WalletView.TRANSACTIONS} />)
   const [onPresentWrongNetworkModal] = useModal(<WalletModal initialView={WalletView.WRONG_NETWORK} />)
+
   const [userMenuText, setUserMenuText] = useState<string>('')
   const [userMenuVariable, setUserMenuVariable] = useState<UserMenuVariant>('default')
-  const isWrongNetwork = chain?.unsupported
 
   useEffect(() => {
     if (hasPendingTransactions) {
@@ -59,12 +62,6 @@ const UserMenu = () => {
           {t('Recent Transactions')}
           {hasPendingTransactions && <RefreshIcon spin />}
         </UserMenuItem>
-        <UserMenuDivider />
-        <NextLink href={`/profile/${account?.toLowerCase()}`} passHref>
-          <UserMenuItem as="a" disabled={isWrongNetwork || chainId !== ChainId.BSC}>
-            {t('Your NFTs')}
-          </UserMenuItem>
-        </NextLink>
         <UserMenuDivider />
         <UserMenuItem as="button" onClick={logout}>
           <Flex alignItems="center" justifyContent="space-between" width="100%">

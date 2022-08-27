@@ -1,7 +1,7 @@
 import { ChainId, Currency } from '@plexswap/sdk'
 import { BinanceIcon } from '@plexswap/ui-plex'
 import { useMemo } from 'react'
-import { WrappedTokenInfo } from 'state/types'
+import { WrappedTokenInfo } from '@plexswap/tokens'
 import styled from 'styled-components'
 import useHttpLocations from '../../hooks/useHttpLocations'
 import getTokenLogoURL from '../../utils/getTokenLogoURL'

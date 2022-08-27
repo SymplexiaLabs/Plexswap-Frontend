@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Flex, Heading, Text, Link, useMatchBreakpointsContext } from '@plexswap/ui-plex'
+import { Flex, Heading, Text, Link, useMatchBreakpoints } from '@plexswap/ui-plex'
 import { useTranslation } from '@plexswap/localization'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import Container from 'components/Layout/Container'
@@ -83,7 +83,7 @@ const bottomRightImage = {
 const Footer = () => {
   const { t } = useTranslation()
   const { account } = useWeb3React()
-  const { isTablet, isDesktop } = useMatchBreakpointsContext()
+  const { isTablet, isDesktop } = useMatchBreakpoints()
 
   return (
     <>
@@ -113,7 +113,7 @@ const Footer = () => {
           {t('No registration needed.')}
         </Text>
 
-        <Link external href="https://docs.plexswap.finance/">
+        <Link external href="https://docs.plexfinance.us/">
           {t('Learn how to start')}
         </Link>
         {!account && <ConnectWalletButton mt="24px" />}

@@ -7,13 +7,14 @@ import {
   Erc721collection,
   Multicall,
   Weth,
+
 } from 'config/abi/types'
+
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useProviderOrSigner } from 'hooks/useProviderOrSigner'
 import { useMemo } from 'react'
 import { getMulticallAddress } from 'utils/addressHelpers'
 import {
-
   getFarmBoosterContract,
   getFarmBoosterProxyFactoryContract,
   getBWayaProxyContract,
@@ -21,8 +22,8 @@ import {
   getWayaContract,
   getWayaFlexibleVaultContract,
   getWayaVaultContract,
-  getErc721Contract,
   getErc721CollectionContract,
+  getErc721Contract,
   getChieffarmerContract,
   getTaskAssistantContract,
 } from 'utils/contractHelpers'
@@ -37,11 +38,17 @@ import IPlexswapPairABI from '../config/abi/IPlexswapPair.json'
 import multiCallAbi from '../config/abi/Multicall.json'
 import WETH_ABI from '../config/abi/weth.json'
 import { getContract } from '../utils'
+
 import { IPlexswapPair } from '../config/abi/types/IPlexswapPair'
 import { VaultKey } from '../state/types'
+import { useActiveChainId } from './useActiveChainId'
+
 /**
  * Helper hooks to get specific contracts (by ABI)
  */
+
+
+
 export const useERC20 = (address: string, withSignerIfPossible = true) => {
   const providerOrSigner = useProviderOrSigner(withSignerIfPossible)
   return useMemo(() => getBep20Contract(address, providerOrSigner), [address, providerOrSigner])
@@ -67,14 +74,17 @@ export const useWaya = (): { reader: Waya; signer: Waya } => {
 }
 
 export const useChieffarmer = (withSignerIfPossible = true) => {
+  const { chainId } = useActiveChainId()
   const providerOrSigner = useProviderOrSigner(withSignerIfPossible)
-  return useMemo(() => getChieffarmerContract(providerOrSigner), [providerOrSigner])
+  return useMemo(() => getChieffarmerContract(providerOrSigner, chainId), [providerOrSigner, chainId])
 }
 
 export const useTaskAssistant = (id) => {
   const { data: signer } = useSigner()
   return useMemo(() => getTaskAssistantContract(id, signer), [id, signer])
 }
+
+
 
 export const useVaultPoolContract = (vaultKey: VaultKey): WayaVault | WayaFlexibleVault => {
   const { data: signer } = useSigner()
@@ -94,6 +104,7 @@ export const useWayaVaultContract = (withSignerIfPossible = true) => {
   return useMemo(() => getWayaVaultContract(providerOrSigner), [providerOrSigner])
 }
 
+
 export const useErc721CollectionContract = (
   collectionAddress: string,
 ): { reader: Erc721collection; signer: Erc721collection } => {
@@ -108,6 +119,7 @@ export const useErc721CollectionContract = (
 }
 
 // Code below migrated from Exchange useContract.ts
+
 // returns null on errors
 export function useContract<T extends Contract = Contract>(
   address: string | undefined,
@@ -151,6 +163,8 @@ export function useMulticallContract() {
   const { chainId } = useActiveWeb3React()
   return useContract<Multicall>(getMulticallAddress(chainId), multiCallAbi, false)
 }
+
+
 
 export function useFarmBoosterContract(withSignerIfPossible = true) {
   const providerOrSigner = useProviderOrSigner(withSignerIfPossible)

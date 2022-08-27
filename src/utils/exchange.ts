@@ -31,7 +31,7 @@ export function calculateSlippageAmount(value: CurrencyAmount<Currency>, slippag
 }
 
 export function useRouterContract() {
-  const chainId = useActiveChainId()
+  const { chainId } = useActiveChainId()
   return useContract<IPlexswapRouter02>(ROUTER_ADDRESS[chainId], IPlexswapRouter02ABI, true)
 }
 

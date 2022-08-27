@@ -10,7 +10,7 @@ import {
   RocketIcon,
   Text,
   useTooltip,
-  useMatchBreakpointsContext,
+  useMatchBreakpoints,
 } from '@plexswap/ui-plex'
 import { useWeb3React } from '@plexswap/wagmi'
 import ConnectWalletButton from 'components/ConnectWalletButton'
@@ -70,7 +70,7 @@ const StyledCardFooter = styled(CardFooter)`
 export const BWayaBoosterCard = () => {
   const { t } = useTranslation()
   const theme = useTheme()
-  const { isMobile } = useMatchBreakpointsContext()
+  const { isMobile } = useMatchBreakpoints()
 
   const tooltipContent = (
     <>

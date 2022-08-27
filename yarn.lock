@@ -3254,18 +3254,6 @@
   resolved "https://registry.yarnpkg.com/@pedrouid/environment/-/environment-1.0.1.tgz#858f0f8a057340e0b250398b75ead77d6f4342ec"
   integrity sha512-HaW78NszGzRZd9SeoI3JD11JqY+lubnaOx7Pewj5pfjqWXOEATpeKIFb9Z4t2WBUK2iryiXX3lzWwmYWgUL0Ug==
 
-"@plexswap/sdk@*":
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/@plexswap/sdk/-/sdk-1.1.4.tgz#27772f03faa58557de70e3fcb882a50101942b10"
-  integrity sha512-dpAzhvvJbH/8j9xs5EdA3bB1HXl4dGYboXpvIz4717ZgSNXExIdHc7jWmgAwijJ88euBJK6/+ajyaorV4qeynw==
-  dependencies:
-    big.js "^5.2.2"
-    decimal.js-light "^2.5.0"
-    jsbi "^3.1.4"
-    tiny-invariant "^1.1.0"
-    tiny-warning "^1.0.3"
-    toformat "^2.0.0"
-
 "@pmmmwh/react-refresh-webpack-plugin@^0.5.3":
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/@pmmmwh/react-refresh-webpack-plugin/-/react-refresh-webpack-plugin-0.5.7.tgz#58f8217ba70069cc6a73f5d7e05e85b458c150e2"
@@ -12860,6 +12848,11 @@ joi@^17.4.0:
     "@sideway/formula" "^3.0.0"
     "@sideway/pinpoint" "^2.0.0"
 
+jotai@^1.7.8:
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/jotai/-/jotai-1.8.1.tgz#aa59c5c7c55a7b4392db1ebedd0f5dd076ee30ae"
+  integrity sha512-ZhZ15z+94E95aMYpH9MfwFFYP5m8TuFKkEN/6+3P4SC3dXnQc5s+DbMl+kA4RC63OcUlfi9C0nJU3YDnJfqLIg==
+
 joycon@^3.0.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/joycon/-/joycon-3.1.1.tgz#bce8596d6ae808f8b68168f5fc69280996894f03"
@@ -14532,6 +14525,13 @@ nested-error-stacks@^2.0.0, nested-error-stacks@^2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/nested-error-stacks/-/nested-error-stacks-2.1.1.tgz#26c8a3cee6cc05fbcf1e333cd2fc3e003326c0b5"
   integrity sha512-9iN1ka/9zmX1ZvLV9ewJYEk9h7RyRRtqdK0woXcqohu8EWIerfPUjYJPg0ULy0UqP7cslmdGc8xKDJcojlKiaw==
+
+next-axiom@^0.13.0:
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/next-axiom/-/next-axiom-0.13.0.tgz#1858b2a83ac7594393d477243fd74da47909564b"
+  integrity sha512-yWNsTd2abreXa9KBYeAhhVCsTFClZI37jUG0c+CfkENxl51EpSVlY+dWSA8hGJQtXWOXKs6yeW1PaiVr2NU1rw==
+  dependencies:
+    whatwg-fetch "^3.6.2"
 
 next-themes@^0.2.0:
   version "0.2.0"
@@ -19890,6 +19890,11 @@ whatwg-encoding@^1.0.5:
   integrity sha512-b5lim54JOPN9HtzvK9HFXvBma/rnfFeqsic0hSpjtDbVxR3dJKLc+KB4V6GgiGOvl7CY/KNh8rxSo9DKQrnUEw==
   dependencies:
     iconv-lite "0.4.24"
+
+whatwg-fetch@^3.6.2:
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/whatwg-fetch/-/whatwg-fetch-3.6.2.tgz#dced24f37f2624ed0281725d51d0e2e3fe677f8c"
+  integrity sha512-bJlen0FcuU/0EMLrdbJ7zOnW6ITZLrZMIarMUVmdKtsGvZna8vxKYaexICWPfZ8qwf9fzNq+UEIZrnSaApt6RA==
 
 whatwg-mimetype@^2.3.0:
   version "2.3.0"

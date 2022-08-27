@@ -1,7 +1,7 @@
 {
   "name": "@plexswap/sdk",
   "license": "MIT",
-  "version": "3.0.0-2",
+  "version": "3.0.1",
   "description": "🛠 An SDK for building applications on top of Plexswap.",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -13,9 +13,9 @@
     "plexswap",
     "bsc"
   ],
-  "module": "dist/sdk.esm.js",
+  "module": "dist/index.mjs",
   "scripts": {
-    "lint": "tsdx lint src test",
+    "lint": "eslint src test",
     "build": "tsup src/index.ts --format esm,cjs --dts",
     "start": "tsup src/index.tsx --format esm,cjs --watch --dts",
     "test": "jest",

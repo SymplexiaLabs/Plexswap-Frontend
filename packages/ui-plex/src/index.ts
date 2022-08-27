@@ -10,6 +10,7 @@ export * from "./components/Card";
 export * from "./components/WayaPrice";
 export * from "./components/Checkbox";
 export * from "./components/Dropdown";
+
 export * from "./components/Heading";
 export * from "./components/Image";
 export * from "./components/Input";
@@ -54,3 +55,6 @@ export * from "./theme";
 
 // AnimationToolkit
 export * from "./util/animationToolkit";
+
+// Providers
+export * from "./Providers";

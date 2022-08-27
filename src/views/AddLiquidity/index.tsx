@@ -16,29 +16,30 @@ import { logError } from 'utils/sentry'
 import { useIsTransactionUnsupported, useIsTransactionWarning } from 'hooks/Trades'
 import { useTranslation } from '@plexswap/localization'
 import UnsupportedCurrencyFooter from 'components/UnsupportedCurrencyFooter'
+
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
+
+import { CommitButton } from 'components/CommitButton'
 import { getLPSymbol } from 'utils/getLpSymbol'
 import useNativeCurrency from 'hooks/useNativeCurrency'
 import { useRouter } from 'next/router'
 import { transactionErrorToUserReadableMessage } from 'utils/transactionErrorToUserReadableMessage'
 import { useLPApr } from 'state/swap/hooks'
 import { ROUTER_ADDRESS } from 'config/constants/exchange'
-import { WAYA, USDC } from 'config/constants/tokens'
+import { WAYA, USDC } from '@plexswap/tokens'
 import { LightCard } from '../../components/Card'
 import { AutoColumn, ColumnCenter } from '../../components/Layout/Column'
 import CurrencyInputPanel from '../../components/CurrencyInputPanel'
 import { AppHeader, AppBody } from '../../components/App'
 import { MinimalPositionCard } from '../../components/PositionCard'
-import { RowBetween, RowFixed } from '../../components/Layout/Row'
+import { RowBetween } from '../../components/Layout/Row'
 import ConnectWalletButton from '../../components/ConnectWalletButton'
-
 import { PairState } from '../../hooks/usePairs'
 import { useCurrency } from '../../hooks/Tokens'
 import { ApprovalState, useApproveCallback } from '../../hooks/useApproveCallback'
 import useTransactionDeadline from '../../hooks/useTransactionDeadline'
 import { Field, resetMintState } from '../../state/mint/actions'
 import { useDerivedMintInfo, useMintActionHandlers, useMintState} from '../../state/mint/hooks'
-
 import { useTransactionAdder } from '../../state/transactions/hooks'
 import {
   useGasPrice,
@@ -64,26 +65,20 @@ enum Steps {
   Add,
 }
 
-
 export default function AddLiquidity() {
   const router = useRouter()
-  const { account, chainId } = useActiveWeb3React()
-
+  const { account, chainId, isWrongNetwork } = useActiveWeb3React()
   const addPair = usePairAdder()
   const expertMode = useIsExpertMode()
-
   const native = useNativeCurrency()
-
   const [currencyIdA, currencyIdB] = router.query.currency || [
     native.symbol,
     WAYA[chainId]?.address ?? USDC[chainId]?.address,
   ]
   const [steps, setSteps] = useState(Steps.Choose)
-
   const dispatch = useAppDispatch()
   const { t } = useTranslation()
   const gasPrice = useGasPrice()
-
   const currencyA = useCurrency(currencyIdA)
   const currencyB = useCurrency(currencyIdB)
 
@@ -99,7 +94,7 @@ export default function AddLiquidity() {
     }
   }, [router.query])
 
-   // mint state
+ // mint state
   const { independentField, typedValue, otherTypedValue } = useMintState()
   const {
     dependentField,
@@ -113,7 +108,6 @@ export default function AddLiquidity() {
     liquidityMinted,
     poolTokenPercentage,
     error,
-    addError,
   } = useDerivedMintInfo(currencyA ?? undefined, currencyB ?? undefined)
 
   const poolData = useLPApr(pair)
@@ -153,7 +147,6 @@ export default function AddLiquidity() {
   )
 
   const { handleCurrencyASelect, handleCurrencyBSelect } = useCurrencySelectRoute()
-
   const parsedAmounts = mintParsedAmounts
 
   // get formatted amounts
@@ -164,12 +157,13 @@ export default function AddLiquidity() {
       [dependentField]: noLiquidity ? otherTypedValue : parsedAmounts[dependentField]?.toSignificant(6) ?? '',
     }),
     [
-         dependentField,
+      dependentField,
       independentField,
       noLiquidity,
       otherTypedValue,
       parsedAmounts,
       typedValue,
+
     ],
   )
 
@@ -305,6 +299,7 @@ export default function AddLiquidity() {
   const addIsWarning = useIsTransactionWarning(currencies?.CURRENCY_A, currencies?.CURRENCY_B)
 
 
+
   const [onPresentAddLiquidityModal] = useModal(
     <ConfirmAddLiquidityModal
       title={noLiquidity ? t('You are creating a pool') : t('You will receive')}
@@ -328,22 +323,18 @@ export default function AddLiquidity() {
     'addLiquidityModal',
   )
 
-  let isValid = !error
-  let errorText = error
-
-  isValid = !error && !addError
-  errorText = error ?? addError
- 
+  const isValid = !error
+  const errorText = error
 
   const buttonDisabled =
     !isValid ||
-    ( approvalA !== ApprovalState.APPROVED) ||
-    ( approvalB !== ApprovalState.APPROVED) 
+    approvalA !== ApprovalState.APPROVED ||
+    approvalB !== ApprovalState.APPROVED
 
   const showFieldAApproval =
-        (approvalA === ApprovalState.NOT_APPROVED || approvalA === ApprovalState.PENDING)
+   (approvalA === ApprovalState.NOT_APPROVED || approvalA === ApprovalState.PENDING)
   const showFieldBApproval =
-        (approvalB === ApprovalState.NOT_APPROVED || approvalB === ApprovalState.PENDING)
+   (approvalB === ApprovalState.NOT_APPROVED || approvalB === ApprovalState.PENDING)
 
   const shouldShowApprovalGroup = (showFieldAApproval || showFieldBApproval) && isValid
 
@@ -351,13 +342,8 @@ export default function AddLiquidity() {
     chainId && ((currencyA && currencyA.equals(WNATIVE[chainId])) || (currencyB && currencyB.equals(WNATIVE[chainId]))),
   )
 
-  const noAnyInputAmount = !parsedAmounts[Field.CURRENCY_A] && !parsedAmounts[Field.CURRENCY_B]
-
   const showAddLiquidity =
     (!!currencies[Field.CURRENCY_A] && !!currencies[Field.CURRENCY_B] && steps === Steps.Add) 
-
-  const showRebalancingConvert =
-    !noAnyInputAmount 
 
   return (
     <Page>
@@ -400,8 +386,11 @@ export default function AddLiquidity() {
                   </ColumnCenter>
                 )}
                 <CurrencyInputPanel
+
                   showBUSD
+
                   onCurrencySelect={handleCurrencyASelect}
+
                   value={formattedAmounts[Field.CURRENCY_A]}
                   onUserInput={onFieldAInput}
                   onMax={() => {
@@ -418,7 +407,9 @@ export default function AddLiquidity() {
                 </ColumnCenter>
                 <CurrencyInputPanel
                   showBUSD
-                   onCurrencySelect={handleCurrencyBSelect}
+  		  onCurrencySelect={handleCurrencyBSelect}
+
+
                   value={formattedAmounts[Field.CURRENCY_B]}
                   onUserInput={onFieldBInput}
                   onMax={() => {
@@ -431,22 +422,6 @@ export default function AddLiquidity() {
                   commonBasesType={CommonBasesType.LIQUIDITY}
                 />
 
-                {showRebalancingConvert && (
-                  <RowFixed
-                    style={{ margin: 'auto' }}
-                    onClick={() => {
-                      if (dependentField === Field.CURRENCY_A) {
-                        onFieldAInput(maxAmounts[dependentField]?.toExact() ?? '')
-                      } else {
-                        onFieldBInput(maxAmounts[dependentField]?.toExact() ?? '')
-                      }
-                    }}
-                  >
-                    <Button variant="secondary" scale="sm">
-                      {t('Don’t convert')}
-                    </Button>
-                  </RowFixed>
-                )}
 
                 {currencies[Field.CURRENCY_A] && currencies[Field.CURRENCY_B] && pairState !== PairState.INVALID && (
                   <>
@@ -495,6 +470,8 @@ export default function AddLiquidity() {
                   </Button>
                 ) : !account ? (
                   <ConnectWalletButton />
+                ) : isWrongNetwork ? (
+                  <CommitButton />
                 ) : (
                   <AutoColumn gap="md">
                     {shouldShowApprovalGroup && (
@@ -527,7 +504,7 @@ export default function AddLiquidity() {
                         )}
                       </RowBetween>
                     )}
-                    <Button
+                    <CommitButton
                       variant={!isValid ? 'danger' : 'primary'}
                       onClick={() => {
                         if (expertMode) {
@@ -544,7 +521,7 @@ export default function AddLiquidity() {
                       disabled={buttonDisabled}
                     >
                       {errorText || t('Supply')}
-                    </Button>
+                    </CommitButton>
                   </AutoColumn>
                 )}
               </AutoColumn>

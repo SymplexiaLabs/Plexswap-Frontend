@@ -1,34 +1,58 @@
-import { useCallback, useMemo } from 'react'
-import { Currency, Trade, TradeType } from '@plexswap/sdk'
-import { InjectedModalProps } from '@plexswap/ui-plex'
-import { useTranslation } from '@plexswap/localization'
-import TransactionConfirmationModal, {
-  ConfirmationModalContent,
-  TransactionErrorContent,
-} from 'components/TransactionConfirmationModal'
-import SwapModalFooter from './SwapModalFooter'
-import SwapModalHeader from './SwapModalHeader'
+import { useCallback, memo } from 'react'
+import { Trade, Currency, TradeType, CurrencyAmount } from '@plexswap/sdk'
+import { InjectedModalProps, LinkExternal, Text } from '@plexswap/ui-plex'
+import { TransactionErrorContent, TransactionSubmittedContent } from 'components/TransactionConfirmationModal'
+import useActiveWeb3React from 'hooks/useActiveWeb3React'
+import { Field } from 'state/swap/actions'
+import ConfirmationPendingContent from './ConfirmationPendingContent'
+import TransactionConfirmSwapContent from './TransactionConfirmSwapContent'
+import ConfirmSwapModalContainer from './ConfirmSwapModalContainer'
+import useTranslation from '../../../../packages/localization/src/useTranslation'
 
-/**
- * Returns true if the trade requires a confirmation of details before we can submit it
- * @param tradeA trade A
- * @param tradeB trade B
- */
-function tradeMeaningfullyDiffers(
-  tradeA: Trade<Currency, Currency, TradeType>,
-  tradeB: Trade<Currency, Currency, TradeType>,
-): boolean {
-  return (
-    tradeA.tradeType !== tradeB.tradeType ||
-    !tradeA.inputAmount.currency.equals(tradeB.inputAmount.currency) ||
-    !tradeA.inputAmount.equalTo(tradeB.inputAmount) ||
-    !tradeA.outputAmount.currency.equals(tradeB.outputAmount.currency) ||
-    !tradeA.outputAmount.equalTo(tradeB.outputAmount)
+const PlexRouterSlippageErrorMsg =
+  'This transaction will not succeed either due to price movement or fee on transfer. Try increasing your slippage tolerance.'
+
+const SwapTransactionErrorContent = ({ onDismiss, message, openSettingModal }) => {
+  const isSlippagedErrorMsg = message?.includes(PlexRouterSlippageErrorMsg)
+
+  const handleErrorDismiss = useCallback(() => {
+    onDismiss?.()
+    if (isSlippagedErrorMsg && openSettingModal) {
+      openSettingModal()
+    }
+  }, [isSlippagedErrorMsg, onDismiss, openSettingModal])
+  const { t } = useTranslation()
+
+  return isSlippagedErrorMsg ? (
+    <TransactionErrorContent
+      message={
+        <>
+          <Text mb="16px">
+            {t(
+              'This transaction will not succeed either due to price movement or fee on transfer. Try increasing your',
+            )}{' '}
+            <Text bold display="inline" style={{ cursor: 'pointer' }} onClick={handleErrorDismiss}>
+              <u>{t('slippage tolerance.')}</u>
+            </Text>
+          </Text>
+          <LinkExternal
+            href="https://docs.plexfinance.us/products/plexswap-exchange/trade-guide"
+            style={{ width: '100%', justifyContent: 'center' }}
+          >
+            {t('What are the potential issues with the token?')}
+          </LinkExternal>
+        </>
+      }
+    />
+  ) : (
+    <TransactionErrorContent message={message} onDismiss={onDismiss} />
   )
 }
+
 interface ConfirmSwapModalProps {
   trade?: Trade<Currency, Currency, TradeType>
   originalTrade?: Trade<Currency, Currency, TradeType>
+  currencyBalances: { [field in Field]?: CurrencyAmount<Currency> }
   attemptingTxn: boolean
   txHash?: string
   recipient: string | null
@@ -37,11 +61,13 @@ interface ConfirmSwapModalProps {
   onConfirm: () => void
   swapErrorMessage?: string
   customOnDismiss?: () => void
+  openSettingModal?: () => void
 }
 
 const ConfirmSwapModal: React.FC<React.PropsWithChildren<InjectedModalProps & ConfirmSwapModalProps>> = ({
   trade,
   originalTrade,
+  currencyBalances,
   onAcceptChanges,
   allowedSlippage,
   onConfirm,
@@ -51,68 +77,68 @@ const ConfirmSwapModal: React.FC<React.PropsWithChildren<InjectedModalProps & Co
   swapErrorMessage,
   attemptingTxn,
   txHash,
+  openSettingModal,
 }) => {
-  const showAcceptChanges = useMemo(
-    () => Boolean(trade && originalTrade && tradeMeaningfullyDiffers(trade, originalTrade)),
-    [originalTrade, trade],
-  )
+  const { chainId } = useActiveWeb3React()
 
-  const { t } = useTranslation()
-
-  const modalHeader = useCallback(() => {
-    return trade ? (
-      <SwapModalHeader
-        trade={trade}
-        allowedSlippage={allowedSlippage}
-        recipient={recipient}
-        showAcceptChanges={showAcceptChanges}
-        onAcceptChanges={onAcceptChanges}
-      />
-    ) : null
-  }, [allowedSlippage, onAcceptChanges, recipient, showAcceptChanges, trade])
-
-  const modalBottom = useCallback(() => {
-    return trade ? (
-      <SwapModalFooter
-        onConfirm={onConfirm}
-        trade={trade}
-        disabledConfirm={showAcceptChanges}
-        swapErrorMessage={swapErrorMessage}
-        allowedSlippage={allowedSlippage}
-      />
-    ) : null
-  }, [allowedSlippage, onConfirm, showAcceptChanges, swapErrorMessage, trade])
-
-  // text to show while loading
-  const pendingText = t('Swapping %amountA% %symbolA% for %amountB% %symbolB%', {
-    amountA: trade?.inputAmount?.toSignificant(6) ?? '',
-    symbolA: trade?.inputAmount?.currency?.symbol ?? '',
-    amountB: trade?.outputAmount?.toSignificant(6) ?? '',
-    symbolB: trade?.outputAmount?.currency?.symbol ?? '',
-  })
+  const handleDismiss = useCallback(() => {
+    if (customOnDismiss) {
+      customOnDismiss()
+    }
+    onDismiss?.()
+  }, [customOnDismiss, onDismiss])
 
   const confirmationContent = useCallback(
     () =>
       swapErrorMessage ? (
-        <TransactionErrorContent onDismiss={onDismiss} message={swapErrorMessage} />
+        <SwapTransactionErrorContent
+          openSettingModal={openSettingModal}
+          onDismiss={onDismiss}
+          message={swapErrorMessage}
+        />
       ) : (
-        <ConfirmationModalContent topContent={modalHeader} bottomContent={modalBottom} />
+        <TransactionConfirmSwapContent
+          trade={trade}
+          currencyBalances={currencyBalances}
+          originalTrade={originalTrade}
+          onAcceptChanges={onAcceptChanges}
+          allowedSlippage={allowedSlippage}
+          onConfirm={onConfirm}
+          recipient={recipient}
+        />
       ),
-    [onDismiss, modalBottom, modalHeader, swapErrorMessage],
+    [
+      trade,
+      originalTrade,
+      onAcceptChanges,
+      allowedSlippage,
+      onConfirm,
+      recipient,
+      swapErrorMessage,
+      onDismiss,
+      openSettingModal,
+      currencyBalances,
+    ],
   )
 
+  if (!chainId) return null
+
   return (
-    <TransactionConfirmationModal
-      title={t('Confirm Swap')}
-      onDismiss={onDismiss}
-      customOnDismiss={customOnDismiss}
-      attemptingTxn={attemptingTxn}
-      hash={txHash}
-      content={confirmationContent}
-      pendingText={pendingText}
-      currencyToAdd={trade?.outputAmount.currency}
-    />
+    <ConfirmSwapModalContainer handleDismiss={handleDismiss}>
+      {attemptingTxn ? (
+        <ConfirmationPendingContent trade={trade} />
+      ) : txHash ? (
+        <TransactionSubmittedContent
+          chainId={chainId}
+          hash={txHash}
+          onDismiss={handleDismiss}
+          currencyToAdd={trade?.outputAmount.currency}
+        />
+      ) : (
+        confirmationContent()
+      )}
+    </ConfirmSwapModalContainer>
   )
 }
 
-export default ConfirmSwapModal
+export default memo(ConfirmSwapModal)

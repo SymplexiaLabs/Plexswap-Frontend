@@ -1,5 +1,5 @@
 import { createAction } from '@reduxjs/toolkit'
-import { SerializedToken } from 'config/constants/types'
+import { SerializedToken } from '@plexswap/tokens'
 
 export interface SerializedPair {
   token0: SerializedToken
@@ -70,4 +70,5 @@ export const hidePhishingWarningBanner = createAction<void>('user/hidePhishingWa
 
 export const setIsExchangeChartDisplayed = createAction<boolean>('user/toggleIsExchangeChartDisplayed')
 export const setChartViewMode = createAction<ChartViewMode>('user/setChartViewMode')
+
 export const setSubgraphHealthIndicatorDisplayed = createAction<boolean>('user/setSubgraphHealthIndicatorDisplayed')

@@ -1,8 +1,9 @@
 import { useWeb3React } from '@plexswap/wagmi'
 import { useBWayaProxyContract } from 'hooks/useContract'
-
+import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useCallback } from 'react'
 import { useAppDispatch } from 'state'
+import { useGasPrice } from 'state/user/hooks'
 import { harvestFarm, stakeFarm, unstakeFarm } from 'utils/calls/farms'
 import { fetchFarmUserDataAsync } from 'state/farms'
 import { useBWayaProxyContractAddress } from 'views/Farms/hooks/useBWayaProxyContractAddress'
@@ -11,23 +12,25 @@ import useProxyWAYABalance from './useProxyWAYABalance'
 
 export default function useProxyStakedActions(pid, lpContract) {
   const { account } = useWeb3React()
+  const { chainId } = useActiveWeb3React()
   const { proxyAddress } = useBWayaProxyContractAddress(account)
   const bWayaProxy = useBWayaProxyContract(proxyAddress)
   const dispatch = useAppDispatch()
+  const gasPrice = useGasPrice()
   const { proxyWayaBalance, refreshProxyWayaBalance } = useProxyWAYABalance()
 
   const onDone = useCallback(() => {
     refreshProxyWayaBalance()
-    dispatch(fetchFarmUserDataAsync({ account, pids: [pid], proxyAddress }))
-  }, [account, proxyAddress, pid, dispatch, refreshProxyWayaBalance])
+    dispatch(fetchFarmUserDataAsync({ account, pids: [pid], chainId, proxyAddress }))
+  }, [account, proxyAddress, chainId, pid, dispatch, refreshProxyWayaBalance])
 
   const { onApprove } = useApproveBoostProxyFarm(lpContract, proxyAddress)
 
-  const onStake = useCallback((value) => stakeFarm(bWayaProxy, pid, value), [bWayaProxy, pid])
+  const onStake = useCallback((value) => stakeFarm(bWayaProxy, pid, value, gasPrice), [bWayaProxy, pid, gasPrice])
 
-  const onUnstake = useCallback((value) => unstakeFarm(bWayaProxy, pid, value), [bWayaProxy, pid])
+  const onUnstake = useCallback((value) => unstakeFarm(bWayaProxy, pid, value, gasPrice), [bWayaProxy, pid, gasPrice])
 
-  const onReward = useCallback(() => harvestFarm(bWayaProxy, pid), [bWayaProxy, pid])
+  const onReward = useCallback(() => harvestFarm(bWayaProxy, pid, gasPrice), [bWayaProxy, pid, gasPrice])
 
   return {
     onStake,

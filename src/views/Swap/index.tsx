@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components'
-import { Currency, CurrencyAmount, Token, Trade, TradeType } from '@plexswap/sdk'
+import { ChainId, Currency, CurrencyAmount, Token, Trade, TradeType } from '@plexswap/sdk'
 import { computeTradePriceBreakdown, warningSeverity } from 'utils/exchange'
 import {
   Button,
@@ -12,9 +12,11 @@ import {
   IconButton,
   ArrowUpDownIcon,
   Skeleton,
+  useMatchBreakpoints,
 } from '@plexswap/ui-plex'
 import { useIsTransactionUnsupported } from 'hooks/Trades'
 import UnsupportedCurrencyFooter from 'components/UnsupportedCurrencyFooter'
+import { CommitButton } from 'components/CommitButton'
 import { useRouter } from 'next/router'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useTranslation } from '@plexswap/localization'
@@ -22,6 +24,9 @@ import { BIG_INT_ZERO } from 'config/constants/exchange'
 import { maxAmountSpend } from 'utils/maxAmountSpend'
 import shouldShowSwapWarning from 'utils/shouldShowSwapWarning'
 import { useSwapActionHandlers } from 'state/swap/useSwapActionHandlers'
+import SettingsModal, { withCustomOnDismiss } from 'components/Menu/GlobalSettings/SettingsModal'
+import { SettingsMode } from 'components/Menu/GlobalSettings/types'
+
 import useRefreshBlockNumberID from './hooks/useRefreshBlockNumber'
 import AddressInputPanel from './components/AddressInputPanel'
 import { GreyCard } from '../../components/Card'
@@ -46,8 +51,14 @@ import {
   useDefaultsFromURLSearch,
   useDerivedSwapInfo,
   useSwapState,
+  useSingleTokenSwapInfo,
 } from '../../state/swap/hooks'
-import { useExpertModeManager, useUserSlippageTolerance, useUserSingleHopOnly } from '../../state/user/hooks'
+import {
+  useExpertModeManager,
+  useUserSlippageTolerance,
+  useUserSingleHopOnly,
+
+} from '../../state/user/hooks'
 import CircleLoader from '../../components/Loader/CircleLoader'
 import Page from '../Page'
 import SwapWarningModal from './components/SwapWarningModal'
@@ -56,6 +67,8 @@ import { StyledInputCurrencyWrapper, StyledSwapContainer } from './styles'
 import CurrencyInputHeader from './components/CurrencyInputHeader'
 import ImportTokenWarningModal from '../../components/ImportTokenWarningModal'
 import { CommonBasesType } from '../../components/SearchModal/types'
+import replaceBrowserHistory from '../../utils/replaceBrowserHistory'
+import { currencyId } from '../../utils/currencyId'
 
 const Label = styled(Text)`
   font-size: 12px;
@@ -81,11 +94,12 @@ const SwitchIconButton = styled(IconButton)`
   }
 `
 
+const SettingsModalWithCustomDismiss = withCustomOnDismiss(SettingsModal)
+
 export default function Swap() {
   const router = useRouter()
   const loadedUrlParams = useDefaultsFromURLSearch()
   const { t } = useTranslation()
-
   const { refreshBlockNumber, isLoading } = useRefreshBlockNumberID()
 
 
@@ -141,6 +155,8 @@ export default function Swap() {
   } = useWrapCallback(currencies[Field.INPUT], currencies[Field.OUTPUT], typedValue)
   const showWrap: boolean = wrapType !== WrapType.NOT_APPLICABLE
   const trade = showWrap ? undefined : v2Trade
+
+  const singleTokenPrice = useSingleTokenSwapInfo(inputCurrencyId, inputCurrency, outputCurrencyId, outputCurrency)
 
   const parsedAmounts = showWrap
     ? {
@@ -288,6 +304,8 @@ export default function Swap() {
       } else {
         setSwapWarningCurrency(null)
       }
+
+      replaceBrowserHistory('inputCurrency', currencyId(currencyInput))
     },
     [onCurrencySelection],
   )
@@ -307,6 +325,8 @@ export default function Swap() {
       } else {
         setSwapWarningCurrency(null)
       }
+
+      replaceBrowserHistory('outputCurrency', currencyId(currencyOutput))
     },
 
     [onCurrencySelection],
@@ -325,10 +345,20 @@ export default function Swap() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [importTokensNotInDefault.length])
 
+  const [indirectlyOpenConfirmModalState, setIndirectlyOpenConfirmModalState] = useState(false)
+
+  const [onPresentSettingsModal] = useModal(
+    <SettingsModalWithCustomDismiss
+      customOnDismiss={() => setIndirectlyOpenConfirmModalState(true)}
+      mode={SettingsMode.SWAP_LIQUIDITY}
+    />,
+  )
+
   const [onPresentConfirmModal] = useModal(
     <ConfirmSwapModal
       trade={trade}
       originalTrade={tradeToConfirm}
+      currencyBalances={currencyBalances}
       onAcceptChanges={handleAcceptChanges}
       attemptingTxn={attemptingTxn}
       txHash={txHash}
@@ -337,11 +367,23 @@ export default function Swap() {
       onConfirm={handleSwap}
       swapErrorMessage={swapErrorMessage}
       customOnDismiss={handleConfirmDismiss}
+      openSettingModal={onPresentSettingsModal}
     />,
     true,
     true,
     'confirmSwapModal',
   )
+
+  useEffect(() => {
+    if (indirectlyOpenConfirmModalState) {
+      setIndirectlyOpenConfirmModalState(false)
+      setSwapState((state) => ({
+        ...state,
+        swapErrorMessage: undefined,
+      }))
+      onPresentConfirmModal()
+    }
+  }, [indirectlyOpenConfirmModalState, onPresentConfirmModal])
 
   const hasAmount = Boolean(parsedAmount)
 
@@ -356,7 +398,6 @@ export default function Swap() {
   return (
     <Page>
       <Flex width="100%" justifyContent="center" position="relative">
-
         <Flex flexDirection="column">
           <StyledSwapContainer>
             <StyledInputCurrencyWrapper mt="0">
@@ -474,10 +515,10 @@ export default function Swap() {
                     ) : !account ? (
                       <ConnectWalletButton width="100%" />
                     ) : showWrap ? (
-                      <Button width="100%" disabled={Boolean(wrapInputError)} onClick={onWrap}>
+                      <CommitButton width="100%" disabled={Boolean(wrapInputError)} onClick={onWrap}>
                         {wrapInputError ??
                           (wrapType === WrapType.WRAP ? 'Wrap' : wrapType === WrapType.UNWRAP ? 'Unwrap' : null)}
-                      </Button>
+                      </CommitButton>
                     ) : noRoute && userHasSpecifiedInputOutput ? (
                       <GreyCard style={{ textAlign: 'center', padding: '0.75rem' }}>
                         <Text color="textSubtle">{t('Insufficient liquidity for this trade.')}</Text>
@@ -485,7 +526,7 @@ export default function Swap() {
                       </GreyCard>
                     ) : showApproveFlow ? (
                       <RowBetween>
-                        <Button
+                        <CommitButton
                           variant={approval === ApprovalState.APPROVED ? 'success' : 'primary'}
                           onClick={approveCallback}
                           disabled={approval !== ApprovalState.NOT_APPROVED || approvalSubmitted}
@@ -500,8 +541,8 @@ export default function Swap() {
                           ) : (
                             t('Enable %asset%', { asset: currencies[Field.INPUT]?.symbol ?? '' })
                           )}
-                        </Button>
-                        <Button
+                        </CommitButton>
+                        <CommitButton
                           variant={isValid && priceImpactSeverity > 2 ? 'danger' : 'primary'}
                           onClick={() => {
                             if (isExpertMode) {
@@ -529,10 +570,10 @@ export default function Swap() {
                             : priceImpactSeverity > 2
                             ? t('Swap Anyway')
                             : t('Swap')}
-                        </Button>
+                        </CommitButton>
                       </RowBetween>
                     ) : (
-                      <Button
+                      <CommitButton
                         variant={isValid && priceImpactSeverity > 2 && !swapCallbackError ? 'danger' : 'primary'}
                         onClick={() => {
                           if (isExpertMode) {
@@ -557,7 +598,7 @@ export default function Swap() {
                             : priceImpactSeverity > 2
                             ? t('Swap Anyway')
                             : t('Swap'))}
-                      </Button>
+                      </CommitButton>
                     )}
                     {showApproveFlow && (
                       <Column style={{ marginTop: '1rem' }}>

@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import BigNumber from 'bignumber.js'
 import poolsConfig from 'config/constants/pools'
-import taskAssistantV2 from 'config/abi/TaskAssistantV2.json'
+import TaskAssistantV2 from 'config/abi/TaskAssistantV2.json'
 import multicall from '../multicall'
 import { bscRpcProvider } from '../providers'
 import { getAddress } from '../addressHelpers'
@@ -15,16 +15,16 @@ export const getActivePools = async (block?: number) => {
     .filter((pool) => pool.isFinished === false || pool.isFinished === undefined)
   const blockNumber = block || (await bscRpcProvider.getBlockNumber())
   const startBlockCalls = eligiblePools.map(({ contractAddress }) => ({
-    address: getAddress(contractAddress),
+    address: getAddress(contractAddress, 56),
     name: 'startBlock',
   }))
   const endBlockCalls = eligiblePools.map(({ contractAddress }) => ({
-    address: getAddress(contractAddress),
+    address: getAddress(contractAddress, 56),
     name: 'bonusEndBlock',
   }))
   const [startBlocks, endBlocks] = await Promise.all([
-    multicall(taskAssistantV2, startBlockCalls),
-    multicall(taskAssistantV2, endBlockCalls),
+    multicall(TaskAssistantV2, startBlockCalls),
+    multicall(TaskAssistantV2, endBlockCalls),
   ])
 
   return eligiblePools.reduce((accum, poolCheck, index) => {

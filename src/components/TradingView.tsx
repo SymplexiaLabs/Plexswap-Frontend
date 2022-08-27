@@ -1,4 +1,4 @@
-import { Box, FlexProps, useMatchBreakpointsContext } from '@plexswap/ui-plex'
+import { Box, FlexProps, useMatchBreakpoints } from '@plexswap/ui-plex'
 import { useTranslation } from '@plexswap/localization'
 import Script from 'next/script'
 import { useEffect } from 'react'
@@ -59,7 +59,7 @@ interface TradingViewProps {
 const TradingView = ({ id, symbol }: TradingViewProps) => {
   const { currentLanguage } = useTranslation()
   const theme = useTheme()
-  const { isMobile } = useMatchBreakpointsContext()
+  const { isMobile } = useMatchBreakpoints()
 
   useEffect(() => {
     const opts: any = {

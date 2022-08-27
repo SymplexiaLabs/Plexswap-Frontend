@@ -1,6 +1,6 @@
 import { Svg } from '@plexswap/ui-plex'
 
-// NOTE: Temporary save icon here. Will move to uikit when the feature is done
+// NOTE: Temporary save icon here. Will move to ui-plex when the feature is done
 
 const DisabledIcon = (props) => (
   <Svg id="arrow_loading" viewBox="0 0 24 24" {...props}>

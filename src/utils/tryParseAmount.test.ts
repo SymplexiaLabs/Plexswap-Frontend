@@ -1,4 +1,4 @@
-import { bscTestnetTokens } from 'config/constants/tokens'
+import { bscTestnetTokens } from '@plexswap/tokens'
 import tryParseAmount from './tryParseAmount'
 
 describe('utils/tryParseAmount', () => {

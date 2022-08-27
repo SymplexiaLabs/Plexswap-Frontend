@@ -1,4 +1,4 @@
-import { Text, Flex, Skeleton, Heading, Box, useMatchBreakpointsContext } from '@plexswap/ui-plex'
+import { Text, Flex, Skeleton, Heading, Box, useMatchBreakpoints } from '@plexswap/ui-plex'
 import { useWeb3React } from '@plexswap/wagmi'
 import { getWayaVaultEarnings } from 'views/Pools/helpers'
 import { useTranslation } from '@plexswap/localization'
@@ -19,7 +19,7 @@ const AutoHarvestAction: React.FunctionComponent<React.PropsWithChildren<Deseria
 }) => {
   const { t } = useTranslation()
   const { account } = useWeb3React()
-  const { isMobile } = useMatchBreakpointsContext()
+  const { isMobile } = useMatchBreakpoints()
 
   const vaultData = useVaultPoolByKey(vaultKey)
   const {

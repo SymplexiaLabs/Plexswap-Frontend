@@ -1,6 +1,6 @@
 import { useWeb3React } from '@plexswap/wagmi'
 import BigNumber from 'bignumber.js'
-import { WAYA } from 'config/constants/tokens'
+import { WAYA } from '@plexswap/tokens'
 import { FAST_INTERVAL } from 'config/constants'
 import { BigNumber as EthersBigNumber } from '@ethersproject/bignumber'
 import { Zero } from '@ethersproject/constants'

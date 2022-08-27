@@ -1,7 +1,7 @@
 import { Flex, Heading, Skeleton, Text } from '@plexswap/ui-plex'
 import Balance from 'components/Balance'
 import wayaAbi from 'config/abi/Waya.json'
-import { bscTokens } from 'config/constants/tokens'
+import { bscTokens } from '@plexswap/tokens'
 import { useTranslation } from '@plexswap/localization'
 import useIntersectionObserver from 'hooks/useIntersectionObserver'
 import { useEffect, useState } from 'react'
@@ -85,13 +85,16 @@ const WayaDataRow = () => {
         params: ['0x000000000000000000000000000000000000dEaD'],
       }
       const [tokenDataResultRaw, totalLockedAmount] = await Promise.all([
-        multicallv2(wayaAbi, [totalSupplyCall, burnedTokenCall], {
-          requireSuccess: false,
+        multicallv2({
+          abi: wayaAbi,
+          calls: [totalSupplyCall, burnedTokenCall],
+          options: {
+            requireSuccess: false,
+          },
         }),
         wayaVault.totalLockedAmount(),
       ])
       const [totalSupply, totalBurned] = tokenDataResultRaw.flat()
-
       const circulating = totalSupply.sub(totalBurned.add(totalLockedAmount))
 
       return {

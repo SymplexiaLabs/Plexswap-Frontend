@@ -69,7 +69,7 @@ export function useVaultApy({ duration = MAX_LOCK_DURATION }: { duration?: numbe
       },
     ]
 
-    const [[specialFarmsPerBlock], wayaPoolInfo, [totalSpecialAllocPoint]] = await multicallv2(chiefFarmerAbi, calls)
+    const [[specialFarmsPerBlock], wayaPoolInfo, [totalSpecialAllocPoint]] = await multicallv2({abi: chiefFarmerAbi, calls,})
 
     const wayaPoolSharesInSpecialFarms = FixedNumber.from(wayaPoolInfo.allocPoint).divUnsafe(
       FixedNumber.from(totalSpecialAllocPoint),

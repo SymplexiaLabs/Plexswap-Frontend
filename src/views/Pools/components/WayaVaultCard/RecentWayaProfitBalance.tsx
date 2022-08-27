@@ -9,7 +9,11 @@ interface RecentWayaProfitBalanceProps {
   account: string
 }
 
-const RecentWayaProfitBalance: React.FC<RecentWayaProfitBalanceProps> = ({ wayaToDisplay, pool, account }) => {
+const RecentWayaProfitBalance: React.FC<React.PropsWithChildren<RecentWayaProfitBalanceProps>> = ({
+  wayaToDisplay,
+  pool,
+  account,
+}) => {
   const { targetRef, tooltip, tooltipVisible } = useTooltip(<AutoEarningsBreakdown pool={pool} account={account} />, {
     placement: 'bottom-end',
   })

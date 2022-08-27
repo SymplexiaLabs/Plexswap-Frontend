@@ -1,6 +1,15 @@
 import BigNumber from 'bignumber.js'
 import { BLOCKS_PER_YEAR } from 'config'
-import lpAprs from 'config/constants/lpAprs.json'
+import lpAprs56 from 'config/constants/lpAprs/56.json'
+
+const getLpApr = (chainId: number) => {
+  switch (chainId) {
+    case 56:
+      return lpAprs56
+    default:
+      return {}
+  }
+}
 
 /**
  * Get the APR value in %
@@ -31,6 +40,7 @@ export const getPoolApr = (
  * @returns Farm Apr
  */
 export const getFarmApr = (
+  chainId: number,
   poolWeight: BigNumber,
   wayaPriceUsd: BigNumber,
   poolLiquidityUsd: BigNumber,
@@ -45,7 +55,7 @@ export const getFarmApr = (
   if (!wayaRewardsApr.isNaN() && wayaRewardsApr.isFinite()) {
     wayaRewardsAprAsNumber = wayaRewardsApr.toNumber()
   }
-  const lpRewardsApr = lpAprs[farmAddress?.toLowerCase()] ?? 0
+  const lpRewardsApr = getLpApr(chainId)[farmAddress?.toLowerCase()] ?? 0
   return { wayaRewardsApr: wayaRewardsAprAsNumber, lpRewardsApr }
 }
 

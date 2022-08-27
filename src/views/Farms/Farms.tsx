@@ -1,8 +1,10 @@
 import { useEffect, useCallback, useState, useMemo, useRef, createContext } from 'react'
+import { createPortal } from 'react-dom'
 import BigNumber from 'bignumber.js'
-import { useWeb3React } from '@plexswap/wagmi'
-import { Heading, Toggle, Text, Flex, Box } from '@plexswap/ui-plex'
 import { ChainId } from '@plexswap/sdk'
+import useActiveWeb3React from 'hooks/useActiveWeb3React'
+import { useWeb3React } from '@plexswap/wagmi'
+import { Image, Heading, Toggle, Text, Flex, Link, Box } from '@plexswap/ui-plex'
 import styled from 'styled-components'
 import FlexLayout from 'components/Layout/Flex'
 import Page from 'components/Layout/Page'
@@ -22,6 +24,7 @@ import SearchInput from 'components/SearchInput'
 import Select, { OptionProps } from 'components/Select/Select'
 import Loading from 'components/Loading'
 import ToggleView from 'components/ToggleView/ToggleView'
+import ScrollToTopButton from 'components/ScrollToTopButton/ScrollToTopButtonV2'
 import Table from './components/FarmTable/FarmTable'
 import FarmTabButtons from './components/FarmTabButtons'
 import { FarmWithStakedValue } from './components/types'
@@ -76,11 +79,13 @@ const ToggleWrapper = styled.div`
     margin-left: 8px;
   }
 `
+
 const LabelWrapper = styled.div`
   > ${Text} {
     font-size: 12px;
   }
 `
+
 const FilterContainer = styled.div`
   display: flex;
   align-items: center;
@@ -113,22 +118,12 @@ const ViewControls = styled.div`
     }
   }
 `
-
 const NUMBER_OF_FARMS_VISIBLE = 12
-export const getDisplayApr = (wayaRewardsApr?: number, lpRewardsApr?: number) => {
-  if (wayaRewardsApr && lpRewardsApr) {
-    return (wayaRewardsApr + lpRewardsApr).toLocaleString('en-US', { maximumFractionDigits: 2 })
-  }
-  if (wayaRewardsApr) {
-    return wayaRewardsApr.toLocaleString('en-US', { maximumFractionDigits: 2 })
-  }
-  return null
-}
-
 
 const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
   const { pathname, query: urlQuery } = useRouter()
   const { t } = useTranslation()
+  const { chainId } = useActiveWeb3React()
   const { data: farmsLP, userDataLoaded, poolLength, regularWayaPerBlock } = useFarms()
   const wayaPrice = usePriceWayaBusd()
 
@@ -193,10 +188,11 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
         const totalLiquidity = new BigNumber(farm.lpTotalInQuoteToken).times(farm.quoteTokenPriceBusd)
         const { wayaRewardsApr, lpRewardsApr } = isActive
           ? getFarmApr(
+              chainId,
               new BigNumber(farm.poolWeight),
               wayaPrice,
               totalLiquidity,
-              farm.lpAddresses[ChainId.BSC],
+              farm.lpAddress,
               regularWayaPerBlock,
             )
           : { wayaRewardsApr: 0, lpRewardsApr: 0 }
@@ -212,7 +208,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
       }
       return farmsToDisplayWithAPR
     },
-    [wayaPrice, query, isActive, regularWayaPerBlock],
+    [query, isActive, chainId, wayaPrice, regularWayaPerBlock],
   )
 
   const handleChangeQuery = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -311,9 +307,11 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
             </FarmH2>
 
           </Box>
-          <Box>
-            <BWayaBoosterCard />
-          </Box>
+          {(chainId === ChainId.BSC || chainId === ChainId.BSC_TESTNET) && (
+            <Box>
+              <BWayaBoosterCard />
+            </Box>
+          )}
         </FarmFlexWrapper>
       </PageHeader>
       <Page>
@@ -379,21 +377,19 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
             </LabelWrapper>
           </FilterContainer>
         </ControlContainer>
-	{viewMode === ViewMode.TABLE ? (
+                {viewMode === ViewMode.TABLE ? (
           <Table farms={chosenFarmsMemoized} wayaPrice={wayaPrice} userDataReady={userDataReady} />
         ) : (
           <FlexLayout>{children}</FlexLayout>
         )}
-
-
-
         {account && !userDataLoaded && stakedOnly && (
           <Flex justifyContent="center">
             <Loading />
           </Flex>
         )}
         <div ref={observerRef} />
-      </Page>
+    </Page>
+      {createPortal(<ScrollToTopButton />, document.body)}
     </FarmsContext.Provider>
   )
 }

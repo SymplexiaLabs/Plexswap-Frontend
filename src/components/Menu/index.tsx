@@ -1,24 +1,26 @@
 import { useMemo } from 'react'
 import { useRouter } from 'next/router'
 import { NextLinkFromReactRouter } from 'components/NextLink'
-import { Menu as UIKitMenu, ModalV2 } from '@plexswap/ui-plex'
+import { Menu as UikitMenu } from '@plexswap/ui-plex'
 import { useTranslation, languageList } from '@plexswap/localization'
 import PhishingWarningBanner from 'components/PhishingWarningBanner'
 import { NetworkSwitcher } from 'components/NetworkSwitcher'
-import { NetworkSupportModal } from 'components/NetworkSupportModal'
-import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import useTheme from 'hooks/useTheme'
+
 import { usePhishingBannerManager } from 'state/user/hooks'
 import UserMenu from './UserMenu'
 import { useMenuItems } from './hooks/useMenuItems'
+
 import { getActiveMenuItem, getActiveSubMenuItem } from './utils'
+
+
 
 const Menu = (props) => {
   const { isDark, setTheme } = useTheme()
+
   const { currentLanguage, setLanguage } = useTranslation()
   const { pathname } = useRouter()
   const [showPhishingWarningBanner] = usePhishingBannerManager()
-  const { chain } = useActiveWeb3React()
 
   const menuItems = useMenuItems()
 
@@ -29,9 +31,11 @@ const Menu = (props) => {
     return () => setTheme(isDark ? 'light' : 'dark')
   }, [setTheme, isDark])
 
+
+
   return (
     <>
-      <UIKitMenu
+      <UikitMenu
         linkComponent={(linkProps) => {
           return <NextLinkFromReactRouter to={linkProps.href} {...linkProps} prefetch={false} />
         }}
@@ -56,12 +60,6 @@ const Menu = (props) => {
 
         {...props}
       />
-      <ModalV2 isOpen={(activeSubMenuItem?.disabled || activeMenuItem?.disabled) && !chain?.unsupported}>
-        <NetworkSupportModal
-          title={activeSubMenuItem?.disabled ? activeSubMenuItem?.label : activeMenuItem?.label}
-          image={activeSubMenuItem?.image || activeMenuItem?.image}
-        />
-      </ModalV2>
     </>
   )
 }
