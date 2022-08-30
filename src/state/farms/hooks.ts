@@ -52,7 +52,7 @@ export const usePollFarmsWithUserData = () => {
     : ['farmsWithUserData', account, chainId]
 
   useSWRImmutable(
-    account ? name : null,
+    account && chainId ? name : null,
     async () => {
       const farmsConfig = await getFarmConfig(chainId)
       const pids = farmsConfig.map((farmToFetch) => farmToFetch.pid)
@@ -68,12 +68,12 @@ export const usePollFarmsWithUserData = () => {
 
 /**
  * Fetches the "core" farm data used globally
- * 2 = WAYA-BNB LP
- * 3 = BUSD-BNB LP
+ * 1 = WAYA-BNB LP
+ * 2 = BUSD-BNB LP
  */
 const coreFarmPIDs = {
-  56: [2, 3],
-  97: [4, 10],
+  56: [1, 2],
+  97: [1, 2],
   5: [1, 2],
 }
 
@@ -132,7 +132,7 @@ export const useLpTokenPrice = (symbol: string) => {
 /**
  * @deprecated use the BUSD hook in /hooks
  */
-export const usePriceWayaBusd = (): BigNumber => {
-  const price = useWayaBusdPrice()
+export const usePriceWayaBusd = ({ forceMainnet } = { forceMainnet: false }): BigNumber => {
+  const price = useWayaBusdPrice({ forceMainnet })
   return useMemo(() => (price ? new BigNumber(price.toSignificant(6)) : BIG_ZERO), [price])
 }

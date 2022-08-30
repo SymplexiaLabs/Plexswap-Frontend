@@ -1,5 +1,6 @@
 import { Token, ChainId } from '@plexswap/sdk'
-import { SerializedToken } from '@plexswap/tokens'
+import { SerializedWrappedToken } from '@plexswap/tokens'
+import type { SerializedFarmConfig, FarmConfigBaseProps } from '@plexswap/farms'
 
 // a list of tokens by chain
 export type ChainMap<T> = {
@@ -38,29 +39,7 @@ export enum PoolCategory {
   'AUTO' = 'Auto',
 }
 
-interface FarmConfigBaseProps {
-  isStable?: boolean
-  pid: number
-
-  bscPid?: number
-  lpSymbol: string
-  lpAddress: string
-  multiplier?: string
-  isCommunity?: boolean
-  auctionHostingStartSeconds?: number
-  auctionHostingEndDate?: string
-  dual?: {
-    rewardPerBlock: number
-    earnLabel: string
-    endBlock: number
-  }
-  boosted?: boolean
-}
-
-export interface SerializedFarmConfig extends FarmConfigBaseProps {
-  token: SerializedToken
-  quoteToken: SerializedToken
-}
+export type { SerializedFarmConfig, FarmConfigBaseProps }
 
 export interface DeserializedFarmConfig extends FarmConfigBaseProps {
   token: Token
@@ -78,8 +57,8 @@ interface PoolConfigBaseProps {
 }
 
 export interface SerializedPoolConfig extends PoolConfigBaseProps {
-  earningToken: SerializedToken
-  stakingToken: SerializedToken
+  earningToken: SerializedWrappedToken
+  stakingToken: SerializedWrappedToken
 }
 
 export interface DeserializedPoolConfig extends PoolConfigBaseProps {

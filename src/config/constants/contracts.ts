@@ -1,3 +1,5 @@
+import { multicallAddresses } from '@plexswap/multicall'
+
 export default {
   chiefFarmer: {
     97: '0xdB21c81428fdDd5841E0feAA7f79f8C249Fe88A2',
@@ -15,10 +17,7 @@ export default {
     97: '0xa60AAAA583522c619A39022C47991E58751C013e',
     56: '0x52Bf2bd122eF0dEc4a2733B1f6563491C96de313',
   },
-  multiCall: {
-    97: '0x1C725f1db2F0648111039a1AD1c1aaC7Da495572',
-    56: '0xF822542840F563f3D9FD18B7622e5A1e106220CB',
-  },
+  multiCall: multicallAddresses,
   iWaya: {
     97: '0xdC17Cab1269a6aE0A3b57bCbe803b2b743BaCA3A',
     56: '',

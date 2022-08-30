@@ -26,7 +26,7 @@ export abstract class BaseCurrency {
   /**
    * The symbol of the currency, i.e. a short textual non-unique identifier
    */
-  public readonly symbol?: string
+  public readonly symbol: string
   /**
    * The name of the currency, i.e. a descriptive textual non-unique identifier
    */

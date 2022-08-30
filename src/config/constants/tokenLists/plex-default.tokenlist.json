@@ -77,10 +77,10 @@
     {
       "name": "BUSD Token",
       "symbol": "BUSD",
-      "address": "0xeD24FC36d5Ee211Ea25A80239Fb8C4Cfd80f12Ee",
+      "address": "0x8516Fc284AEEaa0374E66037BD2309349FF728eA",
       "chainId": 97,
       "decimals": 18,
-      "logoURI": "https://swap.plexfinance.us/images/tokens/0xeD24FC36d5Ee211Ea25A80239Fb8C4Cfd80f12Ee.png"
+      "logoURI": "https://swap.plexfinance.us/images/tokens/0x8516Fc284AEEaa0374E66037BD2309349FF728eA.png"
     },
     {
       "name": "WBNB Token",

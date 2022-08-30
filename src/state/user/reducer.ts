@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit'
-import { SerializedToken } from '@plexswap/tokens'
+import { SerializedWrappedToken } from '@plexswap/tokens'
 import { DEFAULT_DEADLINE_FROM_NOW, INITIAL_ALLOWED_SLIPPAGE } from '../../config/constants'
 import { updateVersion } from '../global/actions'
 import {
@@ -56,7 +56,7 @@ export interface UserState {
 
   tokens: {
     [chainId: number]: {
-      [address: string]: SerializedToken
+      [address: string]: SerializedWrappedToken
     }
   }
 

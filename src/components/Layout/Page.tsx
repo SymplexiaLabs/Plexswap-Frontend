@@ -28,7 +28,7 @@ export const PageMeta: React.FC<React.PropsWithChildren<{ symbol?: string }>> = 
     currentLanguage: { locale },
   } = useTranslation()
   const { pathname } = useRouter()
-  const wayaPriceUsd = useWayaBusdPrice()
+  const wayaPriceUsd = useWayaBusdPrice({ forceMainnet: true })
   const wayaPriceUsdDisplay = wayaPriceUsd ? `$${wayaPriceUsd.toFixed(3)}` : '...'
 
   const pageMeta = getCustomMeta(pathname, t, locale) || {}

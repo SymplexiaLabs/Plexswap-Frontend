@@ -8,7 +8,7 @@ import {
   SerializedLockedWayaVault,
   VaultKey,
 } from 'state/types'
-import { deserializeToken } from 'state/user/hooks/helpers'
+import { deserializeToken } from '@plexswap/tokens'
 import { BIG_ZERO } from 'utils/bigNumber'
 import { convertSharesToWaya } from 'views/Pools/helpers'
 

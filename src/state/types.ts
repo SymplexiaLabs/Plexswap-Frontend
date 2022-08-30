@@ -1,10 +1,11 @@
 import { parseUnits } from '@ethersproject/units'
+import { SerializedFarmPublicData } from '@plexswap/farms'
 import BigNumber from 'bignumber.js'
 import {
 
   DeserializedFarmConfig,
   DeserializedPoolConfig,
-  SerializedFarmConfig,
+
   SerializedPoolConfig,
 } from 'config/constants/types'
 
@@ -59,17 +60,9 @@ export interface DeserializedFarmUserData {
   }
 }
 
-export interface SerializedFarm extends SerializedFarmConfig {
-  tokenPriceBusd?: string
-  quoteTokenPriceBusd?: string
-  tokenAmountTotal?: SerializedBigNumber
-  quoteTokenAmountTotal?: SerializedBigNumber
-  lpTotalInQuoteToken?: SerializedBigNumber
-  lpTotalSupply?: SerializedBigNumber
-  tokenPriceVsQuote?: SerializedBigNumber
-  poolWeight?: SerializedBigNumber
+export interface SerializedFarm extends SerializedFarmPublicData {
   userData?: SerializedFarmUserData
-  boosted?: boolean
+
 }
 
 export interface DeserializedFarm extends DeserializedFarmConfig {

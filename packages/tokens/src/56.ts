@@ -2,7 +2,6 @@ import { ChainId, Token, WBNB } from '@plexswap/sdk'
 import { BUSD_BSC, WAYA_BSC, PLEX_BSC, USDT_BSC, USDC_BSC } from './common'
 
 export const bscTokens = {
-  wbnb: WBNB[ChainId.BSC],
   // bnb here points to the wbnb contract. Wherever the currency BNB is required, conditional checks for the symbol 'BNB' can be used
   bnb: new Token(
     ChainId.BSC,
@@ -12,7 +11,7 @@ export const bscTokens = {
     'BNB',
     'https://www.binance.com/',
   ),
-  
+  wbnb: WBNB[ChainId.BSC],
   waya: WAYA_BSC,
   plex: PLEX_BSC,
   busd: BUSD_BSC,
@@ -74,5 +73,13 @@ export const bscTokens = {
     'DOGE',
     'Binance-Peg Dogecoin',
     'https://dogecoin.com/',
+  ),
+  ankr: new Token(
+    ChainId.BSC,
+    '0xf307910A4c7bbc79691fD374889b36d8531B08e3',
+    18,
+    'ANKR',
+    'Ankr',
+    'https://www.ankr.com/',
   ),
 }

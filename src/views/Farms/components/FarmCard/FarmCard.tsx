@@ -112,6 +112,7 @@ const FarmCard: React.FC<React.PropsWithChildren<FarmCardProps>> = ({
                     wayaPrice={wayaPrice}
                     apr={farm.apr}
                     displayApr={displayApr}
+                    lpRewardsApr={farm.lpRewardsApr}
                     strikethrough={farm.boosted}
                   />
                 </>

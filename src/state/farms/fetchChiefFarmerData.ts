@@ -30,11 +30,11 @@ export const fetchChiefFarmerFarmPoolLength = async (chainId: number) => {
 }
 
 const chiefFarmerFarmCalls = async (farm: SerializedFarm) => {
-  const { pid, bscPid, quoteToken } = farm
+  const { pid, quoteToken } = farm
   const isBscNetwork = verifyBscNetwork(quoteToken.chainId)
   const multiCallChainId = isBscNetwork ? quoteToken.chainId : await getBscChainId(quoteToken.chainId)
   const chiefFarmerAddress = getChiefFarmerAddress(multiCallChainId)
-  const chiefFarmerPid = isBscNetwork ? pid : bscPid
+  const chiefFarmerPid = pid
 
   return chiefFarmerPid || chiefFarmerPid === 0
     ? [

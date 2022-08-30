@@ -1,4 +1,5 @@
 import { ChainId, Pair, Token } from '@plexswap/sdk'
+import { deserializeToken } from '@plexswap/tokens'
 import { differenceInDays } from 'date-fns'
 import flatMap from 'lodash/flatMap'
 import { getFarmConfig } from 'config/constants/farms/index'
@@ -42,7 +43,6 @@ import {
   setSubgraphHealthIndicatorDisplayed,
   updateUserLimitOrderAcceptedWarning,
 } from '../actions'
-import { deserializeToken, serializeToken } from './helpers'
 import { GAS_PRICE_GWEI } from '../../types'
 
 export function useAudioModeManager(): [boolean, () => void] {
@@ -373,7 +373,7 @@ export function useAddUserToken(): (token: Token) => void {
   const dispatch = useAppDispatch()
   return useCallback(
     (token: Token) => {
-      dispatch(addSerializedToken({ serializedToken: serializeToken(token) }))
+      dispatch(addSerializedToken({ serializedToken: token.serialize }))
     },
     [dispatch],
   )
@@ -425,8 +425,8 @@ export function useGasPriceManager(): [string, (userGasPrice: string) => void] {
 
 function serializePair(pair: Pair): SerializedPair {
   return {
-    token0: serializeToken(pair.token0),
-    token1: serializeToken(pair.token1),
+    token0: pair.token0.serialize,
+    token1: pair.token1.serialize,
   }
 }
 
@@ -447,7 +447,7 @@ export function usePairAdder(): (pair: Pair) => void {
  * @param tokenB the other token
  */
 export function toV2LiquidityToken([tokenA, tokenB]: [Token, Token]): Token {
-  return new Token(tokenA.chainId, Pair.getAddress(tokenA, tokenB), 18, 'Waya-LP', 'Plex LPs')
+  return new Token(tokenA.chainId, Pair.getAddress(tokenA, tokenB), 18, 'Plex-LP', 'Plex LPs')
 }
 
 /**

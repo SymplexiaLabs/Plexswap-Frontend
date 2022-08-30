@@ -11,7 +11,7 @@ const SocialLinks: React.FC<React.PropsWithChildren<FlexProps>> = ({ ...props })
     {socials.map((social, index) => {
       const iconProps = {
         width: "20px",
-        color: darkColors.textSubtle,
+        color: darkColors.contrast,
         style: { cursor: "pointer" },
       };
       const Icon = social.icon;
