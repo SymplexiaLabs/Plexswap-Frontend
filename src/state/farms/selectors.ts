@@ -1,13 +1,10 @@
 import BigNumber from 'bignumber.js'
-import addSeconds from 'date-fns/addSeconds'
 import { BIG_ZERO } from 'utils/bigNumber'
 import { getBalanceAmount } from 'utils/formatBalance'
 import { deserializeToken } from '@plexswap/tokens'
 import { createSelector } from '@reduxjs/toolkit'
 import _isEmpty from 'lodash/isEmpty'
 import { State, SerializedFarm, DeserializedFarm, DeserializedFarmUserData } from '../types'
-import isUndefinedOrNull from '../../utils/isUndefinedOrNull'
-import { FARM_AUCTION_HOSTING_IN_SECONDS } from '../../config/constants'
 
 const deserializeFarmUserData = (farm: SerializedFarm): DeserializedFarmUserData => {
   return {
@@ -31,28 +28,10 @@ const deserializeFarm = (farm: SerializedFarm): DeserializedFarm => {
     pid,
     dual,
     multiplier,
-    isCommunity,
-    auctionHostingStartSeconds,
     quoteTokenPriceBusd,
     tokenPriceBusd,
     boosted,
   } = farm
-
-  const auctionHostingStartDate = !isUndefinedOrNull(auctionHostingStartSeconds)
-    ? new Date(auctionHostingStartSeconds * 1000)
-    : null
-  const auctionHostingEndDate = auctionHostingStartDate
-    ? addSeconds(auctionHostingStartDate, FARM_AUCTION_HOSTING_IN_SECONDS)
-    : null
-  const now = Date.now()
-  const isFarmCommunity =
-    isCommunity ||
-    !!(
-      auctionHostingStartDate &&
-      auctionHostingEndDate &&
-      auctionHostingStartDate.getTime() < now &&
-      auctionHostingEndDate.getTime() > now
-    )
 
   return {
     lpAddress,
@@ -60,8 +39,6 @@ const deserializeFarm = (farm: SerializedFarm): DeserializedFarm => {
     pid,
     dual,
     multiplier,
-    isCommunity: isFarmCommunity,
-    auctionHostingEndDate: auctionHostingEndDate?.toJSON(),
     quoteTokenPriceBusd,
     tokenPriceBusd,
     token: deserializeToken(farm.token),

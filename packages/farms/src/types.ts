@@ -19,9 +19,6 @@ export interface FarmConfigBaseProps {
   lpSymbol: string
   lpAddress: string
   multiplier?: string
-  isCommunity?: boolean
-  auctionHostingStartSeconds?: number
-  auctionHostingEndDate?: string
   dual?: {
     rewardPerBlock: number
     earnLabel: string

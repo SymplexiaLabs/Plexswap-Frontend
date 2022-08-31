@@ -1,5 +1,5 @@
 import { TagProps } from '@plexswap/ui-plex'
-import { ClosedTag, CommunityTag, CoreTag, SoonTag, VoteNowTag } from 'components/Tags'
+import { ClosedTag, CoreTag, SoonTag, VoteNowTag } from 'components/Tags'
 import { ProposalState } from 'state/types'
 
 interface ProposalStateTagProps extends TagProps {
@@ -29,9 +29,5 @@ export const ProposalTypeTag: React.FC<React.PropsWithChildren<ProposalTypeTagPr
   isCoreProposal,
   ...props
 }) => {
-  if (isCoreProposal) {
     return <CoreTag {...props} />
-  }
-
-  return <CommunityTag {...props} />
 }

@@ -141,7 +141,7 @@ const FarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({ farms, waya
       multiplier: {
         multiplier: farm.multiplier,
       },
-      type: farm.isCommunity ? 'community' : 'core',
+      type: 'core',
       details: farm,
       initialActivity,
     }

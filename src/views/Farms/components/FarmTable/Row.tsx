@@ -5,7 +5,7 @@ import { useTranslation } from '@plexswap/localization'
 import useDelayedUnmount from 'hooks/useDelayedUnmount'
 import { useFarmUser } from 'state/farms/hooks'
 
-import { FarmAuctionTag, CoreTag } from 'components/Tags'
+import { CoreTag } from 'components/Tags'
 import Apr, { AprProps } from './Apr'
 import Farm, { FarmProps } from './Farm'
 
@@ -118,7 +118,7 @@ const Row: React.FunctionComponent<React.PropsWithChildren<RowPropsWithLoading>>
                 return (
                   <td key={key}>
                     <CellInner style={{ width: '140px' }}>
-                      {props[key] === 'community' ? <FarmAuctionTag scale="sm" /> : <CoreTag scale="sm" />}
+                      <CoreTag scale="sm" />
                       {props?.details?.boosted ? <BoostedTag scale="sm" ml="16px" /> : null}
                     </CellInner>
                   </td>
@@ -172,16 +172,14 @@ const Row: React.FunctionComponent<React.PropsWithChildren<RowPropsWithLoading>>
           <FarmMobileCell colSpan={3}>
             <Flex justifyContent="space-between" alignItems="center">
               <Farm {...props.farm} />
-              {props.type === 'community' ? (
-                <FarmAuctionTag marginRight="16px" scale="sm" />
-              ) : (
+              (
                 <Box style={{ marginRight: '16px' }}>
                   <CoreTag scale="sm" />
                   {props?.details?.boosted ? (
                     <BoostedTag style={{ verticalAlign: 'bottom' }} scale="sm" ml="4px" />
                   ) : null}
                 </Box>
-              )}
+              )
             </Flex>
           </FarmMobileCell>
         </tr>

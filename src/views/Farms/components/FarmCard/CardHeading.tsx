@@ -1,14 +1,13 @@
 import styled from 'styled-components'
 import { Tag, Flex, Heading, Skeleton } from '@plexswap/ui-plex'
 import { Token } from '@plexswap/sdk'
-import { FarmAuctionTag, CoreTag } from 'components/Tags'
+import { CoreTag } from 'components/Tags'
 import { TokenPairImage } from 'components/TokenImage'
 import BoostedTag from '../YieldBooster/components/BoostedTag'
 
 export interface ExpandableSectionProps {
   lpLabel?: string
   multiplier?: string
-  isCommunityFarm?: boolean
   token: Token
   quoteToken: Token
   boosted?: boolean
@@ -27,7 +26,6 @@ const MultiplierTag = styled(Tag)`
 const CardHeading: React.FC<React.PropsWithChildren<ExpandableSectionProps>> = ({
   lpLabel,
   multiplier,
-  isCommunityFarm,
   token,
   quoteToken,
   boosted,
@@ -38,7 +36,7 @@ const CardHeading: React.FC<React.PropsWithChildren<ExpandableSectionProps>> = (
       <Flex flexDirection="column" alignItems="flex-end">
         <Heading mb="4px">{lpLabel.split(' ')[0]}</Heading>
         <Flex justifyContent="center">
-          {isCommunityFarm ? <FarmAuctionTag /> : <CoreTag />}
+          <CoreTag />
           {boosted && <BoostedTag ml="4px" />}
           {multiplier ? (
             <MultiplierTag variant="secondary">{multiplier}</MultiplierTag>

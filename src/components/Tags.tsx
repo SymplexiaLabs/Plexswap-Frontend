@@ -1,19 +1,14 @@
 import {
   AutoRenewIcon,
   BlockIcon,
-  CommunityIcon,
   RefreshIcon,
   Tag,
   TagProps,
-  Text,
   TimerIcon,
-  TooltipText,
-  useTooltip,
   VerifiedIcon,
   VoteIcon,
 } from '@plexswap/ui-plex'
 import { useTranslation } from '@plexswap/localization'
-import { memo } from 'react'
 
 const CoreTag: React.FC<React.PropsWithChildren<TagProps>> = (props) => {
   const { t } = useTranslation()
@@ -26,35 +21,6 @@ const CoreTag: React.FC<React.PropsWithChildren<TagProps>> = (props) => {
       {...props}
     >
       {t('Core')}
-    </Tag>
-  )
-}
-
-const FarmAuctionTagToolTipContent = memo(() => {
-  const { t } = useTranslation()
-  return <Text color="text">{t('Farm Auction Winner, add liquidity at your own risk.')}</Text>
-})
-
-const FarmAuctionTag: React.FC<React.PropsWithChildren<TagProps>> = (props) => {
-  const { t } = useTranslation()
-  const { targetRef, tooltip, tooltipVisible } = useTooltip(<FarmAuctionTagToolTipContent />, { placement: 'right' })
-  return (
-    <>
-      {tooltipVisible && tooltip}
-      <TooltipText ref={targetRef} style={{ textDecoration: 'none' }}>
-        <Tag variant="failure" outline startIcon={<CommunityIcon width="18px" color="failure" mr="4px" />} {...props}>
-          {t('Farm Auction')}
-        </Tag>
-      </TooltipText>
-    </>
-  )
-}
-
-const CommunityTag: React.FC<React.PropsWithChildren<TagProps>> = (props) => {
-  const { t } = useTranslation()
-  return (
-    <Tag variant="failure" outline startIcon={<CommunityIcon width="18px" color="failure" mr="4px" />} {...props}>
-      {t('Community')}
     </Tag>
   )
 }
@@ -115,12 +81,10 @@ const ClosedTag: React.FC<React.PropsWithChildren<TagProps>> = (props) => {
 
 export {
   CoreTag,
-  FarmAuctionTag,
   DualTag,
   ManualPoolTag,
   CompoundingPoolTag,
   VoteNowTag,
   SoonTag,
   ClosedTag,
-  CommunityTag,
 }

@@ -88,7 +88,6 @@ const FarmCard: React.FC<React.PropsWithChildren<FarmCardProps>> = ({
         <CardHeading
           lpLabel={lpLabel}
           multiplier={farm.multiplier}
-          isCommunityFarm={farm.isCommunity}
           token={farm.token}
           quoteToken={farm.quoteToken}
           boosted={farm.boosted}
@@ -145,8 +144,6 @@ const FarmCard: React.FC<React.PropsWithChildren<FarmCardProps>> = ({
             totalValueFormatted={totalValueFormatted}
             lpLabel={lpLabel}
             addLiquidityUrl={addLiquidityUrl}
-            isCommunity={farm.isCommunity}
-            auctionHostingEndDate={farm.auctionHostingEndDate}
           />
         )}
       </ExpandingWrapper>
