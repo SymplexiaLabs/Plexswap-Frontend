@@ -15,11 +15,11 @@ async function getPublicMultiplier({ farmBoosterContract }): Promise<number> {
   const calls = [
     {
       address: farmBoosterContract.address,
-      name: 'cA',
+      name: 'lMaxBoost',
     },
     {
       address: farmBoosterContract.address,
-      name: 'CA_PRECISION',
+      name: 'LMB_PRECISION',
     },
     {
       address: farmBoosterContract.address,
@@ -31,10 +31,10 @@ async function getPublicMultiplier({ farmBoosterContract }): Promise<number> {
 
   if (!data) return 0
 
-  const [[cA], [CA_PRECISION], [BOOST_PRECISION]] = data
+  const [[lMaxBoost], [LMB_PRECISION], [BOOST_PRECISION]] = data
 
-  const MAX_BOOST_PRECISION = FixedNumber.from(CA_PRECISION)
-    .divUnsafe(FixedNumber.from(cA))
+  const MAX_BOOST_PRECISION = FixedNumber.from(LMB_PRECISION)
+    .divUnsafe(FixedNumber.from(lMaxBoost))
     .mulUnsafe(PRECISION_FACTOR)
     .subUnsafe(FixedNumber.from(BOOST_PRECISION))
 
