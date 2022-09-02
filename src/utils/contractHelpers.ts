@@ -88,7 +88,6 @@ export const getTaskAssistantV2Contract = (id: number, signer?: Signer | Provide
   return getContract({ abi: taskAssistantV2Abi, address: getAddress(config.contractAddress), signer }) as TaskAssistantV2
 }
 
-
 export const getWayaContract = (signer?: Signer | Provider, chainId?: number) => {
   return getContract({
     abi: wayaAbi,
@@ -97,7 +96,7 @@ export const getWayaContract = (signer?: Signer | Provider, chainId?: number) =>
   }) as Waya
 }
 
-export const getChieffarmerContract = (signer?: Signer | Provider, chainId?: number) => {
+export const getChiefFarmerContract = (signer?: Signer | Provider, chainId?: number) => {
   return getContract({ abi: chiefFarmerAbi, address: getChiefFarmerAddress(chainId), signer }) as ChiefFarmer
 }
 

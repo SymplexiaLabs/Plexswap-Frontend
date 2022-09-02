@@ -7,7 +7,6 @@ import { getBalanceNumber } from 'utils/formatBalance'
 import { BIG_ZERO } from 'utils/bigNumber'
 import { useRouter } from 'next/router'
 import { getDisplayApr } from '../getDisplayApr'
-
 import Row, { RowProps } from './Row'
 import { DesktopColumnSchema, FarmWithStakedValue } from '../types'
 import ProxyFarmContainer from '../YieldBooster/components/ProxyFarmContainer'
@@ -30,7 +29,6 @@ const Container = styled.div`
 const TableWrapper = styled.div`
   overflow: visible;
   scroll-margin-top: 64px;
-
   &::-webkit-scrollbar {
     display: none;
   }

@@ -24,7 +24,7 @@ import {
   getWayaVaultContract,
   getErc721CollectionContract,
   getErc721Contract,
-  getChieffarmerContract,
+  getChiefFarmerContract,
   getTaskAssistantContract,
 } from 'utils/contractHelpers'
 import { useSigner } from 'wagmi'
@@ -76,15 +76,13 @@ export const useWaya = (): { reader: Waya; signer: Waya } => {
 export const useChieffarmer = (withSignerIfPossible = true) => {
   const { chainId } = useActiveChainId()
   const providerOrSigner = useProviderOrSigner(withSignerIfPossible)
-  return useMemo(() => getChieffarmerContract(providerOrSigner, chainId), [providerOrSigner, chainId])
+  return useMemo(() => getChiefFarmerContract(providerOrSigner, chainId), [providerOrSigner, chainId])
 }
 
 export const useTaskAssistant = (id) => {
   const { data: signer } = useSigner()
   return useMemo(() => getTaskAssistantContract(id, signer), [id, signer])
 }
-
-
 
 export const useVaultPoolContract = (vaultKey: VaultKey): WayaVault | WayaFlexibleVault => {
   const { data: signer } = useSigner()

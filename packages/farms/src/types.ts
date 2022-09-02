@@ -14,7 +14,6 @@ export type FarmData = SerializedFarmConfig & FarmsDynamicDataResult
 export interface FarmConfigBaseProps {
   isStable?: boolean
   pid: number
-  v1pid?: number
   vaultPid?: number
   lpSymbol: string
   lpAddress: string

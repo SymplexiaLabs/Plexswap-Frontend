@@ -2269,7 +2269,7 @@ exports[`renders correctly 1`] = `
                     class="c60 c61"
                     color="#F4EEFF"
                     font-size="16px"
-                    href="https://docs.plex.finance/contact-us"
+                    href="https://docs.plexfinance.us/contact-us"
                     rel="noreferrer noopener"
                     target="_blank"
                   >
@@ -2297,7 +2297,7 @@ exports[`renders correctly 1`] = `
                     class="c60 c61"
                     color="#F4EEFF"
                     font-size="16px"
-                    href="https://docs.plex.finance/contact-us/telegram"
+                    href="https://docs.plexfinance.us/contact-us/telegram"
                     rel="noreferrer noopener"
                     target="_blank"
                   >
@@ -2311,7 +2311,7 @@ exports[`renders correctly 1`] = `
                     class="c60 c61"
                     color="#F4EEFF"
                     font-size="16px"
-                    href="https://docs.plex.finance/tokenomics/waya"
+                    href="https://docs.plexfinance.us/tokenomics/waya"
                     rel="noreferrer noopener"
                     target="_blank"
                   >
@@ -2357,7 +2357,7 @@ exports[`renders correctly 1`] = `
                     class="c60 c61"
                     color="#F4EEFF"
                     font-size="16px"
-                    href="Support https://docs.plex.finance/contact-us/customer-support"
+                    href="Support https://docs.plexfinance.us/contact-us/customer-support"
                     rel="noreferrer noopener"
                     target="_blank"
                   >
@@ -2371,7 +2371,7 @@ exports[`renders correctly 1`] = `
                     class="c60 c61"
                     color="#F4EEFF"
                     font-size="16px"
-                    href="https://docs.plex.finance/help/troubleshooting"
+                    href="https://docs.plexfinance.us/help/troubleshooting"
                     rel="noreferrer noopener"
                     target="_blank"
                   >
@@ -2385,7 +2385,7 @@ exports[`renders correctly 1`] = `
                     class="c60 c61"
                     color="#F4EEFF"
                     font-size="16px"
-                    href="https://docs.plex.finance/get-started"
+                    href="https://docs.plexfinance.us/get-started"
                     rel="noreferrer noopener"
                     target="_blank"
                   >
@@ -2422,7 +2422,7 @@ exports[`renders correctly 1`] = `
                     class="c60 c61"
                     color="#F4EEFF"
                     font-size="16px"
-                    href="https://docs.plex.finance"
+                    href="https://docs.plexfinance.us"
                     rel="noreferrer noopener"
                     target="_blank"
                   >
@@ -2450,7 +2450,7 @@ exports[`renders correctly 1`] = `
                     class="c60 c61"
                     color="#F4EEFF"
                     font-size="16px"
-                    href="https://docs.plex.finance/help/faq#is-plex-safe-has-plex-been-audited"
+                    href="https://docs.plexfinance.us/help/faq#is-plex-safe-has-plex-been-audited"
                     rel="noreferrer noopener"
                     target="_blank"
                   >
@@ -2464,7 +2464,7 @@ exports[`renders correctly 1`] = `
                     class="c60 c61"
                     color="#F4EEFF"
                     font-size="16px"
-                    href="https://docs.plex.finance/hiring/become-a-chef"
+                    href="https://docs.plexfinance.us/hiring/become-a-chef"
                     rel="noreferrer noopener"
                     target="_blank"
                   >

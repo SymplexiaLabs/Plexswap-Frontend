@@ -2,7 +2,7 @@ import { MultiCallV2 } from '@plexswap/multicall'
 import { FetchFarms, fetchFarmsParams, fetchChiefFarmerV2Data as _fetchChiefFarmerV2Data } from './fetchFarms'
 
 export const chiefFarmerAddresses = {
-  97: '0x8814Adcc1f9D90d9dBE8e1a87E40de267657d24e',
+  97: '0x4Fdad12F6B2704f06df82BAeB7Cfd4341b79Db81',
   56: '0x4Ba4EFa9C4E44b94ea232Fd5F5f7F4A4961904e5',
 }
 

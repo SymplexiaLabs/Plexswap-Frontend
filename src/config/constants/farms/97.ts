@@ -22,14 +22,14 @@ const farms: SerializedFarmConfig[] = [
   {
     pid: 2,
     lpSymbol: 'BUSD/BNB LP',
-    lpAddress:  '0xC29d9C4Cc6ee9f25A486bdd74D6f6aC60068cffE',
+    lpAddress:  '0x49120769a878215a350038AbB394072cEb6F4d4A',
     token: bscTestnetTokens.busd,
     quoteToken: bscTestnetTokens.wbnb,
   },
   {
     pid: 3,
     lpSymbol: 'WAYA/BUSD LP',
-    lpAddress:  '0x07D9Da509bD9349378441311E5b1F560C30Df055',
+    lpAddress:  '0x92AaD8AC7da29516ece348b3703679920c5a94E7',
     token: bscTestnetTokens.waya,
     quoteToken: bscTestnetTokens.busd,
   },

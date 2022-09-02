@@ -2,9 +2,8 @@ import { BigNumber } from '@ethersproject/bignumber'
 import Trans from 'components/Trans'
 import { VaultKey } from 'state/types'
 import { bscTokens } from '@plexswap/tokens'
+import { chiefFarmerAddresses } from '@plexswap/farms'
 import { SerializedPoolConfig, PoolCategory } from './types'
-
-
 
 export const MAX_LOCK_DURATION = 31536000
 export const UNLOCK_FREE_DURATION = 604800
@@ -50,10 +49,7 @@ export const livePools: SerializedPoolConfig[] = [
     poolId: 0,
     stakingToken: bscTokens.waya,
     earningToken: bscTokens.waya,
-    contractAddress: {
-      97: '0x1e7D98aAC52dAef93B90508DfAdBDCd91f28b78e',
-      56: '0xdB21c81428fdDd5841E0feAA7f79f8C249Fe88A2', // ChiefFarmer Address
-    },
+    contractAddress: chiefFarmerAddresses,
     poolCategory: PoolCategory.CORE,
     tokenPerBlock: '10',
     isFinished: false,

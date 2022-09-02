@@ -9,7 +9,7 @@ import { useAppDispatch } from 'state'
 import useSWRImmutable from 'swr/immutable'
 import { BIG_ZERO } from 'utils/bigNumber'
 import { useBWayaProxyContractAddress } from 'views/Farms/hooks/useBWayaProxyContractAddress'
-import { getChieffarmerContract } from 'utils/contractHelpers'
+import { getChiefFarmerContract } from 'utils/contractHelpers'
 import { getFarmConfig } from 'config/constants/farms/index'
 import { fetchFarmsPublicDataAsync, fetchFarmUserDataAsync, fetchInitialFarmsData } from '.'
 import { DeserializedFarm, DeserializedFarmsState, DeserializedFarmUserData, State } from '../types'
@@ -25,8 +25,8 @@ import {
 export function useFarmsLength() {
   const { chainId } = useActiveWeb3React()
   return useSWRImmutable(chainId ? ['farmsLength', chainId] : null, async () => {
-    const mc = getChieffarmerContract(undefined, chainId)
-    return (await mc.poolLength()).toNumber()
+    const chieffarmer = getChiefFarmerContract(undefined, chainId)
+    return (await chieffarmer.poolLength()).toNumber()
   })
 }
 
