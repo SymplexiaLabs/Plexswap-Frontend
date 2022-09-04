@@ -72,8 +72,8 @@ export const usePollFarmsWithUserData = () => {
  * 2 = BUSD-BNB LP
  */
 const coreFarmPIDs = {
-  56: [1, 2],
-  97: [1, 2],
+  56: [1, 2, 3, 4],
+  97: [1, 2, 3, 4],
   5: [1, 2],
 }
 

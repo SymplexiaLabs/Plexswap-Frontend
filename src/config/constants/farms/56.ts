@@ -37,9 +37,9 @@ const farms: SerializedFarmConfig[] = [
     pid: 4,
     lpSymbol: 'PLEX-F/BNB LP',
     lpAddress: '0x539Df50cf6fc29d560413d669A5Bb78cB342029B',
-     token: bscTokens.plex,
+    token: bscTokens.plex,
     quoteToken: bscTokens.wbnb,
   },
-].map((p) => ({ ...p, token: serializeToken(p.token), quoteToken: serializeToken(p.quoteToken) }))
+].map((p) => ({ ...p, token: p.token.serialize, quoteToken: p.quoteToken.serialize }))
 
 export default farms

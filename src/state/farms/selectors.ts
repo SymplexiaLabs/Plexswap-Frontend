@@ -54,7 +54,7 @@ const deserializeFarm = (farm: SerializedFarm): DeserializedFarm => {
   }
 }
 
-const selectWayaFarm = (state: State) => state.farms.data.find((f) => f.pid === 2)
+const selectWayaFarm = (state: State) => state.farms.data.find((f) => f.pid === 1)
 const selectFarmByKey = (key: string, value: string | number) => (state: State) =>
   state.farms.data.find((f) => f[key] === value)
 

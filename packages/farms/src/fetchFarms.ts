@@ -5,6 +5,7 @@ import { BIG_TEN, FIXED_TWO, FIXED_ZERO } from './const'
 import { getFarmsPrices } from './farmPrices'
 import { fetchPublicFarmsData } from './fetchPublicFarmData'
 import { SerializedFarmConfig } from './types'
+import  chiefFarmerV2Abi from './abi/ChiefFarmer.json'
 
 export const getTokenAmount = (balance: FixedNumber, decimals: number) => {
   const tokenDividerFixed = FixedNumber.from(BIG_TEN.pow(decimals))
@@ -68,50 +69,6 @@ export async function FetchFarms({
 
   return farmsDataWithPrices
 }
-
-const chiefFarmerV2Abi = [
-  {
-    inputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
-    name: 'poolInfo',
-    outputs: [
-      { internalType: 'uint256', name: 'accWayaPerShare', type: 'uint256' },
-      { internalType: 'uint256', name: 'lastRewardBlock', type: 'uint256' },
-      { internalType: 'uint256', name: 'allocPoint', type: 'uint256' },
-      { internalType: 'uint256', name: 'totalBoostedShare', type: 'uint256' },
-      { internalType: 'bool', name: 'isRegular', type: 'bool' },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [],
-    name: 'poolLength',
-    outputs: [{ internalType: 'uint256', name: 'pools', type: 'uint256' }],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [],
-    name: 'totalRegularAllocPoint',
-    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [],
-    name: 'totalSpecialAllocPoint',
-    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
-    stateMutability: 'view',
-    type: 'function',
-  },
-  {
-    inputs: [{ internalType: 'bool', name: '_isRegular', type: 'bool' }],
-    name: 'wayaPerBlock',
-    outputs: [{ internalType: 'uint256', name: 'amount', type: 'uint256' }],
-    stateMutability: 'view',
-    type: 'function',
-  },
-]
 
 const chiefFarmerFarmCalls = (farm: SerializedFarmConfig, isTestnet: boolean, chiefFarmerAddresses) => {
   const { pid } = farm

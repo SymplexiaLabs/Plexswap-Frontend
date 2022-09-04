@@ -59,7 +59,7 @@ function farmLpTransformer(farmResult, chiefFarmerResult) {
       quoteToken: farm.quoteToken,
       poolWeight: poolWeight.toJSON(),
       multiplier: `${allocPoint.div(100).toString()}X`,
-      ...getLpInfo({
+       ...getLpInfo({
         tokenBalanceLP,
         quoteTokenBalanceLP,
         lpTokenBalanceMC,

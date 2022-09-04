@@ -112,7 +112,7 @@ export const getWayaFlexibleVaultContract = (signer?: Signer | Provider) => {
   }) as WayaFlexibleVault
 }
 
-export const getMulticallContract = (chainId: ChainId) => {
+ export const getMulticallContract = (chainId: ChainId) => {
   return getContract({ abi: MultiCallAbi, address: getMulticallAddress(chainId), chainId }) as Multicall
 }
 

@@ -1,4 +1,4 @@
-import { bscTestnetTokens, serializeToken } from '@plexswap/tokens'
+import { bscTestnetTokens } from '@plexswap/tokens'
 import { SerializedFarmConfig } from '../types'
 
 const farms: SerializedFarmConfig[] = [
@@ -40,6 +40,13 @@ const farms: SerializedFarmConfig[] = [
     token: bscTestnetTokens.plex,
     quoteToken: bscTestnetTokens.wbnb,
   },
-].map((p) => ({ ...p, token: serializeToken(p.token), quoteToken: serializeToken(p.quoteToken) }))
+  {
+    pid: 5,
+    lpSymbol: 'PLEX-F/BUSD LP',
+    lpAddress:  '0x98BE7F94d796d14630f425B4748B9eBDC26bdBf7', // PLEX-LP Pair
+    token: bscTestnetTokens.plex,
+    quoteToken: bscTestnetTokens.busd,
+  },
+].map((p) => ({ ...p, token: p.token.serialize, quoteToken: p.quoteToken.serialize }))
 
 export default farms

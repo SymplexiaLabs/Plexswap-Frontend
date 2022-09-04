@@ -7,7 +7,6 @@ import {
   Erc721collection,
   Multicall,
   Weth,
-
 } from 'config/abi/types'
 
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
@@ -161,8 +160,6 @@ export function useMulticallContract() {
   const { chainId } = useActiveWeb3React()
   return useContract<Multicall>(getMulticallAddress(chainId), multiCallAbi, false)
 }
-
-
 
 export function useFarmBoosterContract(withSignerIfPossible = true) {
   const providerOrSigner = useProviderOrSigner(withSignerIfPossible)

@@ -3,7 +3,7 @@ import { chiefFarmerAddresses } from '@plexswap/farms'
 
 export default {
   chiefFarmer: {
-    97: '0x4Fdad12F6B2704f06df82BAeB7Cfd4341b79Db81',  // ChiefFarmer Address
+    97: '0x9b12ef6467eDf598B374FDB0b373C1E90DB97098',  // ChiefFarmer Address
     56: '0x4Ba4EFa9C4E44b94ea232Fd5F5f7F4A4961904e5',  // ChiefFarmer Address
   },
    taskAssistant: {
