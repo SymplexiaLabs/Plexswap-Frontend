@@ -4,7 +4,9 @@ import { getBalanceAmount } from 'utils/formatBalance'
 import { deserializeToken } from '@plexswap/tokens'
 import { createSelector } from '@reduxjs/toolkit'
 import _isEmpty from 'lodash/isEmpty'
+import { mainFarmPID } from 'config/constants/farms/index'
 import { State, SerializedFarm, DeserializedFarm, DeserializedFarmUserData } from '../types'
+
 
 const deserializeFarmUserData = (farm: SerializedFarm): DeserializedFarmUserData => {
   return {
@@ -54,7 +56,7 @@ const deserializeFarm = (farm: SerializedFarm): DeserializedFarm => {
   }
 }
 
-const selectWayaFarm = (state: State) => state.farms.data.find((f) => f.pid === 1)
+const selectWayaFarm = (state: State) => state.farms.data.find((f) => f.pid === mainFarmPID)
 const selectFarmByKey = (key: string, value: string | number) => (state: State) =>
   state.farms.data.find((f) => f[key] === value)
 

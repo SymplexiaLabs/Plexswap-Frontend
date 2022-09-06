@@ -10,7 +10,7 @@ import { BIG_ZERO } from 'utils/bigNumber'
 import { useBWayaProxyContractAddress } from 'views/Farms/hooks/useBWayaProxyContractAddress'
 import { getChiefFarmerContract } from 'utils/contractHelpers'
 import { useFastRefreshEffect } from 'hooks/useRefreshEffect'
-import { getFarmConfig } from 'config/constants/farms/index'
+import { getFarmConfig, coreFarmPIDs } from 'config/constants/farms'
 import { fetchFarmsPublicDataAsync, fetchFarmUserDataAsync, fetchInitialFarmsData } from '.'
 import { DeserializedFarm, DeserializedFarmsState, DeserializedFarmUserData, State } from '../types'
 import {
@@ -64,17 +64,6 @@ export const usePollFarmsWithUserData = () => {
       refreshInterval: SLOW_INTERVAL,
     },
   )
-}
-
-/**
- * Fetches the "core" farm data used globally
- * 1 = WAYA-BNB LP
- * 2 = BUSD-BNB LP
- */
-const coreFarmPIDs = {
-  56: [1, 2, 3, 4],
-  97: [1, 2, 3, 4],
-  5: [1, 2],
 }
 
 export const usePollCoreFarmData = () => {
