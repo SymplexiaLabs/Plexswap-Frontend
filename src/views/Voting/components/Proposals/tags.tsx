@@ -26,8 +26,6 @@ interface ProposalTypeTagProps extends TagProps {
 }
 
 export const ProposalTypeTag: React.FC<React.PropsWithChildren<ProposalTypeTagProps>> = ({
-  isCoreProposal,
-  ...props
-}) => {
+    ...props }) => {
     return <CoreTag {...props} />
 }

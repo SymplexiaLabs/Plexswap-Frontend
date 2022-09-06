@@ -57,14 +57,7 @@ export const { provider, chains } = configureChains(CHAINS, [
       if (!!process.env.NEXT_PUBLIC_NODE_PRODUCTION && chain.id === bsc.id) {
         return { http: process.env.NEXT_PUBLIC_NODE_PRODUCTION }
       }
-      if (chain.rpcUrls.nodeReal) {
-        return (
-          getNodeRealUrl(chain.network) || {
-            http: chain.rpcUrls.nodeReal,
-          }
-        )
-      }
-      return { http: chain.rpcUrls.default }
+      return getNodeRealUrl(chain.network) || { http: chain.rpcUrls.default }
     },
   }),
 ])
@@ -80,8 +73,8 @@ export const injectedConnector = new InjectedConnector({
 export const coinbaseConnector = new CoinbaseWalletConnector({
   chains,
   options: {
-    appName: 'PlexSwap',
-    appLogoUrl: 'https://plexswap.com/logo.png',
+    appName: 'PancakeSwap',
+    appLogoUrl: 'https://pancakeswap.com/logo.png',
   },
 })
 

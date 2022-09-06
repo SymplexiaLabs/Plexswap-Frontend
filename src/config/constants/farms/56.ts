@@ -1,4 +1,4 @@
-import { bscTokens, serializeToken } from '@plexswap/tokens'
+import { bscTokens } from '@plexswap/tokens'
 import { SerializedFarmConfig } from '../types'
 
 const farms: SerializedFarmConfig[] = [

@@ -56,7 +56,6 @@ export const livePools: SerializedPoolConfig[] = [
   },
 ]
 
-// known finished pools
 // known finished Silos
 const finishedPools = [].map((p) => ({ ...p, isFinished: true }))
 

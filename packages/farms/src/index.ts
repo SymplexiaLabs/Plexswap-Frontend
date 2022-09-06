@@ -1,16 +1,6 @@
 import { MultiCallV2 } from '@plexswap/multicall'
 import { FetchFarms, fetchFarmsParams, fetchChiefFarmerV2Data as _fetchChiefFarmerV2Data } from './fetchFarms'
-
-export const chiefFarmerAddresses = {
-  97: '0x9b12ef6467eDf598B374FDB0b373C1E90DB97098',
-  56: '0x4Ba4EFa9C4E44b94ea232Fd5F5f7F4A4961904e5',
-}
-
-export const nonBSCVaultAddresses = {
-  5: '0x8CB958bBdb45597cc918147469eb650A9397aBDA',
-}
-
-const supportedChainId = [5, 56, 97]
+import { chiefFarmerAddresses, supportedChainId } from './constants'
 
 export function createFarmFetcher(multicall: MultiCallV2) {
   const fetchFarms = (params: Omit<fetchFarmsParams, 'chiefFarmerAddresses' | 'multicall'>) => {
@@ -26,3 +16,4 @@ export function createFarmFetcher(multicall: MultiCallV2) {
 
 export * from './types'
 export * from './farmsPriceHelpers'
+export * from './constants'

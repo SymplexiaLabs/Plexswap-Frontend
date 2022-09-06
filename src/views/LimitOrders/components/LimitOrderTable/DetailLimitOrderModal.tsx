@@ -1,4 +1,4 @@
-import { Button, Flex, Box, Modal, Text, ChevronRightIcon, InjectedModalProps, Tag, Spinner } from '@plexswap/ui-plex'
+import { Button, Flex, Box, Modal, Text, ChevronRightIcon, InjectedModalProps, Tag, Spinner, useMatchBreakpoints } from '@plexswap/ui-plex'
 import { useTranslation } from '@plexswap/localization'
 import useTheme from 'hooks/useTheme'
 import { memo, useCallback, useState } from 'react'
@@ -35,6 +35,7 @@ export const DetailLimitOrderModal: React.FC<React.PropsWithChildren<DetailLimit
   const { theme } = useTheme()
   const { t } = useTranslation()
   const { handleLimitOrderCancellation } = useGelatoLimitOrdersHandlers()
+  const { isMobile } = useMatchBreakpoints()
 
   const [{ cancellationErrorMessage, attemptingTxn, txHash }, setCancellationState] = useState<{
     attemptingTxn: boolean
@@ -156,7 +157,7 @@ export const DetailLimitOrderModal: React.FC<React.PropsWithChildren<DetailLimit
     <Modal
       title={t('Open Order Details')}
       headerBackground={theme.colors.gradients.cardHeader}
-      style={{ width: '436px' }}
+      style={{ width: isMobile ? '100%' : '436px' }}
       onDismiss={onDismiss}
     >
       {attemptingTxn ? (

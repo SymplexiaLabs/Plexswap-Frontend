@@ -2,16 +2,14 @@ import { multicallAddresses } from '@plexswap/multicall'
 import { chiefFarmerAddresses } from '@plexswap/farms'
 
 export default {
-  chiefFarmer: {
-    97: '0x9b12ef6467eDf598B374FDB0b373C1E90DB97098',  // ChiefFarmer Address
-    56: '0x4Ba4EFa9C4E44b94ea232Fd5F5f7F4A4961904e5',  // ChiefFarmer Address
-  },
-   taskAssistant: {
+  chiefFarmer: chiefFarmerAddresses,
+  multiCall: multicallAddresses,
+  taskAssistant: {
     97: '0x994b467b83fF7ffF74FDC8b26F034f1A68eCf1ae',
     56: '0xfd5044541EFdCf6B6a83e6ecBF3f477C8cEC6433',
   },
   wayaVault: {
-    97: '0xA76dB0305b6e3A708E5976895C05484E460552E9',
+    97: '0xeaBaC758BB98FCE585AdAfAC059e441F17204ccC',
     56: '0x0E6BF68f41794b7268343160C103B45D49aDc6CC',
   },
   wayaFlexibleVault: {
@@ -30,5 +28,4 @@ export default {
     97: '0x052f5327d9928d35b3b9B9E0Bc65795c03142b23',
     56: '',
   },
-  multiCall: multicallAddresses,
 }

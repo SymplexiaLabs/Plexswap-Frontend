@@ -1,4 +1,4 @@
-import { bscTokens, serializeToken } from '@plexswap/tokens'
+import { bscTokens } from '@plexswap/tokens'
 import { SerializedFarmConfig } from '../../types'
 
 const priceHelperLps: SerializedFarmConfig[] = [
@@ -16,6 +16,6 @@ const priceHelperLps: SerializedFarmConfig[] = [
     token: bscTokens.ankr,
     quoteToken: bscTokens.wbnb,
   },
-].map((p) => ({ ...p, token: serializeToken(p.token), quoteToken: serializeToken(p.quoteToken) }))
+].map((p) => ({ ...p, token: p.token.serialize, quoteToken: p.quoteToken.serialize }))
 
 export default priceHelperLps

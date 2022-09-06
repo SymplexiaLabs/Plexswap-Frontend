@@ -1,11 +1,10 @@
 import { BigNumber, FixedNumber } from '@ethersproject/bignumber'
 import { MultiCallV2 } from '@plexswap/multicall'
 import { ChainId } from '@plexswap/sdk'
-import { BIG_TEN, FIXED_TWO, FIXED_ZERO } from './const'
+import { BIG_TEN, FIXED_TWO, FIXED_ZERO } from './constants'
 import { getFarmsPrices } from './farmPrices'
 import { fetchPublicFarmsData } from './fetchPublicFarmData'
 import { SerializedFarmConfig } from './types'
-import  chiefFarmerV2Abi from './abi/ChiefFarmer.json'
 
 export const getTokenAmount = (balance: FixedNumber, decimals: number) => {
   const tokenDividerFixed = FixedNumber.from(BIG_TEN.pow(decimals))
@@ -70,6 +69,50 @@ export async function FetchFarms({
   return farmsDataWithPrices
 }
 
+const chiefFarmerAbi = [
+  {
+    inputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
+    name: 'poolInfo',
+    outputs: [
+      { internalType: 'uint256', name: 'accWayaPerShare', type: 'uint256' },
+      { internalType: 'uint256', name: 'lastRewardBlock', type: 'uint256' },
+      { internalType: 'uint256', name: 'allocPoint', type: 'uint256' },
+      { internalType: 'uint256', name: 'totalBoostedShare', type: 'uint256' },
+      { internalType: 'bool', name: 'isRegular', type: 'bool' },
+    ],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'poolLength',
+    outputs: [{ internalType: 'uint256', name: 'pools', type: 'uint256' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'totalRegularAllocPoint',
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [],
+    name: 'totalSpecialAllocPoint',
+    outputs: [{ internalType: 'uint256', name: '', type: 'uint256' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+  {
+    inputs: [{ internalType: 'bool', name: '_isRegular', type: 'bool' }],
+    name: 'wayaPerBlock',
+    outputs: [{ internalType: 'uint256', name: 'amount', type: 'uint256' }],
+    stateMutability: 'view',
+    type: 'function',
+  },
+]
+
 const chiefFarmerFarmCalls = (farm: SerializedFarmConfig, isTestnet: boolean, chiefFarmerAddresses) => {
   const { pid } = farm
   const chiefFarmerAddress = isTestnet ? chiefFarmerAddresses[ChainId.BSC_TESTNET] : chiefFarmerAddresses[ChainId.BSC]
@@ -94,7 +137,7 @@ export const fetchChiefFarmerData = async (
     const chiefFarmerAggregatedCalls = chiefFarmerCalls.filter((chiefFarmerCall) => chiefFarmerCall !== null)
 
     const chiefFarmerMultiCallResult = await multicall({
-      abi: chiefFarmerV2Abi,
+      abi: chiefFarmerAbi,
       calls: chiefFarmerAggregatedCalls,
       chainId: isTestnet ? ChainId.BSC_TESTNET : ChainId.BSC,
     })
@@ -129,7 +172,7 @@ export const fetchChiefFarmerV2Data = async ({
     const [[poolLength], [totalRegularAllocPoint], [totalSpecialAllocPoint], [wayaPerBlock]] = await multicall<
       [[BigNumber], [BigNumber], [BigNumber], [BigNumber]]
     >({
-      abi: chiefFarmerV2Abi,
+      abi: chiefFarmerAbi,
       calls: [
         {
           address: chiefFarmerV2Address,

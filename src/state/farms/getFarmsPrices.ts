@@ -1,6 +1,6 @@
 import BigNumber from 'bignumber.js'
 import { BIG_ONE, BIG_ZERO } from 'utils/bigNumber'
-import { filterFarmsByQuoteToken } from '@plexswap/farms'
+import { filterFarmsByQuoteToken, nativeStableLpMap } from '@plexswap/farms'
 import { SerializedFarm } from 'state/types'
 
 const getFarmFromTokenSymbol = (
@@ -129,20 +129,3 @@ const getFarmsPrices = (farms: SerializedFarm[], chainId: number) => {
 
 export default getFarmsPrices
 
-const nativeStableLpMap = {
-  5: {
-    address: '0xf5bf0C34d3c428A74Ceb98d27d38d0036C587200',
-    wNative: 'WETH',
-    stable: 'USDC',
-  },
-  56: {
-    address: '0x58F876857a02D6762E0101bb5C46A8c1ED44Dc16',
-    wNative: 'WBNB',
-    stable: 'BUSD',
-  },
-  97: {
-    address: '0x4E96D2e92680Ca65D58A0e2eB5bd1c0f44cAB897',
-    wNative: 'WBNB',
-    stable: 'BUSD',
-  },
-}

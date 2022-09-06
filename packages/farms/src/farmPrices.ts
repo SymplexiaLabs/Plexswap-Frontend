@@ -1,9 +1,8 @@
 import { BigNumber, FixedNumber } from '@ethersproject/bignumber'
-import { ChainId } from '@plexswap/sdk'
 import { SerializedFarmPublicData, FarmData } from './types'
 import { equalsIgnoreCase } from './equalsIgnoreCase'
 import { filterFarmsByQuoteToken } from './farmsPriceHelpers'
-import { FIXED_ONE, FIXED_TEN_IN_POWER_18, FIXED_TWO, FIXED_ZERO } from './const'
+import { FIXED_ONE, FIXED_TEN_IN_POWER_18, FIXED_TWO, FIXED_ZERO, nativeStableLpMap } from './constants'
 
 // Find BUSD price for token
 // either via direct calculation if farm is X-BNB or X-BUSD
@@ -164,20 +163,3 @@ export const getFarmsPrices = (farms: FarmData[], chainId: number): FarmWithPric
   return farmsWithPrices
 }
 
-const nativeStableLpMap = {
-  [ChainId.GOERLI]: {
-    address: '0xf5bf0C34d3c428A74Ceb98d27d38d0036C587200',
-    wNative: 'WETH',
-    stable: 'USDC',
-  },
-  [ChainId.BSC]: {
-    address: '0x58F876857a02D6762E0101bb5C46A8c1ED44Dc16',
-    wNative: 'WBNB',
-    stable: 'BUSD',
-  },
-  [ChainId.BSC_TESTNET]: {
-    address: '0x4E96D2e92680Ca65D58A0e2eB5bd1c0f44cAB897',
-    wNative: 'WBNB',
-    stable: 'BUSD',
-  },
-}

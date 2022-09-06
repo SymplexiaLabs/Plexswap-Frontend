@@ -8,7 +8,7 @@ const farms: SerializedFarmConfig[] = [
   {
     pid: 0,
     lpSymbol: 'WAYA',
-    lpAddress: '0xFf7144153586ccE57Af03111d6f7c0a168d9Bf21', // dummyWayaPool (dWP) or Waya Address
+    lpAddress: '0xA2af2640A694f91632e60befc7Fc30C1b787D505', // Waya Address
     token: bscTestnetTokens.waya,
     quoteToken: bscTestnetTokens.wbnb,
   },
@@ -36,14 +36,14 @@ const farms: SerializedFarmConfig[] = [
   {
     pid: 4,
     lpSymbol: 'PLEX-F/BNB LP',
-    lpAddress:  '0x22aE89104C0A2a0792568b8CDf5A7806249d6e90', // PLEX-LP Pair
+    lpAddress:  '0x22aE89104C0A2a0792568b8CDf5A7806249d6e90', 
     token: bscTestnetTokens.plex,
     quoteToken: bscTestnetTokens.wbnb,
   },
   {
     pid: 5,
     lpSymbol: 'PLEX-F/BUSD LP',
-    lpAddress:  '0x98BE7F94d796d14630f425B4748B9eBDC26bdBf7', // PLEX-LP Pair
+    lpAddress:  '0x98BE7F94d796d14630f425B4748B9eBDC26bdBf7', 
     token: bscTestnetTokens.plex,
     quoteToken: bscTestnetTokens.busd,
   },
