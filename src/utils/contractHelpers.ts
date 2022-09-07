@@ -28,11 +28,11 @@ import taskAssistant from 'config/abi/TaskAssistant.json'
 import taskAssistantV2Abi from 'config/abi/TaskAssistantV2.json'
 import taskAssistantBnb from 'config/abi/TaskAssistantBnb.json'
 import wayaVaultAbi from 'config/abi/WayaVault.json'
-import wayaFlexibleVaultAbi from 'config/abi/wayaFlexibleVault.json'
+import wayaFlexibleVaultAbi from 'config/abi/WayaFlexibleVault.json'
 import MultiCallAbi from 'config/abi/Multicall.json'
 import erc721CollectionAbi from 'config/abi/erc721collection.json'
 import farmBoosterAbi from 'config/abi/FarmBooster.json'
-import farmBoosterProxyFactoryAbi from 'config/abi/farmBoosterProxyFactory.json'
+import farmBoosterProxyFactoryAbi from 'config/abi/FarmBoosterProxyFactory.json'
 import bWayaProxyAbi from 'config/abi/bWayaProxy.json'
 
 // Types
