@@ -9,11 +9,11 @@ export default {
     56: '0xfd5044541EFdCf6B6a83e6ecBF3f477C8cEC6433',
   },
   wayaVault: {
-    97: '0xeaBaC758BB98FCE585AdAfAC059e441F17204ccC',
+    97: '0xd5C79Cd66D2CF28fd0c0b3A41a1ba6D25880D70F',
     56: '0x0E6BF68f41794b7268343160C103B45D49aDc6CC',
   },
   wayaFlexibleVault: {
-    97: '0xB0D47E0d662C544E6E97fBc20454Bd42a2c3EFcf',
+    97: '0xA83F46C4700B368E15588d4778df4274075e2b55',
     56: '0x52Bf2bd122eF0dEc4a2733B1f6563491C96de313',
   },
   iWaya: {
@@ -21,11 +21,11 @@ export default {
     56: '',
   },
   FarmBooster: {
-    97: '0xCb6c9Ca2862aa3fA4ecCb757417B144278eC1A67',
+    97: '0xe8eC0b12Db305E8A5431aC5cFb3daad2f1162AF9',
     56: '',
   },
   FarmBoosterProxyFactory: {
-    97: '0x052f5327d9928d35b3b9B9E0Bc65795c03142b23',
+    97: '0xff440a6bE12d60c0f4e6827178eFAaF4044C4E69',
     56: '',
   },
 }
