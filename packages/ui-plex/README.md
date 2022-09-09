@@ -8,7 +8,7 @@ Plexswap UIkit is a set of React components and hooks used to build pages on Ple
 
 ## Install
 
-`yarn add @plexswwap/uikit`
+`yarn add @plexswwap/ui-plex`
 
 ## Setup
 
@@ -36,7 +36,3 @@ import { ResetCSS } from '@plexswap/ui-plex'
 ### Types
 
 This project is built with Typescript and export all the relevant types.
-
-## How to use the UIkit
-
-If you want to use components from the UIkit, check the [Storybook documentation](https://plexswap.github.io/plex-uikit/)

@@ -26,19 +26,19 @@ describe('limitOrders/utils/getRatePercentageMessage', () => {
   describe.each([
     [
       getRatePercentageDifference(SEVEN_BUSD_PER_WAYA, ELEVEN_BUSD_PER_WAYA),
-      ['57.14% above market', PercentageDirection.ABOVE],
+      ['57,14% above market', PercentageDirection.ABOVE],
     ],
     [
       getRatePercentageDifference(SEVEN_BUSD_PER_WAYA, FIVE_BUSD_PER_WAYA),
-      ['-28.57% below market', PercentageDirection.BELOW],
+      ['-28,57% below market', PercentageDirection.BELOW],
     ],
     [
       getRatePercentageDifference(SEVEN_BUSD_PER_WAYA, SEVEN_HUNDRED_BUSD_PER_WAYA),
-      ['9,900% above market', PercentageDirection.ABOVE],
+      ['9.900% above market', PercentageDirection.ABOVE],
     ],
     [
       getRatePercentageDifference(SEVEN_BUSD_PER_WAYA, ONE_BUSD_PER_WAYA),
-      ['-85.71% below market', PercentageDirection.BELOW],
+      ['-85,71% below market', PercentageDirection.BELOW],
     ],
     [
       getRatePercentageDifference(SEVEN_BUSD_PER_WAYA, SEVEN_BUSD_PER_WAYA),

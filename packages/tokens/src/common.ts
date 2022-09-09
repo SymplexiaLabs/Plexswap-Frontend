@@ -1,5 +1,6 @@
 import { ChainId, Token } from '@plexswap/sdk'
 
+
 export const WAYA_BSC = new Token(
   ChainId.BSC,
   '0x0581c0dae41F19Fb4602E7ba0A803B7AE50f02E8',

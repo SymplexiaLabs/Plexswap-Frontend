@@ -42,12 +42,6 @@ export const links: MenuItemsType[] = [
         label: "Liquidity",
         href: "/liquidity",
       },
-      {
-        label: "Charts",
-        href: "/charts",
-        iconName: "Chart",
-        isMobileOnly: true,
-      },
     ],
   },
   {
@@ -71,23 +65,6 @@ export const links: MenuItemsType[] = [
     ],
   },
   {
-    label: "Win",
-    href: "/",
-    icon: TrophyIcon,
-    fillIcon: TrophyFillIcon,
-    items: [
-      {
-        label: "Win",
-        href: "/",
-      },
-      {
-        label: "Predictions",
-        href: "/",
-        status: status.LIVE,
-      },
-    ],
-  },
-  {
     label: "",
     href: "/",
     icon: MoreIcon,
@@ -95,25 +72,6 @@ export const links: MenuItemsType[] = [
       {
         label: "Info & Analytics",
         href: "/",
-      },
-      {
-        label: "IFO Token Sales",
-        href: "/",
-        status: status.SOON,
-      },
-      {
-        type: DropdownMenuItemType.DIVIDER,
-      },
-      {
-        label: "NFT Collectibles",
-        href: "/",
-      },
-      {
-        label: "Team Leaderboard",
-        href: "/",
-      },
-      {
-        type: DropdownMenuItemType.DIVIDER,
       },
       {
         label: "Blog",
@@ -150,10 +108,6 @@ export const userMenulinks: DropdownMenuItems[] = [
     type: DropdownMenuItemType.BUTTON,
     disabled: true,
     label: "Portfolio",
-  },
-  {
-    label: "Profile",
-    href: "/profile",
   },
   {
     type: DropdownMenuItemType.EXTERNAL_LINK,

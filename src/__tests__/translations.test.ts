@@ -1,28 +1,25 @@
 import Path from 'path'
 import fs from 'fs'
-import translations from 'config/localization/translations.json'
+
+// FIXME: should move this test file inside localization pkg
+import translations from '../../packages/localization/src/config/translations.json'
 
 const allTranslationKeys = Object.keys(translations)
 
-// when some keys are hard to be extracted from code
 const whitelist = [
-  // NFT description moved to profile sdk
-  `Oopsie daisy! Hiccup's had a bit of an accident. Poor little fella.`,
-  'Eggscellent! Celebrating Gaya Storm winning the Easter Battle!',
-  'Melting Easter eggs and melting hearts!',
-  'Watch out for Flipsie’s spatula smash!',
-  'Do you like chocolate with your gaya? Go long!',
-  'Happy Niu Year! This bunny’s excited for the year of the bull (market!)',
-  'Sunny is always cheerful when there are plex around. Smile!',
-  `Don't let that dopey smile deceive you... Churro's a master WAYA chef!`,
   `Nommm... Oh hi, I'm just meditating on the meaning of WAYA.`,
-  `Three guesses what's put that twinkle in those eyes! (Hint: it's WAYA)`,
-  'These bunnies love nothing more than swapping plex. Especially on BSC.',
-  `It's raining gaya on this bunny, but he doesn't seem to mind. Can you blame him?`,
-  `These bunnies like their plex with blueberries. What's your favorite topping?`,
-  "Love makes the world go 'round... but so do plex. And these bunnies know it.",
-  `It’s sparkling gaya, plex! This bunny really loves it.`,
+  'Swap max. %inputAmount% %inputSymbol% for %outputAmount% %outputSymbol%',
+  'Swap max. %inputAmount% %inputSymbol% for %outputAmount% %outputSymbol% to %recipientAddress%',
+  'Swap %inputAmount% %inputSymbol% for min. %outputAmount% %outputSymbol%',
+  'Swap %inputAmount% %inputSymbol% for min. %outputAmount% %outputSymbol% to %recipientAddress%',
+  'Unwrap %amount% %wrap% to %native%',
+  'Wrap %amount% %native% to %wrap%',
+  'Approve %symbol%',
+  'Add %amountA% %symbolA% and %amountB% %symbolB%',
+  'Remove %amount% %symbol%',
+  'Remove %amountA% %symbolA% and %amountB% %symbolB%',
 ]
+
 
 describe('Check translations integrity', () => {
   it.each(allTranslationKeys)('Translation key value should be equal', (key) => {

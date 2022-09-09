@@ -49,7 +49,7 @@ describe('transformUserData', () => {
 })
 
 describe('transformPool', () => {
-  // Transform pool object with the sous id for a label. For display purposes only.
+  // Transform pool object with the pool id for a label. For display purposes only.
   const poolTable: [number, SerializedPoolConfig][] = poolsConfig.map((poolsConfigItem) => [
     poolsConfigItem.poolId,
     poolsConfigItem,
@@ -78,9 +78,7 @@ describe('transformPool', () => {
     expect(transformedPool).toHaveProperty('earningToken.symbol')
     expect(transformedPool).toHaveProperty('earningToken.projectLink')
     expect(transformedPool).toHaveProperty('poolCategory')
-    expect(transformedPool).toHaveProperty('harvest')
     expect(transformedPool).toHaveProperty('tokenPerBlock')
-    expect(transformedPool).toHaveProperty('sortOrder')
 
     expect(transformedPool).toHaveProperty('totalStaked')
     expect(transformedPool).toHaveProperty('stakingLimit')

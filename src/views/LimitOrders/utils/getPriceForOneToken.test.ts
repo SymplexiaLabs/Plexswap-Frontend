@@ -1,7 +1,7 @@
 import { JSBI, Token, CurrencyAmount } from '@plexswap/sdk'
 import getPriceForOneToken from './getPriceForOneToken'
 
-const WAYA = new Token(56, '00x0581c0dae41F19Fb4602E7ba0A803B7AE50f02E8', 18, 'WAYA', 'PlexSwap Token')
+const WAYA = new Token(56, '0x0581c0dae41F19Fb4602E7ba0A803B7AE50f02E8', 18, 'WAYA', 'PlexSwap Token')
 const BUSD = new Token(56, '0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56', 18, 'BUSD', 'Binance USD')
 const DOGE = new Token(56, '0xbA2aE424d960c26247Dd6c32edC70B295c744C43', 8, 'DOGE', 'Binance-Peg Dogecoin')
 

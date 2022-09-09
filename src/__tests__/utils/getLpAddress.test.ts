@@ -3,8 +3,8 @@ import getLpAddress from 'utils/getLpAddress'
 
 const WAYA_AS_STRING = '0x0581c0dae41F19Fb4602E7ba0A803B7AE50f02E8'
 const BUSD_AS_STRING = '0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56'
-const WAYA_AS_TOKEN = new Token(ChainId.MAINNET, WAYA_AS_STRING, 18)
-const BUSD_AS_TOKEN = new Token(ChainId.MAINNET, BUSD_AS_STRING, 18)
+const WAYA_AS_TOKEN = new Token(ChainId.BSC, WAYA_AS_STRING, 18)
+const BUSD_AS_TOKEN = new Token(ChainId.BSC, BUSD_AS_STRING, 18)
 const WAYA_BUSD_LP = '0x0867Ac91542eebc6Db1DD2516A5b0f4635EB0221'
 
 describe('getLpAddress', () => {

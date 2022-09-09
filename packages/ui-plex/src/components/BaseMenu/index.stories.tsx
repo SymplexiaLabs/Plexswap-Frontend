@@ -78,9 +78,6 @@ export const SubMenu: React.FC<React.PropsWithChildren> = () => {
           <SubMenuItem as={LinkExternal} href="https://docs.plexfinance.us" bold={false} color="text" target="blank">
             View on PCS Info
           </SubMenuItem>
-          <SubMenuItem as={Link} to="/profile">
-            Go to profile page
-          </SubMenuItem>
           <SubMenuItem>Just button</SubMenuItem>
         </SubMenuComp>
       </Flex>

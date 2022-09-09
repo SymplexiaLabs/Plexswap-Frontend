@@ -28,12 +28,8 @@ export const config = {
     '/pools',
     '/farms',
     '/add',
-    '/ifo',
     '/remove',
-    '/prediction',
     '/find',
     '/limit-orders',
-    '/lottery',
-    '/nfts',
   ],
 }
