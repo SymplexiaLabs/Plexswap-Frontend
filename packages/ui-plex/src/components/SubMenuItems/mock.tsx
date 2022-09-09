@@ -5,20 +5,16 @@ const SubMenuItemsMock = [
   },
   {
     label: "Farms",
-    href: "/",
+    href: "/farms",
   },
   {
-    label: "Crop Silos",
-    href: "/",
+    label: "Silos",
+    href: "/pools",
   },
   {
     label: "Swap",
     href: "/swap",
     iconName: "Swap",
-  },
-  {
-    label: "Trading Competition",
-    href: "/",
   },
 ];
 

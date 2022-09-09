@@ -20,14 +20,6 @@ const MenuItemsMock: MenuItemsType[] = [
     showItemsOnMobile: true,
   },
   {
-    label: "Gagnez des jetons",
-    href: "/win",
-    icon: TrophyIcon,
-    fillIcon: TrophyFillIcon,
-    items: ItemsMock,
-    showItemsOnMobile: true,
-  },
-  {
     label: "More",
     href: "/more",
     icon: MoreIcon,

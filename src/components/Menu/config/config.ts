@@ -55,8 +55,6 @@ const config: (t: ContextApi['t'], isDark: boolean, languageCode?: string, chain
             label: t('Liquidity'),
             href: '/liquidity',
           },
-
-
         ].map((item) => addMenuItemSupported(item, chainId)),
       },
       {
@@ -64,7 +62,6 @@ const config: (t: ContextApi['t'], isDark: boolean, languageCode?: string, chain
         href: '/farms',
         icon: EarnIcon,
         fillIcon: EarnFillIcon,
-
         items: [
           {
             label: t('Farms'),
@@ -77,14 +74,12 @@ const config: (t: ContextApi['t'], isDark: boolean, languageCode?: string, chain
           },
         ].map((item) => addMenuItemSupported(item, chainId)),
       },
-
-
-  {
-    label: 'Info',
-    href: '',
-    icon: MoreIcon,
-    hideSubNav: true,
-    items: [
+      {
+        label: 'Info',
+        href: '',
+        icon: MoreIcon,
+        hideSubNav: true,
+        items: [
       {
         label: t('Documentation'),
         href: 'https://docs.plexfinance.us',

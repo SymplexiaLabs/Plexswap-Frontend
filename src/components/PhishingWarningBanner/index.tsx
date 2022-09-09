@@ -80,11 +80,11 @@ const PhishingWarningBanner: React.FC<React.PropsWithChildren> = () => {
         <>
           <InnerContainer>
             <img
-              src="/images/home/warnings/pishing-warning.webp"
+              src="/images/home/warnings/phishing-warning.webp"
               alt="phishing-warning"
               width="92px"
               onError={(e) => {
-                const fallbackSrc = '/images/home/warnings/pishing-warning.png'
+                const fallbackSrc = '/images/home/warnings/phishing-warning.png'
                 if (!e.currentTarget.src.endsWith(fallbackSrc)) {
                   // eslint-disable-next-line no-param-reassign
                   e.currentTarget.src = fallbackSrc

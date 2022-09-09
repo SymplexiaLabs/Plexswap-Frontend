@@ -35,8 +35,12 @@ export const links: MenuItemsType[] = [
     fillIcon: SwapFillIcon,
     items: [
       {
-        label: "Exchange",
+        label: "Swap",
         href: "/swap",
+      },
+      {
+        label: 'Limit',
+        href: '/limit-orders',
       },
       {
         label: "Liquidity",
@@ -46,40 +50,40 @@ export const links: MenuItemsType[] = [
   },
   {
     label: "Earn",
-    href: "/earn",
+    href: "/farms",
     icon: EarnIcon,
     fillIcon: EarnFillIcon,
     items: [
       {
-        label: "Earn",
-        href: "/earn",
-      },
-      {
-        label: "Yield Farms",
+        label: "Farms",
         href: "/farms",
       },
       {
-        label: "Crop Silos",
-        href: "/Silos",
+        label: "Silos",
+        href: "/pools",
       },
     ],
   },
   {
-    label: "",
-    href: "/",
+    label: "Info",
+    href: "",
     icon: MoreIcon,
     items: [
       {
-        label: "Info & Analytics",
-        href: "/",
+        label: 'Documentation',
+        href: '/',
+        type: DropdownMenuItemType.EXTERNAL_LINK,
       },
       {
-        label: "Blog",
-        href: "/",
+        label: 'Making Proposals',
+        href: '/',
       },
       {
-        label: "Docs & Guides",
-        href: "/",
+        type: DropdownMenuItemType.DIVIDER,
+      },
+      {
+        label: 'Crypto News',
+        href: '/',
         type: DropdownMenuItemType.EXTERNAL_LINK,
       },
     ],
