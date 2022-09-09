@@ -16,7 +16,7 @@
       "address": "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
       "chainId": 56,
       "decimals": 18,
-      "logoURI": "https://swap.plexfinance.us/images/tokens/label/WBNB.png"
+      "logoURI": "https://swap.plexfinance.us/images/tokens/label/wbnb.png"
     },
     {
       "name": "BUSD Token",
@@ -24,7 +24,7 @@
       "address": "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56",
       "chainId": 56,
       "decimals": 18,
-      "logoURI": "https://swap.plexfinance.us/images/tokens/label/BUSD.png"
+      "logoURI": "https://swap.plexfinance.us/images/tokens/label/busd.png"
     },
     {
       "name": "Ethereum Token",
@@ -32,7 +32,7 @@
       "address": "0x2170Ed0880ac9A755fd29B2688956BD959F933F8",
       "chainId": 56,
       "decimals": 18,
-      "logoURI": "https://swap.plexfinance.us/images/tokens/label/ETH.png"
+      "logoURI": "https://swap.plexfinance.us/images/tokens/label/eth.png"
     },
     {
       "name": "BTCB Token",
@@ -40,7 +40,7 @@
       "address": "0x7130d2A12B9BCbFAe4f2634d864A1Ee1Ce3Ead9c",
       "chainId": 56,
       "decimals": 18,
-      "logoURI": "https://swap.plexfinance.us/images/tokens/label/BTCB.png"
+      "logoURI": "https://swap.plexfinance.us/images/tokens/label/btcb.png"
     },
     {
       "name": "Tether USD",
@@ -48,7 +48,7 @@
       "address": "0x55d398326f99059fF775485246999027B3197955",
       "chainId": 56,
       "decimals": 18,
-      "logoURI": "https://swap.plexfinance.us/images/tokens/label/USDT.png"
+      "logoURI": "https://swap.plexfinance.us/images/tokens/label/usdt.png"
     },
     {
       "name": "PlexSwap Token",
@@ -56,7 +56,7 @@
       "address": "0x0581c0dae41F19Fb4602E7ba0A803B7AE50f02E8",
       "chainId": 56,
       "decimals": 18,
-      "logoURI": "https://swap.plexfinance.us/images/tokens/label/WAYA.png"
+      "logoURI": "https://swap.plexfinance.us/images/tokens/label/waya.png"
     },
     {
       "name": "Symplexia Token",
@@ -64,7 +64,7 @@
       "address": "0xBB472510B1896C6992D658a7Ab69F7dF32a37b3c",
       "chainId": 56,
       "decimals": 9,
-      "logoURI": "https://swap.plexfinance.us/images/tokens/label/PLEX.png"
+      "logoURI": "https://swap.plexfinance.us/images/tokens/label/plex.png"
     },
     {
       "name": "PlexSwap Token",
@@ -72,7 +72,7 @@
       "address": "0xA2af2640A694f91632e60befc7Fc30C1b787D505",
       "chainId": 97,
       "decimals": 18,
-      "logoURI": "https://swap.plexfinance.us/images/tokens/label/WAYA.png"
+      "logoURI": "https://swap.plexfinance.us/images/tokens/label/waya.png"
     },
     {
       "name": "BUSD Token",
@@ -80,7 +80,7 @@
       "address": "0x8516Fc284AEEaa0374E66037BD2309349FF728eA",
       "chainId": 97,
       "decimals": 18,
-      "logoURI": "https://swap.plexfinance.us/images/tokens/label/BUSD.png"
+      "logoURI": "https://swap.plexfinance.us/images/tokens/label/busd.png"
     },
     {
       "name": "WBNB Token",
@@ -88,7 +88,7 @@
       "address": "0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd",
       "chainId": 97,
       "decimals": 18,
-      "logoURI": "https://swap.plexfinance.us/images/tokens/label/WBNB.png"
+      "logoURI": "https://swap.plexfinance.us/images/tokens/label/wbnb.png"
     },
     {
       "name": "Symplexia Token",
@@ -96,7 +96,7 @@
       "address": "0xb7a3DFd16663dbA80c8f93338d1c59bA21680921",
       "chainId": 97,
       "decimals": 9,
-      "logoURI": "https://swap.plexfinance.us/images/tokens/label/PLEX.png"
+      "logoURI": "https://swap.plexfinance.us/images/tokens/label/plex.png"
     }
   ]
 }
