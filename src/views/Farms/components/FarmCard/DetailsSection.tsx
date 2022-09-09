@@ -29,7 +29,6 @@ const DetailsSection: React.FC<React.PropsWithChildren<ExpandableSectionProps>> 
 }) => {
   const {
     t,
-    currentLanguage: { locale },
   } = useTranslation()
 
   return (

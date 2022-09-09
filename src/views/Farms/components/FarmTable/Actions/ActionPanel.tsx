@@ -124,7 +124,6 @@ const ActionPanel: React.FunctionComponent<React.PropsWithChildren<ActionPanelPr
 
   const {
     t,
-    currentLanguage: { locale },
   } = useTranslation()
   const isActive = farm.multiplier !== '0X'
   const { quoteToken, token } = farm
