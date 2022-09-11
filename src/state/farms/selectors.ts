@@ -4,7 +4,7 @@ import { getBalanceAmount } from 'utils/formatBalance'
 import { deserializeToken } from '@plexswap/tokens'
 import { createSelector } from '@reduxjs/toolkit'
 import _isEmpty from 'lodash/isEmpty'
-import { mainFarmPID } from 'config/constants/farms/index'
+import { mainFarmPID } from '@plexswap/farms/config'
 import { State, SerializedFarm, DeserializedFarm, DeserializedFarmUserData } from '../types'
 
 

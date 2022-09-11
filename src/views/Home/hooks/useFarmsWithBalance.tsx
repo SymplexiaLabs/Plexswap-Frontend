@@ -8,7 +8,7 @@ import { SerializedFarmConfig } from 'config/constants/types'
 import { DEFAULT_TOKEN_DECIMAL } from 'config'
 import useSWR from 'swr'
 import { useFarmsLength } from 'state/farms/hooks'
-import { getFarmConfig } from 'config/constants/farms/index'
+import { getFarmConfig } from '@plexswap/farms/config'
 
 export interface FarmWithBalance extends SerializedFarmConfig {
   balance: BigNumber

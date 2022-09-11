@@ -3,7 +3,6 @@ import { Text } from '@plexswap/ui-plex'
 import styled from 'styled-components'
 import useNativeCurrency from 'hooks/useNativeCurrency'
 import { useTranslation } from '@plexswap/localization'
-
 import { SUGGESTED_BASES } from 'config/constants/exchange'
 import { AutoColumn } from '../Layout/Column'
 import QuestionHelper from '../QuestionHelper'

@@ -10,7 +10,7 @@ import { BIG_ZERO } from 'utils/bigNumber'
 import { useBWayaProxyContractAddress } from 'views/Farms/hooks/useBWayaProxyContractAddress'
 import { getChiefFarmerContract } from 'utils/contractHelpers'
 import { useFastRefreshEffect } from 'hooks/useRefreshEffect'
-import { getFarmConfig, coreFarmPIDs } from 'config/constants/farms'
+import { getFarmConfig, coreFarmPIDs } from '@plexswap/farms/config'
 import { fetchFarmsPublicDataAsync, fetchFarmUserDataAsync, fetchInitialFarmsData } from '.'
 import { DeserializedFarm, DeserializedFarmsState, DeserializedFarmUserData, State } from '../types'
 import {

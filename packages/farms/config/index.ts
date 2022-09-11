@@ -1,5 +1,5 @@
 import { ChainId } from '@plexswap/sdk'
-import { SerializedFarmConfig } from '../types'
+import { SerializedFarmConfig } from '@plexswap/farms'
 
 let logged = false
 

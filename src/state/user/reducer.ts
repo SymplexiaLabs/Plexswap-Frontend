@@ -28,10 +28,7 @@ import {
   updateUserPredictionChainlinkChartDisclaimerShow,
   updateUserUsernameVisibility,
   updateUserExpertModeAcknowledgementShow,
-  setIsExchangeChartDisplayed,
-  setChartViewMode,
   ChartViewMode,
-  setSubgraphHealthIndicatorDisplayed,
   updateUserLimitOrderAcceptedWarning,
 } from './actions'
 import { GAS_PRICE_GWEI } from '../types'

@@ -1,6 +1,5 @@
 // import { ethereumTokens, serializeTokens } from '@plexswap/tokens'
-import { SerializedFarmConfig } from '../types'
-
+import { SerializedFarmConfig } from '@plexswap/farms'
 // const serializedTokens = serializeTokens(ethereumTokens)
 
 const farms: SerializedFarmConfig[] = []

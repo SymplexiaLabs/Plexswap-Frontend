@@ -2,8 +2,7 @@ import styled from 'styled-components'
 import { ModalBody, ModalContainer, Message, ModalHeader, Box, Heading } from '@plexswap/ui-plex'
 import useTheme from 'hooks/useTheme'
 import { useTranslation } from '@plexswap/localization'
-import { WrappedTokenInfo } from '@plexswap/tokens'
-import SwapWarningTokensConfig from 'config/constants/swapWarningTokens'
+import { WrappedTokenInfo, SwapWarningTokens } from '@plexswap/tokens'
 import SafemoonWarning from './SafemoonWarning'
 import Acknowledgement from './Acknowledgement'
 
@@ -26,8 +25,8 @@ const SwapWarningModal: React.FC<React.PropsWithChildren<SwapWarningModalProps>>
   const { theme } = useTheme()
 
   const TOKEN_WARNINGS = {
-    [SwapWarningTokensConfig.safemoon.address]: {
-      symbol: SwapWarningTokensConfig.safemoon.symbol,
+    [SwapWarningTokens.safemoon.address]: {
+      symbol: SwapWarningTokens.safemoon.symbol,
       component: <SafemoonWarning />,
     },
   }

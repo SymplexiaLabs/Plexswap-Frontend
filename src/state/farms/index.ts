@@ -5,7 +5,7 @@ import type {
   UnknownAsyncThunkPendingAction,
   UnknownAsyncThunkRejectedAction,
 } from '@reduxjs/toolkit/dist/matchers'
-import { getFarmConfig } from 'config/constants/farms/index'
+import { getFarmConfig } from '@plexswap/farms/config'
 import { getFarmsPriceHelperLpFiles } from 'config/constants/priceHelperLps'
 import stringify from 'fast-json-stable-stringify'
 import fromPairs from 'lodash/fromPairs'

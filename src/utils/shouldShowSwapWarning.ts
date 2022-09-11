@@ -1,5 +1,5 @@
 import { Token } from '@plexswap/sdk'
-import SwapWarningTokens from 'config/constants/swapWarningTokens'
+import { SwapWarningTokens } from '@plexswap/tokens'
 
 const swapWarningTokens = Object.values(SwapWarningTokens)
 

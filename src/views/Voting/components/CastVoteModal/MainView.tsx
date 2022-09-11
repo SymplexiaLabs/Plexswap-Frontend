@@ -103,7 +103,7 @@ const MainView: React.FC<React.PropsWithChildren<MainViewProps>> = ({
               <Message variant="danger" mb="12px">
                 <Text color="danger">
                   {t(
-                    'Hold some WAYA in your wallet or on PlexSwap at the snapshot block to get voting power for future proposals.',
+                    'Hold some WAYA in your wallet or on Plexswap at the snapshot block to get voting power for future proposals.',
                   )}
                 </Text>
               </Message>
