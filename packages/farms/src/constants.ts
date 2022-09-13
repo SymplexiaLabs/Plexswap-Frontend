@@ -4,6 +4,7 @@ import { ChainId } from '@plexswap/sdk'
 export const supportedChainId = [5, 56, 97]
 
 export const chiefFarmerAddresses = {
+  5:'0xb43D221047F5ec018b0204451Ec93b701ABdc260',
   97: '0xCa9F812Ba614E97b6D8EDC36eE0C1b2DbA35f062',
   56: '0x4Ba4EFa9C4E44b94ea232Fd5F5f7F4A4961904e5',
 }

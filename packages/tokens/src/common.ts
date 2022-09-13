@@ -19,6 +19,24 @@ export const WAYA_TESTNET = new Token(
   'https://swap.plexfinance.us/',
 )
 
+export const WAYA_RINKEBY = new Token(
+  ChainId.BSC_TESTNET,
+  '0xE8cd8E3CfCd1b1c04669deA94C3d007706B563A5',
+  18,
+  'WAYA',
+  'PlexSwap Token',
+  'https://swap.plexfinance.us/',
+)
+
+export const WAYA_GOERLI = new Token(
+  ChainId.BSC_TESTNET,
+  '0x2b82d6d89F5786C6A0fFab86b5F7F0532d5F19e4',
+  18,
+  'WAYA',
+  'PlexSwap Token',
+  'https://swap.plexfinance.us/',
+)
+
 export const PLEX_BSC = new Token(
   ChainId.BSC,
   '0xBB472510B1896C6992D658a7Ab69F7dF32a37b3c',
@@ -31,6 +49,24 @@ export const PLEX_BSC = new Token(
 export const PLEX_TESTNET = new Token(
   ChainId.BSC_TESTNET,
   '0xb7a3DFd16663dbA80c8f93338d1c59bA21680921',
+  9,
+  'PLEX-F',
+  'Symplexia Finance',
+  'https://finance.symplexia.com/',
+)
+
+export const PLEX_RINKEBY = new Token(
+  ChainId.BSC_TESTNET,
+  '0x28c8143A0A270b4A1Bd776DDcC4a987870Dda7e6',
+  9,
+  'PLEX-F',
+  'Symplexia Finance',
+  'https://finance.symplexia.com/',
+)
+
+export const PLEX_GOERLI = new Token(
+  ChainId.BSC_TESTNET,
+  '0xE95AF82Bc998D2f05aD76a2F1B404756DCfc0b8a',
   9,
   'PLEX-F',
   'Symplexia Finance',
@@ -153,6 +189,8 @@ export const BUSD: Record<ChainId, Token> = {
 export const WAYA = {
   [ChainId.BSC]: WAYA_BSC,
   [ChainId.BSC_TESTNET]: WAYA_TESTNET,
+  [ChainId.RINKEBY]: WAYA_RINKEBY,
+  [ChainId.GOERLI]: WAYA_GOERLI,
 }
 
 export const USDC = {

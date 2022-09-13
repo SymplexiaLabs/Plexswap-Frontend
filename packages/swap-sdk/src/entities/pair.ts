@@ -6,15 +6,19 @@ import { Price } from './fractions/price'
 
 import {
   BigintIsh,
-  FACTORY_ADDRESS_MAP,
   FIVE,
-  INIT_CODE_HASH_MAP,
   MINIMUM_LIQUIDITY,
   ONE,
   ZERO,
   _10000,
   _9975,
 } from '../constants'
+
+import {
+ FACTORY_ADDRESS_MAP,
+ INIT_CODE_HASH_MAP,
+} from '../factoryAddresses'
+
 import { InsufficientInputAmountError, InsufficientReservesError } from '../errors'
 import { sqrt } from '../utils'
 import { CurrencyAmount } from './fractions'

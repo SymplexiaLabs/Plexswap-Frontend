@@ -1,4 +1,4 @@
-import { FACTORY_ADDRESS } from '@plexswap/sdk'
+import { FACTORY_ADDRESS_BSC } from '@plexswap/sdk'
 import { getUnixTime, sub } from 'date-fns'
 import { gql } from 'graphql-request'
 import { GetStaticProps } from 'next'
@@ -58,13 +58,13 @@ export const getStaticProps: GetStaticProps = async () => {
       }
 
       const totalTx = await infoServerClient.request(totalTxQuery, {
-        id: FACTORY_ADDRESS,
+        id: FACTORY_ADDRESS_BSC,
       })
       const totalTx30DaysAgo = await infoServerClient.request(totalTxQuery, {
         block: {
           number: days30AgoBlock.number,
         },
-        id: FACTORY_ADDRESS,
+        id: FACTORY_ADDRESS_BSC,
       })
 
       if (
