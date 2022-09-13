@@ -1,7 +1,8 @@
+import { MultiCallV2 } from '@plexswap/multicall'
 import { ChainId } from '@plexswap/sdk'
 import chunk from 'lodash/chunk'
-import { getChiefFarmerAddress } from 'utils/addressHelpers'
 import { SerializedFarmPublicData, SerializedFarmConfig } from './types'
+import { nonBSCVaultAddresses } from './constants'
 
 const abi = [
   {
@@ -39,7 +40,7 @@ const abi = [
   },
 ]
 
-const fetchFarmCalls = (farm: SerializedFarmPublicData, chainId: number) => {
+const fetchFarmCalls = (farm: SerializedFarmPublicData, chiefFarmerAddress: string, vaultAddress?: string) => {
   const { lpAddress, token, quoteToken } = farm
   return [
     // Balance of token in the LP contract
@@ -58,7 +59,7 @@ const fetchFarmCalls = (farm: SerializedFarmPublicData, chainId: number) => {
     {
       address: lpAddress,
       name: 'balanceOf',
-      params: [getChiefFarmerAddress(chainId)],
+      params: [vaultAddress || chiefFarmerAddress],
     },
     // Total supply of LP tokens
     {
@@ -71,10 +72,11 @@ const fetchFarmCalls = (farm: SerializedFarmPublicData, chainId: number) => {
 export const fetchPublicFarmsData = async (
   farms: SerializedFarmConfig[],
   chainId = ChainId.BSC,
-  multicall,
+  multicall: MultiCallV2,
+  chiefFarmerAddress: string,
 ): Promise<any[]> => {
   try {
-    const farmCalls = farms.flatMap((farm) => fetchFarmCalls(farm, chainId))
+    const farmCalls = farms.flatMap((farm) => fetchFarmCalls(farm, chiefFarmerAddress, nonBSCVaultAddresses[chainId]))
     const chunkSize = farmCalls.length / farms.length
     const farmMultiCallResult = await multicall({ abi, calls: farmCalls, chainId })
     return chunk(farmMultiCallResult, chunkSize)

@@ -8,7 +8,7 @@ import BigNumber from 'bignumber.js'
 import uniq from 'lodash/uniq'
 import fromPairs from 'lodash/fromPairs'
 
-// Pool 0, Waya / Waya is a different kind of contract (master chef)
+// Pool 0, Waya / Waya is a different kind of contract (Chief Farmer)
 // BNB pools use the native BNB token (wrapping ? unwrapping is done at the contract level)
 const nonBnbPools = poolsConfig.filter((pool) => pool.stakingToken.symbol !== 'BNB')
 const bnbPools = poolsConfig.filter((pool) => pool.stakingToken.symbol === 'BNB')

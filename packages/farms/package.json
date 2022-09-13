@@ -4,5 +4,11 @@
   "main": "./src/index.ts",
   "peerDependencies": {
     "@plexswap/sdk": "^3.0.0"
-  }
+  },
+  "description": "Plexswap Farms packages",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Symplexia Labs",
+  "license": "MIT"
 }

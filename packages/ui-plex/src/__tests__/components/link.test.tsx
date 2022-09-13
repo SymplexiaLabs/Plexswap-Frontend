@@ -3,7 +3,7 @@ import { renderWithProvider } from "../../testHelpers";
 import { Link, LinkExternal } from "../../components/Link";
 
 it("renders link correctly", () => {
-  const { asFragment } = renderWithProvider(<Link href="https://pancakeswap.finance">Link</Link>);
+  const { asFragment } = renderWithProvider(<Link href="https://swap.plexfinance.us">Link</Link>);
   expect(asFragment()).toMatchInlineSnapshot(`
     <DocumentFragment>
       .c0 {

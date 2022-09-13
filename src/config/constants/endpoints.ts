@@ -4,3 +4,5 @@ export const SNAPSHOT_HUB_API = `${SNAPSHOT_BASE_URL}/api/message`
 
 export const INFO_CLIENT = 'https://api.thegraph.com/subgraphs/name/symplexialabs/plexswap'
 export const BLOCKS_CLIENT = 'https://api.thegraph.com/subgraphs/name/symplexialabs/plexblocks'
+
+export const FARM_API = 'farms.plexswap.workers.dev'

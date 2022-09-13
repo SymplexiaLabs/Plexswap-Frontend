@@ -1,21 +1,27 @@
-import { formatEther } from '@ethersproject/units'
+import { getFarmConfig } from '@plexswap/farms/config'
+import { createFarmFetcher } from '@plexswap/farms'
+import { ChainId } from '@plexswap/sdk'
 import { createAsyncThunk, createSlice, isAnyOf } from '@reduxjs/toolkit'
 import type {
   UnknownAsyncThunkFulfilledAction,
   UnknownAsyncThunkPendingAction,
   UnknownAsyncThunkRejectedAction,
 } from '@reduxjs/toolkit/dist/matchers'
-import { getFarmConfig } from '@plexswap/farms/config'
+import BigNumber from 'bignumber.js'
+import chieffarmerABI from 'config/abi/ChiefFarmer.json'
+import { FARM_API } from 'config/constants/endpoints'
 import { getFarmsPriceHelperLpFiles } from 'config/constants/priceHelperLps'
 import stringify from 'fast-json-stable-stringify'
 import fromPairs from 'lodash/fromPairs'
 import type { AppState } from 'state'
+import { getChiefFarmerAddress } from 'utils/addressHelpers'
+import { getBalanceAmount } from 'utils/formatBalance'
+import multicall, { multicallv2 } from 'utils/multicall'
 import { chains } from 'utils/wagmi'
-import { createFarmFetcher } from '@plexswap/farms'
 import splitProxyFarms from 'views/Farms/components/YieldBooster/helpers/splitProxyFarms'
-import { multicallv2 } from 'utils/multicall'
 import { resetUserState } from '../global/actions'
 import { SerializedFarm, SerializedFarmsState } from '../types'
+import fetchFarms from './fetchFarms'
 import {
   fetchFarmUserAllowances,
   fetchFarmUserEarnings,
@@ -25,7 +31,51 @@ import {
 import { fetchChiefFarmerFarmPoolLength } from './fetchChiefFarmerData'
 import getFarmsPrices from './getFarmsPrices'
 
+/**
+ * @deprecated
+ */
+const fetchFetchPublicDataOld = async ({ pids, chainId }): Promise<[SerializedFarm[], number, number]> => {
+  const [poolLength, [wayaPerBlockRaw]] = await Promise.all([
+    fetchChiefFarmerFarmPoolLength(chainId),
+    multicall(chieffarmerABI, [
+      {
+        // BSC only
+        address: getChiefFarmerAddress(ChainId.BSC),
+        name: 'wayaPerBlock',
+        params: [true],
+      },
+    ]),
+  ])
+
+  const poolLengthAsBigNumber = new BigNumber(poolLength)
+  const regularWayaPerBlock = getBalanceAmount(new BigNumber(wayaPerBlockRaw))
+  const farmsConfig = await getFarmConfig(chainId)
+  const farmsCanFetch = farmsConfig.filter(
+    (farmConfig) => pids.includes(farmConfig.pid) && poolLengthAsBigNumber.gt(farmConfig.pid),
+  )
+  const priceHelperLpsConfig = getFarmsPriceHelperLpFiles(chainId)
+
+  const farms = await fetchFarms(farmsCanFetch.concat(priceHelperLpsConfig), chainId)
+  const farmsWithPrices = farms.length > 0 ? getFarmsPrices(farms, chainId) : []
+  return [farmsWithPrices, poolLengthAsBigNumber.toNumber(), regularWayaPerBlock.toNumber()]
+}
+
+const fetchFarmPublicDataPkg = async ({ pids, chainId, chain }): Promise<[SerializedFarm[], number, number]> => {
+  const farmsConfig = await getFarmConfig(chainId)
+  const farmsCanFetch = farmsConfig.filter((farmConfig) => pids.includes(farmConfig.pid))
+  const priceHelperLpsConfig = getFarmsPriceHelperLpFiles(chainId)
+
+  const { farmsWithPrice, poolLength, regularWayaPerBlock } = await farmFetcher.fetchFarms({
+    chainId,
+    isTestnet: chain.testnet,
+    farms: farmsCanFetch.concat(priceHelperLpsConfig),
+  })
+  return [farmsWithPrice, poolLength, regularWayaPerBlock]
+}
+
 const farmFetcher = createFarmFetcher(multicallv2)
+
+const farmApiFetch = (chainId: number) => fetch(`${FARM_API}/${chainId}`).then((res) => res.json())
 
 const initialState: SerializedFarmsState = {
   data: [],
@@ -51,38 +101,37 @@ export const fetchInitialFarmsData = createAsyncThunk<SerializedFarm[], { chainI
   },
 )
 
+let fallback = false
+
 export const fetchFarmsPublicDataAsync = createAsyncThunk<
   [SerializedFarm[], number, number],
-  { pids: number[]; chainId: number },
+  { pids: number[]; chainId: number; flag: string },
   {
     state: AppState
   }
 >(
   'farms/fetchFarmsPublicDataAsync',
-  async ({ pids, chainId }) => {
+  async ({ pids, chainId, flag = 'pkg' }) => {
     const chain = chains.find((c) => c.id === chainId)
     if (!chain || !farmFetcher.isChainSupported(chain.id)) throw new Error('chain not supported')
     try {
-      const { poolLength, totalRegularAllocPoint, totalSpecialAllocPoint, wayaPerBlock } =
-        await farmFetcher.fetchChiefFarmerV2Data(chain.testnet)
-
-      const regularWayaPerBlock = formatEther(wayaPerBlock)
-      const farmsConfig = await getFarmConfig(chainId)
-      const farmsCanFetch = farmsConfig.filter(
-        (farmConfig) => pids.includes(farmConfig.pid) && poolLength.gt(farmConfig.pid),
-      )
-      const priceHelperLpsConfig = getFarmsPriceHelperLpFiles(chainId)
-
-      const farms = await farmFetcher.fetchFarms({
-        farms: farmsCanFetch.concat(priceHelperLpsConfig),
-        isTestnet: chain.testnet,
-        chainId,
-        totalRegularAllocPoint,
-        totalSpecialAllocPoint,
-      })
-      const farmsWithPrices = farms.length > 0 ? getFarmsPrices(farms, chainId) : []
-
-      return [farmsWithPrices, poolLength.toNumber(), +regularWayaPerBlock]
+      if (flag === 'old') {
+        return fetchFetchPublicDataOld({ pids, chainId })
+      }
+      if (flag === 'api' && !fallback) {
+        try {
+          const { updatedAt, data, poolLength, regularWayaPerBlock } = await farmApiFetch(chainId)
+          if (Date.now() - new Date(updatedAt).getTime() > 3 * 60 * 1000) {
+            fallback = true
+            throw new Error('Farm Api out dated')
+          }
+          return [data, poolLength, regularWayaPerBlock]
+        } catch (error) {
+          console.error(error)
+          return fetchFarmPublicDataPkg({ pids, chainId, chain })
+        }
+      }
+      return fetchFarmPublicDataPkg({ pids, chainId, chain })
     } catch (error) {
       console.error(error)
       throw error

@@ -10,6 +10,7 @@ import { BIG_ZERO } from 'utils/bigNumber'
 import { useBWayaProxyContractAddress } from 'views/Farms/hooks/useBWayaProxyContractAddress'
 import { getChiefFarmerContract } from 'utils/contractHelpers'
 import { useFastRefreshEffect } from 'hooks/useRefreshEffect'
+import { featureFarmApiAtom, useFeatureFlag } from 'hooks/useFeatureFlag'
 import { getFarmConfig, coreFarmPIDs } from '@plexswap/farms/config'
 import { fetchFarmsPublicDataAsync, fetchFarmUserDataAsync, fetchInitialFarmsData } from '.'
 import { DeserializedFarm, DeserializedFarmsState, DeserializedFarmUserData, State } from '../types'
@@ -34,16 +35,17 @@ export const usePollFarmsWithUserData = () => {
   const dispatch = useAppDispatch()
   const { account, chainId } = useActiveWeb3React()
   const { proxyAddress } = useBWayaProxyContractAddress(account)
+ const farmFlag = useFeatureFlag(featureFarmApiAtom)
 
   useSWRImmutable(
     chainId ? ['publicFarmData', chainId] : null,
     async () => {
       const farmsConfig = await getFarmConfig(chainId)
       const pids = farmsConfig.map((farmToFetch) => farmToFetch.pid)
-      dispatch(fetchFarmsPublicDataAsync({ pids, chainId }))
+      dispatch(fetchFarmsPublicDataAsync({ pids, chainId, flag: farmFlag }))
     },
     {
-      refreshInterval: SLOW_INTERVAL,
+      refreshInterval: farmFlag === 'api' ? 50 * 1000 : SLOW_INTERVAL,
     },
   )
 
@@ -69,6 +71,7 @@ export const usePollFarmsWithUserData = () => {
 export const usePollCoreFarmData = () => {
   const dispatch = useAppDispatch()
   const { chainId } = useActiveWeb3React()
+  const farmFlag = useFeatureFlag(featureFarmApiAtom)
 
   useEffect(() => {
     if (chainId) {
@@ -77,10 +80,10 @@ export const usePollCoreFarmData = () => {
   }, [chainId, dispatch])
 
   useFastRefreshEffect(() => {
-    if (chainId) {
-      dispatch(fetchFarmsPublicDataAsync({ pids: coreFarmPIDs[chainId], chainId }))
+    if (chainId && farmFlag !== 'api') {
+      dispatch(fetchFarmsPublicDataAsync({ pids: coreFarmPIDs[chainId], chainId, flag: farmFlag }))
     }
-  }, [dispatch, chainId])
+  }, [dispatch, chainId, farmFlag])
 }
 
 export const useFarms = (): DeserializedFarmsState => {

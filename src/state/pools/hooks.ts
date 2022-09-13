@@ -4,6 +4,7 @@ import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { batch, useSelector } from 'react-redux'
 import { useAppDispatch } from 'state'
 import { useFastRefreshEffect, useSlowRefreshEffect } from 'hooks/useRefreshEffect'
+import { featureFarmApiAtom, useFeatureFlag } from 'hooks/useFeatureFlag'
 import { getFarmConfig } from '@plexswap/farms/config'
 import { livePools } from 'config/constants/pools'
 
@@ -47,12 +48,13 @@ const getActiveFarms = async (chainId: number) => {
 export const useFetchPublicPoolsData = () => {
   const dispatch = useAppDispatch()
   const { chainId } = useActiveWeb3React()
+  const farmFlag = useFeatureFlag(featureFarmApiAtom)
 
   useSlowRefreshEffect(
     (currentBlock) => {
       const fetchPoolsDataWithFarms = async () => {
         const activeFarms = await getActiveFarms(chainId)
-        await dispatch(fetchFarmsPublicDataAsync({ pids: activeFarms, chainId }))
+        await dispatch(fetchFarmsPublicDataAsync({ pids: activeFarms, chainId, flag: farmFlag }))
 
         batch(() => {
           dispatch(fetchPoolsPublicDataAsync(currentBlock, chainId))
@@ -62,7 +64,7 @@ export const useFetchPublicPoolsData = () => {
 
       fetchPoolsDataWithFarms()
     },
-    [dispatch, chainId],
+    [dispatch, chainId, farmFlag],
   )
 }
 

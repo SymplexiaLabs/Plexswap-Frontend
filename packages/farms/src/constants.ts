@@ -1,7 +1,7 @@
 import { FixedNumber, BigNumber } from '@ethersproject/bignumber'
 import { ChainId } from '@plexswap/sdk'
 
-export const supportedChainId = [5, 56, 97]
+export const supportedChainId = [ChainId.GOERLI, ChainId.BSC, ChainId.BSC_TESTNET]
 
 export const chiefFarmerAddresses = {
   5:'0xb43D221047F5ec018b0204451Ec93b701ABdc260',
