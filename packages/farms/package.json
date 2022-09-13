@@ -2,12 +2,13 @@
   "name": "@plexswap/farms",
   "version": "1.0.3",
   "main": "./src/index.ts",
+  "sideEffects": false,  
   "peerDependencies": {
     "@plexswap/sdk": "^3.0.0"
   },
   "description": "Plexswap Farms packages",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npx tsx scripts/build.ts"
   },
   "author": "Symplexia Labs",
   "license": "MIT"

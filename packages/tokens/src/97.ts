@@ -11,6 +11,13 @@ export const bscTestnetTokens = {
     'BNB',
     'https://www.binance.com/',
   ),
+  wbtc: new Token(
+    ChainId.BSC_TESTNET, 
+    '0xfC8bFbe9644e1BC836b8821660593e7de711e564', 
+    8, 
+    'WBTC', 
+    'Wrapped BTC'
+  ),
   wbnb: WBNB[ChainId.BSC_TESTNET],
   waya: WAYA_TESTNET,
   busd: BUSD_TESTNET,
