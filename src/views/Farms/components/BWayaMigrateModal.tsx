@@ -9,6 +9,7 @@ import {
   Modal,
   Text,
   useTooltip,
+  useToast,
 } from '@plexswap/ui-plex'
 import { useWeb3React } from '@plexswap/wagmi'
 import BigNumber from 'bignumber.js'
@@ -16,7 +17,6 @@ import { ToastDescriptionWithTx } from 'components/Toast'
 import { useTranslation } from '@plexswap/localization'
 import useCatchTxError from 'hooks/useCatchTxError'
 import { useBWayaProxyContract } from 'hooks/useContract'
-import useToast from 'hooks/useToast'
 import { useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components'
 import { getFullDisplayBalance } from 'utils/formatBalance'

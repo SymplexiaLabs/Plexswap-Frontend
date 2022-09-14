@@ -1,7 +1,7 @@
 import { Token, ChainId } from '@plexswap/sdk'
 import getLpAddress from 'utils/getLpAddress'
 
-const WAYA_AS_STRING = '0x0581c0dae41F19Fb4602E7ba0A803B7AE50f02E8'
+const WAYA_AS_STRING = '0x32d9F70F6eF86718A51021ad269522Abf4CFFE49'
 const BUSD_AS_STRING = '0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56'
 const WAYA_AS_TOKEN = new Token(ChainId.BSC, WAYA_AS_STRING, 18)
 const BUSD_AS_TOKEN = new Token(ChainId.BSC, BUSD_AS_STRING, 18)

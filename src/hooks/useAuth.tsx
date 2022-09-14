@@ -1,12 +1,12 @@
 import replaceBrowserHistory from 'utils/replaceBrowserHistory'
-import { Box, connectorLocalStorageKey, ConnectorNames, LinkExternal, Text } from '@plexswap/ui-plex'
+import { Box, connectorLocalStorageKey, LinkExternal, Text, useToast } from '@plexswap/ui-plex'
 import { useTranslation } from '@plexswap/localization'
 import { useCallback } from 'react'
 import { useAppDispatch } from 'state'
+import { ConnectorNames } from 'config/wallet'
 import { useConnect, useDisconnect, useNetwork, ConnectorNotFoundError, UserRejectedRequestError } from 'wagmi'
 import { clearUserStates } from '../utils/clearUserStates'
 import { useActiveChainId } from './useActiveChainId'
-import useToast from './useToast'
 import { useSessionChainId } from './useSessionChainId'
 
 const useAuth = () => {

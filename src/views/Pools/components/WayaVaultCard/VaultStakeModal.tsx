@@ -13,21 +13,19 @@ import {
   IconButton,
   Skeleton,
   Box,
+  useToast,
 } from '@plexswap/ui-plex'
 import { useWeb3React } from '@plexswap/wagmi'
 import { useTranslation } from '@plexswap/localization'
 import { useAppDispatch } from 'state'
-
 import { usePriceWayaBusd } from 'state/farms/hooks'
 import { useVaultPoolByKey } from 'state/pools/hooks'
 import { useVaultApy } from 'hooks/useVaultApy'
-
 import { useVaultPoolContract } from 'hooks/useContract'
 import useTheme from 'hooks/useTheme'
 import useWithdrawalFeeTimer from 'views/Pools/hooks/useWithdrawalFeeTimer'
 import BigNumber from 'bignumber.js'
 import { getFullDisplayBalance, formatNumber, getDecimalAmount } from 'utils/formatBalance'
-import useToast from 'hooks/useToast'
 import useCatchTxError from 'hooks/useCatchTxError'
 import { fetchWayaVaultUserData } from 'state/pools'
 import { DeserializedPool, VaultKey } from 'state/types'

@@ -11,10 +11,10 @@ import {
   ButtonMenuItem,
   HelpIcon,
   useTooltip,
+  useToast,
 } from '@plexswap/ui-plex'
 import { useTranslation } from '@plexswap/localization'
 import useTheme from 'hooks/useTheme'
-import useToast from 'hooks/useToast'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import { Token } from '@plexswap/sdk'
 import { formatNumber } from 'utils/formatBalance'

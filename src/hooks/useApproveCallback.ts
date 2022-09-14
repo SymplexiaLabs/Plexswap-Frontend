@@ -1,6 +1,7 @@
 import { MaxUint256 } from '@ethersproject/constants'
 import { TransactionResponse } from '@ethersproject/providers'
 import { Trade, CurrencyAmount, TradeType, Currency } from '@plexswap/sdk'
+import { useToast } from '@plexswap/ui-plex'
 import { useCallback, useMemo } from 'react'
 import { logError } from 'utils/sentry'
 import { useWeb3React } from '@plexswap/wagmi'
@@ -13,7 +14,7 @@ import { computeSlippageAdjustedAmounts } from '../utils/exchange'
 import { calculateGasMargin } from '../utils'
 import { useTokenContract } from './useContract'
 import { useCallWithGasPrice } from './useCallWithGasPrice'
-import useToast from './useToast'
+
 import useGelatoLimitOrdersLib from './limitOrders/useGelatoLimitOrdersLib'
 
 export enum ApprovalState {

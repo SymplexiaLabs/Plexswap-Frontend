@@ -8,14 +8,14 @@ const farms: SerializedFarmConfig[] = [
   {
     pid: 0,
     lpSymbol: 'WAYA',
-    lpAddress:  '0x0581c0dae41F19Fb4602E7ba0A803B7AE50f02E8',
+    lpAddress:  '0x32d9F70F6eF86718A51021ad269522Abf4CFFE49',
     token: bscTokens.waya,
     quoteToken: bscTokens.wbnb,
   },
   {
     pid: 1,
     lpSymbol: 'WAYA/BNB LP',
-    lpAddress:  '0xF5d0C6394Fe37FB5AB5B5ff2D5FC7471CEA9F698',
+    lpAddress:  '0xB459DC2D3763b14c77a5657f6A3C328E2A59255F',
     token: bscTokens.waya,
     quoteToken: bscTokens.wbnb,
   },
@@ -29,7 +29,7 @@ const farms: SerializedFarmConfig[] = [
   {
     pid: 3,
     lpSymbol: 'WAYA/BUSD LP',
-    lpAddress:  '0x0867Ac91542eebc6Db1DD2516A5b0f4635EB0221',
+    lpAddress:  '0x3660F1Ee5711c69160061e55169136631Aa84D6C',
     token: bscTokens.waya,
     quoteToken: bscTokens.busd,
   },
@@ -39,6 +39,13 @@ const farms: SerializedFarmConfig[] = [
     lpAddress: '0x539Df50cf6fc29d560413d669A5Bb78cB342029B',
     token: bscTokens.plex,
     quoteToken: bscTokens.wbnb,
+  },
+  {
+    pid: 5,
+    lpSymbol: 'PLEX-F/BUSD LP',
+    lpAddress: '0x626f4248e1116f1168B53f6183b2569c7D0fc723',
+    token: bscTokens.plex,
+    quoteToken: bscTokens.busd,
   },
 ].map((p) => ({ ...p, token: p.token.serialize, quoteToken: p.quoteToken.serialize }))
 

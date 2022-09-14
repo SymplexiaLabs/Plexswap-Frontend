@@ -1,13 +1,13 @@
 /* eslint-disable no-console */
 import { useCallback } from 'react'
-
 import { useTranslation } from '@plexswap/localization'
+import { useToast } from '@plexswap/ui-plex'
 import { MiniProgramConnector } from '@plexswap/wagmi/connectors/miniProgram'
 import { useConnect } from 'wagmi'
 import getWeb3Provider from 'utils/mpBridge'
 import { chains } from '../utils/wagmi'
 /* eslint max-classes-per-file: off -- noop */
-import useToast from './useToast'
+
 
 const injected = new MiniProgramConnector({ chains, getWeb3Provider })
 export const getAccount = () => injected.getAccount()

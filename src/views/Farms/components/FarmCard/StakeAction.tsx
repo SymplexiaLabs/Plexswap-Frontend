@@ -1,7 +1,6 @@
 import { useCallback, useContext } from 'react'
 import styled from 'styled-components'
-import { Button, Flex, IconButton, AddIcon, MinusIcon, useModal } from '@plexswap/ui-plex'
-import useToast from 'hooks/useToast'
+import { Button, Flex, IconButton, AddIcon, MinusIcon, useModal, useToast } from '@plexswap/ui-plex'
 import useCatchTxError from 'hooks/useCatchTxError'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import { useTranslation } from '@plexswap/localization'

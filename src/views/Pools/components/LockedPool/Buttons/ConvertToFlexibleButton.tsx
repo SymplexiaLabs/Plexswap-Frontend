@@ -1,10 +1,8 @@
 import { memo, useCallback } from 'react'
-import { Button, ButtonProps } from '@plexswap/ui-plex'
+import { Button, ButtonProps, useToast } from '@plexswap/ui-plex'
 import { useTranslation } from '@plexswap/localization'
-
 import { useAppDispatch } from 'state'
 import { fetchWayaVaultUserData } from 'state/pools'
-import useToast from 'hooks/useToast'
 import useCatchTxError from 'hooks/useCatchTxError'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import { useVaultPoolContract } from 'hooks/useContract'

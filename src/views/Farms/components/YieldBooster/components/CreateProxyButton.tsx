@@ -1,7 +1,5 @@
-import { Button, AutoRenewIcon, ButtonProps } from '@plexswap/ui-plex'
+import { Button, AutoRenewIcon, ButtonProps, useToast } from '@plexswap/ui-plex'
 import { useState, memo } from 'react'
-
-import useToast from 'hooks/useToast'
 import useCatchTxError from 'hooks/useCatchTxError'
 import { useTranslation } from '@plexswap/localization'
 import { ToastDescriptionWithTx } from 'components/Toast'

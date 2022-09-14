@@ -4,7 +4,7 @@ import { useTranslation } from '@plexswap/localization'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useCurrentBlock } from 'state/block/hooks'
 import { ToastDescriptionWithTx } from 'components/Toast'
-import useToast from 'hooks/useToast'
+import { useToast } from '@plexswap/ui-plex'
 import { AppState, useAppDispatch } from '../index'
 import { checkedTransaction, finalizeTransaction } from './actions'
 

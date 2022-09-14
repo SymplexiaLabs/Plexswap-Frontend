@@ -3,7 +3,7 @@ import { useTranslation } from '@plexswap/localization'
 import { TransactionReceipt, TransactionResponse } from '@ethersproject/providers'
 import { ToastDescriptionWithTx } from 'components/Toast'
 
-import useToast from 'hooks/useToast'
+import { useToast } from '@plexswap/ui-plex'
 import { logError, isUserRejected } from 'utils/sentry'
 import useActiveWeb3React from './useActiveWeb3React'
 

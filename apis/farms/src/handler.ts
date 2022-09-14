@@ -64,7 +64,7 @@ const getWayaPrice = async (isTestnet: boolean) => {
   return pair.priceOf(tokenA)
 }
 
-const farmConfigApi = 'https://farms-config.pages.dev'
+const farmConfigApi = 'https://plexswap-farms.pages.dev'
 
 export async function saveFarms(chainId: number, event: ScheduledEvent | FetchEvent) {
   try {

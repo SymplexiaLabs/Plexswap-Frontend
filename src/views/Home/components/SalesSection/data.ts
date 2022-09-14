@@ -33,7 +33,7 @@ export const wayaSectionData = (t: TranslateFunction): SalesSectionProps => ({
   ),
   reverse: false,
   primaryButton: {
-    to: '/swap?outputCurrency=0x0581c0dae41F19Fb4602E7ba0A803B7AE50f02E8',
+    to: '/swap?outputCurrency=0x32d9F70F6eF86718A51021ad269522Abf4CFFE49',
     text: t('Buy WAYA'),
     external: false,
   },

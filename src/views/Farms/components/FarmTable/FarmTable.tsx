@@ -128,6 +128,7 @@ const FarmTable: React.FC<React.PropsWithChildren<ITableProps>> = ({ farms, waya
         pid: farm.pid,
         token: farm.token,
         quoteToken: farm.quoteToken,
+        isReady: farm.multiplier !== undefined,
       },
       earned: {
         earnings: getFarmEarnings(farm),

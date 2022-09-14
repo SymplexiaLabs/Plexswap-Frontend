@@ -1,7 +1,7 @@
 import { MaxUint256 } from '@ethersproject/constants'
 import { useTranslation } from '@plexswap/localization'
 import { useWaya } from 'hooks/useContract'
-import useToast from 'hooks/useToast'
+import { useToast } from '@plexswap/ui-plex'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import useCatchTxError from 'hooks/useCatchTxError'
 import { ToastDescriptionWithTx } from 'components/Toast'

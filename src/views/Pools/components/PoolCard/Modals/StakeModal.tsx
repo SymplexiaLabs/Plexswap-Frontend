@@ -14,10 +14,10 @@ import {
   CalculateIcon,
   IconButton,
   Skeleton,
+  useToast,
 } from '@plexswap/ui-plex'
 import { useTranslation } from '@plexswap/localization'
 import useTheme from 'hooks/useTheme'
-import useToast from 'hooks/useToast'
 import useCatchTxError from 'hooks/useCatchTxError'
 import BigNumber from 'bignumber.js'
 import RoiCalculatorModal from 'components/RoiCalculatorModal'

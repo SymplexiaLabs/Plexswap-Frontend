@@ -2,7 +2,7 @@ import { JSBI, Price, Token } from '@plexswap/sdk'
 import getRatePercentageDifference from './getRatePercentageDifference'
 import { getRatePercentageMessage, PercentageDirection } from './getRatePercentageMessage'
 
-const WAYA = new Token(56, '0x0581c0dae41F19Fb4602E7ba0A803B7AE50f02E8', 18, 'WAYA', 'PlexSwap Token')
+const WAYA = new Token(56, '0x32d9F70F6eF86718A51021ad269522Abf4CFFE49', 18, 'WAYA', 'PlexSwap Token')
 const BUSD = new Token(56, '0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56', 18, 'BUSD', 'Binance USD')
 
 const EIGHTEEN_DECIMALS = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(18))

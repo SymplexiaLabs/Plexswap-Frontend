@@ -1,7 +1,6 @@
-import { ResetCSS } from '@plexswap/ui-plex'
+import { ResetCSS, ToastListener } from '@plexswap/ui-plex'
 import Script from 'next/script'
 import BigNumber from 'bignumber.js'
-import { ToastListener } from 'contexts/ToastsContext'
 import useEagerConnect from 'hooks/useEagerConnect'
 import useEagerConnectMP from 'hooks/useEagerConnect.bmp'
 import { useAccountEventListener } from 'hooks/useAccountEventListener'

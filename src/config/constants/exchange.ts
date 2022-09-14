@@ -118,7 +118,7 @@ export const INPUT_FRACTION_AFTER_FEE = ONE_HUNDRED_PERCENT.subtract(BASE_FEE)
 // BNB
 export const DEFAULT_INPUT_CURRENCY = 'BNB'
 // WAYA
-export const DEFAULT_OUTPUT_CURRENCY = '0x0581c0dae41F19Fb4602E7ba0A803B7AE50f02E8'
+export const DEFAULT_OUTPUT_CURRENCY = '0x32d9F70F6eF86718A51021ad269522Abf4CFFE49'
 
 // Handler string is passed to Gelato to use PCS router
 export const GELATO_HANDLER = 'pancakeswap'

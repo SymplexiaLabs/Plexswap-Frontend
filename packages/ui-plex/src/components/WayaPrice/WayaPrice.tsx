@@ -31,7 +31,7 @@ const WayaPrice: React.FC<React.PropsWithChildren<Props>> = ({
 }) => {
   return wayaPriceUsd ? (
     <PriceLink
-      href="https://swap.plexfinance.us/swap?outputCurrency=0x0581c0dae41F19Fb4602E7ba0A803B7AE50f02E8&chainId=56"
+      href="https://swap.plexfinance.us/swap?outputCurrency=0x32d9F70F6eF86718A51021ad269522Abf4CFFE49&chainId=56"
       target="_blank"
     >
       <LogoRound width="24px" mr="8px" />

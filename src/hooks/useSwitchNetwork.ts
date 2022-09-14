@@ -1,4 +1,5 @@
-import { ConnectorNames } from '@plexswap/ui-plex'
+import { useToast } from '@plexswap/ui-plex'
+import { ConnectorNames } from 'config/wallet'
 import { useCallback, useMemo } from 'react'
 import { useTranslation } from '@plexswap/localization'
 import replaceBrowserHistory from 'utils/replaceBrowserHistory'
@@ -6,7 +7,6 @@ import { useAccount, useSwitchNetwork as useSwitchNetworkWallet } from 'wagmi'
 import { ChainId } from '@plexswap/sdk'
 import { useSessionChainId } from './useSessionChainId'
 import { useSwitchNetworkLoading } from './useSwitchNetworkLoading'
-import useToast from './useToast'
 
 export function useSwitchNetworkLocal() {
   const [, setSessionChainId] = useSessionChainId()

@@ -4,7 +4,6 @@ import { splitSignature } from '@ethersproject/bytes'
 import { Contract } from '@ethersproject/contracts'
 import { TransactionResponse } from '@ethersproject/providers'
 import { useRouter } from 'next/router'
-import useToast from 'hooks/useToast'
 import { Currency, Percent, WNATIVE } from '@plexswap/sdk'
 import {
   Button,
@@ -18,6 +17,7 @@ import {
   useModal,
   TooltipText,
   useTooltip,
+  useToast,
 } from '@plexswap/ui-plex'
 import { useWeb3LibraryContext } from '@plexswap/wagmi'
 import { BigNumber } from '@ethersproject/bignumber'

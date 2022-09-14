@@ -13,13 +13,13 @@ import {
   LinkExternal,
   Text,
   useModal,
+  useToast,
 } from '@plexswap/ui-plex'
 import { useWeb3React, useSignMessage } from '@plexswap/wagmi'
 import times from 'lodash/times'
 import isEmpty from 'lodash/isEmpty'
 import { useInitialBlock } from 'state/block/hooks'
 import { SnapshotCommand } from 'state/types'
-import useToast from 'hooks/useToast'
 import { getBlockExploreLink } from 'utils'
 import truncateHash from 'utils/truncateHash'
 import { useTranslation } from '@plexswap/localization'

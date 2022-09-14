@@ -5,7 +5,7 @@ const tokens = {
   waya: {
     symbol: "WAYA",
     address: {
-      56: "0x0581c0dae41F19Fb4602E7ba0A803B7AE50f02E8",
+      56: "0x32d9F70F6eF86718A51021ad269522Abf4CFFE49",
       97: "0xA2af2640A694f91632e60befc7Fc30C1b787D505",
     },
     decimals: 18,

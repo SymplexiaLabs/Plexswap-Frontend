@@ -1,9 +1,8 @@
-import { Button, useModal } from '@plexswap/ui-plex'
+import { Button, useModal, useToast } from '@plexswap/ui-plex'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import { useTranslation } from '@plexswap/localization'
 import { useERC20 } from 'hooks/useContract'
-import useToast from 'hooks/useToast'
 import useCatchTxError from 'hooks/useCatchTxError'
 import { useAppDispatch } from 'state'
 

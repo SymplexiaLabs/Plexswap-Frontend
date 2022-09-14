@@ -34,16 +34,11 @@ export default function CurrencyLogo({
         if (!tokenLogoURL) return [...uriLocations]
         return [...uriLocations, tokenLogoURL]
       }
-
       if (!tokenLogoURL) return []
       return [tokenLogoURL]
     }
     return []
   }, [currency, uriLocations])
-
-  if (currency.symbol === 'WAYA'){
-    return <StyledLogo size={size} srcs={[`/images/tokens/label/waya.png`]} width={size} style={style} />
-  }
 
   if (currency?.isNative) {
     if (currency.chainId === ChainId.BSC) {

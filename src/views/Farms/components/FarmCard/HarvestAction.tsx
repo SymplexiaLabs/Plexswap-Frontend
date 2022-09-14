@@ -1,10 +1,9 @@
-import { Button, Flex, Heading, TooltipText, useTooltip } from '@plexswap/ui-plex'
+import { Button, Flex, Heading, TooltipText, useTooltip, useToast } from '@plexswap/ui-plex'
 import { useWeb3React } from '@plexswap/wagmi'
 import BigNumber from 'bignumber.js'
 import Balance from 'components/Balance'
 import { useTranslation } from '@plexswap/localization'
 import { ToastDescriptionWithTx } from 'components/Toast'
-import useToast from 'hooks/useToast'
 import useCatchTxError from 'hooks/useCatchTxError'
 
 import { usePriceWayaBusd } from 'state/farms/hooks'

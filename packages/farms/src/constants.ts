@@ -5,7 +5,7 @@ export const supportedChainId = [ChainId.GOERLI, ChainId.BSC, ChainId.BSC_TESTNE
 
 export const chiefFarmerAddresses = {
   97: '0xCa9F812Ba614E97b6D8EDC36eE0C1b2DbA35f062',
-  56: '0x4Ba4EFa9C4E44b94ea232Fd5F5f7F4A4961904e5',
+  56: '0x4D4408eA016357BB334eAd40F14dcF0dfd164Dbe',
 }
 
 export const nonBSCVaultAddresses = {

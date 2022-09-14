@@ -2,9 +2,9 @@
   {
     "pid": 0,
     "lpSymbol": "WAYA",
-    "lpAddress": "0x0581c0dae41F19Fb4602E7ba0A803B7AE50f02E8",
+    "lpAddress": "0x32d9F70F6eF86718A51021ad269522Abf4CFFE49",
     "token": {
-      "address": "0x0581c0dae41F19Fb4602E7ba0A803B7AE50f02E8",
+      "address": "0x32d9F70F6eF86718A51021ad269522Abf4CFFE49",
       "chainId": 56,
       "decimals": 18,
       "symbol": "WAYA",
@@ -23,9 +23,9 @@
   {
     "pid": 1,
     "lpSymbol": "WAYA/BNB LP",
-    "lpAddress": "0xF5d0C6394Fe37FB5AB5B5ff2D5FC7471CEA9F698",
+    "lpAddress": "0xB459DC2D3763b14c77a5657f6A3C328E2A59255F",
     "token": {
-      "address": "0x0581c0dae41F19Fb4602E7ba0A803B7AE50f02E8",
+      "address": "0x32d9F70F6eF86718A51021ad269522Abf4CFFE49",
       "chainId": 56,
       "decimals": 18,
       "symbol": "WAYA",
@@ -65,9 +65,9 @@
   {
     "pid": 3,
     "lpSymbol": "WAYA/BUSD LP",
-    "lpAddress": "0x0867Ac91542eebc6Db1DD2516A5b0f4635EB0221",
+    "lpAddress": "0x3660F1Ee5711c69160061e55169136631Aa84D6C",
     "token": {
-      "address": "0x0581c0dae41F19Fb4602E7ba0A803B7AE50f02E8",
+      "address": "0x32d9F70F6eF86718A51021ad269522Abf4CFFE49",
       "chainId": 56,
       "decimals": 18,
       "symbol": "WAYA",
@@ -102,6 +102,27 @@
       "symbol": "WBNB",
       "name": "Wrapped BNB",
       "projectLink": "https://www.binance.org"
+    }
+  },
+  {
+    "pid": 5,
+    "lpSymbol": "PLEX-F/BUSD LP",
+    "lpAddress": "0x626f4248e1116f1168B53f6183b2569c7D0fc723",
+    "token": {
+      "address": "0xBB472510B1896C6992D658a7Ab69F7dF32a37b3c",
+      "chainId": 56,
+      "decimals": 9,
+      "symbol": "PLEX-F",
+      "name": "Symplexia Finance",
+      "projectLink": "https://finance.symplexia.com/"
+    },
+    "quoteToken": {
+      "address": "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56",
+      "chainId": 56,
+      "decimals": 18,
+      "symbol": "BUSD",
+      "name": "Binance USD",
+      "projectLink": "https://www.paxos.com/busd/"
     }
   }
 ]

@@ -115,7 +115,7 @@ export const getStaticProps: GetStaticProps = async () => {
         plexFactories(first: 1) {
           totalLiquidityUSD
         }
-        token(id: "0x0581c0dae41F19Fb4602E7ba0A803B7AE50f02E8") {
+        token(id: "0x32d9F70F6eF86718A51021ad269522Abf4CFFE49") {
           derivedUSD
         }
       }
