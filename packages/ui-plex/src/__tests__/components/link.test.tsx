@@ -36,7 +36,7 @@ it("renders link correctly", () => {
         class="c0 c1"
         color="primary"
         font-size="16px"
-        href="https://plexswap.finance"
+        href="https://swap.plexfinance.us"
       >
         Link
       </a>

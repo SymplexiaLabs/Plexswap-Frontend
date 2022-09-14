@@ -19,7 +19,7 @@ import { getWayaVaultAddress, getWayaFlexibleVaultAddress } from 'utils/addressH
 import { multicallv2 } from 'utils/multicall'
 import { bscTokens } from '@plexswap/tokens'
 import { getBalanceNumber } from 'utils/formatBalance'
-import { bscRpcProvider } from 'utils/providers'
+import { bscRpcProvider } from 'config/constants/providers'
 import { getPoolsPriceHelperLpFiles } from 'config/constants/priceHelperLps/index'
 import fetchFarms from '../farms/fetchFarms'
 import getFarmsPrices from '../farms/getFarmsPrices'

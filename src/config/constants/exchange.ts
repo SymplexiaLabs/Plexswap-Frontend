@@ -1,6 +1,6 @@
 import { ChainId, JSBI, Percent, Token, WNATIVE, WBNB } from '@plexswap/sdk'
 import { BigNumber } from '@ethersproject/bignumber'
-import { bscTokens, bscTestnetTokens, USDC, USDT, BUSD } from '@plexswap/tokens'
+import { bscTokens, bscTestnetTokens, USDC, USDT, BUSD, WAYA_BSC } from '@plexswap/tokens'
 import { ChainMap, ChainTokenList } from './types'
 
 export const ROUTER_ADDRESS: ChainMap<string> = {
@@ -118,7 +118,7 @@ export const INPUT_FRACTION_AFTER_FEE = ONE_HUNDRED_PERCENT.subtract(BASE_FEE)
 // BNB
 export const DEFAULT_INPUT_CURRENCY = 'BNB'
 // WAYA
-export const DEFAULT_OUTPUT_CURRENCY = '0x32d9F70F6eF86718A51021ad269522Abf4CFFE49'
+export const DEFAULT_OUTPUT_CURRENCY = WAYA_BSC.address
 
 // Handler string is passed to Gelato to use PCS router
 export const GELATO_HANDLER = 'pancakeswap'

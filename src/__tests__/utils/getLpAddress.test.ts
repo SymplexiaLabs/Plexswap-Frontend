@@ -1,11 +1,12 @@
 import { Token, ChainId } from '@plexswap/sdk'
+import {WAYA_BSC, BUSD_BSC} from '@plexswap/tokens'
 import getLpAddress from 'utils/getLpAddress'
 
-const WAYA_AS_STRING = '0x32d9F70F6eF86718A51021ad269522Abf4CFFE49'
-const BUSD_AS_STRING = '0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56'
-const WAYA_AS_TOKEN = new Token(ChainId.BSC, WAYA_AS_STRING, 18)
-const BUSD_AS_TOKEN = new Token(ChainId.BSC, BUSD_AS_STRING, 18)
-const WAYA_BUSD_LP = '0x0867Ac91542eebc6Db1DD2516A5b0f4635EB0221'
+const WAYA_AS_STRING = WAYA_BSC.address
+const BUSD_AS_STRING = BUSD_BSC.address
+const WAYA_AS_TOKEN = new Token(ChainId.BSC, WAYA_AS_STRING, 18,"WAYAT")
+const BUSD_AS_TOKEN = new Token(ChainId.BSC, BUSD_AS_STRING, 18,"BUSDT")
+const WAYA_BUSD_LP = '0x3660F1Ee5711c69160061e55169136631Aa84D6C'
 
 describe('getLpAddress', () => {
   it('returns correct LP address, both tokens are strings', () => {

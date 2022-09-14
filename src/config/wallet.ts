@@ -55,7 +55,7 @@ export const wallets: WalletConfig<ConnectorNames>[] = [
         // @ts-ignore
         Boolean(window.ethereum?.isTrustWallet)),
     priority: 4,
-    href: 'https://link.trustwallet.com/open_url?coin_id=20000714&url=https://plexswap.finance/',
+    href: 'https://link.trustwallet.com/open_url?coin_id=20000714&url=https://swap.plexfinance.us/',
     downloadLink: {
       desktop: 'https://chrome.google.com/webstore/detail/trust-wallet/egjidjbpglichdcondbcbdnbeeppgdph/related',
     },

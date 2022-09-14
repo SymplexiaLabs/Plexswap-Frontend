@@ -18,7 +18,7 @@ import { FarmKV } from './kv'
 
 const router = Router()
 
-const allowedOrigin = /[^\w](plexswap\.run)|(localhost:3000)|(swap.plexfinance.us)|(swap.plexfinance.us)$/
+const allowedOrigin = /[^\w](plexswap\.run)|(localhost:3000)|(swap.plexfinance.us)/
 
 router.get('/apr', async ({ query }) => {
   if (typeof query?.key === 'string' && query.key === FORCE_UPDATE_KEY) {

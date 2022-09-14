@@ -4,7 +4,7 @@ import { addWeeks, addDays } from 'date-fns'
 import { VaultPosition, getVaultPosition } from './wayaPool'
 import { getWayaVaultContract } from './contractHelpers'
 
-describe('wayaPool', () => {
+describe('wayaVault', () => {
   it.each([
     ['BOOST_WEIGHT', BOOST_WEIGHT],
     ['UNLOCK_FREE_DURATION', UNLOCK_FREE_DURATION],
@@ -15,7 +15,7 @@ describe('wayaPool', () => {
     const got = await wayaVault[method]()
     expect(got.eq(result)).toBe(true)
   })
-  const NOW = new Date('2022-01-01').getTime()
+  const NOW = new Date('2022-09-14').getTime()
 
   it.each([
     // None

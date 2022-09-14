@@ -8,7 +8,11 @@
   "files": [
     "dist"
   ],
-  "repository": "https://github.com/plexswap/plex-swap-sdk.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/plexswap/Plexswap-Frontend.git",
+    "directory": "packages/swap-sdk"
+  },
   "keywords": [
     "plexswap",
     "bsc"

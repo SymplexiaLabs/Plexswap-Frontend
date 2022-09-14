@@ -1,4 +1,4 @@
-compatibility_date = "2022-05-20"
+compatibility_date = "2022-09-14"
 kv_namespaces = [
   {binding = "FARMS", id = "e1fa1529e66840f08beda16cf8770c89", preview_id = "73107c111395424c996ff46740388b4c"},
 ]

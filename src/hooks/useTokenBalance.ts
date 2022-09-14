@@ -8,7 +8,7 @@ import { ChainId } from '@plexswap/sdk'
 import { useMemo } from 'react'
 import useSWR from 'swr'
 import { BIG_ZERO } from 'utils/bigNumber'
-import { bscRpcProvider } from 'utils/providers'
+import { bscRpcProvider } from 'config/constants/providers'
 import { useTokenContract } from './useContract'
 import { useSWRContract } from './useSWRContract'
 

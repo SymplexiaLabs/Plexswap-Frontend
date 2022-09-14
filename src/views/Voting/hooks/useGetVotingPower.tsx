@@ -4,7 +4,7 @@ import { FetchStatus } from 'config/constants/types'
 import useSWRImmutable from 'swr/immutable'
 import { getAddress } from 'utils/addressHelpers'
 import { getActivePools } from 'utils/calls'
-import { bscRpcProvider } from 'utils/providers'
+import { bscRpcProvider } from 'config/constants/providers'
 import { getVotingPower } from '../helpers'
 
 interface State {

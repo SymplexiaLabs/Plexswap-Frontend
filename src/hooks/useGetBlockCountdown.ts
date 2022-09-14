@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { BSC_BLOCK_TIME } from 'config'
-import { bscRpcProvider } from 'utils/providers'
+import { bscRpcProvider } from 'config/constants/providers'
 
 /**
  * Returns a countdown in seconds of a given block

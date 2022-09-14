@@ -20,7 +20,7 @@ export const WAYA_TESTNET = new Token(
 )
 
 export const WAYA_RINKEBY = new Token(
-  ChainId.BSC_TESTNET,
+  ChainId.RINKEBY,
   '0xE8cd8E3CfCd1b1c04669deA94C3d007706B563A5',
   18,
   'WAYA',
@@ -29,7 +29,7 @@ export const WAYA_RINKEBY = new Token(
 )
 
 export const WAYA_GOERLI = new Token(
-  ChainId.BSC_TESTNET,
+  ChainId.GOERLI,
   '0x2b82d6d89F5786C6A0fFab86b5F7F0532d5F19e4',
   18,
   'WAYA',
@@ -56,7 +56,7 @@ export const PLEX_TESTNET = new Token(
 )
 
 export const PLEX_RINKEBY = new Token(
-  ChainId.BSC_TESTNET,
+  ChainId.RINKEBY,
   '0x28c8143A0A270b4A1Bd776DDcC4a987870Dda7e6',
   9,
   'PLEX-F',
@@ -65,7 +65,7 @@ export const PLEX_RINKEBY = new Token(
 )
 
 export const PLEX_GOERLI = new Token(
-  ChainId.BSC_TESTNET,
+  ChainId.GOERLI,
   '0xE95AF82Bc998D2f05aD76a2F1B404756DCfc0b8a',
   9,
   'PLEX-F',

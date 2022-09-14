@@ -1705,7 +1705,7 @@ exports[`renders correctly 1`] = `
                     class="c12 c13"
                     href="/Silos"
                   >
-                    Syrup Silos
+                    Crop Silos
                   </a>
                 </div>
               </div>
@@ -1912,7 +1912,7 @@ exports[`renders correctly 1`] = `
           >
             <a
               class="c27"
-              href="https://plex.finance/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
+              href="https://swap.plexfinance.us/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
               target="_blank"
             >
               <svg
@@ -3145,7 +3145,7 @@ exports[`renders correctly 1`] = `
                 >
                   <a
                     class="c27"
-                    href="https://plex.finance/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
+                    href="https://swap.plexfinance.us/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
                     target="_blank"
                   >
                     <svg
@@ -3209,7 +3209,7 @@ exports[`renders correctly 1`] = `
                 </div>
                 <a
                   class="c92"
-                  href="https://plex.finance/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
+                  href="https://swap.plexfinance.us/swap?outputCurrency=0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82"
                   scale="sm"
                   target="_blank"
                 >

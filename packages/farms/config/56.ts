@@ -1,4 +1,4 @@
-import { bscTokens } from '@plexswap/tokens'
+import { bscTokens, WAYA_BSC } from '@plexswap/tokens'
 import { SerializedFarmConfig } from '@plexswap/farms'
 
 const farms: SerializedFarmConfig[] = [
@@ -8,7 +8,7 @@ const farms: SerializedFarmConfig[] = [
   {
     pid: 0,
     lpSymbol: 'WAYA',
-    lpAddress:  '0x32d9F70F6eF86718A51021ad269522Abf4CFFE49',
+    lpAddress:  WAYA_BSC.address,
     token: bscTokens.waya,
     quoteToken: bscTokens.wbnb,
   },

@@ -5,7 +5,7 @@
     "lpAddress": "0xB4Ebcc066959C09206e596B7E810484eb55DD80C",
     "token": {
       "address": "0x2b82d6d89F5786C6A0fFab86b5F7F0532d5F19e4",
-      "chainId": 97,
+      "chainId": 5,
       "decimals": 18,
       "symbol": "WAYA",
       "name": "PlexSwap Token",
@@ -26,7 +26,7 @@
     "lpAddress": "0x2A051fd7c6a100bC7690B5064923f6Bc43d3574e",
     "token": {
       "address": "0x2b82d6d89F5786C6A0fFab86b5F7F0532d5F19e4",
-      "chainId": 97,
+      "chainId": 5,
       "decimals": 18,
       "symbol": "WAYA",
       "name": "PlexSwap Token",
@@ -68,7 +68,7 @@
     "lpAddress": "0x57b4905662BdB31d5F42357Bb4226878f8469076",
     "token": {
       "address": "0x2b82d6d89F5786C6A0fFab86b5F7F0532d5F19e4",
-      "chainId": 97,
+      "chainId": 5,
       "decimals": 18,
       "symbol": "WAYA",
       "name": "PlexSwap Token",
@@ -89,7 +89,7 @@
     "lpAddress": "0xaD4761f26AbA1870Eb9081CfcAA0a9C07bbB3a12",
     "token": {
       "address": "0xE95AF82Bc998D2f05aD76a2F1B404756DCfc0b8a",
-      "chainId": 97,
+      "chainId": 5,
       "decimals": 9,
       "symbol": "PLEX-F",
       "name": "Symplexia Finance",
@@ -110,7 +110,7 @@
     "lpAddress": "0x4fCfa60A9BF43a6F9aD614A0dBa4586b19de2483",
     "token": {
       "address": "0xE95AF82Bc998D2f05aD76a2F1B404756DCfc0b8a",
-      "chainId": 97,
+      "chainId": 5,
       "decimals": 9,
       "symbol": "PLEX-F",
       "name": "Symplexia Finance",

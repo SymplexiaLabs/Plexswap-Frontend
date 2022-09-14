@@ -1,7 +1,7 @@
 import map from 'lodash/map'
 import omitBy from 'lodash/omitBy'
 import erc20ABI from 'config/abi/erc20.json'
-import { bscTokens } from 'config/constants/tokens'
+import { bscTokens } from '@plexswap/tokens'
 import { Token } from '@plexswap/sdk'
 import multicall from 'utils/multicall'
 

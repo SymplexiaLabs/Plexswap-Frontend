@@ -2,8 +2,8 @@
 import BigNumber from 'bignumber.js'
 import poolsConfig from 'config/constants/pools'
 import TaskAssistantV2 from 'config/abi/TaskAssistantV2.json'
+import { bscRpcProvider } from 'config/constants/providers'
 import multicall from '../multicall'
-import { bscRpcProvider } from '../providers'
 import { getAddress } from '../addressHelpers'
 
 /**

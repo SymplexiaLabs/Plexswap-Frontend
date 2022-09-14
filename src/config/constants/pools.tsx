@@ -54,9 +54,19 @@ export const livePools: SerializedPoolConfig[] = [
     tokenPerBlock: '10',
     isFinished: false,
   },
-]
+].map((p) => ({
+  ...p,
+  stakingToken: p.stakingToken.serialize,
+  earningToken: p.earningToken.serialize,
+}))
 
-// known finished Silos
-const finishedPools = [].map((p) => ({ ...p, isFinished: true }))
+// Known finished Silos (Pools)
+const finishedPools = [
+].map((p) => ({
+  ...p,
+  isFinished: true,
+  stakingToken: p.stakingToken.serialize,
+  earningToken: p.earningToken.serialize,
+}))
 
 export default [...livePools, ...finishedPools]
