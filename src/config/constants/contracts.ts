@@ -4,8 +4,8 @@ import { chiefFarmerAddresses, nonBSCVaultAddresses } from '@plexswap/farms'
 export default {
   chiefFarmer: {
     5:  nonBSCVaultAddresses[5],
-    97: '0xCa9F812Ba614E97b6D8EDC36eE0C1b2DbA35f062',                         // chiefFarmerAddresses[97],
-    56: '0x4D4408eA016357BB334eAd40F14dcF0dfd164Dbe',                         // chiefFarmerAddresses[56],
+    97: chiefFarmerAddresses[97],
+    56: chiefFarmerAddresses[56],
   },
   multiCall: multicallAddresses,
   wayaVault: {

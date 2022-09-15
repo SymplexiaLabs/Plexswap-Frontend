@@ -9,26 +9,26 @@ export const chiefFarmerAddresses = {
 }
 
 export const nonBSCVaultAddresses = {
-  5: '0x8CB958bBdb45597cc918147469eb650A9397aBDA',
+  5: '0xb43D221047F5ec018b0204451Ec93b701ABdc260',
 }
 
 export const nativeStableLpMap = {
-    [ChainId.GOERLI]: {
-      address: '0xf5bf0C34d3c428A74Ceb98d27d38d0036C587200',
-      wNative: 'WETH',
-      stable: 'USDC',
-    },
-    [ChainId.BSC]: {
-      address: '0x58F876857a02D6762E0101bb5C46A8c1ED44Dc16',
-      wNative: 'WBNB',
-      stable: 'BUSD',
-    },
-    [ChainId.BSC_TESTNET]: {
-      address: '0x49120769a878215a350038AbB394072cEb6F4d4A',
-      wNative: 'WBNB',
-      stable: 'BUSD',
-    },
-  }
+  [ChainId.GOERLI]: {
+    address: '0xf5bf0C34d3c428A74Ceb98d27d38d0036C587200',
+    wNative: 'WETH',
+    stable: 'tUSDC',
+  },
+  [ChainId.BSC]: {
+    address: '0x58F876857a02D6762E0101bb5C46A8c1ED44Dc16',
+    wNative: 'WBNB',
+    stable: 'BUSD',
+  },
+  [ChainId.BSC_TESTNET]: {
+    address: '0x4E96D2e92680Ca65D58A0e2eB5bd1c0f44cAB897',
+    wNative: 'WBNB',
+    stable: 'BUSD',
+  },
+}
 
 export const FIXED_ZERO = FixedNumber.from(0)
 export const FIXED_ONE  = FixedNumber.from(1)
