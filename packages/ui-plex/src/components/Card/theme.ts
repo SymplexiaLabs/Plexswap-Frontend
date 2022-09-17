@@ -1,33 +1,33 @@
+import { vars } from "@plexswap/style/css/vars.css";
 import { darkColors, lightColors } from "../../theme/colors";
-import { shadows } from "../../theme/base";
 import { CardTheme } from "./types";
 
 export const light: CardTheme = {
   background: lightColors.backgroundAlt,
-  boxShadow: shadows.level1,
-  boxShadowActive: shadows.active,
-  boxShadowSuccess: shadows.success,
-  boxShadowWarning: shadows.warning,
+  boxShadow: vars.shadows.level1,
+  boxShadowActive: vars.shadows.active,
+  boxShadowSuccess: vars.shadows.success,
+  boxShadowWarning: vars.shadows.warning,
   cardHeaderBackground: {
-    default: lightColors.gradients.cardHeader,
-    blue: lightColors.gradients.blue,
-    cloudyday: lightColors.gradients.cloudyday,
-    violet: lightColors.gradients.violet,
+    default: lightColors.gradientCardHeader,
+    blue: lightColors.gradientBlue,
+    cloudyday: lightColors.gradientCloudyday,
+    violet: lightColors.gradientViolet,
   },
   dropShadow: "drop-shadow(0px 1px 4px rgba(25, 19, 38, 0.15))",
 };
 
 export const dark: CardTheme = {
   background: darkColors.backgroundAlt,
-  boxShadow: shadows.level1,
-  boxShadowActive: shadows.active,
-  boxShadowSuccess: shadows.success,
-  boxShadowWarning: shadows.warning,
+  boxShadow: vars.shadows.level1,
+  boxShadowActive: vars.shadows.active,
+  boxShadowSuccess: vars.shadows.success,
+  boxShadowWarning: vars.shadows.warning,
   cardHeaderBackground: {
-    default: darkColors.gradients.cardHeader,
-    blue: darkColors.gradients.blue,
-    cloudyday: lightColors.gradients.cloudyday,
-    violet: darkColors.gradients.violet,
+    default: darkColors.gradientCardHeader,
+    blue: darkColors.gradientBlue,
+    cloudyday: lightColors.gradientCloudyday,
+    violet: darkColors.gradientViolet,
   },
   dropShadow: "drop-shadow(0px 1px 4px rgba(25, 19, 38, 0.15))",
 };

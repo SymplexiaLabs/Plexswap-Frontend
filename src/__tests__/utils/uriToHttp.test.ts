@@ -1,4 +1,4 @@
-import uriToHttp from 'utils/uriToHttp'
+import uriToHttp from '@plexswap/utils/uriToHttp'
 
 describe('uriToHttp', () => {
   it('returns .eth.link for ens names', () => {

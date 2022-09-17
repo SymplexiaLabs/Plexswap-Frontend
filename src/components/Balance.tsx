@@ -1,7 +1,7 @@
 import { Text, TextProps, Skeleton } from '@plexswap/ui-plex'
 import { useMemo } from 'react'
 import CountUp from 'react-countup'
-import isUndefinedOrNull from 'utils/isUndefinedOrNull'
+import isUndefinedOrNull from '@plexswap/utils/isUndefinedOrNull'
 import _toNumber from 'lodash/toNumber'
 import _isNaN from 'lodash/isNaN'
 import _replace from 'lodash/replace'

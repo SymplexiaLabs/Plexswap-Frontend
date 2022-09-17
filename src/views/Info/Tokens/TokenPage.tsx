@@ -17,7 +17,7 @@ import {
 } from '@plexswap/ui-plex'
 import Page from 'components/Layout/Page'
 import { getBlockExploreLink } from 'utils'
-import truncateHash from 'utils/truncateHash'
+import truncateHash from '@plexswap/utils/truncateHash'
 import useCMCLink from 'views/Info/hooks/useCMCLink'
 import { CurrencyLogo } from 'views/Info/components/CurrencyLogo'
 import { formatAmount } from 'utils/formatInfoNumbers'

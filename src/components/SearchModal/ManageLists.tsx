@@ -2,16 +2,14 @@ import { useTranslation } from '@plexswap/localization'
 import { Button, CheckmarkIcon, CogIcon, Input, LinkExternal, Text, Toggle, useTooltip } from '@plexswap/ui-plex'
 import { TokenList, Version } from '@uniswap/token-lists'
 import Card from 'components/Card'
-import { UNSUPPORTED_LIST_URLS } from '@plexswap/tokens'
+import { useFetchListCallback, acceptListUpdate, disableList, enableList, removeList,UNSUPPORTED_LIST_URLS } from '@plexswap/token-lists'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useAtomValue } from 'jotai'
 import { memo, useCallback, useEffect, useMemo, useState } from 'react'
-import { useListState } from 'state/lists/lists'
+import { listsAtom, useListState } from 'state/lists/lists'
 import styled from 'styled-components'
-import useFetchListCallback from '../../hooks/useFetchListCallback'
-import { acceptListUpdate, disableList, enableList, removeList } from '../../state/lists/actions'
+import uriToHttp from '@plexswap/utils/uriToHttp'
 import { selectorByUrlsAtom, useActiveListUrls, useAllLists, useIsListActive } from '../../state/lists/hooks'
-import uriToHttp from '../../utils/uriToHttp'
 import Column, { AutoColumn } from '../Layout/Column'
 import Row, { RowBetween, RowFixed } from '../Layout/Row'
 import { ListLogo } from '../Logo'
@@ -171,7 +169,7 @@ function ManageLists({
     setListUrlInput(e.target.value)
   }, [])
 
-  const fetchList = useFetchListCallback()
+  const fetchList = useFetchListCallback(listsAtom)
 
   const validUrl: boolean = useMemo(() => {
     return uriToHttp(listUrlInput).length > 0

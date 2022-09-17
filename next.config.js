@@ -123,13 +123,8 @@ const config = {
         permanent: true,
       },
       {
-        source: '/syrup',
+        source: '/crop',
         destination: '/pools',
-        permanent: true,
-      },
-      {
-        source: '/collectibles',
-        destination: '/nfts',
         permanent: true,
       },
     ]

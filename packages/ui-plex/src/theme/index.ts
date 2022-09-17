@@ -1,3 +1,4 @@
+import { vars } from "@plexswap/style/css/vars.css";
 import { AlertTheme } from "../components/Alert/types";
 import { CardTheme } from "../components/Card/types";
 import { PlexToggleTheme } from "../components/PlexToggle/types";
@@ -6,13 +7,13 @@ import { ToggleTheme } from "../components/Toggle/theme";
 import { TooltipTheme } from "../components/Tooltip/types";
 import { NavThemeType } from "../widgets/Menu/theme";
 import { ModalTheme } from "../widgets/Modal/types";
-import { Breakpoints, Colors, MediaQueries, Radii, Shadows, Spacing, ZIndices } from "./types";
+import { Breakpoints, MediaQueries, ZIndices } from "./types";
 
 export interface PlexTheme {
   siteWidth: number;
   isDark: boolean;
   alert: AlertTheme;
-  colors: Colors;
+  colors: typeof vars.colors;
   card: CardTheme;
   nav: NavThemeType;
   modal: ModalTheme;
@@ -22,9 +23,9 @@ export interface PlexTheme {
   tooltip: TooltipTheme;
   breakpoints: Breakpoints;
   mediaQueries: MediaQueries;
-  spacing: Spacing;
-  shadows: Shadows;
-  radii: Radii;
+  spacing: typeof vars.space;
+  shadows: typeof vars.shadows;
+  radii: typeof vars.radii;
   zIndices: ZIndices;
 }
 

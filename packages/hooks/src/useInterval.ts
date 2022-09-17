@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
-import isUndefinedOrNull from 'utils/isUndefinedOrNull'
 import { useLastUpdated } from '@plexswap/hooks'
+import isUndefinedOrNull from '@plexswap/utils/isUndefinedOrNull'
 
 export default function useInterval(
   callback: () => void,

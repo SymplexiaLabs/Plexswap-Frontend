@@ -1,4 +1,4 @@
-import truncateHash from 'utils/truncateHash'
+import truncateHash from '@plexswap/utils/truncateHash'
 
 describe('truncateHash', () => {
   it.each([

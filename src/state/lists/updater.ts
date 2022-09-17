@@ -2,12 +2,9 @@ import { useRouter } from 'next/router'
 import { useAllLists } from 'state/lists/hooks'
 import { getVersionUpgrade, VersionUpgrade } from '@uniswap/token-lists'
 import { useCallback, useEffect, useMemo } from 'react'
-import { UNSUPPORTED_LIST_URLS } from '@plexswap/tokens'
+import { useFetchListCallback, acceptListUpdate, updateListVersion, UNSUPPORTED_LIST_URLS  } from '@plexswap/token-lists'
 import useWeb3Provider from 'hooks/useActiveWeb3React'
-import useFetchListCallback from 'hooks/useFetchListCallback'
-import useInterval from 'hooks/useInterval'
-import useIsWindowVisible from 'hooks/useIsWindowVisible'
-import { acceptListUpdate, updateListVersion } from './actions'
+import { useInterval, useIsWindowVisible } from '@plexswap/hooks'
 import { useActiveListUrls } from './hooks'
 import { useListState } from './lists'
 
@@ -30,7 +27,7 @@ export default function Updater(): null {
     dispatch(updateListVersion())
   }, [dispatch])
 
-  const fetchList = useFetchListCallback()
+  const fetchList = useFetchListCallback(dispatch)
   const fetchAllListsCallback = useCallback(() => {
     if (!isWindowVisible) return
     Object.keys(lists).forEach((url) =>

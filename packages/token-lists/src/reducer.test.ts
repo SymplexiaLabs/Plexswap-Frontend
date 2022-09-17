@@ -1,7 +1,8 @@
+import { describe, it, expect, beforeEach } from 'vitest'
 import { createStore, Store } from 'redux'
-import { DEFAULT_ACTIVE_LIST_URLS, DEFAULT_LIST_OF_LISTS } from '@plexswap/tokens'
+import { DEFAULT_ACTIVE_LIST_URLS, DEFAULT_LIST_OF_LISTS, UNSUPPORTED_LIST_URLS } from './metalists'
 import { fetchTokenList, acceptListUpdate, addList, removeList, enableList, updateListVersion } from './actions'
-import reducer, { ListsState } from './reducer'
+import { ListsState, createTokenListReducer, NEW_LIST_STATE } from './reducer'
 
 const STUB_TOKEN_LIST = {
   name: '',
@@ -9,6 +10,21 @@ const STUB_TOKEN_LIST = {
   version: { major: 1, minor: 1, patch: 1 },
   tokens: [],
 }
+
+const reducer = createTokenListReducer(
+  {
+    lastInitializedDefaultListOfLists: DEFAULT_LIST_OF_LISTS,
+    byUrl: {
+      ...DEFAULT_LIST_OF_LISTS.concat(...UNSUPPORTED_LIST_URLS).reduce((memo, listUrl) => {
+        memo[listUrl] = NEW_LIST_STATE
+        return memo
+      }, {}),
+    },
+    activeListUrls: DEFAULT_ACTIVE_LIST_URLS,
+  },
+  DEFAULT_LIST_OF_LISTS,
+  DEFAULT_ACTIVE_LIST_URLS,
+)
 
 const PATCHED_STUB_LIST = {
   ...STUB_TOKEN_LIST,

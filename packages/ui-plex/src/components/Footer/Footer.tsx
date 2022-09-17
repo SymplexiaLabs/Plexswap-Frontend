@@ -3,9 +3,6 @@ import { Flex, Box } from "../Box";
 import {
   StyledFooter,
   StyledIconMobileContainer,
-  StyledList,
-  StyledListItem,
-  StyledText,
   StyledSocialLinks,
   StyledToolsContainer,
 } from "./styles";
@@ -25,7 +22,7 @@ const MenuItem: React.FC<React.PropsWithChildren<FooterProps>> = ({
   ...props
 }) => {
   return (
-    <StyledFooter p={["42px 32px", null, "10px 20px 10px 20px"]} {...props} justifyContent="center">
+    <StyledFooter p={["42px 32px", null, "10px 20px 10px 20px"]} {...props} justifyContent="center" data-theme="dark">
       <Flex flexDirection="row" justifyContent="space-between" width={["100%", null, "1200px;"]}>
         <StyledIconMobileContainer display={["block", null, "none"]}>
           <LogoWithTextIcon isDark width="130px" />

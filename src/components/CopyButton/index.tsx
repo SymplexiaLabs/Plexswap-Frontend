@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { CopyIcon, SvgProps } from '@plexswap/ui-plex'
-import { copyText } from 'utils/copyText'
+import { copyText } from '@plexswap/utils/copyText'
 import styled from 'styled-components'
 
 const Tooltip = styled.div<{

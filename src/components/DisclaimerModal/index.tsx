@@ -30,7 +30,7 @@ interface RiskDisclaimerProps extends InjectedModalProps {
 }
 
 const GradientModalHeader = styled(ModalHeader)`
-  background: ${({ theme }) => theme.colors.gradients.cloudyday};
+  background: ${({ theme }) => theme.colors.gradientCloudyday};
   padding-bottom: 24px;
   padding-top: 24px;
 `

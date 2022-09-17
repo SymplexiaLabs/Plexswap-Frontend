@@ -1,5 +1,5 @@
 import { Text, Flex } from '@plexswap/ui-plex'
-import isUndefinedOrNull from 'utils/isUndefinedOrNull'
+import isUndefinedOrNull from '@plexswap/utils/isUndefinedOrNull'
 import CrossText from './CrossText'
 
 interface DiffTextPropsType {

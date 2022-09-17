@@ -7,7 +7,7 @@ import { computeTradePriceBreakdown, warningSeverity, basisPointsToPercent } fro
 import { AutoColumn } from 'components/Layout/Column'
 import { CurrencyLogo } from 'components/Logo'
 import { RowBetween, RowFixed } from 'components/Layout/Row'
-import truncateHash from 'utils/truncateHash'
+import truncateHash from '@plexswap/utils/truncateHash'
 import { TruncatedText, SwapShowAcceptChanges } from './styleds'
 
 export default function SwapModalHeader({

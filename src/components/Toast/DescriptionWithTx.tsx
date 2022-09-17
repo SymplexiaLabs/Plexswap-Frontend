@@ -2,7 +2,7 @@ import { Link, Text } from '@plexswap/ui-plex'
 import { getBlockExploreLink, getBlockExploreName } from 'utils'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useTranslation } from '@plexswap/localization'
-import truncateHash from 'utils/truncateHash'
+import truncateHash from '@plexswap/utils/truncateHash'
 
 interface DescriptionWithTxProps {
   description?: string

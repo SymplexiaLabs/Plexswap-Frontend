@@ -1,3 +1,5 @@
+import { vars } from "@plexswap/style/css/vars.css";
+
 export type Breakpoints = string[];
 
 export type MediaQueries = {
@@ -7,7 +9,6 @@ export type MediaQueries = {
   lg: string;
   xl: string;
   xxl: string;
-  nav: string;
 };
 
 export type Spacing = number[];
@@ -29,52 +30,7 @@ export type Shadows = {
   tooltip: string;
 };
 
-export type Gradients = {
-  cloudyday: string;
-  inverseCloudyday: string;
-  cardHeader: string;
-  blue: string;
-  violet: string;
-  violetAlt: string;
-  gold: string;
-  symplexia: string;
-};
-
-export type Colors = {
-  primary: string;
-  primaryBright: string;
-  primaryDark: string;
-  secondary: string;
-  tertiary: string;
-  success: string;
-  failure: string;
-  warning: string;
-  cardBorder: string;
-  contrast: string;
-  dropdown: string;
-  dropdownDeep: string;
-  invertedContrast: string;
-  input: string;
-  inputSecondary: string;
-  background: string;
-  backgroundDisabled: string;
-  backgroundAlt: string;
-  backgroundAlt2: string;
-  text: string;
-  textDisabled: string;
-  textSubtle: string;
-  disabled: string;
-
-  // Gradients
-  gradients: Gradients;
-
-  // Additional colors
-  binance: string;
-  overlay: string;
-  gold: string;
-  silver: string;
-  bronze: string;
-};
+export type Colors = typeof vars.colors;
 
 export type ZIndices = {
   ribbon: number;

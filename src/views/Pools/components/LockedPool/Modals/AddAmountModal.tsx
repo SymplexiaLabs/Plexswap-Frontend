@@ -115,7 +115,7 @@ const AddAmountModal: React.FC<React.PropsWithChildren<AddAmountModalProps>> = (
         style={{ maxWidth: '420px' }}
         title={t('Add WAYA')}
         onDismiss={onDismiss}
-        headerBackground={theme.colors.gradients.cardHeader}
+        headerBackground={theme.colors.gradientCardHeader}
       >
         <Box mb="16px">
           <BalanceField

@@ -1,5 +1,5 @@
 import { Flex, LinkExternal, Text, Tag, CheckmarkCircleIcon } from '@plexswap/ui-plex'
-import truncateHash from 'utils/truncateHash'
+import truncateHash from '@plexswap/utils/truncateHash'
 import { getBlockExploreLink } from 'utils'
 import { useTranslation } from '@plexswap/localization'
 import { Vote } from 'state/types'

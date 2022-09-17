@@ -1,5 +1,5 @@
 import { bscTestnetTokens } from '@plexswap/tokens'
-import tryParseAmount from './tryParseAmount'
+import tryParseAmount from '@plexswap/utils/tryParseAmount'
 
 describe('utils/tryParseAmount', () => {
   it('should be undefined when no valid input', () => {

@@ -1,0 +1,11 @@
+{
+  "name": "@plexswap/utils",
+  "version": "1.0.1",
+  "scripts": {
+    "test": "vitest --run --globals"
+  },
+  "dependencies": {
+    "@plexswap/tokens": "*",
+    "@plexswap/sdk": "*"
+  }
+}

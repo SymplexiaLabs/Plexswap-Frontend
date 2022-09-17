@@ -1,6 +1,7 @@
 import { ChainId } from '@plexswap/sdk'
-import { EMPTY_LIST, TagInfo, TokenAddressMap, WrappedTokenInfo, DEFAULT_LIST_OF_LISTS,
-         OFFICIAL_LISTS, UNSUPPORTED_LIST_URLS, WARNING_LIST_URLS } from '@plexswap/tokens' 
+import { EMPTY_LIST,TagInfo, TokenAddressMap, WrappedTokenInfo } from '@plexswap/tokens'
+import { DEFAULT_LIST_OF_LISTS, OFFICIAL_LISTS, 
+         UNSUPPORTED_LIST_URLS, WARNING_LIST_URLS, ListsState } from '@plexswap/token-lists' 
 import { TokenList } from '@uniswap/token-lists'
 import { atom, useAtomValue } from 'jotai'
 import fromPairs from 'lodash/fromPairs'
@@ -11,7 +12,7 @@ import DEFAULT_TOKEN_LIST from '@plexswap/tokens/tokenLists/plex-default.tokenli
 import UNSUPPORTED_TOKEN_LIST from '@plexswap/tokens/tokenLists/plex-unsupported.tokenlist.json'
 import WARNING_TOKEN_LIST from '@plexswap/tokens/tokenLists/plex-warning.tokenlist.json'
 import { listsAtom } from './lists'
-import { ListsState } from './reducer'
+
 
 // use ordering of default list of lists to assign priority
 function sortByListPriority(urlA: string, urlB: string) {

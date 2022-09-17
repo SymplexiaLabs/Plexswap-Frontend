@@ -1,4 +1,4 @@
-import replaceBrowserHistory from 'utils/replaceBrowserHistory'
+import replaceBrowserHistory from '@plexswap/utils/replaceBrowserHistory'
 import { Box, connectorLocalStorageKey, LinkExternal, Text, useToast } from '@plexswap/ui-plex'
 import { useTranslation } from '@plexswap/localization'
 import { useCallback } from 'react'

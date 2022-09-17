@@ -2,7 +2,7 @@ import { ErrorBoundary as SErrorBoundary } from '@sentry/nextjs'
 import Page from 'components/Layout/Page'
 import { useTranslation } from '@plexswap/localization'
 import { Button, Text, LogoIcon, Flex, IconButton, CopyIcon } from '@plexswap/ui-plex'
-import { copyText } from 'utils/copyText'
+import { copyText } from '@plexswap/utils/copyText'
 import { useCallback } from 'react'
 
 export function SentryErrorBoundary({ children }) {

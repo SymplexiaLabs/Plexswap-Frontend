@@ -1,6 +1,6 @@
 {
   "name": "@plexswap/farms",
-  "version": "1.0.9",
+  "version": "1.0.11",
   "main": "./src/index.ts",
   "sideEffects": false,
   "peerDependencies": {

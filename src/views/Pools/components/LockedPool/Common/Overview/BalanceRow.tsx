@@ -1,7 +1,7 @@
 import { memo } from 'react'
 import { Text, Flex, TooltipText, useTooltip } from '@plexswap/ui-plex'
 import { BalanceWithLoading } from 'components/Balance'
-import isUndefinedOrNull from 'utils/isUndefinedOrNull'
+import isUndefinedOrNull from '@plexswap/utils/isUndefinedOrNull'
 import _toNumber from 'lodash/toNumber'
 import CrossText from './CrossText'
 
