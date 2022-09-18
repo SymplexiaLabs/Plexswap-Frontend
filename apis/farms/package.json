@@ -1,6 +1,6 @@
 {
-  "name": "farms-api",
-  "version": "0.0.1",
+  "name": "@plexswap/farms-api",
+  "version": "1.0.1",
   "dependencies": {
     "@plexswap/farms": "*",
     "itty-router": "^2.6.1",

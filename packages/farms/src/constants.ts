@@ -4,8 +4,8 @@ import { ChainId } from '@plexswap/sdk'
 export const supportedChainId = [ChainId.GOERLI, ChainId.BSC, ChainId.BSC_TESTNET]
 
 export const chiefFarmerAddresses = {
-  97: '0xCa9F812Ba614E97b6D8EDC36eE0C1b2DbA35f062',
-  56: '0x4D4408eA016357BB334eAd40F14dcF0dfd164Dbe',
+   97: '0xCa9F812Ba614E97b6D8EDC36eE0C1b2DbA35f062',
+   56: '0x4D4408eA016357BB334eAd40F14dcF0dfd164Dbe',
 }
 
 export const nonBSCVaultAddresses = {
