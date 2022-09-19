@@ -6,5 +6,6 @@ export const INFO_CLIENT = 'https://api.thegraph.com/subgraphs/name/symplexialab
 export const BLOCKS_CLIENT = 'https://api.thegraph.com/subgraphs/name/symplexialabs/plexblocks'
 
 export const BIT_QUERY = 'https://graphql.bitquery.io'
+export const GRAPH_HEALTH = 'https://api.thegraph.com/index-node/graphql'
 
 export const FARM_API = 'farms.plexswap.workers.dev'

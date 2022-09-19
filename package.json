@@ -21,7 +21,7 @@
     "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json}\"",
     "format:check:staged": "lint-staged",
     "format:write": "prettier --write \"**/*.{js,jsx,ts,tsx,json}\"",
-    "updateLPsAPR": "yarn turbo run build --filter=@plexswap/sdk && NODE_PATH=./src ts-node --compiler-options '{\"module\":\"commonjs\"}' scripts/updateLPsAPR.ts",
+    "updateLPsAPR": "yarn turbo run build --filter=@plexswap/sdk && ts-node --compiler-options '{\"module\":\"commonjs\"}' scripts/updateLPsAPR.ts",
     "prepare": "husky install",
     "postinstall": "patch-package && yarn run typechain",
     "typechain": "typechain --out-dir src/config/abi/types --target=ethers-v5 \"src/config/abi/*.json\""
