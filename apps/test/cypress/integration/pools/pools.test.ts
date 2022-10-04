@@ -1,6 +1,6 @@
 describe('Silos Page', () => {
   beforeEach(() => {
-    cy.visit('/Silos')
+    cy.visit('/pools')
   })
 
   it('loads live Silos', () => {
