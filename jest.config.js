@@ -12,8 +12,8 @@ const customJestConfig = {
   testPathIgnorePatterns: ['<rootDir>/apps/test/', '<rootDir>/src/config/__tests__/', '<rootDir>/packages'],
   moduleNameMapper: {
     '^@plexswap/ui-plex': '<rootDir>/packages/ui-plex/src',
-    '^@pancakeswap/style/(.*)$': '<rootDir>/packages/style/$1',
-    '^@pancakeswap/style': '<rootDir>/packages/style',
+    '^@plexswapswap/style/(.*)$': '<rootDir>/packages/style/$1',
+    '^@plexswaswap/style': '<rootDir>/packages/style',
     '^@plexswap/sdk': '<rootDir>/packages/swap-sdk/src',
     '^@plexswap/localization': ['<rootDir>/packages/localization/src'],
     '^@plexswap/hooks': ['<rootDir>/packages/hooks/src'],
