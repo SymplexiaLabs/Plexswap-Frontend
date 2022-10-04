@@ -10,9 +10,9 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.12.4",
-    "@plexswap/wagmi": "*",
-    "@plexswap/ui-plex": "*",
     "@plexswap/sdk": "*",
+    "@plexswap/ui-plex": "*",
+    "@plexswap/wagmi": "*",
     "next": "^12.3.1",
     "next-axiom": "^0.13.0",
     "react": "^18.2.0",
