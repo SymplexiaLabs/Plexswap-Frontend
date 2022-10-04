@@ -17,13 +17,13 @@ import {
   UserMenuDivider,
   UserMenuItem,
 } from '@plexswap/ui-plex'
-import { CHAINS_STARGATE } from '@plexswap/wagmi'
 import { useTheme as useNextTheme } from 'next-themes'
 import Image from 'next/future/image'
 import NextLink from 'next/link'
 import { useEffect, useReducer, useRef, useState } from 'react'
 import styled, { useTheme } from 'styled-components'
 import { getTimePeriods } from './getTimePeriods'
+import { CHAINS_STARGATE } from './stargate/config'
 import { findChainByStargateId } from './stargate/network'
 
 const StyledMenuItem = styled.a<any>`
@@ -73,7 +73,7 @@ export function Menu() {
   const { setTheme } = useNextTheme()
 
   return (
-    <Flex height="56px" bg="backgroundAlt" px="16px" alignItems="center" justifyContent="space-between" zIndex={1}>
+    <Flex height="56px" bg="backgroundAlt" px="16px" alignItems="center" justifyContent="space-between" zIndex={9}>
       <Flex>
         <Logo isDark={theme.isDark} href="https://swap.plexfinance.us" />
 
@@ -109,10 +109,14 @@ const UserMenuItems = ({ onShowTx }: { onShowTx: () => void }) => {
       <UserMenuDivider />
       {CHAINS_STARGATE.map((chain) => (
         <UserMenuItem key={chain.id} style={{ justifyContent: 'flex-start' }} onClick={() => switchNetwork(chain.id)}>
-          <Image width={24} height={24} src={`/chains/${chain.id}.png`} unoptimized />
+          <Image width={24} height={24} src={`/chains/${chain.id}.png`} unoptimized alt={`chain-${chain.name}`} />
           <Text pl="12px">{chain.name}</Text>
         </UserMenuItem>
       ))}
+      <UserMenuDivider />
+      <UserMenuItem onClick={() => window?.stargate.wallet.disconnect()}>
+        <Text>Disconnect</Text>
+      </UserMenuItem>
     </>
   )
 }

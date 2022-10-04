@@ -9,7 +9,6 @@ import BackgroundImage from "./BackgroundImage";
 import Img from "./Image";
 import TokenImage from "./TokenImage";
 import TokenPairImage from "./TokenPairImage";
-import ProfileAvatarComponent from "./ProfileAvatar";
 import tokenList from "./tokens";
 
 export default {
@@ -129,13 +128,3 @@ export const TokenPairImages: React.FC<React.PropsWithChildren> = () => {
   );
 };
 
-export const ProfileAvatar: React.FC<React.PropsWithChildren> = () => {
-  return (
-    <div>
-      <Text>Shows Placeholder until image is downloaded</Text>
-      <ProfileAvatarComponent src="https://via.placeholder.com/960x960" width={64} height={64} alt="test" mb="16px" />
-      <Text>Shows placeholder if the image does not download</Text>
-      <ProfileAvatarComponent src="https://via.placeholder.com" width={64} height={64} alt="test" />
-    </div>
-  );
-};

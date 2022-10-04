@@ -1,6 +1,9 @@
 import transpileModules from 'next-transpile-modules'
+import { withAxiom } from 'next-axiom'
+import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin'
 
-const withTH = transpileModules(['@plexswap/ui-plex', '@plexswap/wagmi', '@plexswap/sdk'])
+const withVanillaExtract = createVanillaExtractPlugin()
+const withTH = transpileModules(['@plexswap/ui-plex', '@plexswap/wagmi', '@plexswap/sdk', '@plexswap/style'])
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -9,11 +12,6 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
-  experimental: {
-    images: {
-      allowFutureImage: true,
-    },
-  },
 }
 
-export default withTH(nextConfig)
+export default withTH(withAxiom(withVanillaExtract(nextConfig)))
