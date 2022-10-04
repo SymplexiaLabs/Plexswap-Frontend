@@ -224,7 +224,13 @@ function RecentTransactionsModal({
               {txn.type === 'APPROVE' && (
                 <>
                   {`Approve ${txn?.input?.amount?.currency?.symbol ?? ''}`}{' '}
-                  <Image width={18} height={18} src={`/chains/${txnChain?.chain.id}.png`} unoptimized />
+                  <Image
+                    width={18}
+                    height={18}
+                    src={`/chains/${txnChain?.chain.id}.png`}
+                    unoptimized
+                    alt={`${txnChain?.chain.name}`}
+                  />
                 </>
               )}
               {txn.type === 'TRANSFER' && (
@@ -235,12 +241,14 @@ function RecentTransactionsModal({
                     height={18}
                     src={`/chains/${findChainByStargateId(txn.input.from.chainId)?.chain.id}.png`}
                     unoptimized
+                    alt={`chain-${findChainByStargateId(txn.input.from.chainId)?.chain.name}`}
                   />
                   to {txn.input.to.token.symbol}{' '}
                   <Image
                     width={18}
                     height={18}
                     src={`/chains/${findChainByStargateId(txn.input.to.chainId)?.chain.id}.png`}
+                    alt={`chain-${findChainByStargateId(txn.input.to.chainId)?.chain.name}`}
                     unoptimized
                   />
                 </>
@@ -298,7 +306,7 @@ type BaseTxnType = {
 type TransactionApprove = {
   type: 'APPROVE'
   input: {
-    amount: CurrencyAmount
+    amount: CurrencyAmount<Token>
     spender: string
     account: string
   }
@@ -322,10 +330,10 @@ type TransferInput = {
     chainId: number
     token: Token
   }
-  amount: CurrencyAmount
-  minAmount: CurrencyAmount
-  nativeFee: CurrencyAmount
-  dstNativeAmount: CurrencyAmount
+  amount: CurrencyAmount<Token>
+  minAmount: CurrencyAmount<Token>
+  nativeFee: CurrencyAmount<Token>
+  dstNativeAmount: CurrencyAmount<Token>
 }
 
 function User() {
@@ -342,9 +350,9 @@ function User() {
     })
   }, [])
 
-  const { account, chainId, active } = wallet || {}
+  const { account, chainId } = wallet || {}
 
-  const chain = CHAINS_STARGATE.find((c) => c.id === chainId)
+  const chain = findChainByStargateId(chainId)
 
   const isWrongNetwork = chainId && !chain
   const hasPendingTransactions = pending.length > 0
@@ -357,13 +365,13 @@ function User() {
     )
   }
 
-  if (active) {
+  if (account) {
     return (
       <UserMenu
         variant={hasPendingTransactions ? 'pending' : 'default'}
         account={account}
         text={hasPendingTransactions ? `${pending.length} Pending` : ''}
-        avatarSrc={chainId ? `/chains/${chainId}.png` : undefined}
+        avatarSrc={chain ? `/chains/${chain?.chain.id}.png` : undefined}
       >
         {() => <UserMenuItems onShowTx={() => showRecentTxModal()} />}
       </UserMenu>
