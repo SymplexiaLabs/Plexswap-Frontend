@@ -7,9 +7,9 @@ node_modules
 
 # testing
 /coverage
-cypress/videos
-cypress/screenshots
-cypress/fixtures/example.json
+/apps/test/cypress/videos
+/apps/test/cypress/screenshots
+/apps/test/cypress/fixtures/example.json
 
 # next.js
 .next/
