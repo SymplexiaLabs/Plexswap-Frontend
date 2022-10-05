@@ -60,9 +60,9 @@
     "styled-components": "^5.2.3"
   },
   "dependencies": {
+    "@plexswap/style": "*",
     "@popperjs/core": "^2.9.2",
     "@types/styled-system": "^5.1.15",
-    "@plexswap/style": "*",
     "@vanilla-extract/vite-plugin": "^3.3.1",
     "framer-motion": "6.5.1",
     "lodash": "^4.17.20",
