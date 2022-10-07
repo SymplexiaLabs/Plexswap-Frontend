@@ -55,6 +55,11 @@ const config: (t: ContextApi['t'], isDark: boolean, languageCode?: string, chain
             label: t('Liquidity'),
             href: '/liquidity',
           },
+          {
+            label: t('Bridge'),
+            href: 'https://bridge.plexfinance.us/',
+            type: DropdownMenuItemType.EXTERNAL_LINK,
+          },
         ].map((item) => addMenuItemSupported(item, chainId)),
       },
       {
