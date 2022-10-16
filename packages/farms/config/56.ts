@@ -18,6 +18,7 @@ const farms: SerializedFarmConfig[] = [
     lpAddress:  '0xB459DC2D3763b14c77a5657f6A3C328E2A59255F',
     token: bscTokens.waya,
     quoteToken: bscTokens.wbnb,
+    boosted: true,
   },
   {
     pid: 2,
@@ -32,6 +33,7 @@ const farms: SerializedFarmConfig[] = [
     lpAddress:  '0x3660F1Ee5711c69160061e55169136631Aa84D6C',
     token: bscTokens.waya,
     quoteToken: bscTokens.busd,
+    boosted: true,
   },
   {
     pid: 4,
