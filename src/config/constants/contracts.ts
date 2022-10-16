@@ -16,20 +16,16 @@ export default {
     97: '0xA83F46C4700B368E15588d4778df4274075e2b55',
     56: '0xB584cA7F7774EB9a68E60C032C45f0Efe9539AFE',
   },
-    taskAssistant: {
+  taskAssistant: {
     97: '0x994b467b83fF7ffF74FDC8b26F034f1A68eCf1ae',
     56: '0xfd5044541EFdCf6B6a83e6ecBF3f477C8cEC6433',
   },
-  iWaya: {
-    97: '0xdC17Cab1269a6aE0A3b57bCbe803b2b743BaCA3A',
-    56: '',
-  },
   FarmBooster: {
     97: '0xe8eC0b12Db305E8A5431aC5cFb3daad2f1162AF9',
-    56: '',
+    56: '0x028BE2F4c1562cF1B910049327E63c9D581E5AAA',
   },
   FarmBoosterProxyFactory: {
     97: '0xff440a6bE12d60c0f4e6827178eFAaF4044C4E69',
-    56: '',
+    56: '0xe44c3e35330eb1DAe061ab05973Ec40427763ca3',
   },
 }

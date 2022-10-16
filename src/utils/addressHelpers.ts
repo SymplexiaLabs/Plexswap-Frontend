@@ -31,10 +31,6 @@ export const getWayaFlexibleVaultAddress = () => {
   return getAddress(addresses.wayaFlexibleVault)
 }
 
-export const getIWayaAddress = () => {
-  return getAddress(addresses.iWaya)
-}
-
 export const getFarmBoosterAddress = () => {
   return getAddress(addresses.FarmBooster)
 }

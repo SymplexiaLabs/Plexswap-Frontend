@@ -147,7 +147,7 @@ const CardContent: React.FC = () => {
         </Text>
         <NextLink href="/pools" passHref>
           <Button as="a" width="100%" style={{ backgroundColor: theme.colors.textSubtle }}>
-            {t('Go to Pool')}
+            {t('Go to Silos')}
           </Button>
         </NextLink>
       </Box>
@@ -163,7 +163,7 @@ const CardContent: React.FC = () => {
         </Text>
         <NextLink href="/pools" passHref>
           <Button as="a" width="100%" style={{ backgroundColor: theme.colors.textSubtle }}>
-            {t('Go to Pool')}
+            {t('Go to Silos')}
           </Button>
         </NextLink>
       </Box>
