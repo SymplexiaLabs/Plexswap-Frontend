@@ -28,7 +28,7 @@ import ScrollToTopButton from 'components/ScrollToTopButton/ScrollToTopButtonV2'
 import Table from './components/FarmTable/FarmTable'
 import FarmTabButtons from './components/FarmTabButtons'
 import { FarmWithStakedValue } from './components/types'
-import { BWayaBoosterCard } from './components/BWayaBoosterCard'
+import { FarmBoosterCard } from './components/FarmBoosterCard'
 
 const ControlContainer = styled.div`
   display: flex;
@@ -309,7 +309,7 @@ const Farms: React.FC<React.PropsWithChildren> = ({ children }) => {
           </Box>
           {(chainId === ChainId.BSC || chainId === ChainId.BSC_TESTNET) && (
             <Box>
-              <BWayaBoosterCard />
+              <FarmBoosterCard />
             </Box>
           )}
         </FarmFlexWrapper>

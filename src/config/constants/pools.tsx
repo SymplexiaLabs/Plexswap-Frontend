@@ -54,6 +54,17 @@ export const livePools: SerializedPoolConfig[] = [
     tokenPerBlock: '10',
     isFinished: false,
   },
+  {
+    poolId: 1,
+    stakingToken: bscTokens.waya,
+    earningToken: bscTokens.plex,
+    contractAddress: {
+      56: '0x0d1b5d6216c45fd8198814ecf247930758c55ab5',
+      97: '',
+    },
+    poolCategory: PoolCategory.CORE,
+    tokenPerBlock: '0.00115',
+  },
 ].map((p) => ({
   ...p,
   stakingToken: p.stakingToken.serialize,

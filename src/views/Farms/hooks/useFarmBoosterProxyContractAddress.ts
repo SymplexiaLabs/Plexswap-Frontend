@@ -3,7 +3,7 @@ import { NO_PROXY_CONTRACT } from 'config/constants'
 import { useFarmBoosterContract } from 'hooks/useContract'
 import { FetchStatus } from 'config/constants/types'
 
-export const useBWayaProxyContractAddress = (account?: string) => {
+export const useFarmBoosterProxyContractAddress = (account?: string) => {
   const farmBoosterContract = useFarmBoosterContract()
   const { data, status, mutate } = useSWR(account && ['proxyAddress', account], async () =>
     farmBoosterContract.proxyContract(account),

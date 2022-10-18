@@ -35,7 +35,7 @@ export enum PoolIds {
 export enum PoolCategory {
   'COMMUNITY' = 'Community',
   'CORE' = 'Core',
-  'BINANCE' = 'Binance', // Pools using native BNB behave differently than pools using a token
+  'BINANCE' = 'Binance', // Pools using native BNB behave differently than pools using a TOKEN
   'AUTO' = 'Auto',
 }
 

@@ -16,7 +16,7 @@ import { getMulticallAddress } from 'utils/addressHelpers'
 import {
   getFarmBoosterContract,
   getFarmBoosterProxyFactoryContract,
-  getBWayaProxyContract,
+  getFarmBoosterProxyContract,
   getBep20Contract,
   getWayaContract,
   getWayaFlexibleVaultContract,
@@ -24,7 +24,7 @@ import {
   getErc721CollectionContract,
   getErc721Contract,
   getChiefFarmerContract,
-  getTaskAssistantContract,
+  getCropChiefContract,
 } from 'utils/contractHelpers'
 import { useSigner } from 'wagmi'
 
@@ -78,9 +78,9 @@ export const useChieffarmer = (withSignerIfPossible = true) => {
   return useMemo(() => getChiefFarmerContract(providerOrSigner, chainId), [providerOrSigner, chainId])
 }
 
-export const useTaskAssistant = (id) => {
+export const useCropChief = (id) => {
   const { data: signer } = useSigner()
-  return useMemo(() => getTaskAssistantContract(id, signer), [id, signer])
+  return useMemo(() => getCropChiefContract(id, signer), [id, signer])
 }
 
 export const useVaultPoolContract = (vaultKey: VaultKey): WayaVault | WayaFlexibleVault => {
@@ -171,10 +171,10 @@ export function useFarmBoosterProxyFactoryContract(withSignerIfPossible = true) 
   return useMemo(() => getFarmBoosterProxyFactoryContract(providerOrSigner), [providerOrSigner])
 }
 
-export function useBWayaProxyContract(proxyContractAddress: string, withSignerIfPossible = true) {
+export function useFarmBoosterProxyContract(proxyContractAddress: string, withSignerIfPossible = true) {
   const providerOrSigner = useProviderOrSigner(withSignerIfPossible)
   return useMemo(
-    () => proxyContractAddress && getBWayaProxyContract(proxyContractAddress, providerOrSigner),
+    () => proxyContractAddress && getFarmBoosterProxyContract(proxyContractAddress, providerOrSigner),
     [providerOrSigner, proxyContractAddress],
   )
 }

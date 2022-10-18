@@ -16,11 +16,11 @@ import BigNumber from 'bignumber.js'
 import { ToastDescriptionWithTx } from 'components/Toast'
 import { useTranslation } from '@plexswap/localization'
 import useCatchTxError from 'hooks/useCatchTxError'
-import { useBWayaProxyContract } from 'hooks/useContract'
+import { useFarmBoosterProxyContract } from 'hooks/useContract'
 import { useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components'
 import { getFullDisplayBalance } from 'utils/formatBalance'
-import { useBWayaProxyContractAddress } from '../hooks/useBWayaProxyContractAddress'
+import { useFarmBoosterProxyContractAddress } from '../hooks/useFarmBoosterProxyContractAddress'
 import useProxyStakedActions from './YieldBooster/hooks/useProxyStakedActions'
 
 export const StepperCircle = styled.div`
@@ -122,7 +122,7 @@ export const InfoIconBox = styled.div`
   justify-content: center;
   align-items: center;
 `
-interface BWayaMigrateModalProps {
+interface FarmMigrateModalProps {
   lpContract: Contract
   stakedBalance: BigNumber
   onUnStack: (amount: string, callback: () => void) => void
@@ -143,7 +143,7 @@ const migrationSteps: Record<Steps, string> = {
 }
 const migrationStepsKeys = Object.keys(migrationSteps)
 
-export const BWayaMigrateModal: React.FC<BWayaMigrateModalProps> = ({
+export const FarmMigrateModal: React.FC<FarmMigrateModalProps> = ({
   lpContract,
   stakedBalance,
   onDismiss,
@@ -158,10 +158,10 @@ export const BWayaMigrateModal: React.FC<BWayaMigrateModalProps> = ({
   const fullBalance = useMemo(() => {
     return getFullDisplayBalance(stakedBalance)
   }, [stakedBalance])
-  const { proxyAddress } = useBWayaProxyContractAddress(account)
+  const { proxyAddress } = useFarmBoosterProxyContractAddress(account)
   const { onApprove, onDone, onStake } = useProxyStakedActions(pid, lpContract)
 
-  const bWayaProxy = useBWayaProxyContract(proxyAddress)
+  const bWayaProxy = useFarmBoosterProxyContract(proxyAddress)
   const { fetchWithCatchTxError, loading } = useCatchTxError()
   const { toastSuccess } = useToast()
 

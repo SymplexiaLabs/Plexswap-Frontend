@@ -31,7 +31,7 @@ const BoosterTooltip = () => {
   return (
     <>
       {t(
-        `Boost multiplier is calculated based on the staking conditions from both Farms and fixed-term WAYA syrup pool and will be automatically updated upon user actions.`,
+        `Boost multiplier is calculated based on the staking conditions from both Farms and fixed-term WAYA pool and will be automatically updated upon user actions.`,
       )}
       <LinkExternal
         href="https://docs.plexswap.finance/products/yield-farming/bwaya/faq#how-are-the-bwaya-multipliers-calculated"

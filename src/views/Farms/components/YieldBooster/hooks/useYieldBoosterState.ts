@@ -5,7 +5,7 @@ import { useSWRMulticall } from 'hooks/useSWRContract'
 import farmBoosterAbi from 'config/abi/FarmBooster.json'
 import isUndefinedOrNull from '@plexswap/utils/isUndefinedOrNull'
 import { useUserBoosterStatus } from 'views/Farms/hooks/useUserBoosterStatus'
-import { useBWayaProxyContractAddress } from 'views/Farms/hooks/useBWayaProxyContractAddress'
+import { useFarmBoosterProxyContractAddress } from 'views/Farms/hooks/useFarmBoosterProxyContractAddress'
 import { useUserLockedWayaStatus } from 'views/Farms/hooks/useUserLockedWayaStatus'
 import { useCallback } from 'react'
 
@@ -48,7 +48,7 @@ export default function useYieldBoosterState(yieldBoosterStateArgs: UseYieldBoos
   const { locked, lockedEnd } = useUserLockedWayaStatus()
   const { stakedBalance, proxy } = useFarmUser(farmPid)
   const { isActivePool, refreshIsPoolActive } = useIsPoolActive(farmPid)
-  const { proxyCreated, refreshProxyAddress, proxyAddress } = useBWayaProxyContractAddress(account)
+  const { proxyCreated, refreshProxyAddress, proxyAddress } = useFarmBoosterProxyContractAddress(account)
 
   const refreshActivePool = useCallback(() => {
     refreshActivePools()
@@ -67,7 +67,7 @@ export default function useYieldBoosterState(yieldBoosterStateArgs: UseYieldBoos
   } else if (stakedBalance.gt(0)) {
     state = YieldBoosterState.NO_MIGRATE
   } else if (lockedEnd === '0' || new Date() > new Date(parseInt(lockedEnd) * 1000)) {
-    // NOTE: duplicate logic in BWayaBoosterCard
+    // NOTE: duplicate logic in FarmBoosterCard
     state = YieldBoosterState.LOCKED_END
   } else if (!proxy?.stakedBalance.gt(0)) {
     state = YieldBoosterState.NO_LP

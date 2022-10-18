@@ -6,7 +6,7 @@
   "sideEffects": [
     "*.css.ts"
   ],
-  "repository": "https://github.com/plexswap/plex-toolkit/tree/master/packages/plex-uikit",
+  "repository": "https://github.com/plexswap/Plexswap-Frontend/tree/master/packages/ui-plex",
   "license": "MIT",
   "scripts": {
     "start": "yarn storybook",

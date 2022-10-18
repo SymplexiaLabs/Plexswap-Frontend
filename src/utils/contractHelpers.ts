@@ -18,22 +18,19 @@ import {
 } from 'utils/addressHelpers'
 
 // ABI
-
 import bep20Abi from 'config/abi/erc20.json'
 import erc721Abi from 'config/abi/erc721.json'
 import lpTokenAbi from 'config/abi/lpToken.json'
 import wayaAbi from 'config/abi/Waya.json'
 import chiefFarmerAbi from 'config/abi/ChiefFarmer.json'
-import taskAssistant from 'config/abi/TaskAssistant.json'
-import taskAssistantV2Abi from 'config/abi/TaskAssistantV2.json'
-import taskAssistantBnb from 'config/abi/TaskAssistantBnb.json'
+import cropChiefAbi from 'config/abi/CropChief.json'
 import wayaVaultAbi from 'config/abi/WayaVault.json'
 import wayaFlexibleVaultAbi from 'config/abi/WayaFlexibleVault.json'
 import MultiCallAbi from 'config/abi/Multicall.json'
 import erc721CollectionAbi from 'config/abi/erc721collection.json'
 import farmBoosterAbi from 'config/abi/FarmBooster.json'
 import farmBoosterProxyFactoryAbi from 'config/abi/FarmBoosterProxyFactory.json'
-import bWayaProxyAbi from 'config/abi/bWayaProxy.json'
+import farmBoosterProxyAbi from 'config/abi/FarmBoosterProxy.json'
 
 // Types
 import type {
@@ -41,8 +38,7 @@ import type {
   Erc721,
   Waya,
   ChiefFarmer,
-  TaskAssistant,
-  TaskAssistantV2,
+  CropChief,
   LpToken,
   Multicall,
   Erc721collection,
@@ -50,7 +46,7 @@ import type {
   WayaFlexibleVault,
   FarmBooster,
   FarmBoosterProxyFactory,
-  BWayaProxy,
+  FarmBoosterProxy,
 } from 'config/abi/types'
 import { ChainId } from '@plexswap/sdk'
 
@@ -72,20 +68,18 @@ export const getContract = ({
 export const getBep20Contract = (address: string, signer?: Signer | Provider) => {
   return getContract({ abi: bep20Abi, address, signer }) as Erc20
 }
+
 export const getErc721Contract = (address: string, signer?: Signer | Provider) => {
   return getContract({ abi: erc721Abi, address, signer }) as Erc721
 }
+
 export const getLpContract = (address: string, signer?: Signer | Provider) => {
   return getContract({ abi: lpTokenAbi, address, signer }) as LpToken
 }
-export const getTaskAssistantContract = (id: number, signer?: Signer | Provider) => {
+
+export const getCropChiefContract = (id: number, signer?: Signer | Provider) => {
   const config = poolsConfig.find((pool) => pool.poolId === id)
-  const abi = config.poolCategory === PoolCategory.BINANCE ? taskAssistantBnb : taskAssistant
-  return getContract({ abi, address: getAddress(config.contractAddress), signer }) as TaskAssistant
-}
-export const getTaskAssistantV2Contract = (id: number, signer?: Signer | Provider) => {
-  const config = poolsConfig.find((pool) => pool.poolId === id)
-  return getContract({ abi: taskAssistantV2Abi, address: getAddress(config.contractAddress), signer }) as TaskAssistantV2
+  return getContract({ abi: cropChiefAbi, address: getAddress(config.contractAddress), signer }) as CropChief
 }
 
 export const getWayaContract = (signer?: Signer | Provider, chainId?: number) => {
@@ -132,6 +126,6 @@ export const getFarmBoosterProxyFactoryContract = (signer?: Signer | Provider) =
   }) as FarmBoosterProxyFactory
 }
 
-export const getBWayaProxyContract = (proxyContractAddress: string, signer?: Signer | Provider) => {
-  return getContract({ abi: bWayaProxyAbi, address: proxyContractAddress, signer }) as BWayaProxy
+export const getFarmBoosterProxyContract = (proxyContractAddress: string, signer?: Signer | Provider) => {
+  return getContract({ abi: farmBoosterProxyAbi, address: proxyContractAddress, signer }) as FarmBoosterProxy
 }

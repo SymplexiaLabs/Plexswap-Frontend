@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux'
 import { useAppDispatch } from 'state'
 import useSWRImmutable from 'swr/immutable'
 import { BIG_ZERO } from 'utils/bigNumber'
-import { useBWayaProxyContractAddress } from 'views/Farms/hooks/useBWayaProxyContractAddress'
+import { useFarmBoosterProxyContractAddress } from 'views/Farms/hooks/useFarmBoosterProxyContractAddress'
 import { getChiefFarmerContract } from 'utils/contractHelpers'
 import { useFastRefreshEffect } from 'hooks/useRefreshEffect'
 import { featureFarmApiAtom, useFeatureFlag } from 'hooks/useFeatureFlag'
@@ -34,7 +34,7 @@ export function useFarmsLength() {
 export const usePollFarmsWithUserData = () => {
   const dispatch = useAppDispatch()
   const { account, chainId } = useActiveWeb3React()
-  const { proxyAddress } = useBWayaProxyContractAddress(account)
+  const { proxyAddress } = useFarmBoosterProxyContractAddress(account)
  const farmFlag = useFeatureFlag(featureFarmApiAtom)
 
   useSWRImmutable(

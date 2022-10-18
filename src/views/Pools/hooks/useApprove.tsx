@@ -6,7 +6,7 @@ import { useAppDispatch } from 'state'
 import { updateUserAllowance } from 'state/actions'
 import { VaultKey } from 'state/types'
 import { useTranslation } from '@plexswap/localization'
-import { useTaskAssistant, useVaultPoolContract } from 'hooks/useContract'
+import { useCropChief, useVaultPoolContract } from 'hooks/useContract'
 import { useToast } from '@plexswap/ui-plex'
 import { useCallWithGasPrice } from 'hooks/useCallWithGasPrice'
 import useCatchTxError from 'hooks/useCatchTxError'
@@ -21,11 +21,11 @@ export const useApprovePool = (lpContract: Contract, poolId, earningTokenSymbol)
   const { t } = useTranslation()
   const dispatch = useAppDispatch()
   const { account } = useWeb3React()
-  const taskAssistantContract = useTaskAssistant(poolId)
+  const cropChiefContract = useCropChief(poolId)
 
   const handleApprove = useCallback(async () => {
     const receipt = await fetchWithCatchTxError(() => {
-      return callWithGasPrice(lpContract, 'approve', [taskAssistantContract.address, MaxUint256])
+      return callWithGasPrice(lpContract, 'approve', [cropChiefContract.address, MaxUint256])
     })
     if (receipt?.status) {
       toastSuccess(
@@ -40,7 +40,7 @@ export const useApprovePool = (lpContract: Contract, poolId, earningTokenSymbol)
     account,
     dispatch,
     lpContract,
-    taskAssistantContract,
+    cropChiefContract,
     poolId,
     earningTokenSymbol,
     t,

@@ -18,7 +18,7 @@ import { useTranslation } from '@plexswap/localization'
 import Image from 'next/image'
 import NextLink from 'next/link'
 import styled, { useTheme } from 'styled-components'
-import { useBWayaProxyContractAddress } from '../hooks/useBWayaProxyContractAddress'
+import { useFarmBoosterProxyContractAddress } from '../hooks/useFarmBoosterProxyContractAddress'
 import { useUserBoosterStatus } from '../hooks/useUserBoosterStatus'
 import { useUserLockedWayaStatus } from '../hooks/useUserLockedWayaStatus'
 import boosterCardImage from '../images/boosterCardImage.png'
@@ -67,7 +67,7 @@ const StyledCardFooter = styled(CardFooter)`
   }
 `
 
-export const BWayaBoosterCard = () => {
+export const FarmBoosterCard = () => {
   const { t } = useTranslation()
   const theme = useTheme()
   const { isMobile } = useMatchBreakpoints()
@@ -119,7 +119,7 @@ export const BWayaBoosterCard = () => {
 const CardContent: React.FC = () => {
   const { t } = useTranslation()
   const { account } = useWeb3React()
-  const { proxyCreated, refreshProxyAddress } = useBWayaProxyContractAddress(account)
+  const { proxyCreated, refreshProxyAddress } = useFarmBoosterProxyContractAddress(account)
   const { maxBoostCounts, remainingCounts } = useUserBoosterStatus(account)
   const { locked, lockedEnd } = useUserLockedWayaStatus()
   const theme = useTheme()

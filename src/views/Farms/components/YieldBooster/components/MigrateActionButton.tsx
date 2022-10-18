@@ -9,7 +9,7 @@ import { useAppDispatch } from 'state'
 import { fetchFarmUserDataAsync } from 'state/farms'
 import { useFarmFromPid, useFarmUser } from 'state/farms/hooks'
 import useUnstakeFarms from '../../../hooks/useUnstakeFarms'
-import { BWayaMigrateModal } from '../../BWayaMigrateModal'
+import { FarmMigrateModal } from '../../FarmMigrateModal'
 
 interface MigrateActionButtonPropsType {
   pid: number
@@ -43,7 +43,7 @@ const MigrateActionButton: React.FunctionComponent<MigrateActionButtonPropsType>
   }
 
   const [onPresentMigrate] = useModal(
-    <BWayaMigrateModal
+    <FarmMigrateModal
       pid={pid}
       stakedBalance={stakedBalance}
       lpContract={lpContract}

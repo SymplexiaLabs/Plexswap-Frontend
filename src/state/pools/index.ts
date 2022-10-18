@@ -25,7 +25,6 @@ import fetchFarms from '../farms/fetchFarms'
 import getFarmsPrices from '../farms/getFarmsPrices'
 import {
   fetchPoolsBlockLimits,
-
   fetchPoolsStakingLimits,
   fetchPoolsTotalStaking,
 } from './fetchPools'

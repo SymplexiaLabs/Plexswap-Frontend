@@ -1,5 +1,5 @@
 import poolsConfig from 'config/constants/pools'
-import TaskAssistantABI from 'config/abi/TaskAssistant.json'
+import cropChiefABI from 'config/abi/CropChief.json'
 import erc20ABI from 'config/abi/erc20.json'
 import multicall from 'utils/multicall'
 import { getAddress } from 'utils/addressHelpers'
@@ -61,7 +61,7 @@ export const fetchUserStakeBalances = async (account) => {
     name: 'userInfo',
     params: [account],
   }))
-  const userInfo = await multicall(TaskAssistantABI, calls)
+  const userInfo = await multicall(cropChiefABI, calls)
   return fromPairs(
     nonMasterPools.map((pool, index) => [pool.poolId, new BigNumber(userInfo[index].amount._hex).toJSON()]),
   )
@@ -73,6 +73,6 @@ export const fetchUserPendingRewards = async (account) => {
     name: 'pendingReward',
     params: [account],
   }))
-  const res = await multicall(TaskAssistantABI, calls)
+  const res = await multicall(cropChiefABI, calls)
   return fromPairs(nonMasterPools.map((pool, index) => [pool.poolId, new BigNumber(res[index]).toJSON()]))
 }

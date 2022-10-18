@@ -2,14 +2,12 @@ import BigNumber from 'bignumber.js'
 import fromPairs from 'lodash/fromPairs'
 import { BigNumber as EthersBigNumber } from '@ethersproject/bignumber'
 import poolsConfig from 'config/constants/pools'
-import TaskAssistantABI from 'config/abi/TaskAssistant.json'
+import cropChiefABI from 'config/abi/CropChief.json'
 import erc20ABI from 'config/abi/erc20.json'
 import multicall, { multicallv2 } from 'utils/multicall'
 import { getAddress } from 'utils/addressHelpers'
 import { BIG_ZERO } from 'utils/bigNumber'
 import chunk from 'lodash/chunk'
-import TaskAssistantV2 from '../../config/abi/TaskAssistantV2.json'
-import TaskAssistantV3 from '../../config/abi/TaskAssistantV3.json'
 
 const poolsWithEnd = poolsConfig.filter((p) => p.poolId !== 0)
 
@@ -27,7 +25,7 @@ const startEndBlockCalls = poolsWithEnd.flatMap((poolConfig) => {
 })
 
 export const fetchPoolsBlockLimits = async () => {
-  const startEndBlockRaw = await multicall(TaskAssistantABI, startEndBlockCalls)
+  const startEndBlockRaw = await multicall(cropChiefABI, startEndBlockCalls)
 
   const startEndBlockResult = startEndBlockRaw.reduce((resultArray, item, index) => {
     const chunkIndex = Math.floor(index / 2)
@@ -88,7 +86,7 @@ export const fetchPoolsStakingLimits = async (
     .flat()
 
   const poolStakingResultRaw = await multicallv2({
-    abi: TaskAssistantV2,
+    abi: cropChiefABI,
     calls: poolStakingCalls,
     options: { requireSuccess: false },
   })
@@ -100,48 +98,6 @@ export const fetchPoolsStakingLimits = async (
       const stakingLimit = hasUserLimit && stakingLimitRaw[1] ? new BigNumber(stakingLimitRaw[1].toString()) : BIG_ZERO
       const numberBlocksForUserLimit = stakingLimitRaw[2] ? (stakingLimitRaw[2] as EthersBigNumber).toNumber() : 0
       return [validPools[index].poolId, { stakingLimit, numberBlocksForUserLimit }]
-    }),
-  )
-}
-
-const poolsWithV3 = poolsConfig.filter((pool) => pool?.version === 3)
-
-export const fetchPoolsProfileRequirement = async (): Promise<{
-  [key: string]: {
-    required: boolean
-    thresholdPoints: string
-  }
-}> => {
-  const poolProfileRequireCalls = poolsWithV3
-    .map((validPool) => {
-      const contractAddress = getAddress(validPool.contractAddress)
-      return ['plexProfileIsRequested', 'plexProfileThresholdPoints'].map((method) => ({
-        address: contractAddress,
-        name: method,
-      }))
-    })
-    .flat()
-
-  const poolProfileRequireResultRaw = await multicallv2({
-    abi: TaskAssistantV3,
-    calls: poolProfileRequireCalls,
-    options: { requireSuccess: false },
-  })
-  const chunkSize = poolProfileRequireCalls.length / poolsWithV3.length
-  const poolStakingChunkedResultRaw = chunk(poolProfileRequireResultRaw.flat(), chunkSize)
-  return fromPairs(
-    poolStakingChunkedResultRaw.map((poolProfileRequireRaw, index) => {
-      const hasProfileRequired = poolProfileRequireRaw[0]
-      const profileThresholdPoints = poolProfileRequireRaw[1]
-        ? new BigNumber(poolProfileRequireRaw[1].toString())
-        : BIG_ZERO
-      return [
-        poolsWithV3[index].poolId,
-        {
-          required: !!hasProfileRequired,
-          thresholdPoints: profileThresholdPoints.toJSON(),
-        },
-      ]
     }),
   )
 }

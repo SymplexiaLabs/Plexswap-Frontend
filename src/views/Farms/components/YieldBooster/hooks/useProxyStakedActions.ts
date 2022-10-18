@@ -1,20 +1,20 @@
 import { useWeb3React } from '@plexswap/wagmi'
-import { useBWayaProxyContract } from 'hooks/useContract'
+import { useFarmBoosterProxyContract } from 'hooks/useContract'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useCallback } from 'react'
 import { useAppDispatch } from 'state'
 import { useGasPrice } from 'state/user/hooks'
 import { harvestFarm, stakeFarm, unstakeFarm } from 'utils/calls/farms'
 import { fetchFarmUserDataAsync } from 'state/farms'
-import { useBWayaProxyContractAddress } from 'views/Farms/hooks/useBWayaProxyContractAddress'
+import { useFarmBoosterProxyContractAddress } from 'views/Farms/hooks/useFarmBoosterProxyContractAddress'
 import { useApproveBoostProxyFarm } from '../../../hooks/useApproveFarm'
 import useProxyWAYABalance from './useProxyWAYABalance'
 
 export default function useProxyStakedActions(pid, lpContract) {
   const { account } = useWeb3React()
   const { chainId } = useActiveWeb3React()
-  const { proxyAddress } = useBWayaProxyContractAddress(account)
-  const bWayaProxy = useBWayaProxyContract(proxyAddress)
+  const { proxyAddress } = useFarmBoosterProxyContractAddress(account)
+  const bWayaProxy = useFarmBoosterProxyContract(proxyAddress)
   const dispatch = useAppDispatch()
   const gasPrice = useGasPrice()
   const { proxyWayaBalance, refreshProxyWayaBalance } = useProxyWAYABalance()
