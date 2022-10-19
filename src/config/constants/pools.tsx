@@ -19,7 +19,7 @@ export const vaultPoolConfig = {
     gasLimit: 380000,
     tokenImage: {
       primarySrc: `/images/tokens/${bscTokens.waya.address}.svg`,
-      secondarySrc: '/images/tokens/autorenew.svg',
+      secondarySrc: '/images/tokens/WayaToWaya.svg',
     },
   },
   [VaultKey.WayaVault]: {
@@ -29,7 +29,7 @@ export const vaultPoolConfig = {
     gasLimit: 500000,
     tokenImage: {
       primarySrc: `/images/tokens/${bscTokens.waya.address}.svg`,
-      secondarySrc: '/images/tokens/autorenew.svg',
+      secondarySrc: '/images/tokens/WayaToWaya.svg',
     },
   },
   [VaultKey.WayaFlexibleVault]: {
@@ -39,7 +39,7 @@ export const vaultPoolConfig = {
     gasLimit: 500000,
     tokenImage: {
       primarySrc: `/images/tokens/${bscTokens.waya.address}.svg`,
-      secondarySrc: '/images/tokens/autorenew.svg',
+      secondarySrc: '/images/tokens/WayaToWaya.svg',
     },
   },
 } as const
