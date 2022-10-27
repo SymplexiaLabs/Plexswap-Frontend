@@ -30,9 +30,9 @@ const getFlexibleApy = (
     .mulUnsafe(FixedNumber.from(100))
 
 const _getBoostFactor = (boostWeight: BigNumber, duration: number, durationFactor: BigNumber) => {
-  duration = (isNaN(duration) ? 0 : duration)
+  const avgLockDuration = (duration || 0)
   return FixedNumber.from(boostWeight)
-    .mulUnsafe(FixedNumber.from(Math.max(duration, 0)))
+    .mulUnsafe(FixedNumber.from(Math.max(avgLockDuration, 0)))
     .divUnsafe(FixedNumber.from(durationFactor))
     .divUnsafe(FixedNumber.from(PRECISION_FACTOR))
 }
