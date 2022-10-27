@@ -16,7 +16,6 @@ export default function useAvgLockDuration() {
     const lockedWayaBoostedShares = totalShares.minus(flexibleWayaShares)
     const lockedWayaOriginalShares = totalLockedAmount.div(pricePerFullShare).times(getFullDecimalMultiplier(18))
     const avgBoostRatio = lockedWayaBoostedShares.div(lockedWayaOriginalShares)
-
     return avgBoostRatio
       .minus(1)
       .times(new BigNumber(DURATION_FACTOR.toString()))

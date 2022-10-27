@@ -30,6 +30,7 @@ const getFlexibleApy = (
     .mulUnsafe(FixedNumber.from(100))
 
 const _getBoostFactor = (boostWeight: BigNumber, duration: number, durationFactor: BigNumber) => {
+  duration = (isNaN(duration) ? 0 : duration)
   return FixedNumber.from(boostWeight)
     .mulUnsafe(FixedNumber.from(Math.max(duration, 0)))
     .divUnsafe(FixedNumber.from(durationFactor))
@@ -41,7 +42,7 @@ const getLockedApy = (flexibleApy: string, boostFactor: FixedNumber) =>
 
 const dummyWayaPoolPID = 0
 
-export function useVaultApy({ duration = MAX_LOCK_DURATION }: { duration?: number } = {}) {
+export function useVaultApy ({ duration = MAX_LOCK_DURATION }: { duration?: number } = {}) {
   const {
     totalShares = BIG_ZERO,
     pricePerFullShare = BIG_ZERO,

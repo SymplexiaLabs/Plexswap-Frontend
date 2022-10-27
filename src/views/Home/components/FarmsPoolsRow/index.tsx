@@ -32,7 +32,6 @@ const FarmsPoolsRow = () => {
   const { topFarms, fetched } = useGetTopFarmsByApr(isIntersecting)
   const { topPools } = useGetTopPoolsByApr(fetched && isIntersecting)
   const { lockedApy } = useVaultApy()
-
   const timer = useRef<ReturnType<typeof setTimeout>>(null)
   const isLoaded = topFarms[0] && topPools[0]
 
