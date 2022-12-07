@@ -21,7 +21,6 @@ const StyledLinkExternal = styled(LinkExternal)`
 
 const DetailsSection: React.FC<React.PropsWithChildren<ExpandableSectionProps>> = ({
   bscScanAddress,
-  infoAddress,
   removed,
   totalValueFormatted,
   lpLabel,
@@ -41,7 +40,6 @@ const DetailsSection: React.FC<React.PropsWithChildren<ExpandableSectionProps>> 
         <StyledLinkExternal href={addLiquidityUrl}>{t('Get %symbol%', { symbol: lpLabel })}</StyledLinkExternal>
       )}
       <StyledLinkExternal href={bscScanAddress}>{t('View Contract')}</StyledLinkExternal>
-      <StyledLinkExternal href={infoAddress}>{t('See Pair Info')}</StyledLinkExternal>
     </Wrapper>
   )
 }
