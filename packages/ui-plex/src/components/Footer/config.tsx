@@ -11,16 +11,12 @@ export const footerLinks: FooterLinkType[] = [
         href: "https://docs.plexfinance.us/contact-us/telegram",
       },
       {
-        label: "Blog",
-        href: "https://plexswap.medium.com/",
-      },
-      {
         label: "Community",
         href: "https://twitter.com/LabsPlex",
       },
       {
         label: "WAYA",
-        href: "https://docs.plexfinance.us/tokenomics/waya",
+        href: "https://docs.plexfinance.us/technical-specs/waya",
       },
     ],
   },
@@ -83,11 +79,6 @@ export const socials = [
     label: "Discord",
     icon: DiscordIcon,
     href: "https://discord.gg/RvtpWFRkhE",
-  },
-  {
-    label: "Medium",
-    icon: MediumIcon,
-    href: "https://plexswap.medium.com/",
   },
 ];
 
