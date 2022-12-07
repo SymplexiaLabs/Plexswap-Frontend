@@ -11,6 +11,8 @@ export interface ExpandableSectionProps {
   addLiquidityUrl?: string
 }
 
+const tutorial = "https://docs.plexfinance.us/products/yield-farming/how-to-use-farms"
+
 const Wrapper = styled.div`
   margin-top: 24px;
 `
@@ -40,6 +42,7 @@ const DetailsSection: React.FC<React.PropsWithChildren<ExpandableSectionProps>> 
         <StyledLinkExternal href={addLiquidityUrl}>{t('Get %symbol%', { symbol: lpLabel })}</StyledLinkExternal>
       )}
       <StyledLinkExternal href={bscScanAddress}>{t('View Contract')}</StyledLinkExternal>
+      <StyledLinkExternal href={tutorial}>{t('View Tutorial')}</StyledLinkExternal>
     </Wrapper>
   )
 }

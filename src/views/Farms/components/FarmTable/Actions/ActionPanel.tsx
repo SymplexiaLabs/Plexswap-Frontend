@@ -134,6 +134,7 @@ const ActionPanel: React.FunctionComponent<React.PropsWithChildren<ActionPanelPr
   })
   const { lpAddress } = farm
   const bsc = getBlockExploreLink(lpAddress, 'address', chainId)
+  const tutorial = "https://docs.plexfinance.us/products/yield-farming/how-to-use-farms"
 
   return (
     <Container expanded={expanded}>
@@ -164,6 +165,7 @@ const ActionPanel: React.FunctionComponent<React.PropsWithChildren<ActionPanelPr
           </StakeContainer>
         )}
         <StyledLinkExternal href={bsc}>{t('View Contract')}</StyledLinkExternal>
+        <StyledLinkExternal href={tutorial}>{t('View Tutorial')}</StyledLinkExternal>
       </InfoContainer>
       <ActionContainer>
         {shouldUseProxyFarm ? (
