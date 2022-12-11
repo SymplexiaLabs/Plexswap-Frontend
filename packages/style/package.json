@@ -1,6 +1,7 @@
 {
   "name": "@plexswap/style",
   "version": "1.0.1",
+  "license": "MIT",
   "sideEffects": [
     "*.css.ts"
   ],

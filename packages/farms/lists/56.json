@@ -39,7 +39,8 @@
       "symbol": "WBNB",
       "name": "Wrapped BNB",
       "projectLink": "https://www.binance.org"
-    }
+    },
+    "boosted": true
   },
   {
     "pid": 2,
@@ -81,7 +82,8 @@
       "symbol": "BUSD",
       "name": "Binance USD",
       "projectLink": "https://www.paxos.com/busd/"
-    }
+    },
+    "boosted": true
   },
   {
     "pid": 4,
