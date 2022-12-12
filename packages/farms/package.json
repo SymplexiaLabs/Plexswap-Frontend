@@ -12,5 +12,14 @@
     "publish": "npm publish --access public"
   },
   "author": "Symplexia Labs",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "tsx": "^3.12.1"
+  },
+  "dependencies": {
+    "@plexswap/sdk": "*",
+    "@plexswap/tokens": "*",
+    "@plexswap/multicall": "*",
+    "@plexswap/utils": "*"
+}
 }
