@@ -1,6 +1,7 @@
 {
   "name": "@plexswap/multicall",
   "version": "1.0.4",
+  "license": "MIT",
   "sideEffects": false,
   "scripts": {
     "build": "tsup",
