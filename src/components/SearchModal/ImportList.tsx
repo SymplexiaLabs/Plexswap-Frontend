@@ -1,15 +1,15 @@
 import { useTranslation } from '@plexswap/localization'
 import { Button, Checkbox, Flex, Link, Message, Text } from '@plexswap/ui-plex'
-import { TokenList } from '@uniswap/token-lists'
+import { TokenList } from '@plexswap/metalists'
 import Card from 'components/Card'
 import { AutoColumn } from 'components/Layout/Column'
 import { RowBetween, RowFixed } from 'components/Layout/Row'
 import { ListLogo } from 'components/Logo'
 import useTheme from 'hooks/useTheme'
 import { useCallback, useState } from 'react'
-import { enableList, removeList, useFetchListCallback } from '@plexswap/lists'
+import { enableList, removeList, useFetchListCallback } from '@plexswap/metalists/react'
 import { useAllLists } from 'state/lists/hooks'
-import { listsAtom, useListState } from 'state/lists/lists'
+import { useListState } from 'state/lists/lists'
 import styled from 'styled-components'
 
 interface ImportProps {
@@ -40,7 +40,7 @@ function ImportList({ listURL, list, onImport }: ImportProps) {
   const [confirmed, setConfirmed] = useState(false)
 
   const lists = useAllLists()
-  const fetchList = useFetchListCallback(listsAtom)
+  const fetchList = useFetchListCallback(dispatch)
 
   // monitor is list is loading
   const adding = Boolean(lists[listURL]?.loadingRequestId)

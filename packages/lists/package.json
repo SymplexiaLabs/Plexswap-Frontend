@@ -1,9 +1,0 @@
-{
-  "name": "@plexswap/lists",
-  "version": "1.0.1",
-  "private": true,
-  "main": "src/index.ts",
-  "scripts": {
-    "test": "vitest --run"
-  }
-}

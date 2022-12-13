@@ -1,11 +1,11 @@
 /* eslint-disable no-continue */
 /* eslint-disable no-await-in-loop */
-import { TokenList } from '@uniswap/token-lists'
-import schema from '@uniswap/token-lists/src/tokenlist.schema.json'
+import { TokenList } from '@plexswap/metalists'
+import uriToHttp from '@plexswap/utils/uriToHttp'
 import Ajv from 'ajv'
-import uriToHttp  from '@plexswap/utils/uriToHttp'
+import schema from '../schema/plexswap.json'
 
-const tokenListValidator = new Ajv({ allErrors: true }).compile(schema)
+export const tokenListValidator = new Ajv({ allErrors: true }).compile(schema)
 
 /**
  * Contains the logic for resolving a list URL to a validated token list

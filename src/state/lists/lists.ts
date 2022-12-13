@@ -1,5 +1,5 @@
 import { createListsAtom, createTokenListReducer, NEW_LIST_STATE,
-         DEFAULT_ACTIVE_LIST_URLS, DEFAULT_LIST_OF_LISTS, UNSUPPORTED_LIST_URLS } from '@plexswap/lists'
+         DEFAULT_ACTIVE_LIST_URLS, DEFAULT_LIST_OF_LISTS, UNSUPPORTED_LIST_URLS } from '@plexswap/metalists/react'
 
 const initialState = {
   lastInitializedDefaultListOfLists: DEFAULT_LIST_OF_LISTS,
