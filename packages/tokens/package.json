@@ -7,6 +7,6 @@
 
   "dependencies": {
     "@plexswap/sdk": "*",
-    "@plexswap/tokens": "*"
+    "@plexswap/metalists": "*"
 }
 }
