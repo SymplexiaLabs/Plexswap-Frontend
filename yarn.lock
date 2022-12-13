@@ -3465,6 +3465,14 @@
   resolved "https://registry.yarnpkg.com/@pedrouid/environment/-/environment-1.0.1.tgz#858f0f8a057340e0b250398b75ead77d6f4342ec"
   integrity sha512-HaW78NszGzRZd9SeoI3JD11JqY+lubnaOx7Pewj5pfjqWXOEATpeKIFb9Z4t2WBUK2iryiXX3lzWwmYWgUL0Ug==
 
+"@plexswap/metalists@^1.0.1*":
+  version "1.0.17"
+  resolved "https://registry.yarnpkg.com/@plexswap/metalists/-/metalists-1.0.17.tgz#6faf473c3b0de03fa0bd3472844a1ab1ad16f16e"
+  integrity sha512-1QOFVuJdWYU2s4MtIvwxY5dXufTU3elkYWmbgVCkUiNd/O6Z0d98AaoJ7229oxLSCmpfN6pWR0NOjqyaI58ZuA==
+  dependencies:
+    "@plexswap/sdk" "*"
+    ajv "^6.12.3"
+
 "@pmmmwh/react-refresh-webpack-plugin@^0.5.3":
   version "0.5.7"
   resolved "https://registry.yarnpkg.com/@pmmmwh/react-refresh-webpack-plugin/-/react-refresh-webpack-plugin-0.5.7.tgz#58f8217ba70069cc6a73f5d7e05e85b458c150e2"
