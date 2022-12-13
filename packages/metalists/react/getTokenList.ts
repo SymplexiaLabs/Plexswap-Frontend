@@ -1,6 +1,4 @@
-/* eslint-disable no-continue */
-/* eslint-disable no-await-in-loop */
-import { TokenList } from '@plexswap/metalists'
+import { TokenList } from './../src/types'
 import uriToHttp from '@plexswap/utils/uriToHttp'
 import Ajv from 'ajv'
 import schema from '../schema/plexswap.json'
