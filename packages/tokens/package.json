@@ -3,5 +3,10 @@
   "license": "MIT",
   "version": "1.0.1",
   "description": "Tokens for plexswap",
-  "main": "src/index.ts"
+  "main": "src/index.ts",
+
+  "dependencies": {
+    "@plexswap/sdk": "*",
+    "@plexswap/tokens": "*"
+}
 }
