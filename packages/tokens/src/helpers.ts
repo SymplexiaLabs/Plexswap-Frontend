@@ -1,5 +1,5 @@
-import { TokenInfo, TokenList, Tags } from '@plexswap/metalists'
 import { Token, ChainId, SerializedToken } from '@plexswap/sdk'
+import { TokenInfo, TokenList, Tags } from '@plexswap/metalists'
 
 export interface SerializedWrappedToken extends SerializedToken {
   chainId: number
