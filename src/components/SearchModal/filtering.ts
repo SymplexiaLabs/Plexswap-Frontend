@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { TokenInfo } from '@uniswap/token-lists'
+import { TokenInfo } from '@plexswap/metalists'
 import { Token } from '@plexswap/sdk'
 import { isAddress } from '../../utils'
 

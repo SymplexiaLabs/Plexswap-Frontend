@@ -1,4 +1,4 @@
-import { TokenInfo, TokenList, Tags } from '@uniswap/token-lists'
+import { TokenInfo, TokenList, Tags } from '@plexswap/metalists'
 import { Token, ChainId, SerializedToken } from '@plexswap/sdk'
 
 export interface SerializedWrappedToken extends SerializedToken {

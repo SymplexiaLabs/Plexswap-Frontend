@@ -15,7 +15,7 @@ import {
 } from '@plexswap/ui-plex'
 import styled from 'styled-components'
 import { usePreviousValue } from '@plexswap/hooks'
-import { TokenList } from '@uniswap/token-lists'
+import { TokenList } from '@plexswap/metalists'
 import { useTranslation } from '@plexswap/localization'
 import CurrencySearch from './CurrencySearch'
 import ImportToken from './ImportToken'
