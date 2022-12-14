@@ -17,20 +17,17 @@ export type TranslatableText =
         [key: string]: string | number
       }
     }
+    
 export interface Address {
   97?: string
   56: string
   [chainId: number]: string
 }
 
-
-
 export enum PoolIds {
   poolBasic = 'poolBasic',
   poolUnlimited = 'poolUnlimited',
 }
-
-
 
 export enum PoolCategory {
   'COMMUNITY' = 'Community',
@@ -73,16 +70,11 @@ export type Images = {
   ipfs?: string
 }
 
-
-
 export type PageMeta = {
   title: string
   description?: string
   image?: string
 }
-
-
-
 
 export enum FetchStatus {
   Idle = 'IDLE',

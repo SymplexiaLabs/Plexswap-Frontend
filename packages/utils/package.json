@@ -5,7 +5,7 @@
     "test": "vitest --run --globals"
   },
   "dependencies": {
-    "@plexswap/tokens": "*",
-    "@plexswap/sdk": "*"
+    "@plexswap/tokens": "^1.0.14",
+    "@plexswap/sdk": "^3.0.1"
   }
 }

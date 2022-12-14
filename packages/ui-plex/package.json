@@ -6,6 +6,7 @@
   "sideEffects": [
     "*.css.ts"
   ],
+
   "repository": "https://github.com/plexswap/Plexswap-Frontend/tree/master/packages/ui-plex",
   "license": "MIT",
   "scripts": {
@@ -21,6 +22,7 @@
     "prepublishOnly": "yarn build"
   },
   "devDependencies": {
+    "@plexswap/sdk":"^3.0.1",
     "@babel/core": "^7.16.7",
     "@babel/preset-env": "^7.16.8",
     "@babel/preset-react": "^7.16.7",

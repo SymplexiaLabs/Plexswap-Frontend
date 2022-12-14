@@ -6,7 +6,7 @@
   "main": "src/index.ts",
 
   "dependencies": {
-    "@plexswap/sdk": "*",
+    "@plexswap/sdk": "^3.0.1",
     "@plexswap/metalists": "^1.0.16"
 }
 }
