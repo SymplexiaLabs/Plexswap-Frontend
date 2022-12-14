@@ -4,10 +4,11 @@ import { InjectedModalProps, LinkExternal, Text } from '@plexswap/ui-plex'
 import { TransactionErrorContent, TransactionSubmittedContent } from 'components/TransactionConfirmationModal'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { Field } from 'state/swap/actions'
+import useTranslation from '@plexswap/localization/src/useTranslation'
 import ConfirmationPendingContent from './ConfirmationPendingContent'
 import TransactionConfirmSwapContent from './TransactionConfirmSwapContent'
 import ConfirmSwapModalContainer from './ConfirmSwapModalContainer'
-import useTranslation from '../../../../packages/localization/src/useTranslation'
+
 
 const PlexRouterSlippageErrorMsg =
   'This transaction will not succeed either due to price movement or fee on transfer. Try increasing your slippage tolerance.'

@@ -1,15 +1,13 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import { withSentryConfig } from '@sentry/nextjs'
-import { withAxiom } from 'next-axiom'
-import BundleAnalyzer from '@next/bundle-analyzer'
-import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin'
-import NextTranspileModules from 'next-transpile-modules'
+const { withSentryConfig } = require('@sentry/nextjs')
+const { withAxiom } = require('next-axiom')
 
-const withBundleAnalyzer = BundleAnalyzer({
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
+const { createVanillaExtractPlugin } = require('@vanilla-extract/next-plugin')
 
-const withTM = NextTranspileModules([
+const withTM = require('next-transpile-modules') ([
   '@plexswap/style',
   '@plexswap/ui-plex',
   '@plexswap/farms',
