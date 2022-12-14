@@ -1,11 +1,25 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const { withSentryConfig } = require('@sentry/nextjs')
-const { withAxiom } = require('next-axiom')
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
+import { withSentryConfig } from '@sentry/nextjs'
+import { withAxiom } from 'next-axiom'
+import BundleAnalyzer from '@next/bundle-analyzer'
+import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin'
+import NextTranspileModules from 'next-transpile-modules'
+
+const withBundleAnalyzer = BundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 })
-const { createVanillaExtractPlugin } = require('@vanilla-extract/next-plugin')
-const withTM = require('next-transpile-modules')(['@plexswap/ui-plex', '@plexswap/sdk'])
+
+const withTM = NextTranspileModules([
+  '@plexswap/style',
+  '@plexswap/ui-plex',
+  '@plexswap/farms',
+  '@plexswap/localization',
+  '@plexswap/hooks',
+  '@plexswap/multicall',
+  '@plexswap/metalists',
+  '@plexswap/utils',
+  '@plexswap/tokens',
+])
 
 const withVanillaExtract = createVanillaExtractPlugin()
 
@@ -51,10 +65,6 @@ const config = {
       },
       {
         source: '/info/pool/:address',
-        destination: '/info/pools/:address',
-      },
-      {
-        source: '/info/pair/:address',
         destination: '/info/pools/:address',
       },
     ]
