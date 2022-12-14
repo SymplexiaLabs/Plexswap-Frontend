@@ -5,6 +5,7 @@
   "description": "Tokens for Plexswap",
   "main": "src/index.ts",
   "sideEffects": false,
+  "private": true,
   "dependencies": {
     "@plexswap/sdk": "^3.0.1",
     "@plexswap/metalists": "^1.1.0"
