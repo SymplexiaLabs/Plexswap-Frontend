@@ -6,12 +6,8 @@
   "main": "src/index.ts",
   "sideEffects": false,
   "private": true,
-  "devDependencies": {
-    "@plexswap/metalists": "1.1.1"
-  },
-
   "dependencies": {
     "@plexswap/sdk": "^3.0.1",
-    "@plexswap/metalists": "1.1.1"
+    "@plexswap/metalists": "^1.1.0"
 }
 }
