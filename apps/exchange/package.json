@@ -1,6 +1,6 @@
 {
   "name": "exchange",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": true,
   "scripts": {
     "analyze": "ANALYZE=true yarn build",
