@@ -23,7 +23,7 @@
     "updateLPsAPR": "yarn turbo run build --filter=@pancakeswap/sdk --filter=@pancakeswap/farm --filter=@pancakeswap/token-lists && NODE_PATH=./apps/exchange/src ts-node --project ./apps/exchange/tsconfig.json --compiler-options '{\"module\":\"commonjs\"}' scripts/updateLPsAPR.ts",
     "updateAptosLPsAPR": "yarn turbo run build --filter=@pancakeswap/aptos-swap-sdk && NODE_PATH=./apps/aptos/src ts-node --project ./apps/aptos/tsconfig.json --compiler-options '{\"module\":\"commonjs\"}' scripts/updateAptosLpsAPR/index.ts",
     "postinstall": "turbo run --filter=exchange postinstall",
-    "clean": "turbo run clean && rm -rf node_modules",
+    "clean": "rm ./apps/exchange/.next/cache/webpack -r",
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release-packages": "turbo run build --filter=./packages/* && changeset version && changeset publish"
