@@ -10,7 +10,9 @@
   "scripts": {
     "dev": "turbo run dev --filter=exchange...",
     "storybook": "turbo run start --filter=uikit...",
-    "build": "turbo run build --filter=exchange...",
+    "build": "turbo run build",
+    "build-exchange": "turbo run build --filter=exchange...",
+    "build-bridge": "turbo run build --filter=bridge...",
     "start": "turbo run start --filter=exchange",
     "test:config": "yarn workspace exchange run test:config",
     "test:ci": "yarn turbo run test --filter=[HEAD^1]",
