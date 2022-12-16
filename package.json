@@ -23,7 +23,8 @@
     "e2e:ci": "turbo run integration-test --filter=e2e...[HEAD^1]",
     "updateLPsAPR": "yarn turbo run build --filter=@plexswap/sdk --filter=@plexswap/farm --filter=@plexswap/token-lists && NODE_PATH=./apps/exchange/src ts-node --project ./apps/exchange/tsconfig.json --compiler-options '{\"module\":\"commonjs\"}' scripts/updateLPsAPR.ts",
     "postinstall": "turbo run --filter=exchange postinstall",
-    "clean": "rm ./apps/exchange/.next/cache/webpack -r",
+    "clean-exchange": "rm ./apps/exchange/.next/cache/webpack -r",
+    "clean-bridge": "rm ./apps/bridge/.next/cache/webpack -r",
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release-packages": "turbo run build --filter=./packages/* && changeset version && changeset publish"
