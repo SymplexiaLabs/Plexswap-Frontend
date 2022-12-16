@@ -47,3 +47,6 @@ debug.log*
 .turbo
 # Local Netlify folder
 .netlify
+
+# Sentry
+.sentryclirc
