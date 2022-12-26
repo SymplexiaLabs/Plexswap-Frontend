@@ -43,7 +43,7 @@ export const PLEX_BSC = new Token(
   9,
   'PLEX-F',
   'Symplexia Finance',
-  'https://finance.symplexia.com/',
+  'https://plexfinance.us/',
 )
 
 export const PLEX_TESTNET = new Token(
@@ -52,7 +52,7 @@ export const PLEX_TESTNET = new Token(
   9,
   'PLEX-F',
   'Symplexia Finance',
-  'https://finance.symplexia.com/',
+  'https://plexfinance.us/',
 )
 
 export const PLEX_RINKEBY = new Token(
@@ -61,7 +61,7 @@ export const PLEX_RINKEBY = new Token(
   9,
   'PLEX-F',
   'Symplexia Finance',
-  'https://finance.symplexia.com/',
+  'https://plexfinance.us/',
 )
 
 export const PLEX_GOERLI = new Token(
@@ -70,7 +70,7 @@ export const PLEX_GOERLI = new Token(
   9,
   'PLEX-F',
   'Symplexia Finance',
-  'https://finance.symplexia.com/',
+  'https://plexfinance.us/',
 )
 
 export const USDC_BSC = new Token(
