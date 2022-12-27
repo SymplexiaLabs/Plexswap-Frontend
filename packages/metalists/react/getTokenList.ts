@@ -1,7 +1,7 @@
 import { TokenList } from './../src/types'
 import uriToHttp from '@plexswap/utils/uriToHttp'
 import Ajv from 'ajv'
-import schema from '../schema/plexswap.json'
+import schema from '../schema/metalists-schema.json'
 
 export const tokenListValidator = new Ajv({ allErrors: true }).compile(schema)
 
