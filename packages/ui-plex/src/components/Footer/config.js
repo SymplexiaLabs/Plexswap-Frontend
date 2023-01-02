@@ -1,5 +1,5 @@
 import { __spreadArray } from "tslib";
-import { TwitterIcon, GithubIcon, DiscordIcon } from "../Svg";
+import { TwitterIcon, TelegramIcon, GithubIcon, DiscordIcon } from "../Svg";
 export var footerLinks = [
     {
         label: "About",
@@ -10,7 +10,7 @@ export var footerLinks = [
             },
             {
                 label: "Community",
-                href: "https://twitter.com/LabsPlex"
+                href: "https://twitter.com/plex_finance"
             },
             {
                 label: "WAYA",
@@ -65,7 +65,7 @@ export var socials = [
     {
         label: "Twitter",
         icon: TwitterIcon,
-        href: "https://twitter.com/LabsPlex"
+        href: "https://twitter.com/plex_finance"
     },
     {
         label: "Github",
@@ -76,6 +76,11 @@ export var socials = [
         label: "Discord",
         icon: DiscordIcon,
         href: "https://discord.gg/RvtpWFRkhE"
+    },
+    {
+        label: "Telegram",
+        icon: TelegramIcon,
+        href: "https://t.me/plexswap_us",
     },
 ];
 export var langs = __spreadArray([], Array(20), true).map(function (_, i) { return ({

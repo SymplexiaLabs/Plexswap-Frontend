@@ -1,6 +1,6 @@
 import { Language } from "../LangSelector/types";
 import { FooterLinkType } from "./types";
-import { TwitterIcon, TelegramIcon, GithubIcon, DiscordIcon, MediumIcon } from "../Svg";
+import { TwitterIcon, TelegramIcon, GithubIcon, DiscordIcon } from "../Svg";
 
 export const footerLinks: FooterLinkType[] = [
   {
@@ -12,7 +12,7 @@ export const footerLinks: FooterLinkType[] = [
       },
       {
         label: "Community",
-        href: "https://twitter.com/LabsPlex",
+        href: "https://twitter.com/plex_finance",
       },
       {
         label: "WAYA",
@@ -68,7 +68,7 @@ export const socials = [
   {
     label: "Twitter",
     icon: TwitterIcon,
-    href: "https://twitter.com/LabsPlex",
+    href: "https://twitter.com/plex_finance",
   },
   {
     label: "Github",
@@ -79,6 +79,11 @@ export const socials = [
     label: "Discord",
     icon: DiscordIcon,
     href: "https://discord.gg/RvtpWFRkhE",
+  },
+  {
+    label: "Telegram",
+    icon: TelegramIcon,
+    href: "https://t.me/plexswap_us",
   },
 ];
 

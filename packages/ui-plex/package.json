@@ -20,7 +20,8 @@
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook",
     "test": "jest",
-    "prepublishOnly": "yarn build"
+    "prepublishOnly": "yarn build",
+    "publish": "npm publish --access -public"
   },
   "devDependencies": {
     "@plexswap/sdk":"^3.0.1",
