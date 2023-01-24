@@ -97,6 +97,38 @@
       "chainId": 97,
       "decimals": 9,
       "logoURI": "https://swap.plexfinance.us/images/tokens/common/plex.png"
+    },
+    {
+      "name": "PlexSwap Token",
+      "symbol": "WAYA",
+      "address": "0x2b82d6d89F5786C6A0fFab86b5F7F0532d5F19e4",
+      "chainId": 5,
+      "decimals": 18,
+      "logoURI": "https://swap.plexfinance.us/images/tokens/common/waya.png"
+    },
+    {
+      "name": "Wrapped Ether",
+      "address": "0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6",
+      "symbol": "WETH",
+      "decimals": 18,
+      "chainId": 5,
+      "logoURI": "https://swap.plexfinance.us/images/tokens/common/weth.png"
+    },
+    {
+      "name": "BUSD Token",
+      "symbol": "BUSD",
+      "address": "0xb809b9B2dc5e93CB863176Ea2D565425B03c0540",
+      "chainId": 5,
+      "decimals": 18,
+      "logoURI": "https://swap.plexfinance.us/images/tokens/common/busd.png"
+    },
+    {
+      "name": "Symplexia Token",
+      "symbol": "PLEX-F",
+      "address": "0xE95AF82Bc998D2f05aD76a2F1B404756DCfc0b8a",
+      "chainId": 5,
+      "decimals": 9,
+      "logoURI": "https://swap.plexfinance.us/images/tokens/common/plex.png"
     }
   ]
 }

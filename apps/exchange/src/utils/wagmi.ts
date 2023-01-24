@@ -1,5 +1,5 @@
 import { BinanceWalletConnector } from '@plexswap/wagmi/connectors/binanceWallet'
-import { bsc, bscTest, goerli, rinkeby } from '@plexswap/wagmi/chains'
+import { bsc, bscTest, goerli } from '@plexswap/wagmi/chains'
 import { configureChains, createClient } from 'wagmi'
 import memoize from 'lodash/memoize'
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
@@ -14,7 +14,6 @@ const CHAINS = [
   // TODO: ETH
   // mainnet,
   bscTest,
-  rinkeby,
   goerli,
 ]
 
@@ -24,11 +23,6 @@ const getNodeRealUrl = (networkName: string) => {
     case 'homestead':
       if (process.env.NEXT_PUBLIC_NODE_REAL_API_ETH) {
         host = `eth-mainnet.nodereal.io/v1/${process.env.NEXT_PUBLIC_NODE_REAL_API_ETH}`
-      }
-      break
-    case 'rinkeby':
-      if (process.env.NEXT_PUBLIC_NODE_REAL_API_RINKEBY) {
-        host = `eth-rinkeby.nodereal.io/v1/${process.env.NEXT_PUBLIC_NODE_REAL_API_RINKEBY}`
       }
       break
     case 'goerli':

@@ -8,7 +8,7 @@ const farms: SerializedFarmConfig[] = [
     {
       pid: 0,
       lpSymbol: 'WAYA',
-      lpAddress: '0xB4Ebcc066959C09206e596B7E810484eb55DD80C', // Waya Address
+      lpAddress: '0x2b82d6d89F5786C6A0fFab86b5F7F0532d5F19e4', // Waya Address
       token: goerliTestnetTokens.waya,
       quoteToken: goerliTestnetTokens.weth,
     },

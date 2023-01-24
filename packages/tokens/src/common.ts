@@ -19,15 +19,6 @@ export const WAYA_TESTNET = new Token(
   'https://swap.plexfinance.us/',
 )
 
-export const WAYA_RINKEBY = new Token(
-  ChainId.RINKEBY,
-  '0xE8cd8E3CfCd1b1c04669deA94C3d007706B563A5',
-  18,
-  'WAYA',
-  'PlexSwap Token',
-  'https://swap.plexfinance.us/',
-)
-
 export const WAYA_GOERLI = new Token(
   ChainId.GOERLI,
   '0x2b82d6d89F5786C6A0fFab86b5F7F0532d5F19e4',
@@ -49,15 +40,6 @@ export const PLEX_BSC = new Token(
 export const PLEX_TESTNET = new Token(
   ChainId.BSC_TESTNET,
   '0xb7a3DFd16663dbA80c8f93338d1c59bA21680921',
-  9,
-  'PLEX-F',
-  'Symplexia Finance',
-  'https://plexfinance.us/',
-)
-
-export const PLEX_RINKEBY = new Token(
-  ChainId.RINKEBY,
-  '0x28c8143A0A270b4A1Bd776DDcC4a987870Dda7e6',
   9,
   'PLEX-F',
   'Symplexia Finance',
@@ -97,14 +79,6 @@ export const USDC_ETH = new Token(
   6, 
   'USDC', 
   'USD Coin'
-)
-
-export const USDC_RINKEBY = new Token(
-  ChainId.RINKEBY,
-  '0x4DBCdF9B62e891a7cec5A2568C3F4FAF9E8Abe2b',
-  6,
-  'tUSDC',
-  'test USD Coin',
 )
 
 export const USDC_GOERLI = new Token(
@@ -160,15 +134,6 @@ export const BUSD_ETH = new Token(
   'https://www.paxos.com/busd/',
 )
 
-export const BUSD_RINKEBY = new Token(
-  ChainId.RINKEBY,
-  '0x4e2442A6f7AeCE64Ca33d31756B5390860BF973E',
-  18,
-  'BUSD',
-  'Binance USD',
-  'https://www.paxos.com/busd/',
-)
-
 export const BUSD_GOERLI = new Token(
   ChainId.GOERLI,
   '0xb809b9B2dc5e93CB863176Ea2D565425B03c0540',
@@ -180,7 +145,6 @@ export const BUSD_GOERLI = new Token(
 
 export const BUSD: Record<ChainId, Token> = {
   [ChainId.ETHEREUM]: BUSD_ETH,
-  [ChainId.RINKEBY]: BUSD_RINKEBY,
   [ChainId.GOERLI]: BUSD_GOERLI,
   [ChainId.BSC]: BUSD_BSC,
   [ChainId.BSC_TESTNET]: BUSD_TESTNET,
@@ -189,7 +153,6 @@ export const BUSD: Record<ChainId, Token> = {
 export const WAYA = {
   [ChainId.BSC]: WAYA_BSC,
   [ChainId.BSC_TESTNET]: WAYA_TESTNET,
-  [ChainId.RINKEBY]: WAYA_RINKEBY,
   [ChainId.GOERLI]: WAYA_GOERLI,
 }
 
@@ -197,7 +160,6 @@ export const USDC = {
   [ChainId.BSC]: USDC_BSC,
   [ChainId.BSC_TESTNET]: USDC_TESTNET,
   [ChainId.ETHEREUM]: USDC_ETH,
-  [ChainId.RINKEBY]: USDC_RINKEBY,
   [ChainId.GOERLI]: USDC_GOERLI,
 }
 

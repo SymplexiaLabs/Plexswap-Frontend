@@ -1,7 +1,7 @@
 {
   "name": "@plexswap/sdk",
   "license": "MIT",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "🛠 An SDK for building applications on top of Plexswap.",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -23,7 +23,8 @@
     "build": "tsup src/index.ts --format esm,cjs --dts",
     "dev": "tsup src/index.ts --format esm,cjs --watch --dts",
     "test": "jest",
-    "prepublishOnly": "yarn run build"
+    "prepublishOnly": "yarn run build",
+    "publish": "npm publish --access public"
   },
   "dependencies": {
     "big.js": "^5.2.2",

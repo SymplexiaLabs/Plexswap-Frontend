@@ -1,6 +1,6 @@
 {
   "name": "@plexswap/farms",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "main": "./src/index.ts",
   "sideEffects": false,
   "peerDependencies": {
@@ -17,9 +17,9 @@
     "tsx": "^3.12.1"
   },
   "dependencies": {
+    "@plexswap/multicall": "^1.0.14",
     "@plexswap/sdk": "^3.0.1",
     "@plexswap/tokens": "^1.0.14",
-    "@plexswap/multicall": "^1.0.14",
     "@plexswap/utils": "^1.0.14"
-}
+  }
 }

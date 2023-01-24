@@ -10,14 +10,6 @@ export const WETH9 = {
       'Wrapped Ether',
       'https://weth.io'
     ),
-    [ChainId.RINKEBY]: new Token(
-      ChainId.RINKEBY,
-      '0xc778417E063141139Fce010982780140Aa0cD5Ab',
-      18,
-      'WETH',
-      'Wrapped Ether',
-      'https://weth.io'
-    ),
     [ChainId.GOERLI]: new Token(
       ChainId.GOERLI,
       '0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6',
@@ -57,7 +49,6 @@ export const WETH9 = {
   
   export const WNATIVE: Record<number, Token> = {
     [ChainId.ETHEREUM]: WETH9[ChainId.ETHEREUM],
-    [ChainId.RINKEBY]: WETH9[ChainId.RINKEBY],
     [ChainId.GOERLI]: WETH9[ChainId.GOERLI],
     [ChainId.BSC]: WBNB[ChainId.BSC],
     [ChainId.BSC_TESTNET]: WBNB[ChainId.BSC_TESTNET],
@@ -72,7 +63,6 @@ export const WETH9 = {
     }
   > = {
     [ChainId.ETHEREUM]: { name: 'Ether', symbol: 'ETH', decimals: 18 },
-    [ChainId.RINKEBY]: { name: 'Rinkeby Ether', symbol: 'RIN', decimals: 18 },
     [ChainId.GOERLI]: { name: 'Goerli Ether', symbol: 'GOR', decimals: 18 },
     [ChainId.BSC]: { name: 'Binance Chain Native Token', symbol: 'BNB', decimals: 18 },
     [ChainId.BSC_TESTNET]: { name: 'Binance Chain Native Token', symbol: 'BNB', decimals: 18 },
