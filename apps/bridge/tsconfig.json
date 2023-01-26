@@ -5,7 +5,6 @@
     "target": "ES2015",
     "baseUrl": ".",
     "paths": {
-      "@plexswap/wagmi/chains": ["../../packages/wagmi/chains/index.ts"],
       "@plexswap/wagmi": ["../../packages/wagmi/src/index.ts"]
     }
   },

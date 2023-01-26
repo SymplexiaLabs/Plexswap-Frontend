@@ -6,7 +6,7 @@ import { DeserializedLockedVaultUser } from 'state/types'
 
 type VoidFn = () => void
 
-export type PrepConfirmArg = (arg: ValidatorArg) => ValiratorReturn
+export type PrepConfirmArg = (arg: ValidatorArg) => ValidatorReturn
 
 export interface GenericModalProps {
   onDismiss?: VoidFn
@@ -19,7 +19,7 @@ export interface ValidatorArg {
   duration: number
 }
 
-export interface ValiratorReturn {
+export interface ValidatorReturn {
   finalLockedAmount?: number
   finalDuration?: number
 }
@@ -33,6 +33,7 @@ export interface ExtendDurationModal {
   currentDurationLeft: number
   currentBalance?: BigNumber
   lockStartTime: string
+  isRenew?: boolean
 }
 
 export interface AddButtonProps {
@@ -83,8 +84,17 @@ export interface LockedModalBodyPropsType {
   prepConfirmArg?: PrepConfirmArg
   currentDuration?: number
   currentDurationLeft?: number
+  isRenew?: boolean
   validator?: (arg: ValidatorArg) => ModalValidator
-  customOverview?: ({ isValidDuration, duration }: { isValidDuration: boolean; duration: number }) => React.ReactElement
+  customOverview?: ({
+    isValidDuration,
+    duration,
+    isMaxSelected,
+  }: {
+    isValidDuration: boolean
+    duration: number
+    isMaxSelected?: boolean
+  }) => React.ReactElement
 }
 
 export interface ExtendDurationButtonPropsType {
@@ -95,6 +105,7 @@ export interface ExtendDurationButtonPropsType {
   lockStartTime: string
   children: React.ReactNode
   modalTitle?: string
+  isRenew?: boolean
 }
 
 export interface AfterLockedActionsPropsType {
@@ -126,6 +137,8 @@ export interface LockDurationFieldPropsType {
   isOverMax: boolean
   currentDuration?: number
   currentDurationLeft?: number
+  isMaxSelected: boolean
+  setIsMaxSelected: Dispatch<SetStateAction<boolean>>
 }
 
 export interface LockedStakingApyPropsType {

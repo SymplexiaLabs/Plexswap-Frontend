@@ -1,11 +1,13 @@
 {
   "name": "@plexswap/localization",
   "license": "MIT",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "description": "A minimal internationalization library",
   "main": "./src/index.tsx",
   "types": "./src/index.tsx",
-  "scripts": {},
+  "scripts": {
+    "publish": "npm publish --access public"
+  },
   "dependencies": {
     "react": "^18.2.0"
   }

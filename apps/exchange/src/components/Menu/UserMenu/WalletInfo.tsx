@@ -21,7 +21,7 @@ interface WalletInfoProps {
 const WalletInfo: React.FC<WalletInfoProps> = ({ hasLowNativeBalance, onDismiss }) => {
   const { t } = useTranslation()
   const { account, chainId } = useActiveWeb3React()
-  const { data, isFetched } = useBalance({ addressOrName: account })
+  const { data, isFetched } = useBalance({ address: account })
   const native = useNativeCurrency()
   const { balance: wayaBalance, fetchStatus: wayaFetchStatus } = useGetWayaBalance()
   const { logout } = useAuth()

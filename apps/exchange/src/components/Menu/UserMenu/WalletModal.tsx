@@ -49,7 +49,7 @@ const WalletModal: React.FC<React.PropsWithChildren<WalletModalProps>> = ({
   const [view, setView] = useState(initialView)
   const { t } = useTranslation()
   const { account } = useWeb3React()
-  const { data, isFetched } = useBalance({ addressOrName: account })
+  const { data, isFetched } = useBalance({ address: account })
   const hasLowNativeBalance = isFetched && data && data.value.lte(LOW_BNB_BALANCE)
 
   const handleClick = (newIndex: number) => {

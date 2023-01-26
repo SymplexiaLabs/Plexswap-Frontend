@@ -1,5 +1,5 @@
 import { Flex, Text } from '@plexswap/ui-plex'
-import { ReactElement } from 'react-markdown'
+import { ReactElement } from 'react'
 
 interface TextIconProps {
   text: string

@@ -41,6 +41,8 @@ export const VaultRoiCalculatorModal = ({
     return wayaVaultView === 0 ? flexibleApy : getLockedApy(duration)
   }, [wayaVaultView, getLockedApy, flexibleApy, duration])
 
+  const [isMaxSelected, setIsMaxSelected] = useState(false)
+
   return (
     <RoiCalculatorModal
       stakingTokenSymbol={pool.stakingToken.symbol}
@@ -91,7 +93,13 @@ export const VaultRoiCalculatorModal = ({
     >
       {wayaVaultView && (
         <Box mt="16px">
-          <LockDurationField duration={duration} setDuration={setDuration} isOverMax={false} />
+          <LockDurationField
+            duration={duration}
+            setDuration={setDuration}
+            isOverMax={false}
+            isMaxSelected={isMaxSelected}
+            setIsMaxSelected={setIsMaxSelected}
+          />
         </Box>
       )}
     </RoiCalculatorModal>

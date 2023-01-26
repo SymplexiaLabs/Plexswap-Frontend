@@ -1,10 +1,12 @@
-import { useToast } from '@plexswap/ui-plex'
-import { ConnectorNames } from 'config/wallet'
-import { useCallback, useMemo } from 'react'
+/* eslint-disable consistent-return */
 import { useTranslation } from '@plexswap/localization'
-import replaceBrowserHistory from '@plexswap/utils/replaceBrowserHistory'
-import { useAccount, useSwitchNetwork as useSwitchNetworkWallet } from 'wagmi'
 import { ChainId } from '@plexswap/sdk'
+import { useToast } from '@plexswap/ui-plex'
+import { useCallback, useMemo } from 'react'
+import replaceBrowserHistory from '@plexswap/utils/replaceBrowserHistory'
+import { ConnectorNames } from 'config/wallet'
+import { useAccount, useSwitchNetwork as useSwitchNetworkWallet } from 'wagmi'
+import { CHAIN_QUERY_NAME } from 'config/chains'
 import { useSessionChainId } from './useSessionChainId'
 import { useSwitchNetworkLoading } from './useSwitchNetworkLoading'
 
@@ -13,7 +15,7 @@ export function useSwitchNetworkLocal() {
   return useCallback(
     (chainId: number) => {
       setSessionChainId(chainId)
-      replaceBrowserHistory('chainId', chainId === ChainId.BSC ? null : chainId)
+      replaceBrowserHistory('chain', chainId === ChainId.BSC ? null : CHAIN_QUERY_NAME[chainId])
     },
     [setSessionChainId],
   )
@@ -32,12 +34,22 @@ export function useSwitchNetwork() {
   const { isConnected, connector } = useAccount()
 
   const switchNetworkLocal = useSwitchNetworkLocal()
+  const isLoading = _isLoading || loading
 
   const switchNetworkAsync = useCallback(
     async (chainId: number) => {
       if (isConnected && typeof _switchNetworkAsync === 'function') {
+        if (isLoading) return
         setLoading(true)
         return _switchNetworkAsync(chainId)
+          .then((c) => {
+            // well token pocket
+            if (window.ethereum?.isTokenPocket === true) {
+              switchNetworkLocal(chainId)
+              window.location.reload()
+            }
+            return c
+          })
           .catch(() => {
             // TODO: review the error
             toastError(t('Error connecting, please retry and confirm in wallet!'))
@@ -48,7 +60,7 @@ export function useSwitchNetwork() {
         switchNetworkLocal(chainId)
       })
     },
-    [isConnected, _switchNetworkAsync, t, setLoading, toastError, switchNetworkLocal],
+    [isConnected, _switchNetworkAsync, isLoading, setLoading, toastError, t, switchNetworkLocal],
   )
 
   const switchNetwork = useCallback(
@@ -61,7 +73,6 @@ export function useSwitchNetwork() {
     [_switchNetwork, isConnected, switchNetworkLocal],
   )
 
-  const isLoading = _isLoading || loading
   const canSwitch = useMemo(
     () =>
       isConnected
@@ -70,7 +81,7 @@ export function useSwitchNetwork() {
           !(
             typeof window !== 'undefined' &&
             // @ts-ignore // TODO: add type later
-            window.ethereum?.isSafePal
+            (window.ethereum?.isSafePal || window.ethereum?.isMathWallet)
           )
         : true,
     [_switchNetworkAsync, isConnected, connector],

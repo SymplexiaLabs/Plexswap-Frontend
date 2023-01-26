@@ -18,7 +18,7 @@ import {
   UserMenuItem,
 } from '@plexswap/ui-plex'
 import { useTheme as useNextTheme } from 'next-themes'
-import Image from 'next/future/image'
+import Image from 'next/image'
 import NextLink from 'next/link'
 import { useEffect, useReducer, useRef, useState } from 'react'
 import styled, { useTheme } from 'styled-components'
@@ -123,7 +123,7 @@ const UserMenuItems = ({ onShowTx }: { onShowTx: () => void }) => {
 
 async function switchNetwork(chainId: number) {
   const chain = CHAINS_STARGATE.find((c) => c.id === chainId)
-  const provider = window.stargate?.wallet?.ethereum?.signer?.provider?.provider ?? window.ethereum
+  const provider = window.stargate?.wallet?.ethereum?.signer?.provider?.provider ?? (window as any).ethereum
   if (chain && provider) {
     try {
       await provider.request({

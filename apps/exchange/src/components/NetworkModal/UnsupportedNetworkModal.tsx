@@ -1,7 +1,7 @@
 import { Button, Grid, Message, MessageText, Modal, Text } from '@plexswap/ui-plex'
 import { useLocalNetworkChain } from 'hooks/useActiveChainId'
 import { useTranslation } from '@plexswap/localization'
-import { useSwitchNetwork } from 'hooks/useSwitchNetwork'
+import { useSwitchNetwork, useSwitchNetworkLocal } from 'hooks/useSwitchNetwork'
 import Image from 'next/image'
 import useAuth from 'hooks/useAuth'
 import { useMenuItems } from 'components/Menu/hooks/useMenuItems'
@@ -13,8 +13,9 @@ import { ChainId } from '@plexswap/sdk'
 import Dots from '../Loader/Dots'
 
 // Where chain is not supported or page not supported
-export function UnsupportedNetworkModal() {
+export function UnsupportedNetworkModal({ pageSupportedChains }: { pageSupportedChains: number[] }) {
   const { switchNetworkAsync, isLoading, canSwitch } = useSwitchNetwork()
+  const switchNetworkLocal = useSwitchNetworkLocal()
   const { chains } = useNetwork()
   const chainId = useLocalNetworkChain() || ChainId.BSC
   const { isConnected } = useAccount()
@@ -30,7 +31,10 @@ export function UnsupportedNetworkModal() {
     return activeSubMenuItem?.label || activeMenuItem?.label
   }, [menuItems, pathname])
 
-  const supportedMainnetChains = useMemo(() => chains.filter((chain) => !chain.testnet), [chains])
+  const supportedMainnetChains = useMemo(
+    () => chains.filter((chain) => !chain.testnet && pageSupportedChains?.includes(chain.id)),
+    [chains, pageSupportedChains],
+  )
 
   return (
     <Modal title={t('Check your network')} hideCloseButton headerBackground="gradientCardHeader">
@@ -42,31 +46,42 @@ export function UnsupportedNetworkModal() {
         <div style={{ textAlign: 'center' }}>
           <Image
             layout="fixed"
-            width="194px"
-            height="175px"
-            src="/images/chains/check-your-network.png"
+            width={194}
+            height={175}
+            src="/images/check-your-network.png"
             alt="check your network"
           />
         </div>
         <Message variant="warning">
           <MessageText>{t('Please switch your network to continue.')}</MessageText>
         </Message>
-        {canSwitch && (
+        {canSwitch ? (
           <Button
             isLoading={isLoading}
             onClick={() => {
               if (supportedMainnetChains.map((c) => c.id).includes(chainId)) {
                 switchNetworkAsync(chainId)
               } else {
-                switchNetworkAsync(supportedMainnetChains[0].id)
+                switchNetworkAsync(ChainId.BSC)
               }
             }}
           >
             {isLoading ? <Dots>{t('Switch network in wallet')}</Dots> : t('Switch network in wallet')}
           </Button>
+        ) : (
+          <Message variant="danger">
+            <MessageText>{t('Unable to switch network. Please try it on your wallet')}</MessageText>
+          </Message>
         )}
         {isConnected && (
-          <Button variant="secondary" onClick={logout}>
+          <Button
+            variant="secondary"
+            onClick={() =>
+              logout().then(() => {
+                switchNetworkLocal(ChainId.BSC)
+              })
+            }
+          >
             {t('Disconnect Wallet')}
           </Button>
         )}

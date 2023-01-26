@@ -7,9 +7,9 @@ node_modules
 
 # testing
 /coverage
-/apps/test/cypress/videos
-/apps/test/cypress/screenshots
-/apps/test/cypress/fixtures/example.json
+cypress/videos
+cypress/screenshots
+cypress/fixtures/example.json
 
 # next.js
 .next/
@@ -37,13 +37,11 @@ yarn-debug.log*
 yarn-error.log*
 debug.log*
 
-**/config/abi/types
-
+**/apps/web/config/abi/types
 
 # Sentry
 .sentryclirc
 
 # turbo
 .turbo
-# Local Netlify folder
-.netlify
+.vercel

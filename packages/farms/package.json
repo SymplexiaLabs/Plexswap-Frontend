@@ -1,14 +1,12 @@
 {
   "name": "@plexswap/farms",
-  "version": "1.1.1",
-  "main": "./src/index.ts",
+  "version": "1.1.3",
   "sideEffects": false,
-  "peerDependencies": {
-    "@plexswap/sdk": "^3.0.1"
-  },
-  "description": "Plexswap Farms packages",
+  "description": "Plexswap Farms Package",
+  "main": "src/index.ts",
   "scripts": {
     "build": "npx tsx scripts/build.ts",
+    "test": "vitest --run",
     "publish": "npm publish --access public"
   },
   "author": "Symplexia Labs",
@@ -17,9 +15,10 @@
     "tsx": "^3.12.1"
   },
   "dependencies": {
-    "@plexswap/multicall": "^1.0.14",
-    "@plexswap/sdk": "^3.0.1",
-    "@plexswap/tokens": "^1.0.14",
-    "@plexswap/utils": "^1.0.14"
+    "@plexswap/metalists": "*",
+    "@plexswap/multicall": "*",
+    "@plexswap/sdk": "*",
+    "@plexswap/tokens": "*",
+    "@plexswap/utils": "*"
   }
 }

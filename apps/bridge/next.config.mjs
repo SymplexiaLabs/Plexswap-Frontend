@@ -1,17 +1,25 @@
-import transpileModules from 'next-transpile-modules'
-import { withAxiom } from 'next-axiom'
 import { createVanillaExtractPlugin } from '@vanilla-extract/next-plugin'
+import { withAxiom } from 'next-axiom'
 
 const withVanillaExtract = createVanillaExtractPlugin()
-const withTH = transpileModules(['@plexswap/ui-plex', '@plexswap/wagmi', '@plexswap/sdk', '@plexswap/style'])
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  experimental: {
+    transpilePackages: [
+      '@plexswap/ui-plex',
+      '@plexswap/style',
+      '@plexswap/hooks',
+      '@plexswap/localization',
+      '@plexswap/utils',
+    ],
+  },
   compiler: {
     styledComponents: true,
   },
 }
 
-export default withTH(withAxiom(withVanillaExtract(nextConfig)))
+
+export default withAxiom(withVanillaExtract(nextConfig))

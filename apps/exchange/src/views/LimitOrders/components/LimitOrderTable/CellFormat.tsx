@@ -1,5 +1,5 @@
 import { Box } from '@plexswap/ui-plex'
-import { ReactElement } from 'react-markdown'
+import { ReactElement } from 'react'
 
 interface CellFormatProps {
   firstRow: ReactElement | number | string

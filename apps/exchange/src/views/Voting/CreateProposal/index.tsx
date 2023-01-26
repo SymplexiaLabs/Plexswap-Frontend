@@ -14,6 +14,7 @@ import {
   Text,
   useModal,
   useToast,
+  ReactMarkdown,
 } from '@plexswap/ui-plex'
 import { useWeb3React, useSignMessage } from '@plexswap/wagmi'
 import times from 'lodash/times'
@@ -26,7 +27,6 @@ import { useTranslation } from '@plexswap/localization'
 import Container from 'components/Layout/Container'
 import { DatePicker, TimePicker, DatePickerPortal } from 'views/Voting/components/DatePicker'
 import ConnectWalletButton from 'components/ConnectWalletButton'
-import ReactMarkdown from 'components/ReactMarkdown'
 import { PageMeta } from 'components/Layout/Page'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
