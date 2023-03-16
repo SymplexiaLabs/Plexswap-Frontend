@@ -1,11 +1,11 @@
 import React from "react";
-import { renderWithTheme } from "../../testHelpers";
+import { renderWithProvider } from "../../testHelpers";
 import PlexToggle from "../../components/PlexToggle/PlexToggle";
 
 const handleChange = jest.fn();
 
 it("renders correctly", () => {
-  const { asFragment } = renderWithTheme(<PlexToggle checked onChange={handleChange} scale="md" />);
+  const { asFragment } = renderWithProvider(<PlexToggle checked onChange={handleChange} scale="md" />);
   expect(asFragment()).toMatchInlineSnapshot(`
     <DocumentFragment>
       .c0 {
@@ -201,7 +201,7 @@ it("renders correctly", () => {
 });
 
 it("renders correctly scale sm", () => {
-  const { asFragment } = renderWithTheme(<PlexToggle checked onChange={handleChange} scale="sm" />);
+  const { asFragment } = renderWithProvider(<PlexToggle checked onChange={handleChange} scale="sm" />);
   expect(asFragment()).toMatchInlineSnapshot(`
     <DocumentFragment>
       .c0 {
