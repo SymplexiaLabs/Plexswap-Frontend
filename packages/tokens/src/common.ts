@@ -48,7 +48,7 @@ export const PLEX_TESTNET = new Token(
 
 export const PLEX_GOERLI = new Token(
   ChainId.GOERLI,
-  '0xE95AF82Bc998D2f05aD76a2F1B404756DCfc0b8a',
+  '0xD1274753401214DfDecb02cba54EC8A95752D8c0',
   9,
   'PLEX-F',
   'Symplexia Finance',

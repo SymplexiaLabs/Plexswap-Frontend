@@ -34,18 +34,18 @@ const farms: SerializedFarmConfig[] = [
       quoteToken: goerliTestnetTokens.busd,
     },
     {
-      pid: 4,
-      lpSymbol: 'PLEX-F/ETH LP',
-      lpAddress:  '0xaD4761f26AbA1870Eb9081CfcAA0a9C07bbB3a12', 
-      token: goerliTestnetTokens.plex,
-      quoteToken: goerliTestnetTokens.weth,
-    },
-    {
       pid: 5,
       lpSymbol: 'PLEX-F/BUSD LP',
       lpAddress:  '0x4fCfa60A9BF43a6F9aD614A0dBa4586b19de2483', 
       token: goerliTestnetTokens.plex,
       quoteToken: goerliTestnetTokens.busd,
+    },
+    {
+      pid: 6,
+      lpSymbol: 'PLEX-F/ETH LP',
+      lpAddress:  '0xcC11e0e5956BB25A01fB8b97F1a426B1F6A0026A', 
+      token: goerliTestnetTokens.plex,
+      quoteToken: goerliTestnetTokens.weth,
     },
 ].map((p) => ({ ...p, token: p.token.serialize, quoteToken: p.quoteToken.serialize }))
 
