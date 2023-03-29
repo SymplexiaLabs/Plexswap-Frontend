@@ -83,27 +83,7 @@
       "projectLink": "https://www.paxos.com/busd/"
     }
   },
-  {
-    "pid": 4,
-    "lpSymbol": "PLEX-F/ETH LP",
-    "lpAddress": "0xaD4761f26AbA1870Eb9081CfcAA0a9C07bbB3a12",
-    "token": {
-      "address": "0xE95AF82Bc998D2f05aD76a2F1B404756DCfc0b8a",
-      "chainId": 5,
-      "decimals": 9,
-      "symbol": "PLEX-F",
-      "name": "Symplexia Finance",
-      "projectLink": "https://plexfinance.us/"
-    },
-    "quoteToken": {
-      "address": "0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6",
-      "chainId": 5,
-      "decimals": 18,
-      "symbol": "WETH",
-      "name": "Wrapped Ether",
-      "projectLink": "https://weth.io"
-    }
-  },
+  
   {
     "pid": 5,
     "lpSymbol": "PLEX-F/BUSD LP",
@@ -123,6 +103,27 @@
       "symbol": "BUSD",
       "name": "Binance USD",
       "projectLink": "https://www.paxos.com/busd/"
+    }
+  },
+  {
+    "pid": 7,
+    "lpSymbol": "PLEX-F/ETH LP",
+    "lpAddress": "0xc0a9586062Eb85F04Ed25b85A833153E44E7C6ea",
+    "token": {
+      "address": "0x6a69b32d60B862F99068Be5F7c304691e58B6F3f",
+      "chainId": 5,
+      "decimals": 9,
+      "symbol": "PLEX-F",
+      "name": "Symplexia Finance",
+      "projectLink": "https://plexfinance.us/"
+    },
+    "quoteToken": {
+      "address": "0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6",
+      "chainId": 5,
+      "decimals": 18,
+      "symbol": "WETH",
+      "name": "Wrapped Ether",
+      "projectLink": "https://weth.io"
     }
   }
 ]
