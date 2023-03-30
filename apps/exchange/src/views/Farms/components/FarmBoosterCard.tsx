@@ -81,8 +81,8 @@ export const FarmBoosterCard = () => {
       </Box>
       <Box>
         {t('To learn more, check out the')}
-        <Link target="_blank" href="https://medium.com/plexswap/introducing-bwaya-farm-yield-boosters-b27b7a6f0f84">
-          {t('Medium Article')}
+        <Link target="_blank" href="https://docs.plexfinance.us/products/boosters">
+          {t('Plexswap Docs')}
         </Link>
       </Box>
     </>
