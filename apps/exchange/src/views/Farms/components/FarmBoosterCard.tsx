@@ -15,13 +15,11 @@ import {
 import { useWeb3React } from '@plexswap/wagmi'
 import ConnectWalletButton from 'components/ConnectWalletButton'
 import { useTranslation } from '@plexswap/localization'
-import Image from 'next/image'
 import NextLink from 'next/link'
 import styled, { useTheme } from 'styled-components'
 import { useFarmBoosterProxyContractAddress } from '../hooks/useFarmBoosterProxyContractAddress'
 import { useUserBoosterStatus } from '../hooks/useUserBoosterStatus'
 import { useUserLockedWayaStatus } from '../hooks/useUserLockedWayaStatus'
-import boosterCardImage from '../images/boosterCardImageV2.png'
 import CreateProxyButton from './YieldBooster/components/CreateProxyButton'
 
 export const CardWrapper = styled.div`
