@@ -109,7 +109,7 @@
     "lpSymbol": "PLEX-F/ETH LP",
     "lpAddress": "0xc0a9586062Eb85F04Ed25b85A833153E44E7C6ea",
     "token": {
-      "address": "0xD1274753401214DfDecb02cba54EC8A95752D8c0",
+      "address": "0x6a69b32d60B862F99068Be5F7c304691e58B6F3f",
       "chainId": 5,
       "decimals": 9,
       "symbol": "PLEX-F",

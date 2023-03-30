@@ -21,7 +21,7 @@ import styled, { useTheme } from 'styled-components'
 import { useFarmBoosterProxyContractAddress } from '../hooks/useFarmBoosterProxyContractAddress'
 import { useUserBoosterStatus } from '../hooks/useUserBoosterStatus'
 import { useUserLockedWayaStatus } from '../hooks/useUserLockedWayaStatus'
-import boosterCardImage from '../images/boosterCardImage.png'
+import boosterCardImage from '../images/boosterCardImageV2.png'
 import CreateProxyButton from './YieldBooster/components/CreateProxyButton'
 
 export const CardWrapper = styled.div`
@@ -94,9 +94,6 @@ export const FarmBoosterCard = () => {
   })
   return (
     <CardWrapper>
-      <ImageWrapper>
-        <Image src={boosterCardImage} alt="boosterCardImage" width={99} height={191} placeholder="blur" />
-      </ImageWrapper>
       <Card p="0px" style={{ zIndex: 1 }}>
         <StyledCardBody style={{ padding: '15px 24px' }}>
           <RocketIcon />
