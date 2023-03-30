@@ -83,13 +83,12 @@
       "projectLink": "https://www.paxos.com/busd/"
     }
   },
-  
   {
     "pid": 5,
     "lpSymbol": "PLEX-F/BUSD LP",
     "lpAddress": "0x4fCfa60A9BF43a6F9aD614A0dBa4586b19de2483",
     "token": {
-      "address": "0xE95AF82Bc998D2f05aD76a2F1B404756DCfc0b8a",
+      "address": "0xD1274753401214DfDecb02cba54EC8A95752D8c0",
       "chainId": 5,
       "decimals": 9,
       "symbol": "PLEX-F",
@@ -110,7 +109,7 @@
     "lpSymbol": "PLEX-F/ETH LP",
     "lpAddress": "0xc0a9586062Eb85F04Ed25b85A833153E44E7C6ea",
     "token": {
-      "address": "0x6a69b32d60B862F99068Be5F7c304691e58B6F3f",
+      "address": "0xD1274753401214DfDecb02cba54EC8A95752D8c0",
       "chainId": 5,
       "decimals": 9,
       "symbol": "PLEX-F",

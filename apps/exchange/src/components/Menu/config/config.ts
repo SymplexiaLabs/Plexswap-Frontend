@@ -5,7 +5,6 @@ import {
   SwapFillIcon,
   EarnFillIcon,
   EarnIcon,
-
   MoreIcon,
 } from '@plexswap/ui-plex'
 import { ContextApi } from '@plexswap/localization'
@@ -58,6 +57,11 @@ const config: (t: ContextApi['t'], isDark: boolean, languageCode?: string, chain
           {
             label: t('Bridge'),
             href: 'https://bridge.plexfinance.us/',
+            type: DropdownMenuItemType.EXTERNAL_LINK,
+          },
+          {
+            label: t('Offering'),
+            href: 'https://offering.plexfinance.us/',
             type: DropdownMenuItemType.EXTERNAL_LINK,
           },
         ].map((item) => addMenuItemSupported(item, chainId)),
