@@ -59,11 +59,6 @@ const config: (t: ContextApi['t'], isDark: boolean, languageCode?: string, chain
             href: 'https://bridge.plexfinance.us/',
             type: DropdownMenuItemType.EXTERNAL_LINK,
           },
-          {
-            label: t('Offering'),
-            href: 'https://offering.plexfinance.us/',
-            type: DropdownMenuItemType.EXTERNAL_LINK,
-          },
         ].map((item) => addMenuItemSupported(item, chainId)),
       },
       {
