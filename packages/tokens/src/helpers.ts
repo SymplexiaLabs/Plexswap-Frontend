@@ -60,6 +60,7 @@ export const EMPTY_LIST: TokenAddressMap = {
   [ChainId.GOERLI]: {},
   [ChainId.BSC]: {},
   [ChainId.BSC_TESTNET]: {},
+  [ChainId.PLEXCHAIN]: {},
 }
 
 export function deserializeToken(serializedToken: SerializedWrappedToken): Token {

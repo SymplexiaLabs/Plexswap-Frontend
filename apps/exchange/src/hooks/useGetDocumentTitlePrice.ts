@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useWayaBusdPrice } from 'hooks/useBUSDPrice'
+import { useWayaBusdPrice } from 'hooks/useStablecoinPrice'
 
 const useGetDocumentTitlePrice = () => {
   const wayaPriceBusd = useWayaBusdPrice()

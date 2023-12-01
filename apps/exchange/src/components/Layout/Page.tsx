@@ -3,7 +3,7 @@ import { useTranslation } from '@plexswap/localization'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { DEFAULT_META, getCustomMeta } from 'config/constants/meta'
-import { useWayaBusdPrice } from 'hooks/useBUSDPrice'
+import { useWayaBusdPrice } from 'hooks/useStablecoinPrice'
 import Container from './Container'
 
 const StyledPage = styled(Container)`

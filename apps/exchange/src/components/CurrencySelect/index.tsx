@@ -5,7 +5,7 @@ import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useTranslation } from '@plexswap/localization'
 import { formatNumber } from 'utils/formatBalance'
 import { useCurrencyBalance } from 'state/wallet/hooks'
-import useBUSDPrice from 'hooks/useBUSDPrice'
+import useStablecoinPrice from 'hooks/useStablecoinPrice'
 import { CurrencyLogo } from '../Logo'
 import { RowBetween, AutoRow } from '../Layout/Row'
 
@@ -78,7 +78,7 @@ export const CurrencySelect = ({
     />,
   )
 
-  const price = useBUSDPrice(selectedCurrencyBalance && selectedCurrency ? selectedCurrency : undefined)
+  const price = useStablecoinPrice(selectedCurrencyBalance && selectedCurrency ? selectedCurrency : undefined)
   const quoted = selectedCurrencyBalance && price?.quote(selectedCurrencyBalance)
 
   return (

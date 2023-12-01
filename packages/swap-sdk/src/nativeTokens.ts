@@ -1,5 +1,5 @@
 import { Token } from './entities/token'
-import { ChainId } from './constants'
+import { ChainId } from './chains'
 
 export const WETH9 = {
     [ChainId.ETHEREUM]: new Token(
@@ -46,12 +46,24 @@ export const WETH9 = {
       'https://www.binance.org'
     ),
   }
+
+  export const WPLEX = {
+    [ChainId.PLEXCHAIN]: new Token(
+      ChainId.PLEXCHAIN,
+      '0x50245424Afc53E67Ca1AAD2C90401568C0eFf53A',
+      18,
+      'WPLEX',
+      'Wrapped Plex',
+      'https://plexfinance.us'
+    ),
+  }
   
   export const WNATIVE: Record<number, Token> = {
     [ChainId.ETHEREUM]: WETH9[ChainId.ETHEREUM],
     [ChainId.GOERLI]: WETH9[ChainId.GOERLI],
     [ChainId.BSC]: WBNB[ChainId.BSC],
     [ChainId.BSC_TESTNET]: WBNB[ChainId.BSC_TESTNET],
+    [ChainId.PLEXCHAIN]: WPLEX[ChainId.PLEXCHAIN],
   }
   
   export const NATIVE: Record<
@@ -66,5 +78,6 @@ export const WETH9 = {
     [ChainId.GOERLI]: { name: 'Goerli Ether', symbol: 'GOR', decimals: 18 },
     [ChainId.BSC]: { name: 'Binance Chain Native Token', symbol: 'BNB', decimals: 18 },
     [ChainId.BSC_TESTNET]: { name: 'Binance Chain Native Token', symbol: 'BNB', decimals: 18 },
+    [ChainId.PLEXCHAIN]: { name: 'Plexchain Native Token', symbol: 'PLEX', decimals: 18 },
   }
   

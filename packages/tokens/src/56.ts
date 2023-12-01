@@ -1,5 +1,5 @@
 import { ChainId, Token, WBNB } from '@plexswap/sdk'
-import { BUSD_BSC, WAYA_BSC, PLEX_BSC, USDT_BSC, USDC_BSC } from './common'
+import { BUSD_BSC, WAYA_BSC, PLEXF_BSC, USDT_BSC, USDC_BSC } from './common'
 
 export const bscTokens = {
   // bnb here points to the wbnb contract. Wherever the currency BNB is required, conditional checks for the symbol 'BNB' can be used
@@ -13,7 +13,7 @@ export const bscTokens = {
   ),
   wbnb: WBNB[ChainId.BSC],
   waya: WAYA_BSC,
-  plex: PLEX_BSC,
+  plexf: PLEXF_BSC,
   busd: BUSD_BSC,
   usdc: USDC_BSC,
   usdt: USDT_BSC,

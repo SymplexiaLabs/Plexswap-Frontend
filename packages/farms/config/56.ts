@@ -39,14 +39,14 @@ const farms: SerializedFarmConfig[] = [
     pid: 4,
     lpSymbol: 'PLEX-F/BNB LP',
     lpAddress: '0x539Df50cf6fc29d560413d669A5Bb78cB342029B',
-    token: bscTokens.plex,
+    token: bscTokens.plexf,
     quoteToken: bscTokens.wbnb,
   },
   {
     pid: 5,
     lpSymbol: 'PLEX-F/BUSD LP',
     lpAddress: '0x626f4248e1116f1168B53f6183b2569c7D0fc723',
-    token: bscTokens.plex,
+    token: bscTokens.plexf,
     quoteToken: bscTokens.busd,
   },
 ].map((p) => ({ ...p, token: p.token.serialize, quoteToken: p.quoteToken.serialize }))

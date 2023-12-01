@@ -37,14 +37,14 @@ const farms: SerializedFarmConfig[] = [
       pid: 5,
       lpSymbol: 'PLEX-F/BUSD LP',
       lpAddress:  '0x4fCfa60A9BF43a6F9aD614A0dBa4586b19de2483', 
-      token: goerliTestnetTokens.plex,
+      token: goerliTestnetTokens.plexf,
       quoteToken: goerliTestnetTokens.busd,
     },
     {
       pid: 7,
       lpSymbol: 'PLEX-F/ETH LP',
       lpAddress:  '0xc0a9586062Eb85F04Ed25b85A833153E44E7C6ea', 
-      token: goerliTestnetTokens.plex,
+      token: goerliTestnetTokens.plexf,
       quoteToken: goerliTestnetTokens.weth,
     },
 ].map((p) => ({ ...p, token: p.token.serialize, quoteToken: p.quoteToken.serialize }))

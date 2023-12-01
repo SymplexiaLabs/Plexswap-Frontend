@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Modal, Box } from '@plexswap/ui-plex'
 import useTheme from 'hooks/useTheme'
-import { useBUSDWayaAmount } from 'hooks/useBUSDPrice'
+import { useBUSDWayaAmount } from 'hooks/useStablecoinPrice'
 import { useTranslation } from '@plexswap/localization'
 import _toNumber from 'lodash/toNumber'
 import BigNumber from 'bignumber.js'

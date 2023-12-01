@@ -12,6 +12,7 @@ export const coreFarmPIDs = {
   56: [1, 2],
   97: [1, 2],
   5: [1, 2],
+  1149: [1, 2],
 }
 
 export const mainFarmPID = 1            // Waya Farm

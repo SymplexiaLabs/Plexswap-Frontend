@@ -1,5 +1,5 @@
 import { BinanceWalletConnector } from '@plexswap/wagmi/connectors/binanceWallet'
-import { bsc, bscTestnet, goerli, mainnet } from 'wagmi/chains'
+import { bsc, bscTestnet, goerli, mainnet, plexchain } from '@plexswap/wagmi/chains'
 import { configureChains, createClient } from 'wagmi'
 import memoize from 'lodash/memoize'
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
@@ -9,7 +9,7 @@ import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc'
 import { SafeConnector } from './safeConnector'
 
-const CHAINS = [bsc, mainnet, bscTestnet, goerli]
+const CHAINS = [ bsc, mainnet, bscTestnet, goerli, plexchain ]
 
 const getNodeRealUrl = (networkName: string) => {
   let host = null

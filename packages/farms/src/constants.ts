@@ -1,32 +1,38 @@
 import { FixedNumber, BigNumber } from '@ethersproject/bignumber'
 import { ChainId } from '@plexswap/sdk'
 
-export const supportedChainId = [ChainId.GOERLI, ChainId.BSC, ChainId.BSC_TESTNET]
+export const supportedChainId = [ChainId.GOERLI, ChainId.BSC, ChainId.BSC_TESTNET, ChainId.PLEXCHAIN]
 
 export const chiefFarmerAddresses = {
    97: '0xCa9F812Ba614E97b6D8EDC36eE0C1b2DbA35f062',
    56: '0x4D4408eA016357BB334eAd40F14dcF0dfd164Dbe',
+   1149: '0xE8816BBc9A2D55946408FF2e30D154d277328386',
 }
 
-export const nonBSCVaultAddresses = {
+export const crossingVaultAddresses = {
   5: '0xb43D221047F5ec018b0204451Ec93b701ABdc260',
 }
 
 export const nativeStableLpMap = {
   [ChainId.GOERLI]: {
-    address: '0xf5bf0C34d3c428A74Ceb98d27d38d0036C587200',
+    address: '0xc0FB246ae3d56351aDc2bDB196c623577D90cfB5',
     wNative: 'WETH',
-    stable: 'tUSDC',
+    stable: 'BUSD',
   },
   [ChainId.BSC]: {
-    address: '0x58F876857a02D6762E0101bb5C46A8c1ED44Dc16',
+    address: '0x2C2643D51322738fC33f6588Cb28eDe3790094E1',
     wNative: 'WBNB',
     stable: 'BUSD',
   },
   [ChainId.BSC_TESTNET]: {
-    address: '0x4E96D2e92680Ca65D58A0e2eB5bd1c0f44cAB897',
+    address: '0x49120769a878215a350038AbB394072cEb6F4d4A',
     wNative: 'WBNB',
     stable: 'BUSD',
+  },
+  [ChainId.PLEXCHAIN]: {
+    address: '0x8a233567a582de5110f03bdfe531fb6d1cb02969', // Criar o PlexSwap Pair (WPLEX/USDP) em PlexFactory
+    wNative: 'WPLEX',
+    stable: 'USDP',
   },
 }
 

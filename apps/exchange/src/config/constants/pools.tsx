@@ -57,7 +57,7 @@ export const livePools: SerializedPoolConfig[] = [
   {
     poolId: 1,
     stakingToken: bscTokens.waya,
-    earningToken: bscTokens.plex,
+    earningToken: bscTokens.plexf,
     contractAddress: {
       56: '0x0d1b5d6216c45fd8198814ecf247930758c55ab5',
       97: '',

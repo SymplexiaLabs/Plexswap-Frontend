@@ -1,12 +1,11 @@
 import { ChainId, Token } from '@plexswap/sdk'
 
-
 export const WAYA_BSC = new Token(
   ChainId.BSC,
   '0x32d9F70F6eF86718A51021ad269522Abf4CFFE49',
   18,
   'WAYA',
-  'PlexSwap Token',
+  'PlexSwap Farm Token',
   'https://swap.plexfinance.us/',
 )
 
@@ -15,7 +14,7 @@ export const WAYA_TESTNET = new Token(
   '0xA2af2640A694f91632e60befc7Fc30C1b787D505',
   18,
   'WAYA',
-  'PlexSwap Token',
+  'PlexSwap Farm Token',
   'https://swap.plexfinance.us/',
 )
 
@@ -24,34 +23,61 @@ export const WAYA_GOERLI = new Token(
   '0x2b82d6d89F5786C6A0fFab86b5F7F0532d5F19e4',
   18,
   'WAYA',
-  'PlexSwap Token',
+  'PlexSwap Farm Token',
   'https://swap.plexfinance.us/',
 )
 
-export const PLEX_BSC = new Token(
+export const WAYA_PLEXCHAIN = new Token(
+  ChainId.PLEXCHAIN,
+  '0x7589CF3115E060673FD0109fA6891464E13947A1',
+  18,
+  'WAYA',
+  'PlexSwap Farm Token',
+  'https://swap.plexfinance.us/',
+)
+
+export const PLEXF_BSC = new Token(
   ChainId.BSC,
   '0xBB472510B1896C6992D658a7Ab69F7dF32a37b3c',
   9,
   'PLEX-F',
-  'Symplexia Finance',
+  'Symplexia Finance Token',
   'https://plexfinance.us/',
 )
 
-export const PLEX_TESTNET = new Token(
+export const PLEXF_TESTNET = new Token(
   ChainId.BSC_TESTNET,
   '0xb7a3DFd16663dbA80c8f93338d1c59bA21680921',
   9,
   'PLEX-F',
-  'Symplexia Finance',
+  'Symplexia Finance Token',
   'https://plexfinance.us/',
 )
 
-export const PLEX_GOERLI = new Token(
+export const PLEXF_GOERLI = new Token(
   ChainId.GOERLI,
   '0x6a69b32d60B862F99068Be5F7c304691e58B6F3f',
   9,
   'PLEX-F',
-  'Symplexia Finance',
+  'Symplexia Finance Token',
+  'https://plexfinance.us/',
+)
+
+export const PLEXF_PLEXCHAIN = new Token(
+  ChainId.PLEXCHAIN,
+  '0xD0B07197d86434635fe30D69604751F3651c19a6',
+  9,
+  'PLEX-F',
+  'Symplexia Finance Token',
+  'https://plexfinance.us/',
+)
+
+export const USDP_PLEXCHAIN = new Token(
+  ChainId.PLEXCHAIN,
+  '0x69D1D347088e8916aC107b6679927C4EC5faB4a0',
+  18,
+  'USDP',
+  'Symplexia USD Coin',
   'https://plexfinance.us/',
 )
 
@@ -143,17 +169,25 @@ export const BUSD_GOERLI = new Token(
   'https://www.paxos.com/busd/',
 )
 
-export const BUSD: Record<ChainId, Token> = {
-  [ChainId.ETHEREUM]: BUSD_ETH,
-  [ChainId.GOERLI]: BUSD_GOERLI,
-  [ChainId.BSC]: BUSD_BSC,
-  [ChainId.BSC_TESTNET]: BUSD_TESTNET,
+export const PLEXF = {
+  [ChainId.BSC]: PLEXF_BSC,
+  [ChainId.BSC_TESTNET]: PLEXF_TESTNET,
+  [ChainId.GOERLI]: PLEXF_GOERLI,
+  [ChainId.PLEXCHAIN]: PLEXF_PLEXCHAIN,
 }
 
 export const WAYA = {
   [ChainId.BSC]: WAYA_BSC,
   [ChainId.BSC_TESTNET]: WAYA_TESTNET,
   [ChainId.GOERLI]: WAYA_GOERLI,
+  [ChainId.PLEXCHAIN]: WAYA_PLEXCHAIN,
+}
+
+export const BUSD = {
+  [ChainId.ETHEREUM]: BUSD_ETH,
+  [ChainId.GOERLI]: BUSD_GOERLI,
+  [ChainId.BSC]: BUSD_BSC,
+  [ChainId.BSC_TESTNET]: BUSD_TESTNET,
 }
 
 export const USDC = {
@@ -166,4 +200,16 @@ export const USDC = {
 export const USDT = {
   [ChainId.BSC]: USDT_BSC,
   [ChainId.ETHEREUM]: USDT_ETH,
+}
+
+export const USDP = {
+  [ChainId.PLEXCHAIN]: USDP_PLEXCHAIN,
+}
+
+export const STABLE_COIN = {
+  [ChainId.ETHEREUM]: USDT[ChainId.ETHEREUM],
+  [ChainId.GOERLI]: USDC[ChainId.GOERLI],
+  [ChainId.BSC]: USDT[ChainId.BSC],
+  [ChainId.BSC_TESTNET]: BUSD[ChainId.BSC_TESTNET],
+  [ChainId.PLEXCHAIN]: USDP[ChainId.PLEXCHAIN],
 }

@@ -1,6 +1,6 @@
 import { ChainId, JSBI, Percent, Token, WNATIVE, WBNB } from '@plexswap/sdk'
 import { BigNumber } from '@ethersproject/bignumber'
-import { bscTokens, bscTestnetTokens, USDC, USDT, BUSD, WAYA_BSC } from '@plexswap/tokens'
+import { plexchainTokens, bscTokens, bscTestnetTokens, USDC, USDT, BUSD, WAYA_BSC } from '@plexswap/tokens'
 import { ChainMap, ChainTokenList } from './types'
 
 export const ROUTER_ADDRESS: ChainMap<string> = {
@@ -8,6 +8,7 @@ export const ROUTER_ADDRESS: ChainMap<string> = {
   [ChainId.GOERLI]: '0x86bbDDBa250C1a76E4671C3A37Efd1B8D66356cb',
   [ChainId.BSC]: '0x205ce30FB7Ef4173f05979421a73Def4f6983C47',
   [ChainId.BSC_TESTNET]: '0x995214A87ADAdbe30e7132BC269AF996004BA48D',
+  [ChainId.PLEXCHAIN]: '0x7E961C57bFEE77716d1E46D2e942347CfdEaD8DF',
 }
 
 // used to construct intermediary pairs for trading
@@ -24,6 +25,7 @@ export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
     bscTokens.usdc,
   ],
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.waya, bscTestnetTokens.busd],
+  [ChainId.PLEXCHAIN]: [plexchainTokens.wplex, plexchainTokens.waya, plexchainTokens.usdp],
 }
 
 /**
@@ -47,8 +49,9 @@ export const CUSTOM_BASES: { [chainId in ChainId]?: { [tokenAddress: string]: To
 export const SUGGESTED_BASES: ChainTokenList = {
   [ChainId.ETHEREUM]: [USDC[ChainId.ETHEREUM], WBNB[ChainId.ETHEREUM], BUSD[ChainId.ETHEREUM], USDT[ChainId.ETHEREUM]],
   [ChainId.GOERLI]: [USDC[ChainId.GOERLI], WNATIVE[ChainId.GOERLI], BUSD[ChainId.GOERLI]],
-  [ChainId.BSC]: [bscTokens.busd, bscTokens.plex, bscTokens.waya],
-  [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.plex, bscTestnetTokens.waya],
+  [ChainId.BSC]: [bscTokens.busd, bscTokens.plexf, bscTokens.waya],
+  [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.plexf, bscTestnetTokens.waya],
+  [ChainId.PLEXCHAIN]: [plexchainTokens.wplex, plexchainTokens.plexf, plexchainTokens.waya],
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
@@ -57,6 +60,7 @@ export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   [ChainId.GOERLI]: [USDC[ChainId.GOERLI], WNATIVE[ChainId.GOERLI], BUSD[ChainId.GOERLI]],
   [ChainId.BSC]: [bscTokens.wbnb, bscTokens.dai, bscTokens.busd, bscTokens.usdt, bscTokens.waya],
   [ChainId.BSC_TESTNET]: [bscTestnetTokens.wbnb, bscTestnetTokens.waya, bscTestnetTokens.busd],
+  [ChainId.PLEXCHAIN]: [plexchainTokens.wplex, plexchainTokens.waya, plexchainTokens.usdp],
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {
@@ -71,6 +75,10 @@ export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } 
     [bscTokens.waya, bscTokens.wbnb],
     [bscTokens.busd, bscTokens.usdt],
     [bscTokens.dai, bscTokens.usdt],
+  ],
+  [ChainId.PLEXCHAIN]: [
+    [plexchainTokens.waya, plexchainTokens.wplex],
+    [plexchainTokens.wplex, plexchainTokens.usdp],
   ],
 }
 

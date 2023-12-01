@@ -3,13 +3,6 @@ import JSBI from 'jsbi'
 // exports for external consumption
 export type BigintIsh = JSBI | number | string
 
-export enum ChainId {
-  ETHEREUM = 1,
-  GOERLI = 5,
-  BSC = 56,   
-  BSC_TESTNET = 97,  
-}
-
 export const MINIMUM_LIQUIDITY = JSBI.BigInt(1000)
 
 export enum TradeType {

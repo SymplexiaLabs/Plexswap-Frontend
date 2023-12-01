@@ -1,4 +1,4 @@
-import { SerializedFarmConfig } from '../../types'
+import { SerializedFarmConfig } from '@plexswap/farms'
 
 const priceHelperLps: SerializedFarmConfig[] = []
 

@@ -2,7 +2,7 @@ import { MultiCallV2 } from '@plexswap/multicall'
 import { ChainId } from '@plexswap/sdk'
 import chunk from 'lodash/chunk'
 import { SerializedFarmPublicData, SerializedFarmConfig } from './types'
-import { nonBSCVaultAddresses } from './constants'
+import { crossingVaultAddresses } from './constants'
 
 const abi = [
   {
@@ -76,7 +76,7 @@ export const fetchPublicFarmsData = async (
   chiefFarmerAddress: string,
 ): Promise<any[]> => {
   try {
-    const farmCalls = farms.flatMap((farm) => fetchFarmCalls(farm, chiefFarmerAddress, nonBSCVaultAddresses[chainId]))
+    const farmCalls = farms.flatMap((farm) => fetchFarmCalls(farm, chiefFarmerAddress, crossingVaultAddresses[chainId]))
     const chunkSize = farmCalls.length / farms.length
     const farmMultiCallResult = await multicall({ abi, calls: farmCalls, chainId })
     return chunk(farmMultiCallResult, chunkSize)

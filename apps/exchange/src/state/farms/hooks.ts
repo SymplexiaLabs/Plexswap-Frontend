@@ -1,7 +1,7 @@
 import BigNumber from 'bignumber.js'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { SLOW_INTERVAL } from 'config/constants'
-import { useWayaBusdPrice } from 'hooks/useBUSDPrice'
+import { useWayaBusdPrice } from 'hooks/useStablecoinPrice'
 import { useEffect, useMemo } from 'react'
 import { useSelector } from 'react-redux'
 import { useAppDispatch } from 'state'

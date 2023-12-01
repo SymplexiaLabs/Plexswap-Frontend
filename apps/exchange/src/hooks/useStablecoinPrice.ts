@@ -1,6 +1,6 @@
 import { ChainId, Currency, CurrencyAmount, JSBI, Pair, Price, Token, WNATIVE, WBNB } from '@plexswap/sdk'
 import { FAST_INTERVAL } from 'config/constants'
-import { BUSD, WAYA, USDC } from '@plexswap/tokens'
+import { BUSD, WAYA, STABLE_COIN } from '@plexswap/tokens'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useMemo } from 'react'
 import useSWR from 'swr'
@@ -15,20 +15,21 @@ import { PairState, usePairs } from './usePairs'
  * Returns the price in BUSD of the input currency
  * @param currency currency to compute the BUSD price of
  */
-export default function useBUSDPrice(currency?: Currency): Price<Currency, Currency> | undefined {
+export default function useStablecoinPrice(currency?: Currency): Price<Currency, Currency> | undefined {
   const { chainId } = useActiveWeb3React()
   const wrapped = currency?.wrapped
   const wnative = WNATIVE[chainId]
-  const stable = BUSD[chainId] || USDC[chainId]
+  const stableCoin = chainId && chainId in ChainId ? STABLE_COIN[chainId as ChainId] : undefined
 
   const tokenPairs: [Currency | undefined, Currency | undefined][] = useMemo(
     () => [
       [chainId && wrapped && wnative?.equals(wrapped) ? undefined : currency, chainId ? wnative : undefined],
-      [wrapped?.equals(stable) ? undefined : wrapped, stable],
-      [chainId ? wnative : undefined, stable],
+      [wrapped?.equals(stableCoin) ? undefined : wrapped, stableCoin],
+      [chainId ? wnative : undefined, stableCoin],
     ],
-    [wnative, stable, chainId, currency, wrapped],
+    [wnative, stableCoin, chainId, currency, wrapped],
   )
+
   const [[bnbPairState, bnbPair], [busdPairState, busdPair], [busdBnbPairState, busdBnbPair]] = usePairs(tokenPairs)
 
   return useMemo(() => {
@@ -46,13 +47,13 @@ export default function useBUSDPrice(currency?: Currency): Price<Currency, Curre
     if (wrapped.equals(wnative)) {
       if (isBUSDPairExist) {
         const price = busdPair.priceOf(wnative)
-        return new Price(currency, stable, price.denominator, price.numerator)
+        return new Price(currency, stableCoin, price.denominator, price.numerator)
       }
       return undefined
     }
     // handle busd
-    if (wrapped.equals(stable)) {
-      return new Price(stable, stable, '1', '1')
+    if (wrapped.equals(stableCoin)) {
+      return new Price(stableCoin, stableCoin, '1', '1')
     }
 
     const isBnbPairExist =
@@ -74,16 +75,16 @@ export default function useBUSDPrice(currency?: Currency): Price<Currency, Curre
 
     // all other tokens
     // first try the busd pair
-    if (isBUSDPairExist && busdPair.reserveOf(stable).greaterThan(bnbPairBNBBUSDValue)) {
+    if (isBUSDPairExist && busdPair.reserveOf(stableCoin).greaterThan(bnbPairBNBBUSDValue)) {
       const price = busdPair.priceOf(wrapped)
-      return new Price(currency, stable, price.denominator, price.numerator)
+      return new Price(currency, stableCoin, price.denominator, price.numerator)
     }
     if (isBnbPairExist && isBusdBnbPairExist) {
-      if (busdBnbPair.reserveOf(stable).greaterThan('0') && bnbPair.reserveOf(wnative).greaterThan('0')) {
-        const bnbBusdPrice = busdBnbPair.priceOf(stable)
+      if (busdBnbPair.reserveOf(stableCoin).greaterThan('0') && bnbPair.reserveOf(wnative).greaterThan('0')) {
+        const bnbBusdPrice = busdBnbPair.priceOf(stableCoin)
         const currencyBnbPrice = bnbPair.priceOf(wnative)
         const busdPrice = bnbBusdPrice.multiply(currencyBnbPrice).invert()
-        return new Price(currency, stable, busdPrice.denominator, busdPrice.numerator)
+        return new Price(currency, stableCoin, busdPrice.denominator, busdPrice.numerator)
       }
     }
 
@@ -93,7 +94,7 @@ export default function useBUSDPrice(currency?: Currency): Price<Currency, Curre
     wrapped,
     chainId,
     wnative,
-    stable,
+    stableCoin,
     bnbPair,
     busdBnbPair,
     busdPairState,
@@ -133,7 +134,7 @@ export const usePriceByPairs = (currencyA?: Currency, currencyB?: Currency) => {
 }
 
 export const useBUSDCurrencyAmount = (currency?: Currency, amount?: number): number | undefined => {
-  const busdPrice = useBUSDPrice(currency)
+  const busdPrice = useStablecoinPrice(currency)
   if (!amount) {
     return undefined
   }
