@@ -1,6 +1,6 @@
 {
   "name": "@plexswap/wagmi",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "license": "WAGMIT",
   "description": "wagmi adaptor for plexswap",
   "main": "./dist/index.js",
@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "@blocto/sdk": "^0.3.1",
-    "tsconfig": "*",
+    "@plexswap/tsconfig": "*",
     "tsup": "^6.2.3"
   },
   "exports": {
