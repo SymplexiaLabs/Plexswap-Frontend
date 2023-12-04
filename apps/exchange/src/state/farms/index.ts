@@ -1,6 +1,6 @@
 import { getFarmConfig } from '@plexswap/farms/config'
 import { createFarmFetcher } from '@plexswap/farms'
-import { ChainId } from '@plexswap/sdk'
+import { ChainId } from '@plexswap/chains'
 import { createAsyncThunk, createSlice, isAnyOf } from '@reduxjs/toolkit'
 import type {
   UnknownAsyncThunkFulfilledAction,
@@ -67,7 +67,6 @@ const fetchFarmPublicDataPkg = async ({ pids, chainId, chain }): Promise<[Serial
 
   const { farmsWithPrice, poolLength, regularWayaPerBlock } = await farmFetcher.fetchFarms({
     chainId,
-    isTestnet: chain.testnet,
     farms: farmsCanFetch.concat(priceHelperLpsConfig),
   })
   return [farmsWithPrice, poolLength, regularWayaPerBlock]

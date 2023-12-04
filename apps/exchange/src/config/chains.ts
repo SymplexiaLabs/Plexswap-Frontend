@@ -1,9 +1,8 @@
-import { ChainId } from '@plexswap/sdk'
+import { ChainId } from '@plexswap/chains'
 import memoize from 'lodash/memoize'
 import invert from 'lodash/invert'
 
 export const CHAIN_QUERY_NAME = {
-  [ChainId.ETHEREUM]: 'eth',
   [ChainId.GOERLI]: 'goerli',
   [ChainId.BSC]: 'bsc',
   [ChainId.BSC_TESTNET]: 'bscTestnet',

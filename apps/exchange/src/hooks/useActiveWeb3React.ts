@@ -3,7 +3,7 @@ import { useRouter, NextRouter } from 'next/router'
 import { useEffect } from 'react'
 import { isChainSupported } from 'utils/wagmi'
 import { useProvider } from 'wagmi'
-import { ChainId } from '@plexswap/sdk'
+import { ChainId } from '@plexswap/chains'
 import { useActiveChainId } from './useActiveChainId'
 import { useSwitchNetworkLoading } from './useSwitchNetworkLoading'
 

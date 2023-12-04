@@ -1,4 +1,4 @@
-import { ChainId } from '@plexswap/sdk'
+import { ChainId } from '@plexswap/chains'
 import { BIG_TEN } from 'utils/bigNumber'
 
 export const BSC_BLOCK_TIME = 3

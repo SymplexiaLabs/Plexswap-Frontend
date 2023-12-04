@@ -1,4 +1,5 @@
-import { ChainId, WBNB } from '@plexswap/sdk'
+import { WBNB } from '@plexswap/sdk'
+import { ChainId  } from '@plexswap/chains'
 
 const BNB_ADDRESS = WBNB[ChainId.BSC].address
 

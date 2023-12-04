@@ -1,4 +1,5 @@
-import { Token, Pair, ChainId } from '@plexswap/sdk'
+import { Token, Pair } from '@plexswap/sdk'
+import { ChainId  } from '@plexswap/chains'
 import { isAddress } from 'utils'
 
 const getLpAddress = (token1: string | Token, token2: string | Token, chainId: number = ChainId.BSC) => {

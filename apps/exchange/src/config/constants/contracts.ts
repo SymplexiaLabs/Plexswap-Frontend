@@ -3,10 +3,10 @@ import { chiefFarmerAddresses, crossingVaultAddresses } from '@plexswap/farms'
 
 export default {
   chiefFarmer: {
-    5:  crossingVaultAddresses[5],
-    97: chiefFarmerAddresses[97],
-    56: chiefFarmerAddresses[56],
-    1149:  chiefFarmerAddresses[1149],
+    5:    chiefFarmerAddresses[5],
+    97:   chiefFarmerAddresses[97],
+    56:   chiefFarmerAddresses[56],
+    1149: chiefFarmerAddresses[1149],
   },
   multiCall: multicallAddresses,
   wayaVault: {

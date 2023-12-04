@@ -1,18 +1,18 @@
 import { ModalV2 } from '@plexswap/ui-plex'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { CHAIN_IDS } from 'utils/wagmi'
-import { ChainId } from '@plexswap/sdk'
+import { ChainId } from '@plexswap/chains'
 import { useMemo } from 'react'
 import { useNetwork } from 'wagmi'
 import { atom, useAtom } from 'jotai'
-import { SUPPORT_ONLY_BSC } from 'config/constants/supportChains'
+import { RESTRICTED_FEATURE } from 'config/constants/supportChains'
 import { UnsupportedNetworkModal } from './UnsupportedNetworkModal'
 import { WrongNetworkModal } from './WrongNetworkModal'
 import { PageNetworkSupportModal } from './PageNetworkSupportModal'
 
 export const hideWrongNetworkModalAtom = atom(false)
 
-export const NetworkModal = ({ pageSupportedChains = SUPPORT_ONLY_BSC }: { pageSupportedChains?: number[] }) => {
+export const NetworkModal = ({ pageSupportedChains = RESTRICTED_FEATURE }: { pageSupportedChains?: number[] }) => {
   const { chainId, chain, isWrongNetwork } = useActiveWeb3React()
   const { chains } = useNetwork()
   const [dismissWrongNetwork, setDismissWrongNetwork] = useAtom(hideWrongNetworkModalAtom)

@@ -1,4 +1,5 @@
-import { Token, ChainId } from '@plexswap/sdk'
+import { Token } from '@plexswap/sdk'
+import { ChainId  } from '@plexswap/chains'
 import { SerializedWrappedToken } from '@plexswap/tokens'
 import type { SerializedFarmConfig, FarmConfigBaseProps } from '@plexswap/farms'
 

@@ -1,7 +1,7 @@
 import { BigNumber, FixedNumber } from '@ethersproject/bignumber'
 import { formatUnits } from '@ethersproject/units'
 import { MultiCallV2 } from '@plexswap/multicall'
-import { ChainId } from '@plexswap/sdk'
+import { ChainId } from '@plexswap/chains'
 import { BIG_TEN, FIXED_TWO, FIXED_ZERO } from './constants'
 import { getFarmsPrices } from './farmPrices'
 import { fetchPublicFarmsData } from './fetchPublicFarmData'
@@ -16,7 +16,6 @@ export const getTokenAmount = (balance: FixedNumber, decimals: number) => {
 export type FetchFarmsParams = {
   farms: SerializedFarmConfig[]
   multicallv2: MultiCallV2
-  isTestnet: boolean
   chiefFarmerAddress: string
   chainId: number
   totalRegularAllocPoint: BigNumber
@@ -26,7 +25,6 @@ export type FetchFarmsParams = {
 export async function farmV2FetchFarms({
   farms,
   multicallv2,
-  isTestnet,
   chiefFarmerAddress,
   chainId,
   totalRegularAllocPoint,
@@ -36,7 +34,7 @@ export async function farmV2FetchFarms({
 
   const [stableFarmsResults, poolInfos, lpDataResults] = await Promise.all([
     fetchStableFarmData(stableFarms, chainId, multicallv2),
-    fetchChiefFarmerData(farms, isTestnet, multicallv2, chiefFarmerAddress),
+    fetchChiefFarmerData(farms, chainId, multicallv2, chiefFarmerAddress),
     fetchPublicFarmsData(farms, chainId, multicallv2, chiefFarmerAddress),
   ])
 
@@ -149,7 +147,7 @@ const chiefFarmerFarmCalls = (farm: SerializedFarmConfig, chiefFarmerAddress: st
 
 export const fetchChiefFarmerData = async (
   farms: SerializedFarmConfig[],
-  isTestnet: boolean,
+  chainId: number,
   multicallv2: MultiCallV2,
   chiefFarmerAddress: string,
 ): Promise<any[]> => {
@@ -160,7 +158,7 @@ export const fetchChiefFarmerData = async (
     const chiefFarmerMultiCallResult = await multicallv2({
       abi: chiefFarmerV2Abi,
       calls: chiefFarmerAggregatedCalls,
-      chainId: isTestnet ? ChainId.BSC_TESTNET : ChainId.BSC,
+      chainId,
     })
 
     let chiefFarmerChunkedResultCounter = 0
@@ -179,11 +177,11 @@ export const fetchChiefFarmerData = async (
 }
 
 export const fetchChiefFarmerV2Data = async ({
-  isTestnet,
+  chainId,
   multicallv2,
   chiefFarmerAddress,
 }: {
-  isTestnet: boolean
+  chainId: number
   multicallv2: MultiCallV2
   chiefFarmerAddress: string
 }) => {
@@ -211,7 +209,7 @@ export const fetchChiefFarmerV2Data = async ({
           params: [true],
         },
       ],
-      chainId: isTestnet ? ChainId.BSC_TESTNET : ChainId.BSC,
+      chainId,
     })
 
     return {

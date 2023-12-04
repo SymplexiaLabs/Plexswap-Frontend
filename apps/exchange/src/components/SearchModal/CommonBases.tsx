@@ -1,4 +1,5 @@
-import { ChainId, Currency, Token } from '@plexswap/sdk'
+import { Currency, Token } from '@plexswap/sdk'
+import { ChainId  } from '@plexswap/chains'
 import { Text } from '@plexswap/ui-plex'
 import styled from 'styled-components'
 import useNativeCurrency from 'hooks/useNativeCurrency'

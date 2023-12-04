@@ -1,4 +1,5 @@
-import { ChainId, Token, WPLEX } from '@plexswap/sdk'
+import { Token, WPLEX } from '@plexswap/sdk'
+import { ChainId  } from '@plexswap/chains'
 import { WAYA_PLEXCHAIN, PLEXF_PLEXCHAIN, USDP_PLEXCHAIN } from './common'
 
 export const plexchainTokens = {

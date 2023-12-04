@@ -144,7 +144,7 @@
       "symbol": "USDP",
       "decimals": 18,
       "chainId": 1149,
-      "logoURI": "https://swap.plexfinance.us/images/tokens/common/plex.png"
+      "logoURI": "https://swap.plexfinance.us/images/tokens/common/usdp.png"
     },
     {
       "name": "Wrapped PLEX",
@@ -152,7 +152,7 @@
       "symbol": "WPLEX",
       "decimals": 18,
       "chainId": 1149,
-      "logoURI": "https://swap.plexfinance.us/images/tokens/common/plex.png"
+      "logoURI": "https://swap.plexfinance.us/images/tokens/common/wplex.png"
     },
     {
       "name": "Symplexia Finance Token",

@@ -1,7 +1,7 @@
 import { useEffect, useCallback, useState, useMemo, useRef, createContext } from 'react'
 import { createPortal } from 'react-dom'
 import BigNumber from 'bignumber.js'
-import { ChainId } from '@plexswap/sdk'
+import { ChainId } from '@plexswap/chains'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { useWeb3React } from '@plexswap/wagmi'
 import { Heading, Toggle, Text, Flex, Box } from '@plexswap/ui-plex'

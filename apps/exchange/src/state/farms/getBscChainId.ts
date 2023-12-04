@@ -1,14 +1,12 @@
 import NoBscVaultAbi from 'config/abi/NoBscVaultAbi.json'
 import { getChiefFarmerAddress } from 'utils/addressHelpers'
 import { multicallv2 } from 'utils/multicall'
-import { ChainId } from '@plexswap/sdk'
+import { ChainId } from '@plexswap/chains'
 
 // will return BSC or BSC Testnet chainId
 export const getBscChainId = async (chainId: number) => {
   try {
-    if (!chainId) {
-      return ChainId.BSC
-    }
+    if (!chainId) { return ChainId.BSC }
 
     const calls = [
       {

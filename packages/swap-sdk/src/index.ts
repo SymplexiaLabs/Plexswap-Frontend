@@ -7,6 +7,5 @@ export * from './entities'
 export * from './router'
 export * from './nativeTokens'
 export * from './factoryAddresses'
-export * from './chains'
 
 export { computePriceImpact } from './utils'

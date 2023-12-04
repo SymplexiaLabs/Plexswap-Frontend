@@ -1,4 +1,4 @@
-import { ChainId } from '@plexswap/sdk'
+import { ChainId } from '@plexswap/chains'
 import { SerializedFarmConfig } from '@plexswap/farms'
 
 let logged = false
@@ -9,9 +9,9 @@ let logged = false
  * 2 = BUSD-BNB LP
  */
 export const coreFarmPIDs = {
-  56: [1, 2],
-  97: [1, 2],
-  5: [1, 2],
+  56:   [1, 2],
+  97:   [1, 2],
+  5:    [1, 2],
   1149: [1, 2],
 }
 

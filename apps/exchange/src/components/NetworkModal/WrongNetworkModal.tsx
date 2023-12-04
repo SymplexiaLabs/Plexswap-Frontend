@@ -1,5 +1,5 @@
 import { useTranslation } from '@plexswap/localization'
-import { ChainId } from '@plexswap/sdk'
+import { ChainId } from '@plexswap/chains'
 import { ArrowForwardIcon, Button, Grid, Message, MessageText, Modal, Text } from '@plexswap/ui-plex'
 import { FlexGap } from 'components/Layout/Flex'
 import { ChainLogo } from 'components/Logo/ChainLogo'

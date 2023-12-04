@@ -1,17 +1,16 @@
 import { FixedNumber, BigNumber } from '@ethersproject/bignumber'
-import { ChainId } from '@plexswap/sdk'
+import { ChainId } from '@plexswap/chains'
 
 export const supportedChainId = [ChainId.GOERLI, ChainId.BSC, ChainId.BSC_TESTNET, ChainId.PLEXCHAIN]
 
 export const chiefFarmerAddresses = {
-   97: '0xCa9F812Ba614E97b6D8EDC36eE0C1b2DbA35f062',
-   56: '0x4D4408eA016357BB334eAd40F14dcF0dfd164Dbe',
+   5:    '0xb43D221047F5ec018b0204451Ec93b701ABdc260',
+   97:   '0xCa9F812Ba614E97b6D8EDC36eE0C1b2DbA35f062',
+   56:   '0x4D4408eA016357BB334eAd40F14dcF0dfd164Dbe',
    1149: '0xE8816BBc9A2D55946408FF2e30D154d277328386',
 }
 
-export const crossingVaultAddresses = {
-  5: '0xb43D221047F5ec018b0204451Ec93b701ABdc260',
-}
+export const crossingVaultAddresses = {}
 
 export const nativeStableLpMap = {
   [ChainId.GOERLI]: {

@@ -1,4 +1,5 @@
-import { ChainId, Token, WBNB } from '@plexswap/sdk'
+import { Token, WBNB } from '@plexswap/sdk'
+import { ChainId  } from '@plexswap/chains'
 import { BUSD_BSC, WAYA_BSC, PLEXF_BSC, USDT_BSC, USDC_BSC } from './common'
 
 export const bscTokens = {

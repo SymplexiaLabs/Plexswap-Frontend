@@ -11,7 +11,8 @@ import {
   UserMenuItem,
   useTooltip,
 } from '@plexswap/ui-plex'
-import { ChainId, NATIVE } from '@plexswap/sdk'
+import { NATIVE } from '@plexswap/sdk'
+import { ChainId  } from '@plexswap/chains'
 import { useActiveChainId, useLocalNetworkChain } from 'hooks/useActiveChainId'
 import { useNetworkConnectorUpdater } from 'hooks/useActiveWeb3React'
 import { useTranslation } from '@plexswap/localization'
@@ -117,9 +118,7 @@ export const NetworkSwitcher = () => {
 
   const cannotChangeNetwork = !canSwitch
 
-  if (!chainId || chainId === ChainId.BSC) {  //  **LOOKOUT***
-    return null
-  }
+  if (!chainId ) { return null }   // **LOOKOUT**
 
   return (
     <>

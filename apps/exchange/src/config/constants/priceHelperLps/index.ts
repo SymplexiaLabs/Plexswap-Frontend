@@ -1,6 +1,5 @@
 import { getFarmsPriceHelperLpFiles } from '@plexswap/farms/config/priceHelperLps/getFarmsPriceHelperLpFiles'
-import { ChainId } from '@plexswap/sdk'
-import PoolsEthereumPriceHelper from './pools/1'
+import { ChainId } from '@plexswap/chains'
 import PoolsGoerliPriceHelper from './pools/5'
 import PoolsBscPriceHelper from './pools/56'
 import PoolsBscTestnetPriceHelper from './pools/97'
@@ -14,8 +13,6 @@ export const getPoolsPriceHelperLpFiles = (chainId: ChainId) => {
       return PoolsBscPriceHelper
     case ChainId.BSC_TESTNET:
       return PoolsBscTestnetPriceHelper
-    case ChainId.ETHEREUM:
-      return PoolsEthereumPriceHelper
     case ChainId.GOERLI:
       return PoolsGoerliPriceHelper
     case ChainId.PLEXCHAIN:

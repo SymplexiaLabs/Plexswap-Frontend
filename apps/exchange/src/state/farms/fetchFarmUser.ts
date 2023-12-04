@@ -5,7 +5,7 @@ import NoBscVaultAbi from 'config/abi/NoBscVaultAbi.json'
 import multicall, { multicallv2 } from 'utils/multicall'
 import { getChiefFarmerAddress } from 'utils/addressHelpers'
 import { SerializedFarmConfig } from 'config/constants/types'
-import { verifyBscNetwork } from 'utils/verifyBscNetwork'
+import { verifyFarmNetwork } from 'utils/verifyFarmNetwork'
 import { getBscChainId } from 'state/farms/getBscChainId'
 
 export const fetchFarmUserAllowances = async (
@@ -56,7 +56,7 @@ export const fetchFarmUserStakedBalances = async (
   chainId: number,
 ) => {
   const chiefFarmerAddress = getChiefFarmerAddress(chainId)
-  const isBscNetwork = verifyBscNetwork(chainId)
+  const isFarmerStandard = verifyFarmNetwork(chainId)
 
   const calls = farmsToFetch.map((farm) => {
     return {
@@ -67,7 +67,7 @@ export const fetchFarmUserStakedBalances = async (
   })
 
   const rawStakedBalances = await multicallv2({
-    abi: isBscNetwork ? chieffarmerABI : NoBscVaultAbi,
+    abi: isFarmerStandard ? chieffarmerABI : NoBscVaultAbi,
     calls,
     chainId,
     options: { requireSuccess: false },
@@ -79,8 +79,8 @@ export const fetchFarmUserStakedBalances = async (
 }
 
 export const fetchFarmUserEarnings = async (account: string, farmsToFetch: SerializedFarmConfig[], chainId: number) => {
-  const isBscNetwork = verifyBscNetwork(chainId)
-  const multiCallChainId = isBscNetwork ? chainId : await getBscChainId(chainId)
+  const isFarmerStandard = verifyFarmNetwork(chainId)
+  const multiCallChainId = isFarmerStandard ? chainId : await getBscChainId(chainId)
   const chiefFarmerAddress = getChiefFarmerAddress(multiCallChainId)
 
   const calls = farmsToFetch.map((farm) => {

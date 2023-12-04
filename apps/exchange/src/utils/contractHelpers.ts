@@ -47,7 +47,7 @@ import type {
   FarmBoosterProxyFactory,
   FarmBoosterProxy,
 } from 'config/abi/types'
-import { ChainId } from '@plexswap/sdk'
+import { ChainId } from '@plexswap/chains'
 
 export const getContract = ({
   abi,

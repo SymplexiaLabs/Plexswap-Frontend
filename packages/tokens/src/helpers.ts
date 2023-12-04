@@ -1,4 +1,5 @@
-import { Token, ChainId, SerializedToken } from '@plexswap/sdk'
+import { Token, SerializedToken } from '@plexswap/sdk'
+import { ChainId  } from '@plexswap/chains'
 import { TokenInfo, TokenList, Tags } from '@plexswap/metalists'
 
 export interface SerializedWrappedToken extends SerializedToken {
@@ -56,7 +57,6 @@ export type TokenAddressMap = Readonly<
  * An empty result, useful as a default.
  */
 export const EMPTY_LIST: TokenAddressMap = {
-  [ChainId.ETHEREUM]: {},
   [ChainId.GOERLI]: {},
   [ChainId.BSC]: {},
   [ChainId.BSC_TESTNET]: {},

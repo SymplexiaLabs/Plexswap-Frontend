@@ -9,7 +9,7 @@ import {
   useUserSingleHopOnly,
 
 } from 'state/user/hooks'
-import { ChainId } from '@plexswap/sdk'
+import { ChainId } from '@plexswap/chains'
 
 import { useSwapActionHandlers } from 'state/swap/useSwapActionHandlers'
 import { useActiveChainId } from 'hooks/useActiveChainId'

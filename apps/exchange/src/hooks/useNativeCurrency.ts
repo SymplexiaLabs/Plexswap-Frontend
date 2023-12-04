@@ -1,4 +1,5 @@
-import { ChainId, Native, NativeCurrency } from '@plexswap/sdk'
+import { Native, NativeCurrency } from '@plexswap/sdk'
+import { ChainId } from '@plexswap/chains'
 import { useMemo } from 'react'
 import useActiveWeb3React from './useActiveWeb3React'
 

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { useTranslation } from '@plexswap/localization'
 import { Button, Text, Link, HelpIcon } from '@plexswap/ui-plex'
-import { ChainId } from '@plexswap/sdk'
+import { ChainId } from '@plexswap/chains'
 import { useSwitchNetwork } from 'hooks/useSwitchNetwork'
 
 const StyledLink = styled(Link)`

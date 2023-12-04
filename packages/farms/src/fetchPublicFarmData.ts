@@ -1,5 +1,5 @@
 import { MultiCallV2 } from '@plexswap/multicall'
-import { ChainId } from '@plexswap/sdk'
+import { ChainId } from '@plexswap/chains'
 import chunk from 'lodash/chunk'
 import { SerializedFarmPublicData, SerializedFarmConfig } from './types'
 import { crossingVaultAddresses } from './constants'

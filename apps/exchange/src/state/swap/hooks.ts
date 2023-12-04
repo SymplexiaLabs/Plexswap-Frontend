@@ -1,5 +1,6 @@
 import { useWeb3React } from '@plexswap/wagmi'
-import { ChainId, Currency, CurrencyAmount, Pair, Trade, TradeType } from '@plexswap/sdk'
+import { Currency, CurrencyAmount, Pair, Trade, TradeType } from '@plexswap/sdk'
+import { ChainId  } from '@plexswap/chains'
 import { ParsedUrlQuery } from 'querystring'
 import { useEffect, useMemo, useState } from 'react'
 import { SLOW_INTERVAL } from 'config/constants'

@@ -1,4 +1,4 @@
-import { ChainId } from '@plexswap/sdk'
+import { ChainId } from '@plexswap/chains'
 import { EMPTY_LIST,TagInfo, TokenAddressMap, WrappedTokenInfo } from '@plexswap/tokens'
 import { DEFAULT_LIST_OF_LISTS, OFFICIAL_LISTS, 
          UNSUPPORTED_LIST_URLS, WARNING_LIST_URLS, DEFAULT_TOKEN_LIST, UNSUPPORTED_TOKEN_LIST, WARNING_TOKEN_LIST, 
@@ -165,7 +165,6 @@ export function useAllLists(): {
 
 function combineMaps(map1: TokenAddressMap, map2: TokenAddressMap): TokenAddressMap {
   return {
-    [ChainId.ETHEREUM]: { ...map1[ChainId.ETHEREUM], ...map2[ChainId.ETHEREUM] },
     [ChainId.GOERLI]: { ...map1[ChainId.GOERLI], ...map2[ChainId.GOERLI] },
     [ChainId.BSC]: { ...map1[ChainId.BSC], ...map2[ChainId.BSC] },
     [ChainId.BSC_TESTNET]: { ...map1[ChainId.BSC_TESTNET], ...map2[ChainId.BSC_TESTNET] },

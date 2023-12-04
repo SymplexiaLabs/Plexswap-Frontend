@@ -1,4 +1,5 @@
-import { ChainId, Currency } from '@plexswap/sdk'
+import { Currency } from '@plexswap/sdk'
+import { ChainId  } from '@plexswap/chains'
 import { BinanceIcon } from '@plexswap/ui-plex'
 import { useMemo } from 'react'
 import { WrappedTokenInfo } from '@plexswap/tokens'

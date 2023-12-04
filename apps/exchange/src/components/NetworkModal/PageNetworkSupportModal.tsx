@@ -1,5 +1,5 @@
 import { Button, Modal, Text, Grid, Box } from '@plexswap/ui-plex'
-import { ChainId } from '@plexswap/sdk'
+import { ChainId } from '@plexswap/chains'
 import Image from 'next/image'
 import { useSwitchNetwork } from 'hooks/useSwitchNetwork'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'

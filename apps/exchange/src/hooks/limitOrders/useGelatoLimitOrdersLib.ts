@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { ChainId } from '@plexswap/sdk'
+import { ChainId } from '@plexswap/chains'
 import { ChainId as ChainIdType, GelatoLimitOrders } from '@gelatonetwork/limit-orders-lib'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
 import { GELATO_HANDLER } from 'config/constants/exchange'

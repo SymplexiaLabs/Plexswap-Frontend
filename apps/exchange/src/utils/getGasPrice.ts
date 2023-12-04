@@ -1,4 +1,4 @@
-import { ChainId } from '@plexswap/sdk'
+import { ChainId } from '@plexswap/chains'
 import store from 'state'
 import { GAS_PRICE_GWEI } from 'state/types'
 

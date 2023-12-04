@@ -1,5 +1,5 @@
 import { createAction } from '@reduxjs/toolkit'
-import { ChainId } from '@plexswap/sdk'
+import { ChainId } from '@plexswap/chains'
 import { Order } from '@gelatonetwork/limit-orders-lib'
 
 export type TransactionType =

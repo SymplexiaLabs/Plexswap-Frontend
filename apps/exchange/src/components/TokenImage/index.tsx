@@ -4,7 +4,7 @@ import {
   TokenImage as UIKitTokenImage,
   ImageProps,
 } from '@plexswap/ui-plex'
-import { Token, ChainId } from '@plexswap/sdk'
+import { Token } from '@plexswap/sdk'
 
 interface TokenPairImageProps extends Omit<UIKitTokenPairImageProps, 'primarySrc' | 'secondarySrc'> {
   primaryToken: Token
@@ -13,9 +13,7 @@ interface TokenPairImageProps extends Omit<UIKitTokenPairImageProps, 'primarySrc
 
 const getImageUrlFromToken = (token: Token) => {
   const address = token?.isNative ? token.wrapped.address : token.address
-  if (token.chainId !== ChainId.BSC) {
-    return `/images/${token.chainId}/tokens/${address}.png`  // **LOOKOUT**
-  }
+
   return `/images/tokens/${address}.png`
 }
 

@@ -1,4 +1,5 @@
-import { ChainId, Pair, Token } from '@plexswap/sdk'
+import { Pair, Token } from '@plexswap/sdk'
+import { ChainId  } from '@plexswap/chains'
 import { deserializeToken } from '@plexswap/tokens'
 import flatMap from 'lodash/flatMap'
 import { getFarmConfig } from '@plexswap/farms/config'

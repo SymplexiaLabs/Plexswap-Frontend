@@ -4,7 +4,7 @@ import BigNumber from 'bignumber.js'
 import { multicallv2 } from 'utils/multicall'
 import { getBscChainId } from 'state/farms/getBscChainId'
 import { BIG_ZERO } from 'utils/bigNumber'
-import { verifyBscNetwork } from 'utils/verifyBscNetwork'
+import { verifyFarmNetwork } from 'utils/verifyFarmNetwork'
 import { SerializedFarmConfig } from '../../config/constants/types'
 import { SerializedFarm } from '../types'
 import { getChiefFarmerAddress } from '../../utils/addressHelpers'
@@ -31,8 +31,8 @@ export const fetchChiefFarmerFarmPoolLength = async (chainId: number) => {
 
 const chiefFarmerFarmCalls = async (farm: SerializedFarm) => {
   const { pid, quoteToken } = farm
-  const isBscNetwork = verifyBscNetwork(quoteToken.chainId)
-  const multiCallChainId = isBscNetwork ? quoteToken.chainId : await getBscChainId(quoteToken.chainId)
+  const isFarmerStandard = verifyFarmNetwork(quoteToken.chainId)
+  const multiCallChainId = isFarmerStandard ? quoteToken.chainId : await getBscChainId(quoteToken.chainId)
   const chiefFarmerAddress = getChiefFarmerAddress(multiCallChainId)
   const chiefFarmerPid = pid
 
@@ -58,8 +58,8 @@ export const fetchChiefFarmerData = async (farms: SerializedFarmConfig[], chainI
     .filter((chiefFarmerCall) => chiefFarmerCall[0] !== null && chiefFarmerCall[1] !== null)
     .flat()
 
-  const isBscNetwork = verifyBscNetwork(chainId)
-  const multiCallChainId = isBscNetwork ? chainId : await getBscChainId(chainId)
+  const isFarmerStandard = verifyFarmNetwork(chainId)
+  const multiCallChainId = isFarmerStandard ? chainId : await getBscChainId(chainId)
   const chiefFarmerMultiCallResult = await multicallv2({
     abi: chieffarmerABI,
     calls: chiefFarmerAggregatedCalls,

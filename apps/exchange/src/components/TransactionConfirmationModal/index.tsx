@@ -1,5 +1,6 @@
 import { ReactElement, useCallback } from 'react'
-import { ChainId, Currency, Token } from '@plexswap/sdk'
+import { Currency, Token } from '@plexswap/sdk'
+import { ChainId  } from '@plexswap/chains'
 import styled from 'styled-components'
 import {
   Button,

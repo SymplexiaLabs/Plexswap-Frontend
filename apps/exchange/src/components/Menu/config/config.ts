@@ -10,7 +10,7 @@ import {
 import { ContextApi } from '@plexswap/localization'
 
 import { DropdownMenuItems } from '@plexswap/ui-plex/src/components/DropdownMenu/types'
-import { SUPPORT_ONLY_BSC } from 'config/constants/supportChains'
+import { RESTRICTED_FEATURE, SUPPORT_POOLS } from 'config/constants/supportChains'
 
 export type ConfigMenuDropDownItemsType = DropdownMenuItems & { hideSubNav?: boolean }
 export type ConfigMenuItemsType = Omit<MenuItemsType, 'items'> & { hideSubNav?: boolean; image?: string } & {
@@ -47,7 +47,7 @@ const config: (t: ContextApi['t'], isDark: boolean, languageCode?: string, chain
           {
             label: t('Limit'),
             href: '/limit-orders',
-            supportChainIds: SUPPORT_ONLY_BSC,
+            supportChainIds: RESTRICTED_FEATURE,
 
           },
           {
@@ -74,7 +74,7 @@ const config: (t: ContextApi['t'], isDark: boolean, languageCode?: string, chain
           {
             label: t('Silos'),
             href: '/pools',
-            supportChainIds: SUPPORT_ONLY_BSC,
+            supportChainIds: SUPPORT_POOLS,
           },
         ].map((item) => addMenuItemSupported(item, chainId)),
       },
@@ -92,7 +92,7 @@ const config: (t: ContextApi['t'], isDark: boolean, languageCode?: string, chain
       {
         label: t('Making Proposals'),
         href: '/voting',
-        supportChainIds: SUPPORT_ONLY_BSC,
+        supportChainIds: RESTRICTED_FEATURE,
       },
       {
         type: DropdownMenuItemType.DIVIDER,

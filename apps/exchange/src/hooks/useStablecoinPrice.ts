@@ -1,4 +1,5 @@
-import { ChainId, Currency, CurrencyAmount, JSBI, Pair, Price, Token, WNATIVE, WBNB } from '@plexswap/sdk'
+import { Currency, CurrencyAmount, JSBI, Pair, Price, Token, WNATIVE, WBNB } from '@plexswap/sdk'
+import { ChainId } from '@plexswap/chains'
 import { FAST_INTERVAL } from 'config/constants'
 import { BUSD, WAYA, STABLE_COIN } from '@plexswap/tokens'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'

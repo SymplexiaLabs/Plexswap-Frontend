@@ -1,6 +1,6 @@
 /* eslint-disable consistent-return */
 import { useTranslation } from '@plexswap/localization'
-import { ChainId } from '@plexswap/sdk'
+import { ChainId } from '@plexswap/chains'
 import { useToast } from '@plexswap/ui-plex'
 import { useCallback, useMemo } from 'react'
 import replaceBrowserHistory from '@plexswap/utils/replaceBrowserHistory'

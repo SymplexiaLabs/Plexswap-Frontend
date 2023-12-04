@@ -4,7 +4,7 @@ import { useTranslation } from '@plexswap/localization'
 import { useGasPriceManager } from 'state/user/hooks'
 import { GAS_PRICE_GWEI, GAS_PRICE } from 'state/types'
 import useActiveWeb3React from 'hooks/useActiveWeb3React'
-import { ChainId } from '@plexswap/sdk'
+import { ChainId } from '@plexswap/chains'
 
 const GasSettings = () => {
   const { t } = useTranslation()

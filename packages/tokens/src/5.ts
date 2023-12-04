@@ -1,4 +1,5 @@
-import { ChainId, Token, WETH9 } from '@plexswap/sdk'
+import { WETH9 } from '@plexswap/sdk'
+import { ChainId  } from '@plexswap/chains'
 import { USDC_GOERLI, BUSD_GOERLI, WAYA_GOERLI, PLEXF_GOERLI } from './common'
 
 export const goerliTestnetTokens = {

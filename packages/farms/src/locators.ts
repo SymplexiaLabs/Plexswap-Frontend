@@ -1,4 +1,5 @@
-import { ChainId, WBNB } from '@plexswap/sdk'
+import { WBNB } from '@plexswap/sdk'
+import { ChainId  } from '@plexswap/chains'
 import { BUSD } from '@plexswap/tokens'
 import { equalsIgnoreCase } from './equalsIgnoreCase'
 import { FarmData } from './types'
