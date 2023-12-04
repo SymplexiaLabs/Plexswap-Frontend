@@ -1,6 +1,6 @@
 {
   "name": "@plexswap/wagmi",
-  "version": "1.1.7",
+  "version": "1.1.10",
   "license": "WAGMIT",
   "description": "wagmi adaptor for plexswap",
   "main": "./dist/index.js",
@@ -60,11 +60,6 @@
       "types": "./dist/connectors/blocto.d.ts",
       "import": "./dist/connectors/blocto.mjs",
       "require": "./dist/connectors/blocto.js"
-    },
-    "./chains": {
-      "types": "./dist/chains.d.ts",
-      "import": "./dist/chains.mjs",
-      "require": "./dist/chains.js"
     }
   },
   "peerDependenciesMeta": {

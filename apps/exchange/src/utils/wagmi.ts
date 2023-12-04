@@ -1,5 +1,5 @@
 import { BinanceWalletConnector } from '@plexswap/wagmi/connectors/binanceWallet'
-import { bsc, bscTestnet, goerli, mainnet, plexchain } from '@plexswap/wagmi/chains'
+import { bsc, bscTestnet, goerli, mainnet, plexchain } from '@plexswap/chains'
 import { configureChains, createClient } from 'wagmi'
 import memoize from 'lodash/memoize'
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
