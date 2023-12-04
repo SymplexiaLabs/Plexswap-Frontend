@@ -1,4 +1,4 @@
-import { mainnet, goerli, bsc, bscTestnet } from 'wagmi/chains'
+import { goerli, bsc, bscTestnet } from 'wagmi/chains'
 import { Chain } from 'wagmi'
 
 export const plexchain: Chain = {
@@ -25,4 +25,4 @@ export const plexchain: Chain = {
   }
 };
 
-export { mainnet, goerli, bsc, bscTestnet }
+export { goerli, bsc, bscTestnet }

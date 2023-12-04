@@ -1,7 +1,7 @@
 {
   "name": "@plexswap/chains",
   "license": "MIT",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "Plexswap chains-related information",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",

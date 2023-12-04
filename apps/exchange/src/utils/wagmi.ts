@@ -1,5 +1,5 @@
 import { BinanceWalletConnector } from '@plexswap/wagmi/connectors/binanceWallet'
-import { bsc, bscTestnet, goerli, mainnet, plexchain } from '@plexswap/chains'
+import { chainsSelector, bsc } from '@plexswap/chains'
 import { configureChains, createClient } from 'wagmi'
 import memoize from 'lodash/memoize'
 import { CoinbaseWalletConnector } from 'wagmi/connectors/coinbaseWallet'
@@ -8,8 +8,6 @@ import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
 import { WalletConnectConnector } from 'wagmi/connectors/walletConnect'
 import { jsonRpcProvider } from 'wagmi/providers/jsonRpc'
 import { SafeConnector } from './safeConnector'
-
-const CHAINS = [ bsc, mainnet, bscTestnet, goerli, plexchain ]
 
 const getNodeRealUrl = (networkName: string) => {
   let host = null
@@ -40,7 +38,7 @@ const getNodeRealUrl = (networkName: string) => {
   }
 }
 
-export const { provider, chains } = configureChains(CHAINS, [
+export const { provider, chains } = configureChains(chainsSelector, [
   jsonRpcProvider({
     rpc: (chain) => {
       if (!!process.env.NEXT_PUBLIC_NODE_PRODUCTION && chain.id === bsc.id) {

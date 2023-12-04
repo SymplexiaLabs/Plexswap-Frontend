@@ -7,9 +7,9 @@ import _toLower from 'lodash/toLower'
 import dayjs from 'dayjs'
 import { ChainId, getChainName } from '@plexswap/chains'
 import { SerializedFarmConfig } from '@plexswap/farms'
-import { BlockResponse } from '../apps/web/src/components/SubgraphHealthIndicator'
-import { BLOCKS_CLIENT_WITH_CHAIN } from '../apps/web/src/config/constants/endpoints'
-import { stableSwapClient, infoClientWithChain } from '../apps/web/src/utils/graphql'
+import { BlockResponse } from '../apps/exchange/src/components/SubgraphHealthIndicator'
+import { BLOCKS_CLIENT_WITH_CHAIN } from '../apps/exchange/src/config/constants/endpoints'
+import { stableSwapClient, infoClientWithChain } from '../apps/exchange/src/utils/graphql'
 
 interface SingleFarmResponse {
   id: string
