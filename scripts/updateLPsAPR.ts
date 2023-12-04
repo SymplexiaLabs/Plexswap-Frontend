@@ -5,9 +5,9 @@ import BigNumber from 'bignumber.js'
 import chunk from 'lodash/chunk'
 import { sub, getUnixTime } from 'date-fns'
 import farmsConfig from '@plexswap/farms/config/56'
-import type { BlockResponse } from '../src/components/SubgraphHealthIndicator'
-import { BLOCKS_CLIENT } from '../src/config/constants/endpoints'
-import { infoClient } from '../src/utils/graphql'
+import type { BlockResponse } from '../apps/exchange/src/components/SubgraphHealthIndicator'
+import { BLOCKS_CLIENT } from '../apps/exchange/src/config/constants/endpoints'
+import { infoClient } from '../apps/exchange/src/utils/graphql'
 
 const BLOCK_SUBGRAPH_ENDPOINT = BLOCKS_CLIENT
 
